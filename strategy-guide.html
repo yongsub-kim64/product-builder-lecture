@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery Strategy Guide - 로또 번호 생성기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js" defer></script>
+</head>
+<body>
+
+    <div class="banner-container">
+        🍀
+    </div>
+
+    <div class="page-body-container">
+    <aside class="sidebar">
+        <a href="index.html" class="logo" data-i18n-key="logoText">행운의 번호</a>
+        <div class="lang-switcher">
+            <label for="lang-select" data-i18n-key="languageLabel">언어</label>
+            <select id="lang-select">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+        <div class="mode-switcher">
+            <label for="mode-select" data-i18n-key="modeLabel">모드</label>
+            <select id="mode-select">
+                <option value="korea" data-i18n-key="koreaLotto">한국 로또</option>
+                <option value="china" data-i18n-key="chinaLotto">쌍색구</option>
+                <option value="powerball" data-i18n-key="usPowerball">파워볼</option>
+                <option value="lottomax" data-i18n-key="caLottoMax">로또 맥스</option>
+            </select>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" data-i18n-key="navHome">홈</a></li>
+                <li><a href="about.html" data-i18n-key="navAbout">소개</a></li>
+                <li><a href="history-of-lotto.html" data-i18n-key="navHistory">로또의 역사</a></li>
+                <li><a href="strategy-guide.html" data-i18n-key="navStrategy">로또 전략 가이드</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="content-area">
+        <main class="content-container">
+    <section class="lottery-rules-table">
+        <h2 data-i18n-key="comparisonTitle">세계 로또 규칙 한눈에 보기</h2>
+        <table class="rules-table">
+            <thead>
+                <tr>
+                    <th data-i18n-key="tableHeaderCountry">국가</th>
+                    <th data-i18n-key="tableHeaderName">복권 이름</th>
+                    <th data-i18n-key="tableHeaderRules">게임 방식</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-i18n-key="countryKorea">🇰🇷 한국</td>
+                    <td data-i18n-key="lotto645Name">로또 6/45</td>
+                    <td data-i18n-key="lotto645Rule">1~45 중 6개</td>
+                </tr>
+                <tr>
+                    <td data-i18n-key="countryChina">🇨🇳 중국</td>
+                    <td data-i18n-key="ssqName">중국 쌍색구</td>
+                    <td data-i18n-key="ssqRule">1~33 중 6개 + 파란공 1~16 중 1개</td>
+                </tr>
+                <tr>
+                    <td data-i18n-key="countryUSA">🇺🇸 미국</td>
+                    <td data-i18n-key="powerballName">파워볼</td>
+                    <td data-i18n-key="powerballRule">1~69 중 5개 + 파워볼 1~26 중 1개</td>
+                </tr>
+                <tr>
+                    <td data-i18n-key="countryCanada">🇨🇦 캐나다</td>
+                    <td data-i18n-key="lottomaxName">로또 맥스</td>
+                    <td data-i18n-key="lottomaxRule">1~50 중 7개</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <h1 data-i18n-key="strategyTitle">로또 번호 선택, 전략이 있을까?</h1>
+        
+    <p data-i18n-key="strategyP1">많은 사람들이 로또 1등의 꿈을 꾸며 번호를 선택합니다. 완전한 무작위 게임이지만, 몇몇 사람들은 자신만의 전략과 패턴을 가지고 번호를 고르기도 합니다. 과학적 근거는 없지만, 재미로 알아볼 수 있는 몇 가지 '전략'들을 소개합니다.</p>
+
+    <h2 data-i18n-key="strategyH2_1">1. 통계적 접근: 뜨거운 번호와 차가운 번호</h2>
+    <p data-i18n-key="strategyP2">가장 흔한 접근법 중 하나는 과거의 당첨 번호 통계를 살펴보는 것입니다.</p>
+    <ul>
+        <li data-i18n-key="strategyL1_1"><strong>뜨거운 번호 (Hot Numbers):</strong> 최근 추첨에서 자주 등장한 번호들입니다. 이 번호들이 좋은 '흐름'을 타고 있다고 믿는 사람들이 선택합니다.</li>
+        <li data-i18n-key="strategyL1_2"><strong>차가운 번호 (Cold Numbers):</strong> 오랫동안 당첨 번호로 나오지 않은 번호들입니다. '나올 때가 되었다'고 믿는 사람들이 이 번호들을 선택합니다.</li>
+    </ul>
+    <p data-i18n-key="strategyP3">물론 각 추첨은 독립적인 사건이므로 과거의 결과가 미래에 영향을 미치지는 않습니다. 하지만 자신만의 패턴을 만드는 데 좋은 참고 자료가 될 수 있습니다.</p>
+
+    <h2 data-i18n-key="strategyH2_2">2. 조합과 패턴 피하기</h2>
+    <p data-i18n-key="strategyP4">전문가들은 특정 패턴을 가진 번호 조합을 피하라고 조언합니다. 예를 들어, '1, 2, 3, 4, 5, 6'과 같은 연속된 숫자나, '7, 14, 21, 28, 35, 42'처럼 특정 배수로만 이루어진 조합은 많은 사람들이 선택하는 경향이 있습니다. 만약 이런 번호가 1등에 당첨된다면, 당첨금을 수많은 사람들과 나누어 가져야 할 수도 있습니다.</p>
+    <p data-i18n-key="strategyP5">또한, 용지 한 줄을 모두 같은 세로줄이나 대각선으로 채우는 것 역시 비슷한 이유로 피하는 것이 좋습니다.</p>
+
+    <h2 data-i18n-key="strategyH2_3">3. 모든 번호 똑같이 대하기</h2>
+    <p data-i18n-key="strategyP6">가장 중요한 것은 모든 번호가 나올 확률은 동일하다는 사실을 기억하는 것입니다. 1번이 나올 확률과 45번이 나올 확률은 같습니다. 따라서 생일, 기념일 등 개인적으로 의미 있는 숫자에만 얽매이지 말고, 31 이상의 숫자에도 관심을 가져보는 것이 통계적으로 더 넓은 범위를 포괄하는 방법이 될 수 있습니다.</p>
+
+    <h2 data-i18n-key="strategyH2_4">결론</h2>
+    <p data-i18n-key="strategyP7">로또는 결국 '운'에 달린 게임입니다. 어떤 전략도 당첨을 보장해주지는 않습니다. 저희 웹사이트에서 제공하는 무작위 번호 생성기를 이용하는 것도 모든 가능성을 열어두는 좋은 방법 중 하나입니다. 가장 중요한 것은 즐기는 마음으로, 감당할 수 있는 범위 내에서 건전하게 로또를 구매하는 것입니다.</p>
+</main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="about.html" data-i18n-key="footerAbout">소개</a>
+                    <a href="privacy.html" data-i18n-key="footerPrivacy">개인정보처리방침</a>
+                    <a href="terms.html" data-i18n-key="footerTerms">이용약관</a>
+                </div>
+                <p data-i18n-key="footerCopyright">&copy; 2026 행운의 번호. 모든 권리 보유.</p>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
