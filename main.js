@@ -156,15 +156,28 @@ function generateAndAnimate() {
 // Event Listeners
 generateBtn.addEventListener('click', generateAndAnimate);
 regenerateBtn.addEventListener('click', generateAndAnimate);
+
+function resetUI() {
+    generateBtn.style.display = 'inline-block';
+    regenerateBtn.style.display = 'none';
+    regenerateNotice.style.display = 'none';
+    resultDiv.innerHTML = '';
+}
+
 if (modeSelect) {
     modeSelect.addEventListener('change', () => {
         const mode = getCurrentMode();
         updateIntroText(mode);
-        // Always reset to initial state when mode changes
-        generateBtn.style.display = 'inline-block';
-        regenerateBtn.style.display = 'none';
-        regenerateNotice.style.display = 'none';
-        resultDiv.innerHTML = '';
+        resetUI();
+    });
+}
+
+const langSelect = document.getElementById('lang-select');
+if (langSelect) {
+    langSelect.addEventListener('change', () => {
+        // The i18n.js script will handle the language change.
+        // We just need to reset the UI state.
+        resetUI();
     });
 }
 
