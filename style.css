@@ -79,6 +79,7 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     flex-grow: 1;
+    align-items: center;
 }
 
 main {
