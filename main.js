@@ -65,16 +65,19 @@ function getCurrentMode() {
 }
 
 function updateIntroText(mode) {
-    if (introTextP) {
-        let key = 'introText'; // Default
+    if (introTextP && window.i18n && window.i18n.translations[window.i18n.currentLang]) {
+        let key = 'introText';
         if (mode === 'china') key = 'introTextChina';
         else if (mode === 'powerball') key = 'introTextPowerball';
         else if (mode === 'lottomax') key = 'introTextLottoMax';
         
-        introTextP.setAttribute('data-i18n-key', key);
-        if (window.i18n) {
-            window.i18n.translatePage();
+        const translation = window.i18n.translations[window.i18n.currentLang][key];
+        if (translation) {
+            introTextP.textContent = translation;
         }
+        
+        // Keep the key in sync for language changes
+        introTextP.setAttribute('data-i18n-key', key);
     }
 }
 

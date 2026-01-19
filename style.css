@@ -116,6 +116,7 @@ h2 { font-size: 1.5em; color: #555; margin: 0; }
     margin-bottom: 20px;
     width: 100%;
 }
+
 .lotto-set {
     display: flex;
     margin-bottom: 15px; /* Reverted */

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://product-builder-lecture-dc6.pages.dev/sitemap.xml
