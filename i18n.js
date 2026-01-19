@@ -62,7 +62,7 @@ const i18n = {
         if (['en', 'ko', 'zh'].includes(browserLang)) {
             return browserLang;
         }
-        return 'ko'; // Default to Korean
+        return 'en'; // Default to English
     },
 
     init() {
