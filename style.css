@@ -24,10 +24,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3em;
+    font-size: 100px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     height: var(--banner-height);
     flex-shrink: 0;
+    gap: 20px;
 }
 
 .page-body-container {
