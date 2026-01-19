@@ -270,6 +270,22 @@ h2 { font-size: 1.5em; color: #555; margin: 0; }
     color: var(--text-color);
 }
 
+.btn-read-more {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-read-more:hover {
+    background-color: #357ABD; /* A slightly darker blue */
+}
+
 /* FAQ Section */
 .faq-container {
     display: flex;
