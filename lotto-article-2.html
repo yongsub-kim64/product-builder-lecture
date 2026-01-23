@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">로또 1등 당첨자들이 가장 많이 꾼 꿈 TOP 5</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" fetchpriority="high"></script>
     <meta name="google-adsense-account" content="ca-pub-7468475842823179">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179"
-     crossorigin="anonymous"></script>
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -96,6 +95,28 @@
         </article>
     </main>
     
+    <script>
+        function loadAdSense() {
+            var ads = document.createElement('script');
+            ads.async = true;
+            ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179';
+            ads.crossOrigin = 'anonymous';
+            document.head.appendChild(ads);
+        }
+
+        var isAdSenseLoaded = false;
+        function lazyLoadAdSense() {
+            if (isAdSenseLoaded) return;
+            isAdSenseLoaded = true;
+            loadAdSense();
+            window.removeEventListener('scroll', lazyLoadAdSense);
+            window.removeEventListener('touchstart', lazyLoadAdSense);
+        }
+
+        window.addEventListener('scroll', lazyLoadAdSense, { once: true });
+        window.addEventListener('touchstart', lazyLoadAdSense, { once: true });
+        setTimeout(lazyLoadAdSense, 3000);
+    </script>
     <script>
         const translations = {
             ko: {
