@@ -34,12 +34,22 @@ const i18n = {
         document.querySelectorAll('[data-i18n-key]').forEach(element => {
             const key = element.getAttribute('data-i18n-key');
             if (translationData[key]) {
-                // Handle elements that have other child elements (like labels for select)
-                const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-                if (textNode) {
-                    textNode.textContent = translationData[key];
+                // Check if element should use innerHTML (for elements that contain HTML markup)
+                const useHtml = element.hasAttribute('data-i18n-html') ||
+                                element.tagName === 'P' ||
+                                element.tagName === 'LI' ||
+                                element.classList.contains('faq-answer');
+
+                if (useHtml) {
+                    element.innerHTML = translationData[key];
                 } else {
-                    element.textContent = translationData[key];
+                    // Handle elements that have other child elements (like labels for select)
+                    const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+                    if (textNode) {
+                        textNode.textContent = translationData[key];
+                    } else {
+                        element.textContent = translationData[key];
+                    }
                 }
             }
         });

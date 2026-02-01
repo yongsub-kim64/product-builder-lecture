@@ -443,12 +443,33 @@ h2 { font-size: 1.5em; color: #555; margin: 0; }
     transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
 
-.faq-answer p {
+.faq-answer p,
+.faq-answer div {
     margin: 0;
     padding-bottom: 15px;
     font-size: 0.95em;
     line-height: 1.6;
     color: var(--text-color);
+}
+
+.faq-answer ul,
+.faq-answer ol {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+.faq-answer li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.faq-answer strong {
+    color: var(--dark-gray);
+}
+
+.faq-answer em {
+    color: var(--primary-color);
+    font-style: normal;
 }
 
 .footer-content { width: 90%; max-width: 1200px; margin: 0 auto; }
