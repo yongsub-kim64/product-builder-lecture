@@ -142,6 +142,16 @@
                 <p data-i18n-key="introText">버튼을 눌러 5개의 완전한 무작위 로또 번호 조합을 생성하세요. 저희 시스템은 과거 데이터나 특정 패턴에 의존하지 않고, 순수한 난수를 사용하여 공정한 번호 조합을 제공합니다. 여러분의 행운을 시험해보세요!</p>
             </div>
 
+            <!-- 정보 요약 블록 -->
+            <div class="info-summary-block">
+                <ul>
+                    <li data-i18n-key="summaryItem1">완전 무료 - 회원가입 없이 바로 사용 가능</li>
+                    <li data-i18n-key="summaryItem2">순수 난수 기반 - 공정한 번호 조합 제공</li>
+                    <li data-i18n-key="summaryItem3">한국 로또, 미국 파워볼, 중국 쌍색구, 캐나다 로또맥스 지원</li>
+                    <li data-i18n-key="summaryItem4">로또 관련 정보 및 당첨금 세금 안내 제공</li>
+                </ul>
+            </div>
+
             <button id="generate" data-i18n-key="generateButton">번호 생성하기</button>
             <div id="result"></div>
             <p id="regenerate-notice" style="display: none;" data-i18n-key="regenerateNotice">숫자가 마음에 들지 않으면 다시 생성하세요</p>
@@ -150,16 +160,36 @@
             <!-- Blog Article Teaser -->
             <section class="info-cards">
                 <h2 class="section-title" data-i18n-key="blogTitle">📝 블로그</h2>
-                <div class="card-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card-container blog-card-container">
                     <div class="card">
                         <h3 data-i18n-key="secretCardTitle">로또 1등, 운일까? 전략일까?</h3>
-                        <p data-i18n-key="secretCardContent">8,145,060분의 1이라는 천문학적인 확률 뒤에 숨겨진 수학적 원리를 이해하고, '기대 당첨금'을 높이는 현실적인 번호 선택 전략에 대해 알아보세요.</p>
+                        <p class="card-summary" data-i18n-key="secretCardContent">8,145,060분의 1이라는 천문학적인 확률 뒤에 숨겨진 수학적 원리를 이해하고, '기대 당첨금'을 높이는 현실적인 번호 선택 전략에 대해 알아보세요.</p>
                         <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="secretCardButton">자세히 보기</a>
                     </div>
                     <div class="card">
                         <h3 data-i18n-key="dreamCardTitle">당첨자들이 가장 많이 꾼 꿈은?</h3>
-                        <p data-i18n-key="dreamCardContent">조상님, 돼지, 불... 로또 1등 당첨자들이 공통적으로 꾼 신기한 꿈 이야기와 그 의미를 알아보세요.</p>
+                        <p class="card-summary" data-i18n-key="dreamCardContent">조상님, 돼지, 불... 로또 1등 당첨자들이 공통적으로 꾼 신기한 꿈 이야기와 그 의미를 알아보세요.</p>
                         <a href="lotto-article-2.html" class="btn-read-more" data-i18n-key="dreamCardButton">꿈 해몽 보러가기</a>
+                    </div>
+                    <div class="card">
+                        <h3 data-i18n-key="historyCardTitle">로또의 역사와 기원</h3>
+                        <p class="card-summary" data-i18n-key="historyCardContent">로또는 수백 년의 역사를 가진 복권 시스템입니다. 이탈리아에서 시작된 로또의 기원과 전 세계로 퍼진 역사를 알아보세요.</p>
+                        <a href="history-of-lotto.html" class="btn-read-more" data-i18n-key="historyCardButton">자세히 보기</a>
+                    </div>
+                    <div class="card">
+                        <h3 data-i18n-key="strategyCardTitle">로또 번호 선택 가이드</h3>
+                        <p class="card-summary" data-i18n-key="strategyCardContent">각 나라별 로또 규칙과 당첨 확률, 번호 선택 시 참고할 수 있는 다양한 정보를 확인해 보세요.</p>
+                        <a href="strategy-guide.html" class="btn-read-more" data-i18n-key="strategyCardButton">자세히 보기</a>
+                    </div>
+                    <div class="card">
+                        <h3 data-i18n-key="taxCardTitle">당첨금과 세금 안내</h3>
+                        <p class="card-summary" data-i18n-key="taxCardContent">당첨되면 세금은 얼마나 낼까요? 한국, 미국 등 국가별 복권 당첨금 세율과 수령 방법을 정리했습니다.</p>
+                        <a href="about.html" class="btn-read-more" data-i18n-key="taxCardButton">자세히 보기</a>
+                    </div>
+                    <div class="card">
+                        <h3 data-i18n-key="tipsCardTitle">복권 구매 팁</h3>
+                        <p class="card-summary" data-i18n-key="tipsCardContent">복권 구매 시 알아두면 좋은 팁과 주의사항, 그리고 책임감 있는 복권 구매 습관에 대해 안내드립니다.</p>
+                        <a href="about.html" class="btn-read-more" data-i18n-key="tipsCardButton">자세히 보기</a>
                     </div>
                 </div>
             </section>
@@ -188,14 +218,14 @@
                 <h2 class="section-title" data-i18n-key="faqTitle">자주 묻는 질문 (FAQ)</h2>
                 <div class="faq-container">
                     <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq1Question">당첨금은 어떻게 수령하나요?</button>
-                        <div class="faq-answer">
+                        <button class="faq-question active" data-i18n-key="faq1Question">당첨금은 어떻게 수령하나요?</button>
+                        <div class="faq-answer" style="max-height: 200px;">
                             <p data-i18n-key="faq1Answer">국가와 복권 종류에 따라 다릅니다. 일반적으로 1등은 해당 복권의 본사에서, 그 외 등수는 지정된 은행이나 판매점에서 수령할 수 있습니다. 신분증과 당첨 복권은 필수입니다.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq2Question">당첨금에 대한 세금은 어떻게 계산되나요?</button>
-                        <div class="faq-answer">
+                        <button class="faq-question active" data-i18n-key="faq2Question">당첨금에 대한 세금은 어떻게 계산되나요?</button>
+                        <div class="faq-answer" style="max-height: 200px;">
                             <p data-i18n-key="faq2Answer">세금 또한 국가별 법률에 따라 크게 다릅니다. 한국의 경우, 3억 원까지는 22%, 3억 원 초과분에 대해서는 33%의 세율이 적용됩니다. 미국의 경우 연방세와 주세가 별도로 부과될 수 있습니다.</p>
                         </div>
                     </div>

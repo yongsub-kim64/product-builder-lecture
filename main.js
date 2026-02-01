@@ -197,11 +197,48 @@ document.addEventListener('DOMContentLoaded', () => {
         question.addEventListener('click', () => {
             question.classList.toggle('active');
             const answer = question.nextElementSibling;
-            if (answer.style.maxHeight) {
+            if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
                 answer.style.maxHeight = null;
             } else {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         });
     });
+
+    // Mobile bottom bar auto-hide on scroll
+    const sidebar = document.querySelector('.sidebar');
+    const contentArea = document.querySelector('.content-area');
+    let lastScrollTop = 0;
+    let scrollThreshold = 50;
+
+    if (sidebar && contentArea && window.innerWidth <= 768) {
+        contentArea.addEventListener('scroll', () => {
+            const scrollTop = contentArea.scrollTop;
+            if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide sidebar
+                    sidebar.classList.add('hidden');
+                } else {
+                    // Scrolling up - show sidebar
+                    sidebar.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop;
+            }
+        });
+    }
+
+    // Also listen to window scroll for mobile
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768 && sidebar) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    sidebar.classList.add('hidden');
+                } else {
+                    sidebar.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop;
+            }
+        }
+    }, { passive: true });
 });
