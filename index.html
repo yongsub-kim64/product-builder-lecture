@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>철부지 | 60대 엔지니어의 로또 분석 & AI Product 도전기</title>
+    <title>철부지 | Chulbuji's Second Journey</title>
     <meta name="description" content="34년 경력의 반도체 엔지니어에서 AI Product Builder로, 60대에 시작한 두 번째 여행. 로또 확률 분석부터 AI 프로덕트 개발까지의 기록."/>
     <meta name="author" content="철부지 (chulbuji)"/>
     
@@ -52,16 +52,16 @@
             text-decoration: none;
         }
 
-        /* === Layout Containers === */
+        /* === Layout Containers (Task 3: Layout Refinement) === */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1200px; /* Set max-width for content */
+            margin: 0 auto;      /* Center the container */
             padding: 0 16px;
         }
 
-        /* === Header === */
+        /* === Header & Language Selector (Task 2: Global Language Module) === */
         .header {
-            padding: 20px 0;
+            padding: 16px 0;
             background-color: var(--card-background);
             border-bottom: 1px solid var(--border-color);
         }
@@ -75,6 +75,13 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 900;
+            color: var(--text-color-main);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .main-nav a {
@@ -83,8 +90,22 @@
             font-size: 0.95rem;
             color: var(--text-color-muted);
         }
+        
+        .lang-selector {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
 
-        /* === Hero Section === */
+        /* === Hero Section (Task 1: Branding) === */
         .hero {
             text-align: center;
             padding: 60px 0 40px;
@@ -131,7 +152,7 @@
             margin-bottom: 20px;
         }
         
-        /* === Encyclopedia Section (Mobile: 2 Columns) === */
+        /* === Encyclopedia Section (Task 4: Preserve Mobile 2-Column Grid) === */
         .section-title {
             font-size: 1.75rem;
             font-weight: 700;
@@ -159,24 +180,12 @@
             transition: background-color 0.2s, transform 0.1s;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-        }
-        .btn-primary:active {
-            transform: scale(0.97);
-        }
+        .btn-primary { background-color: var(--primary-color); color: #FFFFFF; }
+        .btn-primary:active { transform: scale(0.97); }
+        .btn-secondary { background-color: #F3F4F6; color: var(--text-color-main); }
 
-        .btn-secondary {
-            background-color: #F3F4F6;
-            color: var(--text-color-main);
-        }
-
-        /* === Lotto Result UI === */
-        #lotto-result {
-            margin: 24px 0;
-            text-align: center;
-        }
+        /* === Lotto Result UI (Task 4: Preserve JS functionality) === */
+        #lotto-result { margin: 24px 0; text-align: center; min-height: 40px; }
         .lotto-ball {
             display: inline-flex;
             justify-content: center;
@@ -191,13 +200,8 @@
         }
         
         /* === Footer === */
-        .footer {
-            margin-top: 60px;
-            padding: 30px 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-        .footer-links a { font-size: 0.85rem; margin: 0 10px; }
+        .footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border-color); text-align: center; }
+        .footer-links a { font-size: 0.85rem; margin: 0 10px; color: var(--text-color-muted); }
         .footer .copyright { font-size: 0.85rem; color: var(--text-color-muted); margin-top: 12px; }
 
         /* === Desktop Responsive Styles === */
@@ -205,16 +209,14 @@
             .container { padding: 0 24px; }
             .hero h1 { font-size: 3rem; }
             .hero .subtitle { font-size: 1.125rem; }
-
-            .main-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .card-large {
-                grid-column: span 2;
-            }
-            .encyclopedia-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .main-grid { grid-template-columns: repeat(3, 1fr); }
+            .card-large { grid-column: span 2; }
+            .encyclopedia-grid { grid-template-columns: repeat(3, 1fr); }
+            .main-nav { display: block; } /* Show nav on desktop */
+        }
+        
+        @media (max-width: 767px) {
+            .main-nav { display: none; } /* Hide nav on mobile for simplicity */
         }
     </style>
 </head>
@@ -222,18 +224,24 @@
 
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo"><strong>철부지</strong>.com</a>
-            <nav class="main-nav">
-                <a href="index.html">홈</a>
-                <a href="about.html">소개</a>
-                <a href="contact.html">연락처</a>
-            </nav>
+            <a href="index.html" class="logo"><strong>chulbuji.com</strong></a>
+            <div class="header-right">
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <select class="lang-selector">
+                    <option value="ko">KR</option>
+                    <option value="en">EN</option>
+                </select>
+            </div>
         </div>
     </header>
 
     <main class="container">
         <section class="hero">
-            <h1>60대 엔지니어의 <span style="color: var(--primary-color);">두 번째 여행</span></h1>
+            <h1>철부지의 두 번째 여행 <span style="font-weight:400; color:var(--text-color-muted);">(Chulbuji's Second Journey)</span></h1>
             <p class="subtitle">34년간 반도체 칩을 만들던 손으로, 이제는 AI Product를 만듭니다. 60대에 시작한 1인 창업가의 로또 확률 분석, 그리고 AI 프로덕트 개발 도전기.</p>
         </section>
 
@@ -242,22 +250,18 @@
             <div id="featured-card-container-math" class="card"></div>
             <div id="featured-card-container-tax" class="card"></div>
 
-            <!-- Number Generator (Full Width on Mobile) -->
+            <!-- Number Generator -->
             <div class="card card-large">
                 <h2 class="card-title">CSPRNG 기반 번호 조합 생성기</h2>
                 <p class="card-description" style="flex-grow: 0;">암호학적으로 안전한 난수를 사용하여 편향 없는 6/45 조합을 생성합니다.</p>
-                <div id="lotto-result">
-                    <!-- Lotto numbers will be displayed here -->
-                </div>
+                <div id="lotto-result"></div>
                 <button id="generate-lotto-btn" class="btn btn-primary">번호 조합 생성</button>
             </div>
         </div>
         
         <section class="encyclopedia-section">
             <h2 class="section-title">복권 정보 백과사전</h2>
-            <div id="encyclopedia-grid" class="encyclopedia-grid">
-                <!-- Encyclopedia cards injected by script -->
-            </div>
+            <div id="encyclopedia-grid" class="encyclopedia-grid"></div>
         </section>
     </main>
 
@@ -269,7 +273,7 @@
                 <a href="terms.html">이용약관</a>
                 <a href="contact.html">연락처</a>
             </div>
-            <p class="copyright">© 2026 철부지 (chulbuji). All rights reserved.</p>
+            <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
         </div>
     </footer>
 
@@ -282,19 +286,13 @@
             if (mathContainer && typeof analysisData !== 'undefined') {
                 const mathReport = analysisData.find(item => item.id === 'math-report');
                 if (mathReport) {
-                    mathContainer.innerHTML = `
-                        <h3 class="card-title">${mathReport.title}</h3>
-                        <p class="card-description">${mathReport.description}</p>
-                        <a href="report-math.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
+                    mathContainer.innerHTML = `<h3 class="card-title">${mathReport.title}</h3><p class="card-description">${mathReport.description}</p><a href="report-math.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
                 }
             }
             if (taxContainer && typeof analysisData !== 'undefined') {
                 const taxReport = analysisData.find(item => item.id === 'tax-report');
                 if (taxReport) {
-                    taxContainer.innerHTML = `
-                        <h3 class="card-title">${taxReport.title}</h3>
-                        <p class="card-description">${taxReport.description}</p>
-                        <a href="report-tax.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
+                    taxContainer.innerHTML = `<h3 class="card-title">${taxReport.title}</h3><p class="card-description">${taxReport.description}</p><a href="report-tax.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
                 }
             }
             
@@ -303,54 +301,43 @@
                 encyclopediaData.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'card';
-                    card.innerHTML = `
-                        <h3 class="card-title">${item.title}</h3>
-                        <p class="card-description">${item.description}</p>
-                        <a href="${item.href}" class="btn btn-secondary" style="margin-top: auto;">더 깊이 보기</a>`;
+                    card.innerHTML = `<h3 class="card-title">${item.title}</h3><p class="card-description">${item.description}</p><a href="${item.href}" class="btn btn-secondary" style="margin-top: auto;">더 깊이 보기</a>`;
                     encyclopediaContainer.appendChild(card);
                 });
             }
         });
 
-        // --- Script for Lotto Number Generator (Task 2) ---
+        // --- Script for Lotto Number Generator ---
         const generateBtn = document.getElementById('generate-lotto-btn');
         const resultDiv = document.getElementById('lotto-result');
 
         generateBtn.addEventListener('click', () => {
-            // 1. Use crypto.getRandomValues() for secure random numbers
             const randomValues = new Uint32Array(6);
             crypto.getRandomValues(randomValues);
 
             const numbers = new Set();
             let i = 0;
-            // 2. Generate 6 unique numbers between 1 and 45
             while (numbers.size < 6) {
-                // Use the random values to get a number in the desired range
                 const randomNumber = (randomValues[i % 6] % 45) + 1;
                 numbers.add(randomNumber);
                 i++;
-                // If we run out of initial random values, generate more
-                if (i % 6 === 0) {
-                  crypto.getRandomValues(randomValues);
-                }
+                if (i > 1000) { break; } // Failsafe
+                if (i % 6 === 0) { crypto.getRandomValues(randomValues); }
             }
 
-            // 3. Sort the numbers in ascending order
             const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
             
-            // 4. Create the ball UI and display the result
-            resultDiv.innerHTML = ''; // Clear previous results
+            resultDiv.innerHTML = '';
             sortedNumbers.forEach(num => {
                 const ball = document.createElement('span');
                 ball.className = 'lotto-ball';
                 ball.textContent = num;
                 
-                // Assign a color based on the number range
-                let color = '#6B7280'; // Gray
-                if (num <= 10) color = '#F59E0B'; // Yellow
-                else if (num <= 20) color = '#3B82F6'; // Blue
-                else if (num <= 30) color = '#EF4444'; // Red
-                else if (num <= 40) color = '#10B981'; // Green
+                let color = '#6B7280';
+                if (num <= 10) color = '#F59E0B';
+                else if (num <= 20) color = '#3B82F6';
+                else if (num <= 30) color = '#EF4444';
+                else if (num <= 40) color = '#10B981';
                 
                 ball.style.backgroundColor = color;
                 resultDiv.appendChild(ball);
