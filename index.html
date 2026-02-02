@@ -1,217 +1,145 @@
 <!DOCTYPE html>
-<html class="light" lang="ko">
+<html lang="ko">
 <head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>철부지 | 60대 엔지니어의 로또 분석 & AI Product 도전기</title>
     <meta name="description" content="34년 경력의 반도체 엔지니어에서 AI Product Builder로, 60대에 시작한 두 번째 여행. 로또 확률 분석부터 AI 프로덕트 개발까지의 기록."/>
     <meta name="author" content="철부지 (chulbuji)"/>
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Scripts & Fonts -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
     
-    <!-- Data & Logic Scripts -->
-    <script src="i18n.js" defer></script>
-    <script src="analysis-data.js" defer></script>
-    <script src="encyclopedia-data.js" defer></script>
-    <script src="main.js" defer></script>
-
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
-                        "card-light": "#ffffff",
-                        "card-dark": "#182131",
-                        "text-main": "#1e293b",
-                        "text-dark": "#f8fafc",
-                        "text-muted": "#64748b",
-                        "text-muted-dark": "#94a3b8",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "Noto Sans KR", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "xl": "0.75rem",
-                    },
-                },
-            },
-        }
-    </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        /* Custom styles from old site for lotto numbers */
-        #result .lotto-set {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            gap: 0.5rem;
-        }
-        #result .lotto-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .color-1 .lotto-number { background-color: #f59e0b; }
-        .color-2 .lotto-number { background-color: #10b981; }
-        .color-3 .lotto-number { background-color: #3b82f6; }
-        .color-4 .lotto-number { background-color: #ef4444; }
-        .color-5 .lotto-number { background-color: #8b5cf6; }
-    </style>
+    <!-- Data & Logic Scripts (defer to load after DOM) -->
+    <script src="./i18n.js" defer></script>
+    <script src="./analysis-data.js" defer></script>
+    <script src="./encyclopedia-data.js" defer></script>
+    <script src="./main.js" defer></script>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-text-dark min-h-screen">
+<body>
 
-<!-- Top Navigation -->
-<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
-    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-8">
-            <a href="index.html" class="flex items-center gap-2 text-primary">
-                <span class="material-symbols-outlined text-3xl font-bold">rocket_launch</span>
-                <h2 class="text-xl font-extrabold tracking-tight">철부지</h2>
-            </a>
-            <nav class="hidden md:flex items-center gap-6">
-                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">홈</a>
-                <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">소개</a>
-                <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact.html">연락처</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">철부지<span class="highlight">.com</span></a>
+            <nav class="main-nav">
+                <a href="index.html">홈</a>
+                <a href="about.html">소개</a>
+                <a href="contact.html">연락처</a>
             </nav>
         </div>
-    </div>
-</header>
+    </header>
 
-<main class="max-w-[1200px] mx-auto px-6 py-10">
-    <!-- Hero Section -->
-    <div class="mb-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
-            60대 엔지니어의 <span class="text-primary">두 번째 여행</span>
-        </h1>
-        <p class="text-text-muted dark:text-text-muted-dark max-w-3xl mx-auto text-lg">
-            34년간 반도체 칩을 만들던 손으로, 이제는 AI Product를 만듭니다. 60대에 시작한 1인 창업가의 로또 확률 분석, 그리고 AI 프로덕트 개발 도전기.
-        </p>
-    </div>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>60대 엔지니어의 <span class="highlight">두 번째 여행</span></h1>
+            <p class="subtitle">
+                34년간 반도체 칩을 만들던 손으로, 이제는 AI Product를 만듭니다. 60대에 시작한 1인 창업가의 로또 확률 분석, 그리고 AI 프로덕트 개발 도전기.
+            </p>
+        </section>
 
-    <!-- Main Bento Grid Layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- 1. Number Generator -->
-        <div class="md:col-span-2 bg-card-light dark:bg-card-dark rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
-            <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary">auto_awesome</span>
-                CSPRNG 기반 번호 조합 생성기
-            </h3>
-            <p class="text-sm text-text-muted dark:text-text-muted-dark mb-6">암호학적으로 안전한 난수를 사용하여 편향 없는 6/45 조합을 생성합니다.</p>
-            <div id="result" class="my-8"></div>
-            <button id="generate" class="w-full bg-primary py-3 rounded-lg text-white font-bold text-sm shadow-md hover:bg-primary/90 transition-all active:scale-[0.98]">
-                번호 조합 생성
-            </button>
-             <button id="regenerate" style="display: none;" class="w-full bg-slate-600 py-3 rounded-lg text-white font-bold text-sm shadow-md hover:bg-slate-700 transition-all active:scale-[0.98]">
-                다시 생성
-            </button>
+        <!-- Main Bento Grid Layout -->
+        <div class="bento-grid">
+            <!-- 1. Deep Analysis Reports (Top Priority) -->
+            <div class="card-stack">
+                <div id="featured-card-container-math" class="card">
+                    <!-- Math report will be injected here -->
+                </div>
+                <div id="featured-card-container-tax" class="card">
+                    <!-- Tax report will be injected here -->
+                </div>
+            </div>
+
+            <!-- 2. Number Generator -->
+            <div class="card card-large">
+                <h2 class="card-title">CSPRNG 기반 번호 조합 생성기</h2>
+                <p class="card-description" style="flex-grow: 0; margin-bottom: 0;">암호학적으로 안전한 난수를 사용하여 편향 없는 6/45 조합을 생성합니다.</p>
+                <div id="result"></div>
+                <button id="generate" class="btn btn-primary">번호 조합 생성</button>
+                <button id="regenerate" style="display: none;" class="btn btn-secondary">다시 생성</button>
+            </div>
         </div>
-
-        <!-- 2. Deep Analysis Reports -->
-        <div class="md:col-span-1 flex flex-col gap-6">
-            <div id="featured-card-container-math" class="bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between"></div>
-            <div id="featured-card-container-tax" class="bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between"></div>
-        </div>
-    </div>
-    
-    <!-- Secondary Grid: 복권 정보 백과사전 -->
-    <div class="mt-16">
-        <h2 class="text-3xl font-black tracking-tight mb-8 text-center md:text-left">복권 정보 백과사전</h2>
-        <div id="encyclopedia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Encyclopedia cards will be injected here by JavaScript -->
-        </div>
-    </div>
-    
-</main>
-
-<footer class="mt-20 py-10 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex gap-4">
-            <a href="about.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">소개</a>
-            <a href="privacy.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">개인정보처리방침</a>
-            <a href="terms.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">이용약관</a>
-            <a href="contact.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">연락처</a>
-        </div>
-        <p class="text-sm text-text-muted dark:text-text-muted-dark">© 2026 철부지 (chulbuji). All rights reserved.</p>
-    </div>
-</footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Render Deep Analysis Reports
-        const mathContainer = document.getElementById('featured-card-container-math');
-        const taxContainer = document.getElementById('featured-card-container-tax');
         
-        if (mathContainer && taxContainer && typeof analysisData !== 'undefined') {
-            const mathReport = analysisData.find(item => item.id === 'math-report');
-            const taxReport = analysisData.find(item => item.id === 'tax-report');
+        <!-- Secondary Grid: Encyclopedia Section -->
+        <section class="encyclopedia-section">
+            <h2 class="section-title">복권 정보 백과사전</h2>
+            <div id="encyclopedia-grid" class="encyclopedia-grid">
+                <!-- Encyclopedia cards will be injected here by JavaScript -->
+            </div>
+        </section>
+    </main>
 
-            if (mathReport) {
-                mathContainer.innerHTML = `
-                    <div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">수학적 분석</span>
-                        <h3 class="text-lg font-bold text-text-main dark:text-text-dark">${mathReport.title}</h3>
-                        <p class="text-sm text-text-muted dark:text-text-muted-dark mt-2">${mathReport.description}</p>
-                    </div>
-                    <a href="report-math.html" class="w-full text-center mt-6 bg-primary/10 hover:bg-primary text-primary hover:text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
-                        리포트 보기
-                    </a>
-                `;
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+                <a href="contact.html">연락처</a>
+            </div>
+            <p class="copyright">© 2026 철부지 (chulbuji). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render Deep Analysis Reports
+            const mathContainer = document.getElementById('featured-card-container-math');
+            const taxContainer = document.getElementById('featured-card-container-tax');
+            
+            if (mathContainer && taxContainer && typeof analysisData !== 'undefined') {
+                const mathReport = analysisData.find(item => item.id === 'math-report');
+                const taxReport = analysisData.find(item => item.id === 'tax-report');
+
+                if (mathReport) {
+                    mathContainer.innerHTML = `
+                        <div>
+                            <span class="tag math">수학적 분석</span>
+                            <h3 class="card-title">${mathReport.title}</h3>
+                            <p class="card-description">${mathReport.description}</p>
+                        </div>
+                        <a href="report-math.html" class="btn btn-secondary">리포트 보기</a>
+                    `;
+                }
+                
+                if (taxReport) {
+                    taxContainer.innerHTML = `
+                        <div>
+                            <span class="tag tax">세금 계산법</span>
+                            <h3 class="card-title">${taxReport.title}</h3>
+                            <p class="card-description">${taxReport.description}</p>
+                        </div>
+                        <a href="report-tax.html" class="btn btn-secondary">리포트 보기</a>
+                    `;
+                }
             }
             
-            if (taxReport) {
-                taxContainer.innerHTML = `
-                    <div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold uppercase tracking-wider mb-2">세금 계산법</span>
-                        <h3 class="text-lg font-bold text-text-main dark:text-text-dark">${taxReport.title}</h3>
-                        <p class="text-sm text-text-muted dark:text-text-muted-dark mt-2">${taxReport.description}</p>
-                    </div>
-                    <a href="report-tax.html" class="w-full text-center mt-6 bg-primary/10 hover:bg-primary text-primary hover:text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
-                        리포트 보기
-                    </a>
-                `;
+            // Render Encyclopedia Cards
+            const encyclopediaContainer = document.getElementById('encyclopedia-grid');
+            if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
+                encyclopediaData.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card'; // Use the new base card class
+                    card.innerHTML = `
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">${item.title}</h3>
+                            <p class="card-description" style="margin-bottom: 24px;">${item.description}</p>
+                        </div>
+                        <a href="${item.href}" class="btn btn-secondary">더 깊이 보기</a>
+                    `;
+                    encyclopediaContainer.appendChild(card);
+                });
             }
-        }
-        
-        // Render Encyclopedia Cards
-        const encyclopediaContainer = document.getElementById('encyclopedia-grid');
-        if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
-            encyclopediaData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col';
-                card.innerHTML = `
-                    <div class="flex-grow">
-                        <h3 class="text-lg font-bold mb-2">${item.title}</h3>
-                        <p class="text-sm text-text-muted dark:text-text-muted-dark mb-4">${item.description}</p>
-                    </div>
-                    <a href="${item.href}" class="w-full text-center mt-auto bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
-                        더 깊이 보기
-                    </a>
-                `;
-                encyclopediaContainer.appendChild(card);
-            });
-        }
-    });
-</script>
+        });
+    </script>
 
 </body>
 </html>
