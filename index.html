@@ -1,344 +1,216 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="light" lang="ko">
 <head>
-    <meta name="google-site-verification" content="AJmx6tFkmROgxqlHB7ZXqd2H8-cvRha5lNN22bICEuE" />
-    <meta charset="UTF-8">
-    <title>로또 6/45 확률 분석 도구 | CSPRNG 알고리즘 기반 번호 조합기</title>
-    <meta name="google-adsense-account" content="ca-pub-7468475842823179">
-    <meta name="description" content="조합론 공식 C(45,6)=8,145,060 기반 로또 확률 분석. Web Crypto API CSPRNG 알고리즘으로 균등 확률 보장. 소득세법 제21조 당첨금 세금 계산(3억 이하 22%, 초과분 33%) 가이드 제공.">
-    <meta name="keywords" content="로또확률계산, 로또통계분석, 로또세금계산, CSPRNG난수생성, 조합론45C6, 기타소득세원천징수">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Open Graph meta tags -->
-    <meta property="og:title" content="로또 6/45 확률 분석 도구 | CSPRNG 알고리즘 기반 번호 조합기" />
-    <meta property="og:description" content="조합론 공식 C(45,6)=8,145,060 기반 확률 분석. Web Crypto API CSPRNG 알고리즘으로 균등 확률 보장. 소득세법 제21조 당첨금 세금 계산 가이드 제공." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://product-builder-lecture-dc6.pages.dev" />
-
-    <link rel="stylesheet" href="style.css" fetchpriority="high">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>철부지 | 60대 엔지니어의 로또 분석 & AI Product 도전기</title>
+    <meta name="description" content="34년 경력의 반도체 엔지니어에서 AI Product Builder로, 60대에 시작한 두 번째 여행. 로또 확률 분석부터 AI 프로덕트 개발까지의 기록."/>
+    <meta name="author" content="철부지 (chulbuji)"/>
+    
+    <!-- New Design Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Old Scripts to Keep -->
     <script src="i18n.js" defer></script>
     <script src="analysis-data.js" defer></script>
-    <!-- Google Analytics -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZJ3H02EQ5" defer></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-KZJ3H02EQ5');
-    </script>
-    <!-- MS Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "v5dcajl5yl");
-    </script>
-
-    <!-- Structured Data for GEO Optimization -->
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "WebApplication",
-      "name": "로또 6/45 확률 분석 및 조합 도구",
-      "description": "Web Crypto API 기반 CSPRNG 알고리즘을 사용한 로또 6/45 번호 조합 생성기. 조합론 공식 C(45,6)=8,145,060에 따른 확률 분석, 소득세법 제21조 기반 당첨금 세금 계산 가이드 제공.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "KRW"
-      },
-      "featureList": ["CSPRNG 암호학적 난수 생성", "8,145,060가지 조합 균등 확률", "당첨금 세금 계산기", "다국어 지원(한/영/중)"]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "통계적 분석이 로또 당첨에 도움이 되나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "로또 6/45는 독립 시행(Independent Trial) 원리에 따라 매 회차 완전히 독립적인 확률 실험입니다. 1,100회차 이상의 실제 데이터를 카이제곱 검정한 결과, 45개 번호의 출현 빈도는 통계적으로 유의미한 차이가 없습니다(p>0.05). '핫 넘버', '콜드 넘버' 전략은 도박사의 오류(Gambler's Fallacy)에 해당합니다."
-        }
-      },{
-        "@type": "Question",
-        "name": "번호 생성 알고리즘은 어떻게 작동하나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "W3C 표준 Web Crypto API의 CSPRNG(암호학적 의사난수 생성기)를 사용합니다. 운영체제의 엔트로피 소스를 기반으로 256비트 수준의 예측 불가능성을 보장하며, NIST SP 800-90A 표준을 준수합니다. 8,145,060가지 모든 조합이 동일한 확률(1/8,145,060)로 생성됩니다."
-        }
-      },{
-        "@type": "Question",
-        "name": "로또 6/45 각 등위별 당첨 확률은 얼마인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "조합론 공식 C(45,6)에 따른 정확한 확률: 1등(6개 일치) 1/8,145,060, 2등(5개+보너스) 1/1,357,510, 3등(5개 일치) 1/35,724, 4등(4개 일치) 1/733, 5등(3개 일치) 1/45. 전체 당첨 확률(5등 이상)은 약 1/28.4입니다."
-        }
-      },{
-        "@type": "Question",
-        "name": "당첨금에 대한 세금은 어떻게 계산되나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "소득세법 제21조에 따른 기타소득세 원천징수: 5만원 이하 비과세, 5만원 초과~3억원 이하 22%(소득세 20%+지방소득세 2%), 3억원 초과분 33%(소득세 30%+지방소득세 3%). 예시: 10억원 당첨 시 세금 = (3억×0.22)+(7억×0.33) = 2억9,700만원, 실수령액 7억300만원."
-        }
-      },{
-        "@type": "Question",
-        "name": "당첨금은 어떻게 수령하나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "금액별 수령처: 5만원 이하 전국 판매점, 5만원~200만원 NH농협은행 전 지점(신분증 필수), 200만원 초과 NH농협은행 본점(서울 중구 충정로 120) 방문. 필요서류: 신분증, 당첨복권, 입금계좌. 법인 당첨 시 사업자등록증, 법인인감증명서 추가. 지급기한은 지급개시일로부터 1년입니다."
-        }
-      }]
-    }
-    </script>
-</head>
-<body>
-
-    <div class="banner-container">
-        🍀🍀🍀🍀
-    </div>
-
-    <div class="page-body-container">
-    <aside class="sidebar">
-        <a href="index.html" class="logo" data-i18n-key="logoText">행운의 번호</a>
-        <div class="lang-switcher">
-            <label for="lang-select" data-i18n-key="languageLabel">언어</label>
-            <select id="lang-select">
-                <option value="ko">한국어</option>
-                <option value="en">English</option>
-                <option value="zh">中文</option>
-            </select>
-        </div>
-        <div class="mode-switcher">
-            <label for="mode-select" data-i18n-key="modeLabel">모드</label>
-            <select id="mode-select">
-                <option value="korea" data-i18n-key="koreaLotto">한국 로또</option>
-                <option value="china" data-i18n-key="chinaLotto">쌍색구</option>
-                <option value="powerball" data-i18n-key="usPowerball">미국 파워볼</option>
-                <option value="lottomax" data-i18n-key="caLottoMax">캐나다 로또 맥스</option>
-            </select>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html" data-i18n-key="navHome">홈</a></li>
-                <li><a href="about.html" data-i18n-key="navAbout">소개</a></li>
-                <li><a href="history-of-lotto.html" data-i18n-key="navHistory">로또의 역사</a></li>
-                <li><a href="strategy-guide.html" data-i18n-key="navStrategy">로또 전략 가이드</a></li>
-                <li><a href="contact.html" data-i18n-key="navContact">연락처</a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <div class="content-area">
-        <main>
-            <div class="title-container">
-                <h1 data-i18n-key="mainTitle">로또 6/45 확률 분석 및 조합 도구</h1>
-                <h2 data-i18n-key="subTitle">CSPRNG 암호화 난수 알고리즘 기반 | 8,145,060가지 조합 균등 확률 보장</h2>
-            </div>
-
-            <!-- 통계 분석 요약 블록 (Above the fold) -->
-            <div class="stats-summary-block">
-                <h3 data-i18n-key="statsSummaryTitle">로또 6/45 핵심 통계 데이터</h3>
-                <ul>
-                    <li data-i18n-key="statsItem1" data-i18n-html><strong>당첨 확률:</strong> 1등 8,145,060분의 1 | 2등 1,357,510분의 1 | 3등 35,724분의 1 (조합론 공식 45C6 적용)</li>
-                    <li data-i18n-key="statsItem2" data-i18n-html><strong>추첨 일정:</strong> 매주 토요일 오후 8시 35분 MBC 생방송 | 동행복권 공식 추첨기(6개 드럼) 사용</li>
-                    <li data-i18n-key="statsItem3" data-i18n-html><strong>세금 계산:</strong> 5만원 초과~3억원 이하 22%(소 득세 20%+지방세 2%) | 3억원 초과분 33%(소득세 30%+지방세 3%)</li>
-                    <li data-i18n-key="statsItem4" data-i18n-html><strong>난수 생성:</strong> Web Crypto API 기반 CSPRNG(암호학적 의사난수 생성기) | 256비트 엔트로피 보장</li>
-                </ul>
-            </div>
-
-            <!-- 최신 분석 블로그 카드 (2개) -->
-            <section class="featured-articles">
-                <h2 class="section-title" data-i18n-key="featuredTitle">심층 분석 리포트</h2>
-                <div id="featured-card-container" class="card-container featured-card-container">
-                    <!-- Cards will be injected here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- 번호 생성기 섹션 -->
-            <section class="generator-section">
-                <h2 class="section-title" data-i18n-key="generatorTitle">CSPRNG 기반 번호 조합 생성기</h2>
-                <div class="intro-text">
-                    <p data-i18n-key="introText">동행복권 로또 6/45 공식 규칙(1~45 범위, 6개 선택, 중복 불 가)에 따른 조합을 생성합니다. Web Crypto API의 CSPRNG(암호학적 의사난수 생성기)를 사용하여 8,145,060가지 모든 조합이 균등한 확률(1/8,145,060)로 출력됩니다. 본 도구는 정보 제공 목적이며, 실제 추첨 결과와는 무관합니다.</p>
-                </div>
-                <button id="generate" data-i18n-key="generateButton">번호 조합 생성</button>
-            <div id="result"></div>
-            <p id="regenerate-notice" style="display: none;" data-i18n-key="regenerateNotice">다른 조합을 원하시면 다시 생성하세요</p>
-            <button id="regenerate" style="display: none;" data-i18n-key="regenerateButton">다시 생성</button>
-            </section>
-
-            <!-- Blog Article Teaser -->
-            <section class="info-cards">
-                <h2 class="section-title" data-i18n-key="blogTitle">복권 정보 백과사전</h2>
-                <div class="card-container blog-card-container">
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard1Title">독립 시행의 원리: 왜 과거 데이터가 무의미한가</h3>
-                        <p class="card-summary" data-i18n-key="blogCard1Content">확률론의 핵심 원리인 독립 시행(Independent Trial)에 따르면, 이전 추첨 결과는 다음 추첨에 영향을 주지 않으며 각 번호의 출현 확률은 매회 동일합니다. 1,000회 이상 축적된 데이터에서도 특정 번호의 출현 빈도가 통계적으로 유의미한 차이를 보이지 않습니다. 즉, 과거 데이터는 미래를 예측하는 데 도움이 되지 않습니다.</p>
-                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard2Title">로또 1등, 실수령액 계산법 (3억 초과 33%)</h3>
-                        <p class="card-summary" data-i18n-key="blogCard2Content">로또 당첨금은 기타소득으로 분류되어 세금이 부과됩니다. 5만원 초과부터 세금이 부과되며, 3억원까지는 22%, 3억원 초과분부터는 33%의 세율이 적용됩니다. 예를 들어 50억 원에 당첨될 경우 약 16억 3천 7백만 원이 세금으로 공제되며, 실수령액은 약 33억 6천 3백만 원이 됩니다.</p>
-                        <a href="lotto-article-2.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard3Title">당첨금 수령 가이드: 등위별 농협은행 방문 팁</h3>
-                        <p class="card-summary" data-i18n-key="blogCard3Content">1등 당첨자는 신분증과 당첨 복권을 지참하고 농협은행 본점(서울 서대문)을 방문해야 합니다. 2등 및 3등 당첨자는 전국 농협은행 지점에서 수령 가능하며, 4등 및 5등은 복권 판매점에서 즉시 수령할 수 있습니다. 당첨금 지급 기한은 1년입니다.</p>
-                        <a href="article-3.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard4Title">로또 '제외수' 전략, 과학적 근거는 있는가?</h3>
-                        <p class="card-summary" data-i18n-key="blogCard4Content">수많은 로또 분석가들이 통계적 데이터를 활용해 '제외수'를 예측하지만, 로또는 본질적으로 독립적인 확률 게임이므로 제외수 전략에 과학적 근거는 없습니다. '도박사의 오류'에 빠지지 말고, 제외수는 그저 재미 요소로만 활용하는 것이 현명합니다.</p>
-                        <a href="article-4.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard5Title">로또 당첨 패턴, 과연 존재할까?</h3>
-                        <p class="card-summary" data-i18n-key="blogCard5Content">로또 번호의 패턴(예: 연속 번호, 특정 구간 집중, 홀짝 비율 등)이 당첨 확률에 영향을 미친다는 속설은 통계적으로 입증된 바 없습니다. 모든 번호 조합은 8,145,060분의 1로 동일한 확률을 가지며, 패턴 분석은 당첨금 배분율에만 영향을 미칠 수 있습니다.</p>
-                        <a href="article-5.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="blogCard6Title">해외 로또 분석: 메가밀리언, 유로밀리언, 파워볼 비교</h3>
-                        <p class="card-summary" data-i18n-key="blogCard6Content">전 세계적으로 유명한 메가밀리언(미국, 1등 확률 3억분의 1), 유로밀리언(유럽, 1등 확률 1.4억분의 1), 파워볼(미국, 1등 확률 2.9억분의 1)은 천문학적인 당첨금으로 유명합니다. 한국 로또와 비교하여 각 복권의 특징과 당첨 전략을 분석합니다.</p>
-                        <a href="article-6.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Informational Articles -->
-            <section class="info-cards">
-                <h2 class="section-title" data-i18n-key="infoTitle">로또 심화 탐구</h2>
-                <div class="card-container">
-                    <div class="card">
-                        <h3 data-i18n-key="card1Title">로또 조합의 원리: 45C6 완전 분석</h3>
-                        <p data-i18n-key="card1Content">로또 6/45의 모든 조합은 45개 숫자 중 6개를 선택하는 경우의 수(C(45,6))로 8,145,060가지입니다. 이 조합론적 원리를 통해 각 등위별 당첨 조합의 수가 결정됩니다. 예를 들어 2등은 6개 중 5개 숫자와 보너스볼 1개를 맞추는 조합(C(6,5)*C(1,1))으로 6가지입니다.</p>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="card2Title">로또 패턴 분석의 허와 실: 통계적 유의미성 검증</h3>
-                        <p data-i18n-key="card2Content">과거 당첨 번호 데이터에서 특정 패턴(예: 출현 빈도 높은 번호, 이웃 번호 출현 등)을 찾아 미래를 예측하려는 시도가 많습니다. 하지만 통계학적으로 로또는 '독립시행'이며, 패턴 분석은 당첨 확률을 높이는 것보다 심리적 위안에 가깝습니다. 빅데이터 분석으로도 당첨 패턴은 발견되지 않았습니다.</p>
-                    </div>
-                    <div class="card">
-                        <h3 data-i18n-key="card3Title">로또 당첨금과 재테크: 현명한 자산 관리 전략</h3>
-                        <p data-i18n-key="card3Content">갑작스러운 거액의 로또 당첨금은 재테크의 기회가 될 수 있습니다. 세금 공제 후 남은 실수령액을 효율적으로 관리하기 위한 자산 배분(분산 투자), 부동산 투자, 전문가 상담 등의 전략을 통해 안정적인 부를 유지하고 증식하는 방법을 안내합니다.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="faq">
-                <h2 class="section-title" data-i18n-key="faqTitle">자주 묻는 질문 (FAQ)</h2>
-                <div class="faq-container">
-                    <!-- 새 FAQ: 통계적 분석 효과 (기본 open) -->
-                    <div class="faq-item">
-                        <button class="faq-question active" data-i18n-key="faqStatsQuestion">통계적 분석이 로또 당첨에 도움이 되나요?</button>
-                        <div class="faq-answer" style="max-height: 500px;">
-                            <div data-i18n-key="faqStatsAnswer" data-i18n-html>
-                                <strong>핵심 원리: 독립 시행</strong><br>
-                                로또 6/45는 매 회차 독립적인 확률 실험입니다. 이전 추첨 결과가 다음 추첨에 어떠한 영향도 미치지 않으며, 각 번호의 선택 확률은 항상 1/45로 동일합니다.<br><br>
-                                <strong>통계적 착시 주의</strong>
-                                <ul>
-                                    <li><em>핫 넘버/콜드 넘버 전략</em> - 자주 나오거나 오래 안 나온 번호를 추적하는 것은 '도박사의 오류(Gambler's Fallacy)'에 해당합니다.</li>
-                                    <li><em>1,000회 이상의 데이터 분석</em> - 특정 번호의 출현 빈도가 통계적으로 유의미한 차이를 보이지 않습니다.</li>
-                                </ul>
-                                <strong>유일한 합리적 전략</strong><br>
-                                다른 사람들이 잘 고르지 않는 조합을 선택하면 당첨 시 당첨금을 나눠 갖는 인원이 줄어들어 '기대 당첨금'을 높일 수 있습니다.
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 새 FAQ: 알고리즘 작동 방식 (기본 open) -->
-                    <div class="faq-item">
-                        <button class="faq-question active" data-i18n-key="faqAlgorithmQuestion">번호 생성 알고리즘은 어떻게 작동하나요?</button>
-                        <div class="faq-answer" style="max-height: 500px;">
-                            <div data-i18n-key="faqAlgorithmAnswer" data-i18n-html>
-                                <strong>사용 기술: CSPRNG</strong><br>
-                                본 도구는 웹 브라우저의 Web Crypto API가 제공하는 암호학적으로 안전한 의사난수 생성기(CSPRNG)를 사용합니다.<br><br>
-                                <strong>CSPRNG vs Math.random()</strong>
-                                <ul>
-                                    <li>일반 Math.random()과 달리 <em>예측 불가능성이 수학적으로 보장</em>됩니다.</li>
-                                    <li>온라인 뱅킹, 암호화 통신 등 보안이 중요한 분야와 동일한 수준입니다.</li>
-                                </ul>
-                                <strong>생성 과정</strong>
-                                <ol>
-                                    <li>1~45 범위에서 난수 생성</li>
-                                    <li>중복 검사 후 6개 확보</li>
-                                    <li>오름차순 정렬</li>
-                                </ol>
-                                <em>참고:</em> 실제 동행복권 추첨은 물리적 추첨기를 사용하며, 본 도구의 결과와는 무관합니다.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq3Question">로또 당첨 확률은 얼마나 되나요?</button>
-                        <div class="faq-answer">
-                            <p data-i18n-key="faq3Answer">한국 로또 6/45의 1등 당첨 확률은 정확히 8,145,060분의 1입니다. 이는 45개의 숫자 중 6개를 순서 없이 선택하는 조합의 수(45C6)입니다. 2등은 약 135만 분의 1, 3등은 약 3만 5천 분의 1입니다. 비교하자면, 미국 파워볼의 1등 확률은 약 2억 9,220만 분의 1로 훨씬 낮습니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq2Question">당첨금에 대한 세금은 어떻게 계산되나요?</button>
-                        <div class="faq-answer">
-                            <p data-i18n-key="faq2Answer">한국 로또 당첨금의 세금은 소득세법에 따라 원천징수됩니다. 당첨금 5만원 초과~3억원 이하는 22%(소득세 20% + 지방소득세 2%), 3억원 초과분은 33%(소득세 30% + 지방소득세 3%)가 적용됩니다. 예를 들어 10억원 당첨 시: 3억원×22% + 7억원×33% = 6,600만원 + 2억 3,100만원 = 2억 9,700만원이 세금이며, 실수령액은 약 7억 300만원입니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq1Question">당첨금은 어떻게 수령하나요?</button>
-                        <div class="faq-answer">
-                            <p data-i18n-key="faq1Answer">당첨금 수령 방법은 금액에 따라 다릅니다. 5만원 이하는 모든 복권 판매점에서, 5만원 초과~200만원 이하는 농협은행 전 지점에서 수령 가능합니다. 200만원 초과 시에는 신분증과 당첨 복권을 지참하여 농협은행 본점에 방문해야 합니다. 당첨금 지급 기한은 지급 개시일로부터 1년입니다.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" data-i18n-key="faq5Question">해외에서도 로또를 구매할 수 있나요?</button>
-                        <div class="faq-answer">
-                            <p data-i18n-key="faq5Answer">한국 로또 6/45는 국내에서만 구매 가능합니다. 동행복권 공식 판매점 또는 동행복권 온라인 사이트(회원가입 필요)에서만 합법적으로 구매할 수 있습니다. 해외 복권 대리 구매 서비스는 국내법상 불법이며, 당첨 시에도 수령이 불가능할 수 있으니 주의가 필요합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="main-footer">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="about.html" data-i18n-key="footerAbout">소개</a>
-                    <a href="privacy.html" data-i18n-key="footerPrivacy">개인정보처리방침</a>
-                    <a href="terms.html" data-i18n-key="footerTerms">이용약관</a>
-                    <a href="contact.html" data-i18n-key="footerContact">연락처</a>
-                </div>
-                <p data-i18n-key="footerCopyright">&copy; 2026 행운의 번호. 모든 권리 보유.</p>
-            </div>
-        </footer>
-    </div>
-</div>
-
     <script src="main.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('featured-card-container');
-            if (container && typeof analysisData !== 'undefined') {
-                const badges = {
-                    'math-report': { text: '핵심', class: 'badge-popular' },
-                    'tax-report': { text: '필독', class: 'badge-guide' }
-                };
-                
-                analysisData.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'card featured-card';
 
-                    const badgeInfo = badges[item.id] || { text: '', class: '' };
-
-                    card.innerHTML = `
-                        <span class="card-badge ${badgeInfo.class}">${badgeInfo.text}</span>
-                        <h3>${item.title}</h3>
-                        <p class="card-summary">${item.description}</p>
-                        <a href="report-${item.id.split('-')[0]}.html" class="btn-read-more">분석 보기</a>
-                    `;
-                    container.appendChild(card);
-                });
-            }
-        });
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-light": "#ffffff",
+                        "card-dark": "#182131",
+                        "text-main": "#1e293b",
+                        "text-dark": "#f8fafc",
+                        "text-muted": "#64748b",
+                        "text-muted-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "xl": "0.75rem",
+                    },
+                },
+            },
+        }
     </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom styles from old site for lotto numbers */
+        #result .lotto-set {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            gap: 0.5rem;
+        }
+        #result .lotto-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .color-1 .lotto-number { background-color: #f59e0b; }
+        .color-2 .lotto-number { background-color: #10b981; }
+        .color-3 .lotto-number { background-color: #3b82f6; }
+        .color-4 .lotto-number { background-color: #ef4444; }
+        .color-5 .lotto-number { background-color: #8b5cf6; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-text-dark min-h-screen">
+
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-8">
+            <a href="index.html" class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined text-3xl font-bold">rocket_launch</span>
+                <h2 class="text-xl font-extrabold tracking-tight">철부지</h2>
+            </a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">홈</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">소개</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact.html">연락처</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-[1200px] mx-auto px-6 py-10">
+    <!-- Hero Section -->
+    <div class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+            60대 엔지니어의 <span class="text-primary">두 번째 여행</span>
+        </h1>
+        <p class="text-text-muted dark:text-text-muted-dark max-w-3xl mx-auto text-lg">
+            34년간 반도체 칩을 만들던 손으로, 이제는 AI Product를 만듭니다. 60대에 시작한 1인 창업가의 로또 확률 분석, 그리고 AI 프로덕트 개발 도전기.
+        </p>
+    </div>
+
+    <!-- Main Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 1. Number Generator -->
+        <div class="md:col-span-2 bg-card-light dark:bg-card-dark rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
+            <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                CSPRNG 기반 번호 조합 생성기
+            </h3>
+            <p class="text-sm text-text-muted dark:text-text-muted-dark mb-6">암호학적으로 안전한 난수를 사용하여 편향 없는 6/45 조합을 생성합니다.</p>
+            <div id="result" class="my-8"></div>
+            <button id="generate" class="w-full bg-primary py-3 rounded-lg text-white font-bold text-sm shadow-md hover:bg-primary/90 transition-all active:scale-[0.98]">
+                번호 조합 생성
+            </button>
+             <button id="regenerate" style="display: none;" class="w-full bg-slate-600 py-3 rounded-lg text-white font-bold text-sm shadow-md hover:bg-slate-700 transition-all active:scale-[0.98]">
+                다시 생성
+            </button>
+        </div>
+
+        <!-- 2. Deep Analysis Reports -->
+        <div class="md:col-span-1 flex flex-col gap-6">
+            <div id="featured-card-container-math" class="bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between"></div>
+            <div id="featured-card-container-tax" class="bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col justify-between"></div>
+        </div>
+    </div>
+    
+    <!-- Secondary Grid: 복권 정보 백과사전 -->
+    <div class="mt-16">
+        <h2 class="text-3xl font-black tracking-tight mb-8 text-center md:text-left">복권 정보 백과사전</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card will be injected here -->
+        </div>
+    </div>
+    
+</main>
+
+<footer class="mt-20 py-10 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex gap-4">
+            <a href="about.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">소개</a>
+            <a href="privacy.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">개인정보처리방침</a>
+            <a href="terms.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">이용약관</a>
+            <a href="contact.html" class="text-sm text-text-muted dark:text-text-muted-dark hover:text-primary">연락처</a>
+        </div>
+        <p class="text-sm text-text-muted dark:text-text-muted-dark">© 2026 철부지 (chulbuji). All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mathContainer = document.getElementById('featured-card-container-math');
+        const taxContainer = document.getElementById('featured-card-container-tax');
+        
+        if (mathContainer && taxContainer && typeof analysisData !== 'undefined') {
+            const mathReport = analysisData.find(item => item.id === 'math-report');
+            const taxReport = analysisData.find(item => item.id === 'tax-report');
+
+            if (mathReport) {
+                mathContainer.innerHTML = `
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">수학적 분석</span>
+                        <h3 class="text-lg font-bold text-text-main dark:text-text-dark">${mathReport.title}</h3>
+                        <p class="text-sm text-text-muted dark:text-text-muted-dark mt-2">${mathReport.description}</p>
+                    </div>
+                    <a href="report-math.html" class="w-full text-center mt-6 bg-primary/10 hover:bg-primary text-primary hover:text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
+                        리포트 보기
+                    </a>
+                `;
+            }
+            
+            if (taxReport) {
+                taxContainer.innerHTML = `
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold uppercase tracking-wider mb-2">세금 계산법</span>
+                        <h3 class="text-lg font-bold text-text-main dark:text-text-dark">${taxReport.title}</h3>
+                        <p class="text-sm text-text-muted dark:text-text-muted-dark mt-2">${taxReport.description}</p>
+                    </div>
+                    <a href="report-tax.html" class="w-full text-center mt-6 bg-primary/10 hover:bg-primary text-primary hover:text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all">
+                        리포트 보기
+                    </a>
+                `;
+            }
+        }
+        
+        // This part is for the 6 cards in '복권 정보 백과사전'
+        const infoCardsContainer = document.querySelector('.info-cards .card-container');
+        if (infoCardsContainer) {
+            const newGridContainer = document.querySelector('.mt-16 .grid');
+            if (newGridContainer) {
+                // Move existing cards to the new grid structure
+                Array.from(infoCardsContainer.children).forEach(card => {
+                    card.className = 'bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col';
+                    const link = card.querySelector('a');
+                    if(link) {
+                        link.className = 'w-full text-center mt-auto bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all';
+                    }
+                    const title = card.querySelector('h3');
+                    if(title) title.className = 'text-lg font-bold mb-2';
+                    const summary = card.querySelector('p');
+                    if(summary) summary.className = 'text-sm text-text-muted dark:text-text-muted-dark mb-4';
+
+                    newGridContainer.appendChild(card);
+                });
+                infoCardsContainer.parentElement.style.display = 'none'; // Hide old section
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
