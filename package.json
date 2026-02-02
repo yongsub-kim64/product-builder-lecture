@@ -1,0 +1,7 @@
+{
+  "name": "productbuilder-week1",
+  "private": true,
+  "scripts": {
+    "ship": "bash scripts/ship.sh"
+  }
+}
