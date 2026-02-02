@@ -41,6 +41,9 @@ function displayFinalSets(sets, mode) {
         set.main.forEach(number => {
             const numberDiv = document.createElement('div');
             numberDiv.classList.add('lotto-number');
+            numberDiv.style.backgroundColor = '#334155';
+            numberDiv.style.color = '#ffffff';
+            numberDiv.style.border = '1px solid rgba(0,0,0,0.08)';
             numberDiv.textContent = number;
             setContainer.appendChild(numberDiv);
         });
@@ -53,6 +56,9 @@ function displayFinalSets(sets, mode) {
 
             const specialBallDiv = document.createElement('div');
             specialBallDiv.classList.add('lotto-number', 'blue-ball'); // Reusing blue-ball for all special balls
+            specialBallDiv.style.backgroundColor = '#334155';
+            specialBallDiv.style.color = '#ffffff';
+            specialBallDiv.style.border = '1px solid rgba(0,0,0,0.08)';
             specialBallDiv.textContent = set.special;
             setContainer.appendChild(specialBallDiv);
         }
@@ -111,12 +117,14 @@ function generateAndAnimate() {
     for (let i = 0; i < 5; i++) {
         const setContainer = document.createElement('div');
         setContainer.classList.add('lotto-set', colors[i % colors.length]);
-        for (let j = 0; j < config.mainCount; j++) { // Main balls
-            const numberDiv = document.createElement('div');
-            numberDiv.classList.add('lotto-number');
-            setContainer.appendChild(numberDiv);
-        }
-        if (config.specialCount > 0) { // Special ball
+                    for (let j = 0; j < config.mainCount; j++) { // Main balls
+                        const numberDiv = document.createElement('div');
+                        numberDiv.classList.add('lotto-number');
+                        numberDiv.style.backgroundColor = '#334155';
+                        numberDiv.style.color = '#ffffff';
+                        numberDiv.style.border = '1px solid rgba(0,0,0,0.08)';
+                        setContainer.appendChild(numberDiv);
+                    }        if (config.specialCount > 0) { // Special ball
             const separator = document.createElement('span');
             separator.classList.add('lotto-set-separator');
             separator.textContent = '+';
@@ -124,6 +132,9 @@ function generateAndAnimate() {
 
             const numberDiv = document.createElement('div');
             numberDiv.classList.add('lotto-number', 'blue-ball-placeholder'); // Placeholder for special ball
+            numberDiv.style.backgroundColor = '#334155';
+            numberDiv.style.color = '#ffffff';
+            numberDiv.style.border = '1px solid rgba(0,0,0,0.08)';
             setContainer.appendChild(numberDiv);
         }
         resultDiv.appendChild(setContainer);
