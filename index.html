@@ -247,24 +247,24 @@
     </header>
 
     <main class="container">
-        <section class="hero">
-            <h1>철부지의 두 번째 여행 <span style="font-weight:400; color:var(--text-color-muted);">(Chulbuji's Second Journey)</span></h1>
-            <p class="subtitle">34년간 반도체 칩을 만들던 손으로, 이제는 AI Product를 만듭니다. 60대에 시작한 1인 창업가의 로또 확률 분석, 그리고 AI 프로덕트 개발 도전기.</p>
-        </section>
-
         <div class="main-grid">
+            <!-- Number Generator -->
+            <div class="card card-large">
+                <h2 class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
+                <p class="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
+                <div id="lotto-result"></div>
+                <button id="generate-lotto-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
+            </div>
+
             <!-- Analysis Reports -->
             <div id="featured-card-container-math" class="card"></div>
             <div id="featured-card-container-tax" class="card"></div>
-
-            <!-- Number Generator -->
-            <div class="card card-large">
-                <h2 class="card-title">CSPRNG 기반 번호 조합 생성기</h2>
-                <p class="card-description" style="flex-grow: 0;">암호학적으로 안전한 난수를 사용하여 편향 없는 6/45 조합을 생성합니다.</p>
-                <div id="lotto-result"></div>
-                <button id="generate-lotto-btn" class="btn btn-primary">번호 조합 생성</button>
-            </div>
         </div>
+
+        <section class="hero">
+            <h1 data-i18n-key="introTitle">철부지의 두 번째 여행</h1>
+            <p class="subtitle" data-i18n-key="introSubtitle">34년간 반도체 칩을 만들던 손으로, 이제는 데이터를 바탕으로 생각을 정리하는 도구를 만듭니다. 60대에 시작한 1인 창업가의 기록.</p>
+        </section>
         
         <section class="encyclopedia-section">
             <h2 class="section-title">복권 정보 백과사전</h2>

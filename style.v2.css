@@ -142,3 +142,9 @@
   box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
 }
 .ui-v2 .btn-primary:
+
+/* TASK 3: Generator card emphasis */
+.ui-v2 .card.card-large {
+  border: 1px solid var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 2%, var(--card));
+}
