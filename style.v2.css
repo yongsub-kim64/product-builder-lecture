@@ -69,3 +69,76 @@
  @media (max-width: 640px) {
   .ui-v2 main { padding: 18px 12px 48px; }
 }
+
+/* ===== UI v2 Patch: layout polish without breaking structure ===== */
+
+/* 전체 배경/타이포 정돈 */
+.ui-v2 {
+  background: radial-gradient(1200px 500px at 20% -10%, rgba(37, 99, 235, 0.12), transparent 55%),
+              radial-gradient(900px 400px at 90% 0%, rgba(29, 78, 216, 0.10), transparent 50%),
+              var(--bg);
+  color: var(--text);
+}
+
+/* header: 더 고급스럽게 + 기존 flex 구조 유지 */
+.ui-v2 .header {
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+.ui-v2 .header .logo strong {
+  letter-spacing: -0.02em;
+}
+.ui-v2 .header-right {
+  gap: 14px;
+}
+.ui-v2 .lang-selector {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.9);
+}
+
+/* container 폭/여백 균형 */
+.ui-v2 .container {
+  max-width: 1120px;
+}
+
+/* hero */
+.ui-v2 .hero {
+  padding: 54px 0 28px;
+}
+.ui-v2 .hero h1 {
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.12;
+  margin-bottom: 12px;
+}
+.ui-v2 .hero .subtitle {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--muted);
+}
+
+/* 그리드 */
+.ui-v2 .main-grid {
+  gap: 16px;
+}
+ @media (min-width: 768px) {
+  .ui-v2 .main-grid { gap: 18px; }
+}
+
+/* 카드 */
+.ui-v2 .card {
+  border: 1px solid rgba(230, 234, 242, 0.95);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.ui-v2 .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.08);
+}
+
+/* 버튼 */
+.ui-v2 .btn { border-radius: 14px; }
+.ui-v2 .btn-primary {
+  background: linear-gradient(180deg, rgba(37,99,235,1) 0%, rgba(29,78,216,1) 100%);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
+}
+.ui-v2 .btn-primary:
