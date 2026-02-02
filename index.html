@@ -325,60 +325,103 @@
             }
         });
 
-        // --- Script for Lotto Number Generator ---
-        const generateBtn = document.getElementById('generate-lotto-btn');
-        const resultDiv = document.getElementById('lotto-result');
-        const modeSelect = document.getElementById('lotto-mode');
+        // --- Script for Lotto Number Generator (v2, Refactored for Reliability) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-lotto-btn');
+            const resultDiv = document.getElementById('lotto-result');
+            const modeSelect = document.getElementById('lotto-mode');
 
-        const lottoRules = {
-            ko645:  { mainCount: 6, mainMax: 45, bonusCount: 0, bonusMax: 0 },
-            cnssq:  { mainCount: 6, mainMax: 33, bonusCount: 1, bonusMax: 16 },
-            uspb:   { mainCount: 5, mainMax: 69, bonusCount: 1, bonusMax: 26 },
-            calmax: { mainCount: 7, mainMax: 50, bonusCount: 0, bonusMax: 0 },
-        };
+            const lottoRules = {
+                ko645:  { mainCount: 6, mainMax: 45, bonusCount: 0, bonusMax: 0, bonusLabel: '' },
+                cnssq:  { mainCount: 6, mainMax: 33, bonusCount: 1, bonusMax: 16, bonusLabel: 'Blue' },
+                uspb:   { mainCount: 5, mainMax: 69, bonusCount: 1, bonusMax: 26, bonusLabel: 'PB' },
+                calmax: { mainCount: 7, mainMax: 50, bonusCount: 0, bonusMax: 0, bonusLabel: '' },
+            };
 
-        function generateNumbers(count, max) {
-            const numbers = new Set();
-            const neededValues = count * 2; // Request more values to ensure enough randomness
-            const randomValues = new Uint32Array(neededValues);
-            
-            let i = 0;
-            while (numbers.size < count) {
-                if (i % neededValues === 0) {
-                    crypto.getRandomValues(randomValues);
+            /**
+             * Securely picks a set of unique random numbers within a given range.
+             * @param {number} count - The number of unique integers to pick.
+             * @param {number} max - The maximum value (inclusive).
+             * @param {number} [min=1] - The minimum value (inclusive).
+             * @returns {number[]} An array of sorted unique random numbers.
+             */
+            function pickUnique(count, max, min = 1) {
+                const numbers = new Set();
+                const range = max - min + 1;
+                if (count > range) {
+                    console.error("Cannot pick more unique numbers than the available range.");
+                    return [];
                 }
-                const randomNumber = (randomValues[i % neededValues] % max) + 1;
-                numbers.add(randomNumber);
-                i++;
-                if (i > 10000) { break; } // Failsafe
+                
+                // Create a buffer for random values. We may need more than `count` iterations.
+                const randomValues = new Uint32Array(count * 2);
+
+                while (numbers.size < count) {
+                    crypto.getRandomValues(randomValues);
+                    for (let i = 0; i < randomValues.length; i++) {
+                        const randomNumber = (randomValues[i] % range) + min;
+                        numbers.add(randomNumber);
+                        if (numbers.size >= count) break;
+                    }
+                }
+                return Array.from(numbers).sort((a, b) => a - b);
             }
-            return Array.from(numbers).sort((a, b) => a - b);
-        }
 
-        generateBtn.addEventListener('click', () => {
-            const selectedMode = modeSelect.value;
-            const rules = lottoRules[selectedMode];
+            /**
+             * Generates a complete set of lottery numbers based on the selected mode.
+             * @param {string} mode - The key for the selected lottery rule (e.g., 'ko645').
+             * @returns {{main: number[], bonus: number[]}}
+             */
+            function generateLottoNumbers(mode) {
+                const rules = lottoRules[mode];
+                if (!rules) return { main: [], bonus: [] };
 
-            const mainNumbers = generateNumbers(rules.mainCount, rules.mainMax);
-            const bonusNumbers = rules.bonusCount > 0 ? generateNumbers(rules.bonusCount, rules.bonusMax) : [];
-            
-            resultDiv.innerHTML = '';
-            
-            mainNumbers.forEach(num => {
-                const ball = document.createElement('span');
-                ball.className = 'lotto-ball';
-                ball.textContent = num;
-                ball.setAttribute('aria-label', `Number ${num}`);
-                resultDiv.appendChild(ball);
-            });
+                const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
+                const bonusNumbers = rules.bonusCount > 0 ? pickUnique(rules.bonusCount, rules.bonusMax) : [];
+                
+                return { main: mainNumbers, bonus: bonusNumbers };
+            }
 
-            bonusNumbers.forEach(num => {
-                const ball = document.createElement('span');
-                ball.className = 'lotto-ball lotto-ball--bonus';
-                ball.textContent = num;
-                ball.setAttribute('aria-label', `Bonus number ${num}`);
-                resultDiv.appendChild(ball);
-            });
+            /**
+             * Renders the generated numbers to the screen.
+             * @param {{main: number[], bonus: number[]}} result - The object containing main and bonus numbers.
+             */
+            function renderResult(result) {
+                resultDiv.innerHTML = '';
+                
+                result.main.forEach(num => {
+                    const ball = document.createElement('span');
+                    ball.className = 'lotto-ball';
+                    ball.textContent = num;
+                    resultDiv.appendChild(ball);
+                });
+
+                result.bonus.forEach(num => {
+                    const ball = document.createElement('span');
+                    ball.className = 'lotto-ball lotto-ball--bonus';
+                    ball.textContent = num;
+                    resultDiv.appendChild(ball);
+                });
+            }
+
+            if (generateBtn && modeSelect && resultDiv) {
+                generateBtn.addEventListener('click', () => {
+                    const selectedMode = modeSelect.value;
+                    const result = generateLottoNumbers(selectedMode);
+                    renderResult(result);
+                });
+                
+                // Also generate on mode change for better UX
+                modeSelect.addEventListener('change', () => {
+                    const selectedMode = modeSelect.value;
+                    const result = generateLottoNumbers(selectedMode);
+                    renderResult(result);
+                });
+
+                // Initial generation on load
+                const initialResult = generateLottoNumbers(modeSelect.value);
+                renderResult(initialResult);
+            }
         });
     </script>
 
