@@ -7,15 +7,19 @@
     <meta name="description" content="34년 경력의 반도체 엔지니어에서 AI Product Builder로, 60대에 시작한 두 번째 여행. 로또 확률 분석부터 AI 프로덕트 개발까지의 기록."/>
     <meta name="author" content="철부지 (chulbuji)"/>
     
-    <!-- New Design Scripts & Fonts -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
-    <!-- Old Scripts to Keep -->
+    <!-- Data & Logic Scripts -->
     <script src="i18n.js" defer></script>
     <script src="analysis-data.js" defer></script>
+    <script src="encyclopedia-data.js" defer></script>
     <script src="main.js" defer></script>
 
     <script id="tailwind-config">
@@ -132,8 +136,8 @@
     <!-- Secondary Grid: 복권 정보 백과사전 -->
     <div class="mt-16">
         <h2 class="text-3xl font-black tracking-tight mb-8 text-center md:text-left">복권 정보 백과사전</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card will be injected here -->
+        <div id="encyclopedia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Encyclopedia cards will be injected here by JavaScript -->
         </div>
     </div>
     
@@ -153,6 +157,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Render Deep Analysis Reports
         const mathContainer = document.getElementById('featured-card-container-math');
         const taxContainer = document.getElementById('featured-card-container-tax');
         
@@ -187,27 +192,23 @@
             }
         }
         
-        // This part is for the 6 cards in '복권 정보 백과사전'
-        const infoCardsContainer = document.querySelector('.info-cards .card-container');
-        if (infoCardsContainer) {
-            const newGridContainer = document.querySelector('.mt-16 .grid');
-            if (newGridContainer) {
-                // Move existing cards to the new grid structure
-                Array.from(infoCardsContainer.children).forEach(card => {
-                    card.className = 'bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col';
-                    const link = card.querySelector('a');
-                    if(link) {
-                        link.className = 'w-full text-center mt-auto bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all';
-                    }
-                    const title = card.querySelector('h3');
-                    if(title) title.className = 'text-lg font-bold mb-2';
-                    const summary = card.querySelector('p');
-                    if(summary) summary.className = 'text-sm text-text-muted dark:text-text-muted-dark mb-4';
-
-                    newGridContainer.appendChild(card);
-                });
-                infoCardsContainer.parentElement.style.display = 'none'; // Hide old section
-            }
+        // Render Encyclopedia Cards
+        const encyclopediaContainer = document.getElementById('encyclopedia-grid');
+        if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
+            encyclopediaData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-card-light dark:bg-card-dark rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col';
+                card.innerHTML = `
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-bold mb-2">${item.title}</h3>
+                        <p class="text-sm text-text-muted dark:text-text-muted-dark mb-4">${item.description}</p>
+                    </div>
+                    <a href="${item.href}" class="w-full text-center mt-auto bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                        더 깊이 보기
+                    </a>
+                `;
+                encyclopediaContainer.appendChild(card);
+            });
         }
     });
 </script>
