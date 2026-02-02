@@ -404,41 +404,10 @@
                 });
             }
 
-                        if (generateBtn && modeSelect && resultDiv) {
-
-                            generateBtn.addEventListener('click', () => {
-
-                                const selectedMode = modeSelect.value;
-
-                                const result = generateLottoNumbers(selectedMode);
-
-                                renderResult(result);
-
-                            });
-
-                            
-
-                            // Also generate on mode change for better UX
-
-                            modeSelect.addEventListener('change', () => {
-
-                                const selectedMode = modeSelect.value;
-
-                                const result = generateLottoNumbers(selectedMode);
-
-                                renderResult(result);
-
-                            });
-
-            
-
-                            // Initial generation on load
-
-                            const initialResult = generateLottoNumbers(modeSelect.value);
-
-                            renderResult(initialResult);
-
-                        }
+            if (generateBtn && modeSelect && resultDiv) {
+                generateBtn.addEventListener('click', () => {
+                    const selectedMode = modeSelect.value;
+                    const result = generateLottoNumbers(selectedMode);
                     renderResult(result);
                 });
                 
