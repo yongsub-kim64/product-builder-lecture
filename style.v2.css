@@ -1,0 +1,71 @@
+/* style.v2.css — UI v2 skin (structure-safe) */
+.ui-v2 {
+  --bg: #f6f8fc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e6eaf2;
+  --accent: #2563eb;
+  --accent-2: #1d4ed8;
+  --radius: 16px;
+
+  color: var(--text);
+  background: var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.55;
+}
+
+/* frame */
+.ui-v2 main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 16px 64px;
+}
+
+/* sticky header enhancement (works with existing .header) */
+.ui-v2 .header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, #ffffff 86%, transparent);
+}
+
+/* type */
+.ui-v2 h1 {
+  letter-spacing: -0.02em;
+}
+.ui-v2 p {
+  color: var(--muted);
+}
+
+/* cards: safely boost existing .card */
+.ui-v2 .card {
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+/* buttons */
+.ui-v2 .btn-primary {
+  background: var(--accent);
+}
+.ui-v2 .btn-primary:hover {
+  background: var(--accent-2);
+}
+.ui-v2 .btn-secondary {
+  border: 1px solid #fff;
+  background: #fff;
+}
+
+/* inputs */
+.ui-v2 select,
+.ui-v2 input,
+.ui-v2 textarea {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* small screens */
+ @media (max-width: 640px) {
+  .ui-v2 main { padding: 18px 12px 48px; }
+}

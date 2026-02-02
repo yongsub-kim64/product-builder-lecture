@@ -10,6 +10,9 @@
     <!-- Font: Pretendard (Korean Web Standard) -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
+    <!-- ✅ UI v2 skin (structure-safe): 기존 스타일은 유지하고, 아래 v2가 살짝 덮어쓰는 방식 -->
+    <link rel="stylesheet" href="./style.v2.css" />
+
     <!-- Data Scripts (Loaded early, used by DOMContentLoaded) -->
     <script src="./analysis-data.js"></script>
     <script src="./encyclopedia-data.js"></script>
@@ -220,7 +223,9 @@
         }
     </style>
 </head>
-<body>
+
+<!-- ✅ body에 ui-v2 클래스 추가 -->
+<body class="ui-v2">
 
     <header class="header">
         <div class="container">
@@ -231,7 +236,9 @@
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-                <select class="lang-selector">
+
+                <!-- ✅ i18n.js가 id="lang-select"를 찾기 때문에 id 추가 -->
+                <select id="lang-select" class="lang-selector">
                     <option value="ko">KR</option>
                     <option value="en">EN</option>
                 </select>
