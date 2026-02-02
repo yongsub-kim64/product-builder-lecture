@@ -404,10 +404,43 @@
                 });
             }
 
-            if (generateBtn && modeSelect && resultDiv) {
-                generateBtn.addEventListener('click', () => {
-                    const selectedMode = modeSelect.value;
-                    const result = generateLottoNumbers(selectedMode);
+                        if (generateBtn && modeSelect && resultDiv) {
+
+                            console.log("DOM elements found for generator. Attaching event listeners.");
+
+            
+
+                            const performGeneration = () => {
+
+                                const selectedMode = modeSelect.value;
+
+                                const result = generateLottoNumbers(selectedMode);
+
+                                renderResult(result);
+
+                            };
+
+            
+
+                            generateBtn.addEventListener('click', performGeneration);
+
+                            
+
+                            // Also generate on mode change for better UX
+
+                            modeSelect.addEventListener('change', performGeneration);
+
+            
+
+                            // Initial generation on load
+
+                            performGeneration(); // Generate numbers immediately on page load
+
+                        } else {
+
+                            console.error("One or more generator DOM elements not found:", { generateBtn, modeSelect, resultDiv });
+
+                        }
                     renderResult(result);
                 });
                 
