@@ -13,6 +13,7 @@
   --radius: 16px;
   --shadow: 0 8px 24px rgba(0,0,0,0.04);
   --shadow-hover: 0 10px 28px rgba(0,0,0,0.05);
+  --bonus: #D63384;
 }
 
 /* === GLOBAL & TYPOGRAPHY === */
@@ -44,6 +45,7 @@
   padding: 24px 0 48px;
 }
 .ui-v2 .main-grid {
+  display: grid;
   gap: 20px;
 }
 .ui-v2 .encyclopedia-section {
@@ -125,6 +127,36 @@
   border-color: rgba(0,0,0,0.08);
 }
 
+/* === GENERATOR UI === */
+.generator-controls {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.generator-controls label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+#lotto-mode {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--bg);
+    font-size: 1rem;
+    width: 100%;
+}
+.lotto-ball {
+    background-color: var(--text-body);
+}
+.lotto-ball--bonus {
+    background-color: transparent;
+    color: var(--bonus);
+    border: 2px solid var(--bonus);
+}
+
+
 /* === FOOTER (minimal info) === */
 .ui-v2 .footer {
   margin-top: 80px;
@@ -144,8 +176,34 @@
 }
 
 /* === RESPONSIVE REFINEMENTS === */
-@media (min-width: 768px) {
-  .ui-v2 .main-grid { gap: 24px; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ui-v2 .main-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-large {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ui-v2 .main-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "generator generator"
+      "report1 report2";
+    justify-items: center;
+  }
+  .generator-card {
+    grid-area: generator;
+    width: 100%;
+    max-width: 860px;
+  }
+  .report-card-math {
+    grid-area: report1;
+  }
+  .report-card-tax {
+    grid-area: report2;
+  }
 }
 
 @media (max-width: 640px) {

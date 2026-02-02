@@ -249,16 +249,27 @@
     <main class="container">
         <div class="main-grid">
             <!-- Number Generator -->
-            <div class="card card-large">
+            <div class="card card-large generator-card">
                 <h2 class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
                 <p class="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
+                
+                <div class="generator-controls">
+                    <label for="lotto-mode" data-i18n-key="generatorModeLabel">생성 모드</label>
+                    <select id="lotto-mode">
+                        <option value="ko645" data-i18n-key="modeKo645">대한민국 로또 6/45</option>
+                        <option value="cnssq" data-i18n-key="modeCnSsq">중국 쌍색구</option>
+                        <option value="uspb" data-i18n-key="modeUsPb">미국 파워볼</option>
+                        <option value="calmax" data-i18n-key="modeCaLmax">캐나다 로또맥스</option>
+                    </select>
+                </div>
+
                 <div id="lotto-result"></div>
                 <button id="generate-lotto-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
             </div>
 
             <!-- Analysis Reports -->
-            <div id="featured-card-container-math" class="card"></div>
-            <div id="featured-card-container-tax" class="card"></div>
+            <div id="featured-card-container-math" class="card report-card-math"></div>
+            <div id="featured-card-container-tax" class="card report-card-tax"></div>
         </div>
 
         <section class="hero">
@@ -317,36 +328,55 @@
         // --- Script for Lotto Number Generator ---
         const generateBtn = document.getElementById('generate-lotto-btn');
         const resultDiv = document.getElementById('lotto-result');
+        const modeSelect = document.getElementById('lotto-mode');
 
-        generateBtn.addEventListener('click', () => {
-            const randomValues = new Uint32Array(6);
-            crypto.getRandomValues(randomValues);
+        const lottoRules = {
+            ko645:  { mainCount: 6, mainMax: 45, bonusCount: 0, bonusMax: 0 },
+            cnssq:  { mainCount: 6, mainMax: 33, bonusCount: 1, bonusMax: 16 },
+            uspb:   { mainCount: 5, mainMax: 69, bonusCount: 1, bonusMax: 26 },
+            calmax: { mainCount: 7, mainMax: 50, bonusCount: 0, bonusMax: 0 },
+        };
 
+        function generateNumbers(count, max) {
             const numbers = new Set();
+            const neededValues = count * 2; // Request more values to ensure enough randomness
+            const randomValues = new Uint32Array(neededValues);
+            
             let i = 0;
-            while (numbers.size < 6) {
-                const randomNumber = (randomValues[i % 6] % 45) + 1;
+            while (numbers.size < count) {
+                if (i % neededValues === 0) {
+                    crypto.getRandomValues(randomValues);
+                }
+                const randomNumber = (randomValues[i % neededValues] % max) + 1;
                 numbers.add(randomNumber);
                 i++;
-                if (i > 1000) { break; } // Failsafe
-                if (i % 6 === 0) { crypto.getRandomValues(randomValues); }
+                if (i > 10000) { break; } // Failsafe
             }
+            return Array.from(numbers).sort((a, b) => a - b);
+        }
 
-            const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+        generateBtn.addEventListener('click', () => {
+            const selectedMode = modeSelect.value;
+            const rules = lottoRules[selectedMode];
+
+            const mainNumbers = generateNumbers(rules.mainCount, rules.mainMax);
+            const bonusNumbers = rules.bonusCount > 0 ? generateNumbers(rules.bonusCount, rules.bonusMax) : [];
             
             resultDiv.innerHTML = '';
-            sortedNumbers.forEach(num => {
+            
+            mainNumbers.forEach(num => {
                 const ball = document.createElement('span');
                 ball.className = 'lotto-ball';
                 ball.textContent = num;
-                
-                let color = '#6B7280';
-                if (num <= 10) color = '#F59E0B';
-                else if (num <= 20) color = '#3B82F6';
-                else if (num <= 30) color = '#EF4444';
-                else if (num <= 40) color = '#10B981';
-                
-                ball.style.backgroundColor = color;
+                ball.setAttribute('aria-label', `Number ${num}`);
+                resultDiv.appendChild(ball);
+            });
+
+            bonusNumbers.forEach(num => {
+                const ball = document.createElement('span');
+                ball.className = 'lotto-ball lotto-ball--bonus';
+                ball.textContent = num;
+                ball.setAttribute('aria-label', `Bonus number ${num}`);
                 resultDiv.appendChild(ball);
             });
         });
