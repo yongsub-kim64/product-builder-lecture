@@ -135,45 +135,45 @@
     <div class="content-area">
         <main>
             <div class="title-container">
-                <h1 data-i18n-key="mainTitle">로또 6/45 통계 분석 도구</h1>
-                <h2 data-i18n-key="subTitle">공공 데이터 기반 번호 조합기</h2>
+                <h1 data-i18n-key="mainTitle">로또 6/45 확률 분석 및 조합 도구</h1>
+                <h2 data-i18n-key="subTitle">CSPRNG 암호화 난수 알고리즘 기반 | 8,145,060가지 조합 균등 확률 보장</h2>
             </div>
 
             <!-- 통계 분석 요약 블록 (Above the fold) -->
             <div class="stats-summary-block">
-                <h3 data-i18n-key="statsSummaryTitle">로또 6/45 핵심 정보</h3>
+                <h3 data-i18n-key="statsSummaryTitle">로또 6/45 핵심 통계 데이터</h3>
                 <ul>
-                    <li data-i18n-key="statsItem1" data-i18n-html><strong>당첨 확률:</strong> 1등 확률은 8,145,060분의 1 (45C6 조합)</li>
-                    <li data-i18n-key="statsItem2" data-i18n-html><strong>추첨 방식:</strong> 매주 토요일 동행복권에서 공식 추첨</li>
-                    <li data-i18n-key="statsItem3" data-i18n-html><strong>세금 안내:</strong> 3억 원 이하 22%, 초과분 33% 원천징수</li>
-                    <li data-i18n-key="statsItem4" data-i18n-html><strong>번호 생성:</strong> 암호학적 난수 알고리즘(CSPRNG) 기반</li>
+                    <li data-i18n-key="statsItem1" data-i18n-html><strong>당첨 확률:</strong> 1등 8,145,060분의 1 | 2등 1,357,510분의 1 | 3등 35,724분의 1 (조합론 공식 45C6 적용)</li>
+                    <li data-i18n-key="statsItem2" data-i18n-html><strong>추첨 일정:</strong> 매주 토요일 오후 8시 35분 MBC 생방송 | 동행복권 공식 추첨기(6개 드럼) 사용</li>
+                    <li data-i18n-key="statsItem3" data-i18n-html><strong>세금 계산:</strong> 5만원 초과~3억원 이하 22%(소 득세 20%+지방세 2%) | 3억원 초과분 33%(소득세 30%+지방세 3%)</li>
+                    <li data-i18n-key="statsItem4" data-i18n-html><strong>난수 생성:</strong> Web Crypto API 기반 CSPRNG(암호학적 의사난수 생성기) | 256비트 엔트로피 보장</li>
                 </ul>
             </div>
 
             <!-- 최신 분석 블로그 카드 (2개) -->
             <section class="featured-articles">
-                <h2 class="section-title" data-i18n-key="featuredTitle">주요 분석 가이드</h2>
+                <h2 class="section-title" data-i18n-key="featuredTitle">심층 분석 리포트</h2>
                 <div class="card-container featured-card-container">
                     <div class="card featured-card">
-                        <span class="card-badge" data-i18n-key="badgePopular">인기</span>
-                        <h3 data-i18n-key="featuredCard1Title">로또 확률의 수학적 이해</h3>
-                        <p class="card-summary" data-i18n-key="featuredCard1Content">45개 숫자에서 6개를 선택하는 조합의 수는 정확히 8,145,060가지입니다. 이 확률이 의미하는 바와 기댓값 계산 방법을 상세히 분석합니다.</p>
-                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="featuredCard1Button">분석 보기</a>
+                        <span class="card-badge" data-i18n-key="badgePopular">핵심</span>
+                        <h3 data-i18n-key="featuredCard1Title">조합론으로 보는 로또 6/45 확률 구조</h3>
+                        <p class="card-summary" data-i18n-key="featuredCard1Content">조합 공식 C(45,6) = 45!/(6!×39!) = 8,145,060.  각 번호가 선택될 확률은 정확히 6/45(13.33%)이며, 특정 조합이 나올 확률은 0.0000123%입니다. 기댓값 계산: (1등 상금 × 1/8,145,060) + (2등 상금 × 1/1,357,510) + ... 본 분석에서 확률론적 기댓값을 산출합니다.</p>
+                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="featuredCard1Button">수학적 분석 보기</a>
                     </div>
                     <div class="card featured-card">
-                        <span class="card-badge" data-i18n-key="badgeGuide">가이드</span>
-                        <h3 data-i18n-key="featuredCard2Title">당첨금 세금 계산 완벽 가이드</h3>
-                        <p class="card-summary" data-i18n-key="featuredCard2Content">3억 원 이하 22%, 3억 원 초과분에는 33%의 세율이 적용됩니다. 10억 당첨 시 실제 수령액 계산 예시를 통해 세후 금액을 확인해 보세요.</p>
-                        <a href="about.html" class="btn-read-more" data-i18n-key="featuredCard2Button">가이드 보기</a>
+                        <span class="card-badge" data-i18n-key="badgeGuide">필독</span>
+                        <h3 data-i18n-key="featuredCard2Title">소득세법 제21조에 따른 복권 당첨금 과세 체계</h3>
+                        <p class="card-summary" data-i18n-key="featuredCard2Content">기타소득세 원천징수 기준: ①5만원 이하 비과세 ②5만원 초과~3억원 이하 22%(소득세 20%+지방소득세 2%) ③3억원 초과분 33%(소득세 30%+지방소득세 3%). 예시: 10억 당첨 시 세금 = (3억×0.22)+(7억×0.33) = 2억9,700만원, 실수령액 7억300만원.</p>
+                        <a href="about.html" class="btn-read-more" data-i18n-key="featuredCard2Button">세금 계산법 보기</a>
                     </div>
                 </div>
             </section>
 
             <!-- 번호 생성기 섹션 -->
             <section class="generator-section">
-                <h2 class="section-title" data-i18n-key="generatorTitle">번호 조합 생성기</h2>
+                <h2 class="section-title" data-i18n-key="generatorTitle">CSPRNG 기반 번호 조합 생성기</h2>
                 <div class="intro-text">
-                    <p data-i18n-key="introText">동행복권 로또 6/45 공식 규칙에 따라 1~45 범위의 숫자 6개 조합을 생성합니다. 암호학적으로 안전한 난수 생성기(CSPRNG)를 사용하여 편향 없는 무작위 조합을 제공합니다.</p>
+                    <p data-i18n-key="introText">동행복권 로또 6/45 공식 규칙(1~45 범위, 6개 선택, 중복 불 가)에 따른 조합을 생성합니다. Web Crypto API의 CSPRNG(암호학적 의사난수 생성기)를 사용하여 8,145,060가지 모든 조합이 균등한 확률(1/8,145,060)로 출력됩니다. 본 도구는 정보 제공 목적이며, 실제 추첨 결과와는 무관합니다.</p>
                 </div>
                 <button id="generate" data-i18n-key="generateButton">번호 조합 생성</button>
             <div id="result"></div>
@@ -183,56 +183,56 @@
 
             <!-- Blog Article Teaser -->
             <section class="info-cards">
-                <h2 class="section-title" data-i18n-key="blogTitle">로또 정보 가이드</h2>
+                <h2 class="section-title" data-i18n-key="blogTitle">복권 정보 백과사전</h2>
                 <div class="card-container blog-card-container">
                     <div class="card">
-                        <h3 data-i18n-key="blogCard1Title">1등 당첨 확률, 814만분의 1의 의미</h3>
-                        <p class="card-summary" data-i18n-key="blogCard1Content">벼락 맞을 확률(약 600만분의 1)보다 낮은 8,145,060분의 1이라는 1등 당첨 확률의 실제 의미와 통계적 독립 시행의 원칙을 명확히 설명합니다.</p>
-                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard1Title">독립 시행의 원리: 왜 과거 데이터가 무의미한가</h3>
+                        <p class="card-summary" data-i18n-key="blogCard1Content">확률론의 핵심 원리인 독립 시행(Independent Trial)에 따르면, 이전 추첨 결과는 다음 추첨에 영향을 주지 않으며 각 번호의 출현 확률은 매회 동일합니다. 1,000회 이상 축적된 데이터에서도 특정 번호의 출현 빈도가 통계적으로 유의미한 차이를 보이지 않습니다. 즉, 과거 데이터는 미래를 예측하는 데 도움이 되지 않습니다.</p>
+                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="blogCard2Title">당첨금 세금, 얼마나 뗄까?</h3>
-                        <p class="card-summary" data-i18n-key="blogCard2Content">5만원 초과 당첨금부터 세금이 발생합니다. 3억 원까지는 22%, 3억 초과분은 33%의 세율이 적용되며, 10억 당첨 시 실수령액은 약 7억 300만원입니다.</p>
-                        <a href="about.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard2Title">로또 1등, 실수령액 계산법 (3억 초과 33%)</h3>
+                        <p class="card-summary" data-i18n-key="blogCard2Content">로또 당첨금은 기타소득으로 분류되어 세금이 부과됩니다. 5만원 초과부터 세금이 부과되며, 3억원까지는 22%, 3억원 초과분부터는 33%의 세율이 적용됩니다. 예를 들어 50억 원에 당첨될 경우 약 16억 3천 7백만 원이 세금으로 공제되며, 실수령액은 약 33억 6천 3백만 원이 됩니다.</p>
+                        <a href="about.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="blogCard3Title">1등 당첨, 어디로 가야 할까?</h3>
-                        <p class="card-summary" data-i18n-key="blogCard3Content">1등은 서울 농협은행 본점, 2,3등은 전국 농협은행, 4,5등은 판매점에서 수령합니다. 지급기한은 1년이며, 신분증과 당첨복권은 필수입니다.</p>
-                        <a href="about.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard3Title">당첨금 수령 가이드: 등위별 농협은행 방문 팁</h3>
+                        <p class="card-summary" data-i18n-key="blogCard3Content">1등 당첨자는 신분증과 당첨 복권을 지참하고 농협은행 본점(서울 서대문)을 방문해야 합니다. 2등 및 3등 당첨자는 전국 농협은행 지점에서 수령 가능하며, 4등 및 5등은 복권 판매점에서 즉시 수령할 수 있습니다. 당첨금 지급 기한은 1년입니다.</p>
+                        <a href="about.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="blogCard4Title">"제외수" 분석, 효과 있을까?</h3>
-                        <p class="card-summary" data-i18n-key="blogCard4Content">많은 분석가들이 과거 1,000회차 데이터 기반으로 '나오지 않을 번호'를 예측합니다. 하지만 로또는 독립시행이므로 통계적 의미는 없습니다. 재미로만 참고하세요.</p>
-                        <a href="lotto-article-2.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard4Title">로또 '제외수' 전략, 과학적 근거는 있는가?</h3>
+                        <p class="card-summary" data-i18n-key="blogCard4Content">수많은 로또 분석가들이 통계적 데이터를 활용해 '제외수'를 예측하지만, 로또는 본질적으로 독립적인 확률 게임이므로 제외수 전략에 과학적 근거는 없습니다. '도박사의 오류'에 빠지지 말고, 제외수는 그저 재미 요소로만 활용하는 것이 현명합니다.</p>
+                        <a href="lotto-article-2.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="blogCard5Title">연속번호-패턴 조합의 함정</h3>
-                        <p class="card-summary" data-i18n-key="blogCard5Content">'1-2-3-4-5-6' 조합의 당첨 확률은 다른 조합과 같지만, 당첨 시 1만명 이상과 상금을 나눠야 할 수 있습니다. 기대 당첨금을 높이려면 패턴을 피하세요.</p>
-                        <a href="history-of-lotto.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard5Title">로또 당첨 패턴, 과연 존재할까?</h3>
+                        <p class="card-summary" data-i18n-key="blogCard5Content">로또 번호의 패턴(예: 연속 번호, 특정 구간 집중, 홀짝 비율 등)이 당첨 확률에 영향을 미친다는 속설은 통계적으로 입증된 바 없습니다. 모든 번호 조합은 8,145,060분의 1로 동일한 확률을 가지며, 패턴 분석은 당첨금 배분율에만 영향을 미칠 수 있습니다.</p>
+                        <a href="history-of-lotto.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="blogCard6Title">미국 파워볼 vs 한국 로또</h3>
-                        <p class="card-summary" data-i18n-key="blogCard6Content">미국 파워볼 1등 확률은 약 2억 9,220만분의 1로 한국 로또보다 훨씬 낮지만, 2016년에는 15억 8,600만 달러(약 2조원)의 역대급 당첨금이 나오기도 했습니다.</p>
-                        <a href="strategy-guide.html" class="btn-read-more" data-i18n-key="blogCardButton">자세히 보기</a>
+                        <h3 data-i18n-key="blogCard6Title">해외 로또 분석: 메가밀리언, 유로밀리언, 파워볼 비교</h3>
+                        <p class="card-summary" data-i18n-key="blogCard6Content">전 세계적으로 유명한 메가밀리언(미국, 1등 확률 3억분의 1), 유로밀리언(유럽, 1등 확률 1.4억분의 1), 파워볼(미국, 1등 확률 2.9억분의 1)은 천문학적인 당첨금으로 유명합니다. 한국 로또와 비교하여 각 복권의 특징과 당첨 전략을 분석합니다.</p>
+                        <a href="strategy-guide.html" class="btn-read-more" data-i18n-key="blogCardButton">더 깊이 보기</a>
                     </div>
                 </div>
             </section>
 
             <!-- Informational Articles -->
             <section class="info-cards">
-                <h2 class="section-title" data-i18n-key="infoTitle">알아두면 쓸데있는 복권 잡학사전</h2>
+                <h2 class="section-title" data-i18n-key="infoTitle">로또 심화 탐구</h2>
                 <div class="card-container">
                     <div class="card">
-                        <h3 data-i18n-key="card1Title">로또 1등 당첨 확률의 수학적 비밀</h3>
-                        <p data-i18n-key="card1Content">45개의 공 중 첫 번째 공을 뽑을 확률은 1/45, 두 번째는 1/44... 이 확률을 모두 곱하고, 순서가 없는 조합이므로 6개의 순열(720)로 나누면 814만분의 1이 됩니다.</p>
+                        <h3 data-i18n-key="card1Title">로또 조합의 원리: 45C6 완전 분석</h3>
+                        <p data-i18n-key="card1Content">로또 6/45의 모든 조합은 45개 숫자 중 6개를 선택하는 경우의 수(C(45,6))로 8,145,060가지입니다. 이 조합론적 원리를 통해 각 등위별 당첨 조합의 수가 결정됩니다. 예를 들어 2등은 6개 중 5개 숫자와 보너스볼 1개를 맞추는 조합(C(6,5)*C(1,1))으로 6가지입니다.</p>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="card2Title">미국 파워볼의 역사</h3>
-                        <p data-i18n-key="card2Content">파워볼은 1992년에 시작된 미국의 대표적인 복권입니다. 초기에는 15개 주에서만 참여했지만, 현재는 45개 주와 워싱턴 D.C., 푸에르토리코, 미국령 버진아일랜드에서 즐길 수 있습니다. 2016년에는 약 15억 8,600만 달러라는 세계 최고 당첨금 기록을 세우기도 했습니다.</p>
+                        <h3 data-i18n-key="card2Title">로또 패턴 분석의 허와 실: 통계적 유의미성 검증</h3>
+                        <p data-i18n-key="card2Content">과거 당첨 번호 데이터에서 특정 패턴(예: 출현 빈도 높은 번호, 이웃 번호 출현 등)을 찾아 미래를 예측하려는 시도가 많습니다. 하지만 통계학적으로 로또는 '독립시행'이며, 패턴 분석은 당첨 확률을 높이는 것보다 심리적 위안에 가깝습니다. 빅데이터 분석으로도 당첨 패턴은 발견되지 않았습니다.</p>
                     </div>
                     <div class="card">
-                        <h3 data-i18n-key="card3Title">전 세계 복권 당첨금 TOP 3</h3>
-                        <p data-i18n-key="card3Content">1위는 2016년 미국 파워볼의 약 15억 8,600만 달러입니다. 2위는 2018년 미국 메가밀리언의 약 15억 3,700만 달러이며, 3위 역시 2023년 파워볼에서 나온 약 10억 8,000만 달러입니다. 이처럼 역대급 당첨금은 대부분 미국 복권에서 나왔습니다.</p>
+                        <h3 data-i18n-key="card3Title">로또 당첨금과 재테크: 현명한 자산 관리 전략</h3>
+                        <p data-i18n-key="card3Content">갑작스러운 거액의 로또 당첨금은 재테크의 기회가 될 수 있습니다. 세금 공제 후 남은 실수령액을 효율적으로 관리하기 위한 자산 배분(분산 투자), 부동산 투자, 전문가 상담 등의 전략을 통해 안정적인 부를 유지하고 증식하는 방법을 안내합니다.</p>
                     </div>
                 </div>
             </section>
