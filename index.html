@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="style.css" fetchpriority="high">
     <script src="i18n.js" defer></script>
+    <script src="analysis-data.js" defer></script>
     <!-- Google Analytics -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZJ3H02EQ5" defer></script>
@@ -154,19 +155,8 @@
             <!-- 최신 분석 블로그 카드 (2개) -->
             <section class="featured-articles">
                 <h2 class="section-title" data-i18n-key="featuredTitle">심층 분석 리포트</h2>
-                <div class="card-container featured-card-container">
-                    <div class="card featured-card">
-                        <span class="card-badge" data-i18n-key="badgePopular">핵심</span>
-                        <h3 data-i18n-key="featuredCard1Title">조합론으로 보는 로또 6/45 확률 구조</h3>
-                        <p class="card-summary" data-i18n-key="featuredCard1Content">조합 공식 C(45,6) = 45!/(6!×39!) = 8,145,060.  각 번호가 선택될 확률은 정확히 6/45(13.33%)이며, 특정 조합이 나올 확률은 0.0000123%입니다. 기댓값 계산: (1등 상금 × 1/8,145,060) + (2등 상금 × 1/1,357,510) + ... 본 분석에서 확률론적 기댓값을 산출합니다.</p>
-                        <a href="lotto-article-1.html" class="btn-read-more" data-i18n-key="featuredCard1Button">수학적 분석 보기</a>
-                    </div>
-                    <div class="card featured-card">
-                        <span class="card-badge" data-i18n-key="badgeGuide">필독</span>
-                        <h3 data-i18n-key="featuredCard2Title">소득세법 제21조에 따른 복권 당첨금 과세 체계</h3>
-                        <p class="card-summary" data-i18n-key="featuredCard2Content">기타소득세 원천징수 기준: ①5만원 이하 비과세 ②5만원 초과~3억원 이하 22%(소득세 20%+지방소득세 2%) ③3억원 초과분 33%(소득세 30%+지방소득세 3%). 예시: 10억 당첨 시 세금 = (3억×0.22)+(7억×0.33) = 2억9,700만원, 실수령액 7억300만원.</p>
-                        <a href="about.html" class="btn-read-more" data-i18n-key="featuredCard2Button">세금 계산법 보기</a>
-                    </div>
+                <div id="featured-card-container" class="card-container featured-card-container">
+                    <!-- Cards will be injected here by JavaScript -->
                 </div>
             </section>
 
@@ -325,26 +315,30 @@
 
     <script src="main.js" defer></script>
     <script>
-        function loadAdSense() {
-            var ads = document.createElement('script');
-            ads.async = true;
-            ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179';
-            ads.crossOrigin = 'anonymous';
-            document.head.appendChild(ads);
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('featured-card-container');
+            if (container && typeof analysisData !== 'undefined') {
+                const badges = {
+                    'math-report': { text: '핵심', class: 'badge-popular' },
+                    'tax-report': { text: '필독', class: 'badge-guide' }
+                };
+                
+                analysisData.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card featured-card';
 
-        var isAdSenseLoaded = false;
-        function lazyLoadAdSense() {
-            if (isAdSenseLoaded) return;
-            isAdSenseLoaded = true;
-            loadAdSense();
-            window.removeEventListener('scroll', lazyLoadAdSense);
-            window.removeEventListener('touchstart', lazyLoadAdSense);
-        }
+                    const badgeInfo = badges[item.id] || { text: '', class: '' };
 
-        window.addEventListener('scroll', lazyLoadAdSense, { once: true });
-        window.addEventListener('touchstart', lazyLoadAdSense, { once: true });
-        setTimeout(lazyLoadAdSense, 3000);
+                    card.innerHTML = `
+                        <span class="card-badge ${badgeInfo.class}">${badgeInfo.text}</span>
+                        <h3>${item.title}</h3>
+                        <p class="card-summary">${item.description}</p>
+                        <a href="report-${item.id.split('-')[0]}.html" class="btn-read-more">분석 보기</a>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        });
     </script>
 </body>
 </html>

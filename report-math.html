@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <meta id="page-description" name="description" content="">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="banner-container">🍀🍀🍀🍀</div>
+    <div class="page-body-container">
+        <aside class="sidebar">
+            <a href="index.html" class="logo">행운의 번호</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="about.html">소개</a></li>
+                    <li><a href="contact.html">연락처</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="content-area">
+            <main id="article-main" class="content-container article-content">
+                <!-- Content will be injected here by JavaScript -->
+            </main>
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <div class="footer-links">
+                        <a href="about.html">소개</a>
+                        <a href="privacy.html">개인정보처리방침</a>
+                        <a href="terms.html">이용약관</a>
+                        <a href="contact.html">연락처</a>
+                    </div>
+                    <p>&copy; 2026 철부지 (chulbuji). All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="analysis-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleId = 'math-report'; // Hardcoded for this page
+            const articleData = analysisData.find(data => data.id === articleId);
+
+            if (articleData) {
+                document.title = articleData.title;
+                document.getElementById('page-description').setAttribute('content', articleData.description);
+                
+                const articleContainer = document.createElement('article');
+                articleContainer.innerHTML = articleData.content;
+                
+                document.getElementById('article-main').appendChild(articleContainer);
+            } else {
+                document.getElementById('article-main').innerHTML = '<h1>콘텐츠를 찾을 수 없습니다.</h1><p><a href="index.html">홈으로 돌아가기</a></p>';
+            }
+        });
+    </script>
+</body>
+</html>
