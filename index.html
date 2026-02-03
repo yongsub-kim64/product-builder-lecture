@@ -2,31 +2,25 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>철부지의 두 번째 여행 | AI 로또 분석 & 번호 생성</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="34년 경력 반도체 엔지니어가 개발한 AI 로또 분석 및 번호 생성기. 수학적 확률 계산과 당첨금 세금 정보, 60대 1인 창업가의 도전 이야기를 제공합니다.">
     <meta name="keywords" content="로또번호생성, 로또세금계산, 로또확률, AI로또, 1인창업, 60대개발자, 무료로또분석">
     <meta name="author" content="철부지(Chulbuji)">
-    
-    <!-- Font: Pretendard (Korean Web Standard) -->
+
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-    <!-- ✅ UI v2 skin (structure-safe): 기존 스타일은 유지하고, 아래 v2가 살짝 덮어쓰는 방식 -->
     <link rel="stylesheet" href="./style.v2.css?v=20250203" />
     <link rel="stylesheet" href="style.css?v=20250203" />
 
-    <!-- Data Scripts (Loaded early, used by DOMContentLoaded) -->
     <script src="./analysis-data.js?v=20250203"></script>
     <script src="./encyclopedia-data.js?v=20250203"></script>
-    <script src="main.js?v=20250203"></script>
-    <script src="./i18n.js?v=20250203"></script>
-    
+
     <style>
-        /* === CSS Reset & Global Styles === */
+        /* Base Styles & CSS Reset */
         :root {
             --background-color: #F3F4F6;
             --primary-color: #1E3A8A;
-            --primary-hover-color: #1c347a;
             --text-color-main: #1F2937;
             --text-color-muted: #6B7280;
             --card-background: #FFFFFF;
@@ -34,200 +28,66 @@
             --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --card-radius: 16px;
         }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-            font-weight: 400;
+            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color-main);
             line-height: 1.6;
         }
+        a { color: var(--primary-color); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        h1, h2, h3, .card-title {
-            font-weight: 700;
-        }
-        
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
+        /* 1. Header */
+        .header { background-color: var(--card-background); border-bottom: 1px solid var(--border-color); padding: 16px 0; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 900; color: var(--text-color-main); }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .main-nav a { margin-left: 20px; font-weight: 500; color: var(--text-color-muted); }
+        .lang-selector { appearance: none; background: transparent; border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; }
 
-        /* === Layout Containers (Task 3: Layout Refinement) === */
-        .container {
-            max-width: 1200px; /* Set max-width for content */
-            margin: 0 auto;      /* Center the container */
-            padding: 0 16px;
-        }
+        /* 2. Hero Section */
+        .hero { text-align: center; padding: 80px 0 60px; }
+        .hero h1 { font-size: 3rem; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+        .hero .subtitle { max-width: 680px; margin: 0 auto; font-size: 1.125rem; color: var(--text-color-muted); }
 
-        /* === Header & Language Selector (Task 2: Global Language Module) === */
-        .header {
-            padding: 16px 0;
-            background-color: var(--card-background);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: var(--text-color-main);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .main-nav a {
-            margin-left: 20px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-color-muted);
-        }
-        
-        .lang-selector {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-family: inherit;
-            font-weight: 500;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        /* === Hero Section (Task 1: Branding) === */
-        .hero {
-            text-align: center;
-            padding: 60px 0 40px;
-        }
-
-        .hero h1 {
-            font-size: 2.25rem;
-            line-height: 1.3;
-            margin-bottom: 12px;
-        }
-
-        .hero .subtitle {
-            max-width: 680px;
-            margin: 0 auto;
-            font-size: 1rem;
-            color: var(--text-color-muted);
-        }
-
-        /* === Main Grid & Card Styles === */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .card {
-            background-color: var(--card-background);
-            border-radius: var(--card-radius);
-            box-shadow: var(--card-shadow);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-        }
-
-        .card-description {
-            font-size: 0.95rem;
-            color: var(--text-color-muted);
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
-        
-        /* === Encyclopedia Section (Task 4: Preserve Mobile 2-Column Grid) === */
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 40px 0 20px;
-        }
-
-        .encyclopedia-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        /* === Button Styles === */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
+        /* 3. Core Feature Grid & 4. Encyclopedia Section */
+        .card { background-color: var(--card-background); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 24px; display: flex; flex-direction: column; }
+        .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .card-description { font-size: 0.95rem; color: var(--text-color-muted); flex-grow: 1; margin-bottom: 20px; }
+        .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700; text-align: center; cursor: pointer; border: none; transition: all 0.2s; }
         .btn-primary { background-color: var(--primary-color); color: #FFFFFF; }
         .btn-primary:active { transform: scale(0.97); }
         .btn-secondary { background-color: #F3F4F6; color: var(--text-color-main); }
 
-        /* === Lotto Result UI (Task 4: Preserve JS functionality) === */
-        #lotto-result { margin: 24px 0; text-align: center; min-height: 40px; }
-        .lotto-ball {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin: 0 4px;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* === Footer === */
-        .footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border-color); text-align: center; }
-        .footer-links a { font-size: 0.85rem; margin: 0 10px; color: var(--text-color-muted); }
-        .footer .copyright { font-size: 0.85rem; color: var(--text-color-muted); margin-top: 12px; }
+        .main-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .generator-card { grid-column: 1 / -1; } /* Span full width */
+        .generator-controls { margin: 16px 0; display: flex; align-items: center; gap: 10px; }
+        #lotto-result { display: flex; justify-content: center; align-items: center; min-height: 60px; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+        .lotto-ball { display: inline-flex; justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; font-weight: 700; font-size: 1.1rem; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
+        .lotto-ball--bonus { background: linear-gradient(145deg, #d63333, #b32a2a); }
 
-        /* === Desktop Responsive Styles === */
-        @media (min-width: 768px) {
-            .container { padding: 0 24px; }
-            .hero h1 { font-size: 3rem; }
-            .hero .subtitle { font-size: 1.125rem; }
-            .main-grid { grid-template-columns: repeat(3, 1fr); }
-            .card-large { grid-column: span 2; }
-            .encyclopedia-grid { grid-template-columns: repeat(3, 1fr); }
-            .main-nav { display: block; } /* Show nav on desktop */
+        .section-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin: 60px 0 24px; }
+        .encyclopedia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+        /* 5. Footer */
+        .footer { margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; }
+        .footer-links a { font-size: 0.9rem; margin: 0 10px; color: var(--text-color-muted); }
+        .footer .disclaimer { font-size: 0.75rem; color: #9ca3af; max-width: 600px; margin: 20px auto 0; line-height: 1.5; }
+        .footer .copyright { font-size: 0.85rem; color: var(--text-color-muted); margin-top: 16px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .encyclopedia-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        
         @media (max-width: 767px) {
-            .main-nav { display: none; } /* Hide nav on mobile for simplicity */
+            .main-nav { display: none; }
+            .hero h1 { font-size: 2.25rem; }
+            .main-grid { grid-template-columns: 1fr; }
+            .encyclopedia-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-
-<!-- ✅ body에 ui-v2 클래스 추가 -->
 <body class="ui-v2">
 
     <header class="header">
@@ -239,8 +99,6 @@
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-
-                <!-- ✅ i18n.js가 id="lang-select"를 찾기 때문에 id 추가 -->
                 <select id="lang-select" class="lang-selector">
                     <option value="ko">KR</option>
                     <option value="en">EN</option>
@@ -249,13 +107,18 @@
         </div>
     </header>
 
+    <section class="hero">
+        <div class="container">
+            <h1 data-i18n-key="introTitle">철부지의 두 번째 여행</h1>
+            <p class="subtitle" data-i18n-key="introSubtitle">34년간 반도체 칩을 만들던 손으로, 이제는 데이터를 바탕으로 생각을 정리하는 도구를 만듭니다. 60대에 시작한 1인 창업가의 기록.</p>
+        </div>
+    </section>
+
     <main class="container">
         <div class="main-grid">
-            <!-- Number Generator -->
-            <div class="card card-large generator-card">
+            <div class="card generator-card">
                 <h2 class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
                 <p class="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
-                
                 <div class="generator-controls">
                     <label for="lotto-mode" data-i18n-key="generatorModeLabel">생성 모드</label>
                     <select id="lotto-mode">
@@ -265,21 +128,15 @@
                         <option value="calmax" data-i18n-key="modeCaLmax">캐나다 로또맥스</option>
                     </select>
                 </div>
-
                 <div id="lotto-result"></div>
                 <button id="generate-lotto-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
             </div>
 
-            <!-- Analysis Reports -->
-            <div id="featured-card-container-math" class="card report-card-math"></div>
-            <div id="featured-card-container-tax" class="card report-card-tax"></div>
+            <div id="featured-card-container-math" class="card"></div>
+
+            <div id="featured-card-container-tax" class="card"></div>
         </div>
 
-        <section class="hero">
-            <h1 data-i18n-key="introTitle">철부지의 두 번째 여행</h1>
-            <p class="subtitle" data-i18n-key="introSubtitle">34년간 반도체 칩을 만들던 손으로, 이제는 데이터를 바탕으로 생각을 정리하는 도구를 만듭니다. 60대에 시작한 1인 창업가의 기록.</p>
-        </section>
-        
         <section class="encyclopedia-section">
             <h2 class="section-title">복권 정보 백과사전</h2>
             <div id="encyclopedia-grid" class="encyclopedia-grid"></div>
@@ -300,11 +157,15 @@
     </footer>
 
     <script>
-        // --- Script for rendering dynamic cards ---
+        // --- ★★★ 복구된 스크립트 ★★★ ---
+
+        // 동적 카드 렌더링 스크립트
         document.addEventListener('DOMContentLoaded', () => {
             const mathContainer = document.getElementById('featured-card-container-math');
             const taxContainer = document.getElementById('featured-card-container-tax');
-            
+            const encyclopediaContainer = document.getElementById('encyclopedia-grid');
+
+            // 복구: 사라진 리포트 카드 2개 생성
             if (mathContainer && typeof analysisData !== 'undefined') {
                 const mathReport = analysisData.find(item => item.id === 'math-report');
                 if (mathReport) {
@@ -317,8 +178,8 @@
                     taxContainer.innerHTML = `<h3 class="card-title">${taxReport.title}</h3><p class="card-description">${taxReport.description}</p><a href="report-tax.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
                 }
             }
-            
-            const encyclopediaContainer = document.getElementById('encyclopedia-grid');
+
+            // 백과사전 카드 생성
             if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
                 encyclopediaData.forEach(item => {
                     const card = document.createElement('div');
@@ -329,74 +190,61 @@
             }
         });
 
-        // --- Script for Lotto Number Generator (v2, Refactored for Reliability) ---
+        // 로또 번호 생성기 스크립트 (CSPRNG 사용)
         document.addEventListener('DOMContentLoaded', () => {
             const generateBtn = document.getElementById('generate-lotto-btn');
             const resultDiv = document.getElementById('lotto-result');
             const modeSelect = document.getElementById('lotto-mode');
 
+            if (!generateBtn || !resultDiv || !modeSelect) {
+                console.error("Lotto generator elements not found.");
+                return;
+            }
+
             const lottoRules = {
-                ko645:  { mainCount: 6, mainMax: 45, bonusCount: 0, bonusMax: 0, bonusLabel: '' },
-                cnssq:  { mainCount: 6, mainMax: 33, bonusCount: 1, bonusMax: 16, bonusLabel: 'Blue' },
-                uspb:   { mainCount: 5, mainMax: 69, bonusCount: 1, bonusMax: 26, bonusLabel: 'PB' },
-                calmax: { mainCount: 7, mainMax: 50, bonusCount: 0, bonusMax: 0, bonusLabel: '' },
+                ko645:  { mainCount: 6, mainMax: 45, bonusCount: 0, bonusMax: 0, colors: ['#fbc400', '#69c8f2', '#ff7272', '#aaa', '#b0d840'] },
+                cnssq:  { mainCount: 6, mainMax: 33, bonusCount: 1, bonusMax: 16, colors: ['#ff7272', '#ff7272', '#ff7272', '#ff7272', '#ff7272', '#ff7272'] },
+                uspb:   { mainCount: 5, mainMax: 69, bonusCount: 1, bonusMax: 26, colors: ['#eee', '#eee', '#eee', '#eee', '#eee'] },
+                calmax: { mainCount: 7, mainMax: 50, bonusCount: 0, bonusMax: 0, colors: ['#69c8f2', '#69c8f2', '#69c8f2', '#69c8f2', '#69c8f2', '#69c8f2', '#69c8f2'] },
             };
 
-            /**
-             * Securely picks a set of unique random numbers within a given range.
-             * @param {number} count - The number of unique integers to pick.
-             * @param {number} max - The maximum value (inclusive).
-             * @param {number} [min=1] - The minimum value (inclusive).
-             * @returns {number[]} An array of sorted unique random numbers.
-             */
             function pickUnique(count, max, min = 1) {
                 const numbers = new Set();
                 const range = max - min + 1;
-                if (count > range) {
-                    console.error("Cannot pick more unique numbers than the available range.");
-                    return [];
-                }
-                
-                // Create a buffer for random values. We may need more than `count` iterations.
+                if (count > range) return [];
                 const randomValues = new Uint32Array(count * 2);
-
                 while (numbers.size < count) {
                     crypto.getRandomValues(randomValues);
                     for (let i = 0; i < randomValues.length; i++) {
                         const randomNumber = (randomValues[i] % range) + min;
-                        numbers.add(randomNumber);
-                        if (numbers.size >= count) break;
+                        if (numbers.size < count) numbers.add(randomNumber);
                     }
                 }
                 return Array.from(numbers).sort((a, b) => a - b);
             }
 
-            /**
-             * Generates a complete set of lottery numbers based on the selected mode.
-             * @param {string} mode - The key for the selected lottery rule (e.g., 'ko645').
-             * @returns {{main: number[], bonus: number[]}}
-             */
             function generateLottoNumbers(mode) {
                 const rules = lottoRules[mode];
                 if (!rules) return { main: [], bonus: [] };
-
                 const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
-                const bonusNumbers = rules.bonusCount > 0 ? pickUnique(rules.bonusCount, rules.bonusMax) : [];
-                
+                const bonusNumbers = rules.bonusCount > 0 ? pickUnique(rules.bonusCount, rules.mainMax, 1, new Set(mainNumbers)) : [];
                 return { main: mainNumbers, bonus: bonusNumbers };
             }
 
-            /**
-             * Renders the generated numbers to the screen.
-             * @param {{main: number[], bonus: number[]}} result - The object containing main and bonus numbers.
-             */
-            function renderResult(result) {
+            function renderResult(result, mode) {
                 resultDiv.innerHTML = '';
-                
-                result.main.forEach(num => {
+                const rules = lottoRules[mode];
+
+                result.main.forEach((num, index) => {
                     const ball = document.createElement('span');
                     ball.className = 'lotto-ball';
                     ball.textContent = num;
+                    if(mode === 'ko645') {
+                        const colorIndex = Math.floor((num - 1) / 10);
+                        ball.style.background = rules.colors[colorIndex] || '#ccc';
+                    } else {
+                        ball.style.background = rules.colors[index] || '#ccc';
+                    }
                     resultDiv.appendChild(ball);
                 });
 
@@ -408,59 +256,16 @@
                 });
             }
 
-                        if (generateBtn && modeSelect && resultDiv) {
+            const performGeneration = () => {
+                const selectedMode = modeSelect.value;
+                const result = generateLottoNumbers(selectedMode);
+                renderResult(result, selectedMode);
+            };
 
-                            console.log("DOM elements found for generator. Attaching event listeners.");
-
-            
-
-                            const performGeneration = () => {
-
-                                const selectedMode = modeSelect.value;
-
-                                const result = generateLottoNumbers(selectedMode);
-
-                                renderResult(result);
-
-                            };
-
-            
-
-                            generateBtn.addEventListener('click', performGeneration);
-
-                            
-
-                            // Also generate on mode change for better UX
-
-                            modeSelect.addEventListener('change', performGeneration);
-
-            
-
-                            // Initial generation on load
-
-                            performGeneration(); // Generate numbers immediately on page load
-
-                        } else {
-
-                            console.error("One or more generator DOM elements not found:", { generateBtn, modeSelect, resultDiv });
-
-                        }
-                    renderResult(result);
-                });
-                
-                // Also generate on mode change for better UX
-                modeSelect.addEventListener('change', () => {
-                    const selectedMode = modeSelect.value;
-                    const result = generateLottoNumbers(selectedMode);
-                    renderResult(result);
-                });
-
-                // Initial generation on load
-                const initialResult = generateLottoNumbers(modeSelect.value);
-                renderResult(initialResult);
-            }
+            generateBtn.addEventListener('click', performGeneration);
+            modeSelect.addEventListener('change', performGeneration);
+            performGeneration(); // Initial generation
         });
     </script>
-
 </body>
 </html>
