@@ -409,3 +409,12 @@ body {
     .article-container h1 { font-size: 38px; }
     .article-container p, .article-container li { font-size: 18px; }
 }
+/* =========================================
+   [NEW] Mode Selector Specific Styles
+   ========================================= */
+.generator-controls #lotto-mode {
+  margin-left: 0;
+  width: fit-content;
+  min-width: 200px; /* For mobile touch convenience */
+  max-width: 100%;
+}
