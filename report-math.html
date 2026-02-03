@@ -1,61 +1,204 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- 1. 필수 메타 태그 및 폰트 설정 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title"></title>
-    <meta id="page-description" name="description" content="">
-    <link rel="stylesheet" href="style.css">
+    <title>수학 리포트 | 조합론으로 보는 로또 6/45 확률 구조</title>
+    <meta name="description" content="조합 공식 C(45,6) = 8,145,060. 로또 1등 당첨 확률의 수학적 계산 과정과 그 의미를 심층 분석합니다.">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        /* --- Mobile First Responsive CSS by Pro Publisher --- */
+
+        /* 0. 기본 & 변수 설정 */
+        :root {
+            --bg-color: #F8F9FA;
+            --card-bg-color: #FFFFFF;
+            --primary-text-color: #212529;
+            --secondary-text-color: #495057;
+            --highlight-bg-color: #EFF6FF;
+            --border-color: #E9ECEF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* 2. 레이아웃 전략 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--primary-text-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .article-container {
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* 3. 반응형 타이포그래피 (모바일) */
+        h1 {
+            font-size: 28px;
+            font-weight: 800; /* Extra-bold */
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 48px; /* 섹션 구분을 위한 넉넉한 상단 여백 */
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        p, li {
+            font-size: 16px;
+            line-height: 1.7; /* 모바일에 최적화된 줄간격 */
+            color: var(--secondary-text-color);
+        }
+        
+        p {
+             margin-bottom: 16px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        strong {
+            color: var(--primary-text-color);
+        }
+
+        /* 4. UI 요소 */
+        .intro-paragraph {
+            font-size: 18px;
+            color: var(--primary-text-color);
+            margin-top: 20px;
+        }
+
+        .highlight-box {
+            background-color: var(--highlight-bg-color);
+            padding: 24px;
+            margin: 24px 0;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1E40AF; /* 강조색 */
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            background-color: #f1f3f5;
+            transform: translateY(-2px);
+        }
+
+        /* 데스크탑/태블릿 반응형 스타일 (768px 이상) */
+        @media (min-width: 768px) {
+            .article-container {
+                max-width: 760px;
+                margin: 40px auto;
+                padding: 48px;
+                background-color: var(--card-bg-color);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+
+            p, li {
+                font-size: 18px;
+                line-height: 1.8; /* 넓은 화면에 맞는 시원한 줄간격 */
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="banner-container">🍀🍀🍀🍀</div>
-    <div class="page-body-container">
-        <aside class="sidebar">
-            <a href="index.html" class="logo">행운의 번호</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">홈</a></li>
-                    <li><a href="about.html">소개</a></li>
-                    <li><a href="contact.html">연락처</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <div class="content-area">
-            <main id="article-main" class="content-container article-content">
-                <!-- Content will be injected here by JavaScript -->
-            </main>
-            <footer class="main-footer">
-                <div class="footer-content">
-                    <div class="footer-links">
-                        <a href="about.html">소개</a>
-                        <a href="privacy.html">개인정보처리방침</a>
-                        <a href="terms.html">이용약관</a>
-                        <a href="contact.html">연락처</a>
-                    </div>
-                    <p>&copy; 2026 철부지 (chulbuji). All rights reserved.</p>
+
+    <main class="article-container">
+        <article>
+            <header>
+                <h1>조합론으로 보는 로또 6/45 확률 구조</h1>
+                <p class="intro-paragraph">"왜 로또 1등 당첨 확률은 814만 분의 1일까?" 이 질문에 대한 답은 '조합(Combination)'이라는 수학적 개념 속에 있습니다. 이 글에서는 로또 당첨 확률의 계산 과정을 수학적으로 증명하고, 그 숫자가 현실에서 어떤 의미를 갖는지 알아봅니다.</p>
+            </header>
+
+            <section>
+                <h2>핵심 공식: 조합 C(n, k)</h2>
+                <p>조합이란 '서로 다른 n개에서 순서에 상관없이 k개를 선택하는 경우의 수'를 말합니다. 로또는 45개의 번호 중 순서와 상관없이 6개의 번호를 맞추는 게임이므로, 조합 공식을 사용해 1등 당첨 경우의 수를 계산할 수 있습니다.</p>
+                
+                <div class="highlight-box">
+                    <p>C(n, k) = n! / (k! * (n-k)!)</p>
                 </div>
-            </footer>
-        </div>
-    </div>
-
-    <script src="analysis-data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const articleId = 'math-report'; // Hardcoded for this page
-            const articleData = analysisData.find(data => data.id === articleId);
-
-            if (articleData) {
-                document.title = articleData.title;
-                document.getElementById('page-description').setAttribute('content', articleData.description);
                 
-                const articleContainer = document.createElement('article');
-                articleContainer.innerHTML = articleData.content;
-                
-                document.getElementById('article-main').appendChild(articleContainer);
-            } else {
-                document.getElementById('article-main').innerHTML = '<h1>콘텐츠를 찾을 수 없습니다.</h1><p><a href="index.html">홈으로 돌아가기</a></p>';
-            }
-        });
-    </script>
+                <p>여기서 '!'는 팩토리얼(Factorial)을 의미하며, 1부터 해당 숫자까지 모든 정수를 곱한 값입니다. (예: 5! = 5 × 4 × 3 × 2 × 1 = 120)</p>
+            </section>
+
+            <section>
+                <h2>C(45, 6) 계산 과정 풀이</h2>
+                <p>로또 1등 당첨 확률에 공식을 대입하면 n=45, k=6이 됩니다.</p>
+                <ol>
+                    <li><strong>공식 대입:</strong> C(45, 6) = 45! / (6! * (45-6)!) = 45! / (6! * 39!)</li>
+                    <li><strong>분자 풀이:</strong> 45! = 45 × 44 × 43 × 42 × 41 × 40 × 39!</li>
+                    <li><strong>분모 풀이:</strong> 6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</li>
+                    <li><strong>수식 정리:</strong> C(45, 6) = (45 × 44 × 43 × 42 × 41 × 40 × 39!) / (720 × 39!)</li>
+                    <li><strong>약분:</strong> 양쪽의 39!를 약분하면, C(45, 6) = (45 × 44 × 43 × 42 × 41 × 40) / 720</li>
+                    <li><strong>계산:</strong> C(45, 6) = 5,864,443,200 / 720</li>
+                    <li><strong>최종 결과:</strong> <strong>8,145,060</strong></li>
+                </ol>
+                <p>따라서, 로또 1등에 당첨되는 경우의 수는 정확히 8,145,060가지 중 단 하나입니다. 이것이 바로 1등 당첨 확률이 <strong>8,145,060분의 1</strong>인 이유입니다.</p>
+            </section>
+
+            <section>
+                <h2>814만 분의 1, 얼마나 희박한 확률일까?</h2>
+                <p>이 숫자가 얼마나 거대한지 현실의 사물에 비유해 보겠습니다.</p>
+                <ul>
+                    <li><strong>쌀 한 가마니(80kg):</strong> 약 400만 개의 쌀알이 들어있습니다. 쌀 두 가마니(약 800만 알)를 펼쳐놓고 그중 단 하나의 특정 쌀알을 정확히 집어내는 확률과 같습니다.</li>
+                    <li><strong>벼락 맞을 확률:</strong> 약 600만 분의 1로 알려져 있습니다. 즉, 로또 1등 당첨은 벼락 맞는 것보다 어렵습니다.</li>
+                    <li><strong>매일 한 게임씩 구매:</strong> 매일 5천 원씩 로또를 구매한다고 가정하면, 8,145,060 게임을 모두 사려면 약 22,315년이 걸립니다.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>결론: 확률은 변하지 않는다</h2>
+                <p>수학적 계산이 증명하듯, '1, 2, 3, 4, 5, 6'의 당첨 확률과 무작위로 선택된 다른 번호 조합의 당첨 확률은 정확히 같습니다. 모든 조합은 8,145,060개의 가능성 중 하나일 뿐입니다.</p>
+                <div class="highlight-box">
+                    <p>통계적 패턴이나 과거 데이터에 의존하기보다는, 로또는 '운'에 기반한 오락이라는 점을 인지하고 소액으로 건전하게 즐기는 것이 가장 현명한 접근 방식입니다.</p>
+                </div>
+                <p>이 수학적 진실을 이해하는 것이 로또를 더 깊이 있고 재미있게 즐기는 첫걸음입니다.</p>
+            </section>
+
+            <a href="index.html" class="back-link">← 홈으로 돌아가기</a>
+        </article>
+    </main>
+
 </body>
 </html>
