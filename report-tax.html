@@ -3,59 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title"></title>
-    <meta id="page-description" name="description" content="">
-    <link rel="stylesheet" href="style.css">
+    <title>세금 리포트 | 로또 당첨금 과세 체계 분석</title>
+    <meta name="description" content="소득세법 제21조에 근거한 로또 당첨금 세금 계산법을 총정리합니다. 3억원 이하 22%, 3억 초과분 33% 세율 적용 방식과 실수령액을 계산해봅니다.">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        /* --- Reference CSS --- */
+        :root { --bg-color: #F8F9FA; --card-bg-color: #FFFFFF; --primary-text-color: #212529; --secondary-text-color: #495057; --highlight-bg-color: #EFF6FF; --border-color: #E9ECEF; --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: "Pretendard", sans-serif; color: var(--primary-text-color); -webkit-font-smoothing: antialiased; }
+        .article-container { width: 100%; padding: 20px; }
+        h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+        h2 { font-size: 22px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        p, li { font-size: 16px; line-height: 1.7; color: var(--secondary-text-color); margin-bottom: 16px; }
+        ul, ol { padding-left: 20px; margin-bottom: 16px; }
+        strong { color: var(--primary-text-color); }
+        .intro-paragraph { font-size: 18px; color: var(--primary-text-color); margin-top: 20px; }
+        .highlight-box { background-color: var(--highlight-bg-color); padding: 24px; margin: 24px 0; border-radius: 12px; font-size: 18px; font-weight: 500; text-align: left; }
+        .highlight-box p, .highlight-box li { margin: 0; color: #1E40AF; font-size: 16px; font-weight: 500;}
+        .highlight-box ul { padding-left: 20px; margin: 0;}
+        .back-link { display: inline-block; margin-top: 40px; padding: 10px 20px; background-color: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; color: var(--primary-text-color); }
+        .back-link:hover { background-color: #f1f3f5; transform: translateY(-2px); }
+
+        /* Table Styles for Consistency */
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+        th, td { border: 1px solid var(--border-color); padding: 12px 15px; text-align: left; line-height: 1.5; }
+        thead th { background-color: #F1F3F5; font-weight: 600; }
+        tbody tr:nth-child(even) { background-color: #F8F9FA; }
+        
+        @media (min-width: 768px) {
+            .article-container { max-width: 760px; margin: 40px auto; padding: 48px; background-color: var(--card-bg-color); border-radius: 16px; box-shadow: var(--shadow); }
+            h1 { font-size: 36px; } h2 { font-size: 28px; } p, li { font-size: 18px; line-height: 1.8; }
+            .highlight-box p, .highlight-box li {font-size: 18px;}
+        }
+    </style>
 </head>
 <body>
-    <div class="banner-container">🍀🍀🍀🍀</div>
-    <div class="page-body-container">
-        <aside class="sidebar">
-            <a href="index.html" class="logo">행운의 번호</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">홈</a></li>
-                    <li><a href="about.html">소개</a></li>
-                    <li><a href="contact.html">연락처</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <div class="content-area">
-            <main id="article-main" class="content-container article-content">
-                <!-- Content will be injected here by JavaScript -->
-            </main>
-            <footer class="main-footer">
-                <div class="footer-content">
-                    <div class="footer-links">
-                        <a href="about.html">소개</a>
-                        <a href="privacy.html">개인정보처리방침</a>
-                        <a href="terms.html">이용약관</a>
-                        <a href="contact.html">연락처</a>
-                    </div>
-                    <p>&copy; 2026 철부지 (chulbuji). All rights reserved.</p>
+
+    <main class="article-container">
+        <article>
+            <header>
+                <h1>소득세법에 따른 복권 당첨금 과세 체계</h1>
+                <p class="intro-paragraph">"만약 20억에 당첨된다면 실제로 얼마를 받게 될까?" 로또 당첨금은 소득세법상 '기타소득'으로 분류되어, 정해진 세율에 따라 세금을 원천징수한 후 지급됩니다. 이 글에서는 복잡한 세금 계산법을 누구나 쉽게 따라 할 수 있도록 완벽하게 분해해 드립니다.</p>
+            </header>
+
+            <section>
+                <h2>과세 근거 및 세율 구간</h2>
+                <p>복권 당첨금의 과세 기준은 <strong>소득세법 제21조(기타소득)</strong> 및 <strong>동법 시행령</strong>에 명시되어 있습니다. 핵심은 당첨금액에 따라 세율이 달라지는 '분리과세' 방식입니다.</p>
+                <div class="highlight-box">
+                    <ul>
+                        <li><strong>5만 원 이하:</strong> 비과세</li>
+                        <li><strong>5만 원 초과 ~ 3억 원 이하:</strong> 22% (소득세 20% + 지방소득세 2%)</li>
+                        <li><strong>3억 원 초과 금액:</strong> 33% (소득세 30% + 지방소득세 3%)</li>
+                    </ul>
                 </div>
-            </footer>
-        </div>
-    </div>
+                <p>가장 중요한 포인트는 <strong>'3억 원 초과분'</strong>에 대해서만 33%의 높은 세율이 적용된다는 점입니다. 전체 금액에 33%를 곱하는 것이 아닙니다.</p>
+            </section>
 
-    <script src="analysis-data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const articleId = 'tax-report'; // Hardcoded for this page
-            const articleData = analysisData.find(data => data.id === articleId);
+            <section>
+                <h2>실수령액 계산 시뮬레이션 (Case Study)</h2>
+                <p>실제 당첨금을 예로 들어 세금과 실수령액을 계산해 보겠습니다.</p>
+                
+                <h3>Case 1: 총 당첨금 10억 원</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>계산 과정</th><th>금액</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>총 당첨금</td><td>-</td><td>1,000,000,000 원</td></tr>
+                        <tr><td>3억 원 이하 구간 세금</td><td>300,000,000 원 × 22%</td><td>66,000,000 원</td></tr>
+                        <tr><td>3억 원 초과 구간 세금</td><td>(1,000,000,000 - 300,000,000) 원 × 33%</td><td>231,000,000 원</td></tr>
+                        <tr><td><strong>총 공제 세액</strong></td><td>66,000,000 + 231,000,000</td><td><strong>297,000,000 원</strong></td></tr>
+                        <tr><td><strong>최종 실수령액</strong></td><td>1,000,000,000 - 297,000,000</td><td><strong>703,000,000 원</strong></td></tr>
+                    </tbody>
+                </table>
 
-            if (articleData) {
-                document.title = articleData.title;
-                document.getElementById('page-description').setAttribute('content', articleData.description);
-                
-                const articleContainer = document.createElement('article');
-                articleContainer.innerHTML = articleData.content;
-                
-                document.getElementById('article-main').appendChild(articleContainer);
-            } else {
-                document.getElementById('article-main').innerHTML = '<h1>콘텐츠를 찾을 수 없습니다.</h1><p><a href="index.html">홈으로 돌아가기</a></p>';
-            }
-        });
-    </script>
+                <h3>Case 2: 총 당첨금 20억 원</h3>
+                <table>
+                     <thead>
+                        <tr><th>구분</th><th>계산 과정</th><th>금액</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>총 당첨금</td><td>-</td><td>2,000,000,000 원</td></tr>
+                        <tr><td>3억 원 이하 구간 세금</td><td>300,000,000 원 × 22%</td><td>66,000,000 원</td></tr>
+                        <tr><td>3억 원 초과 구간 세금</td><td>(2,000,000,000 - 300,000,000) 원 × 33%</td><td>561,000,000 원</td></tr>
+                        <tr><td><strong>총 공제 세액</strong></td><td>66,000,000 + 561,000,000</td><td><strong>627,000,000 원</strong></td></tr>
+                        <tr><td><strong>최종 실수령액</strong></td><td>2,000,000,000 - 627,000,000</td><td><strong>1,373,000,000 원</strong></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>결론: 당첨 이후의 계획이 더 중요하다</h2>
+                <p>세금 계산법을 아는 것은 당첨의 기쁨을 현실로 만드는 첫 단계입니다. 세후 금액을 정확히 파악해야만 환상에서 벗어나 안정적인 미래를 위한 재무 계획을 세울 수 있습니다.</p>
+                <div class="highlight-box">
+                    <p>로또 당첨은 인생의 끝이 아닌 새로운 시작입니다. 전문가의 도움을 받아 세금을 제외한 소중한 자산을 현명하게 지키고 불려나가시길 바랍니다.</p>
+                </div>
+            </section>
+
+            <a href="index.html" class="back-link">← 홈으로 돌아가기</a>
+        </article>
+    </main>
+
 </body>
 </html>
