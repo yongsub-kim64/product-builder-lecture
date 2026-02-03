@@ -76,7 +76,7 @@ const i18n = {
     },
 
     init() {
-        const langSelect = document.getElementById('lang-select');
+        const langSelect = document.getElementById('lang-toggle');
         const initialLang = this.getInitialLanguage();
 
         if (langSelect) {

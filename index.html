@@ -116,7 +116,7 @@
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-                <select id="lang-select" class="lang-selector">
+                <select id="lang-toggle" class="lang-selector">
                     <option value="ko">KR</option>
                     <option value="en">EN</option>
                 </select>
@@ -129,10 +129,10 @@
         <!-- 3. Main Grid (Restored) -->
         <div class="main-grid">
             <div class="card generator-card">
-                <h2 class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
-                <p class="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
+                <h2 id="main-title" class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
+                <p id="main-desc" classs="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
                 <div class="generator-controls">
-                    <label for="lotto-mode" data-i18n-key="generatorModeLabel">생성 모드</label>
+                    <label id="mode-label" for="lotto-mode" data-i18n-key="generatorModeLabel">생성 모드</label>
                     <select id="lotto-mode">
                         <option value="ko645" data-i18n-key="modeKo645">대한민국 로또 6/45</option>
                         <option value="cnssq" data-i18n-key="modeCnSsq">중국 쌍색구</option>
@@ -141,7 +141,7 @@
                     </select>
                 </div>
                 <div id="lotto-result"></div>
-                <button id="generate-lotto-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
+                <button id="gen-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
             </div>
             <div id="featured-card-container-math" class="card"></div>
             <div id="featured-card-container-tax" class="card"></div>
