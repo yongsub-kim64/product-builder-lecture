@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chulbuji.com/sitemap.xml
+Sitemap: https://product-builder-lecture-dc6.pages.dev/sitemap.xml
