@@ -85,6 +85,20 @@ img {
   text-decoration: none;
 }
 
+.lang-selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 /* === Hero Section === */
 .hero {
   text-align: center;
@@ -332,4 +346,46 @@ img {
   .main-nav {
     display: none; /* Simple responsive approach: hide nav on mobile */
   }
+}
+/* =========================================
+   Article Detail Page Styles (Shared)
+   ========================================= */
+:root {
+    --bg-color: #F8F9FA;
+    --card-bg-color: #FFFFFF;
+    --highlight-bg-color: #EFF6FF;
+    --border-color: #E9ECEF;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.article-container { width: 100%; padding: 20px; }
+
+/* Typography */
+.article-container h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; color: #212529; }
+.article-container h2 { font-size: 22px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); color: #212529; }
+.article-container p, .article-container li { font-size: 16px; line-height: 1.7; color: #495057; margin-bottom: 16px; }
+.article-container ul, .article-container ol { padding-left: 20px; margin-bottom: 16px; }
+.article-container strong { color: #212529; font-weight: 700; }
+
+/* UI Elements */
+.intro-paragraph { font-size: 18px; color: #212529; margin-top: 20px; line-height: 1.6; }
+
+.highlight-box { background-color: var(--highlight-bg-color); padding: 24px; margin: 24px 0; border-radius: 12px; text-align: left; }
+.highlight-box p, .highlight-box li { margin: 0; color: #1E40AF; font-size: 16px; font-weight: 500; }
+
+.back-link { display: inline-block; margin-top: 40px; padding: 10px 20px; background-color: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; color: #212529; }
+.back-link:hover { background-color: #f1f3f5; transform: translateY(-2px); }
+
+/* Tables */
+.article-container table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+.article-container th, .article-container td { border: 1px solid var(--border-color); padding: 12px 15px; text-align: left; line-height: 1.5; }
+.article-container th { background-color: #F1F3F5; font-weight: 600; color: #212529; }
+.article-container tbody tr:nth-child(even) { background-color: #F8F9FA; }
+
+/* Responsive (Tablet/PC) */
+ @media (min-width: 768px) {
+    .article-container { max-width: 760px; margin: 40px auto; padding: 48px; background-color: #FFFFFF; border-radius: 16px; box-shadow: var(--shadow); }
+    .article-container h1 { font-size: 36px; }
+    .article-container h2 { font-size: 28px; }
+    .article-container p, .article-container li { font-size: 18px; line-height: 1.8; }
 }
