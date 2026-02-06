@@ -19,13 +19,43 @@
     ],
     "redirects": [
       {
+        "source": "/en/tools/generator",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/generator/",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
         "source": "/en/tools/genertor",
-        "destination": "/en/tools/generator",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/genertor/",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/lotto",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/lotto/",
+        "destination": "/tools/lotto/",
         "type": 301
       },
       {
         "source": "/tools/genertor",
-        "destination": "/tools/generator",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/tools/genertor/",
+        "destination": "/tools/lotto/",
         "type": 301
       },
       {
@@ -35,6 +65,11 @@
       },
       {
         "source": "/en/terms",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/en/term",
         "destination": "/terms",
         "type": 301
       },
