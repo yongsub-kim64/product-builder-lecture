@@ -1,228 +1,74 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>도구 모음 | chulbuji</title>
-  <meta name="description" content="실험 과정에서 탄생한 도구들. 로또 생성기, 기록 분석기 등 부산물들을 체험하세요.">
-  <link rel="canonical" href="https://chulbuji.com/tools">
-  <link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools">
-  <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools">
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="도구 모음 | chulbuji">
-    <meta property="og:description" content="실험 과정에서 탄생한 도구들. 로또 생성기, 기록 분석기 등 부산물들을 체험하세요.">
-    <meta property="og:url" content="https://chulbuji.com/tools">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ko_KR">
-    <meta property="og:locale:alternate" content="en_US">
+   <!DOCTYPE html>
+   <html lang="ko">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>도구 모음 | chulbuji</title>
+     <meta name="description" content="실험 과정에서 탄생한 도구들. 로또 생성기, 기록 분석기 등 부산물들을 체험하세요.">
+     <link rel="canonical" href="https://chulbuji.com/tools">
+     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools">
+     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools">
+     <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/">
+     <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+     <header>
+       <nav class="main-nav">
+         <a href="/" class="logo">chulbuji</a>
+         <div class="nav-menu">
+           <a href="/">Home</a>
+           <a href="/log">Log</a>
+           <a href="/projects">Projects</a>
+           <a href="/tools">Tools</a>
+           <a href="/insight">Insight</a>
+           <a href="/about">About</a>
+         </div>
+         <a href="/en" class="lang-toggle">EN</a>
+       </nav>
+     </header>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179"
-     crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-
-    <link rel="stylesheet" href="./style.v2.css?v=20250203" />
-    <link rel="stylesheet" href="style.css?v=20250203" />
-
-    <script src="./analysis-data.js?v=20250203"></script>
-    <script src="./encyclopedia-data.js?v=20250203"></script>
-
-    <style>
-        /* Base Styles & CSS Reset */
-        :root {
-            --background-color: #F3F4F6;
-            --primary-color: #1E3A8A;
-            --text-color-main: #1F2937;
-            --text-color-muted: #6B7280;
-            --card-background: #FFFFFF;
-            --border-color: #E5E7EB;
-            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --card-radius: 16px;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color-main);
-            line-height: 1.6;
-        }
-        a { color: var(--primary-color); text-decoration: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-   /* Navigation */
-   .main-nav {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 1rem 2rem;
-     border-bottom: 1px solid #eee;
-   }
-   .nav-menu {
-     display: flex;
-     gap: 1.5rem;
-   }
-   .nav-menu a {
-     text-decoration: none;
-     color: #333;
-   }
-   .lang-toggle {
-     padding: 0.5rem 1rem;
-     border: 1px solid #333;
-     border-radius: 4px;
-     text-decoration: none;
-     color: #333;
-   }
-
-        /* Sections Styling */
-        .card { background-color: var(--card-background); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 24px; display: flex; flex-direction: column; }
-        .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
-        .card-description { font-size: 0.95rem; color: var(--text-color-muted); flex-grow: 1; margin-bottom: 20px; }
-        
-        /* Main Grid (Restored) */
-        .main-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
-        .generator-card { grid-column: 1 / -1; }
-        .generator-controls { margin: 16px 0; display: flex; align-items: center; gap: 10px; }
-        #lotto-result { display: flex; justify-content: center; align-items: center; min-height: 60px; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
-        .lotto-ball { display: inline-flex; justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; font-weight: 700; font-size: 1.1rem; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
-        .lotto-ball--bonus { background: linear-gradient(145deg, #d63333, #b32a2a); }
-        
-        /* Hero Section (Relocated) */
-        .hero { text-align: center; padding: 4rem 2rem; }
-        .hero h1 { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
-        .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 0.5rem; }
-        .cta-buttons { margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; }
-        .btn-primary { padding: 0.75rem 1.5rem; background: #000; color: #fff; text-decoration: none; border-radius: 4px; }
-        .btn-secondary { padding: 0.75rem 1.5rem; background: #fff; color: #000; border: 1px solid #000; text-decoration: none; border-radius: 4px; }
-        .tag { font-size: 0.9rem; color: #999; }
-
-        /* Encyclopedia & Footer */
-        .section-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin: 60px 0 24px; }
-        .encyclopedia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        footer {
-            margin-top: 4rem;
-            padding: 2rem;
-            border-top: 1px solid #eee;
-            text-align: center;
-        }
-        .footer-links {
-            margin-bottom: 1rem;
-        }
-        .footer-links a {
-            margin: 0 0.5rem;
-            text-decoration: none;
-            color: #666;
-        }
-        .copyright {
-            font-size: 0.9rem;
-            color: #999;
-        }
-        
-        .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700; text-align: center; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-primary { background-color: var(--primary-color); color: #FFFFFF; }
-        .btn-primary:active { transform: scale(0.97); }
-        .btn-secondary { background-color: #F3F4F6; color: var(--text-color-main); }
-
-        /* Tools Grid */
-       .tools-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 2rem;
-         margin: 2rem 0;
-       }
-       .tool-card {
-         padding: 2rem;
-         border: 1px solid #eee;
-         border-radius: 8px;
-       }
-       .tool-card h3 {
-         margin-bottom: 1rem;
-       }
-       .tool-card.coming-soon {
-         opacity: 0.5;
-       }
-
-        /* Responsive */
-        @media (max-width: 992px) { .encyclopedia-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) {
-            .main-nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero h1 { font-size: 2rem; }
-            .main-grid, .encyclopedia-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KZJ3H02EQ5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KZJ3H02EQ5');
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v5dcajl5yl");
-</script>
-</head>
-<body>
-    <header>
-     <nav class="main-nav">
-       <a href="/" class="logo">chulbuji</a>
-       <div class="nav-menu">
-         <a href="/">Home</a>
-         <a href="/log">Log</a>
-         <a href="/projects">Projects</a>
-         <a href="/tools">Tools</a>
-         <a href="/insight">Insight</a>
-         <a href="/about">About</a>
-       </div>
-       <a href="/en" class="lang-toggle">EN</a>
-     </nav>
-   </header>
-     
-     <main>
+     <main style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;">
        <section class="tools-intro">
          <h1>Tools</h1>
-         <p>도구는 부산물, 기록이 주인공입니다.</p>
-         <p>실험 과정에서 탄생한 도구들을 소개합니다.</p>
+         <p style="font-size: 1.2rem; color: #666; margin: 1rem 0 3rem;">
+           도구는 부산물, 기록이 주인공입니다.<br>
+           실험 과정에서 탄생한 도구들을 소개합니다.
+         </p>
        </section>
 
-       <section class="tools-grid">
-         <div class="tool-card">
-           <h3>로또 번호 생성기</h3>
-           <p>AI가 패턴을 분석해 번호를 추천합니다.</p>
-           <a href="/tools/lotto" class="btn-primary">사용하기</a>
+       <section class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+         <div class="tool-card" style="padding: 2rem; border: 1px solid #eee; border-radius: 8px;">
+           <h3 style="margin-bottom: 1rem;">🎲 로또 번호 생성기</h3>
+           <p style="color: #666; margin-bottom: 1.5rem;">
+             AI가 패턴을 분석해 번호를 추천합니다. 
+             암호학적으로 안전한 난수를 사용합니다.
+           </p>
+           <a href="/tools/lotto/" style="display: inline-block; padding: 0.75rem 1.5rem; background: #000; color: #fff; text-decoration: none; border-radius: 4px;">
+             사용하기
+           </a>
          </div>
          
-         <!-- 미래에 추가될 도구들 -->
-         <div class="tool-card coming-soon">
-           <h3>기록 분석기</h3>
-           <p>Coming Soon</p>
+         <div class="tool-card coming-soon" style="padding: 2rem; border: 1px solid #eee; border-radius: 8px; opacity: 0.5;">
+           <h3 style="margin-bottom: 1rem;">📊 기록 분석기</h3>
+           <p style="color: #999;">Coming Soon</p>
+         </div>
+
+         <div class="tool-card coming-soon" style="padding: 2rem; border: 1px solid #eee; border-radius: 8px; opacity: 0.5;">
+           <h3 style="margin-bottom: 1rem;">🤖 AI 어시스턴트</h3>
+           <p style="color: #999;">Coming Soon</p>
          </div>
        </section>
      </main>
 
-   <footer>
-     <div class="footer-content">
-       <div class="footer-links">
-         <a href="privacy.html">Privacy</a>
+     <footer style="margin-top: 4rem; padding: 2rem; border-top: 1px solid #eee; text-align: center;">
+       <div class="footer-links" style="margin-bottom: 1rem;">
+         <a href="/privacy" style="margin: 0 0.5rem; color: #666; text-decoration: none;">Privacy</a>
          <span>|</span>
-         <a href="terms.html">Terms</a>
+         <a href="/terms" style="margin: 0 0.5rem; color: #666; text-decoration: none;">Terms</a>
          <span>|</span>
-         <a href="contact.html">Contact</a>
+         <a href="/contact" style="margin: 0 0.5rem; color: #666; text-decoration: none;">Contact</a>
        </div>
-       <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
-     </div>
-   </footer>
-</body>
-</html>
+       <p style="font-size: 0.9rem; color: #999;">© 2025 chulbuji. All rights reserved.</p>
+     </footer>
+   </body>
+   </html>
