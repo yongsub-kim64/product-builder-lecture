@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Tools | chulbuji</title>
+  <meta name="description" content="Tools born from the process of experimentation. Try out byproducts like the Lotto Number Generator, Record Analyzer, and more.">
+  <link rel="canonical" href="https://chulbuji.com/en/tools">
+  <link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools">
+  <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools">
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>생각을 구조로, 구조를 실행으로 | chulbuji</title>
-    <meta name="description" content="AI와 함께 흐릿한 생각을 선명하게 만듭니다. 도구는 부산물, 기록이 주인공입니다.">
-    <link rel="canonical" href="https://chulbuji.com/">
-    
-    <!-- hreflang -->
-    <link rel="alternate" hreflang="ko" href="https://chulbuji.com/">
-    <link rel="alternate" hreflang="en" href="https://chulbuji.com/en">
-    <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/">
-    
     <!-- Open Graph -->
-    <meta property="og:title" content="생각을 구조로, 구조를 실행으로 | chulbuji">
-    <meta property="og:description" content="AI와 함께 흐릿한 생각을 선명하게 만듭니다.">
-    <meta property="og:url" content="https://chulbuji.com/">
+    <meta property="og:title" content="Tools | chulbuji">
+    <meta property="og:description" content="Tools born from the process of experimentation. Try out byproducts like the Lotto Number Generator, Record Analyzer, and more.">
+    <meta property="og:url" content="https://chulbuji.com/en/tools">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ko_KR">
-    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179"
      crossorigin="anonymous"></script>
 
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-    <link rel="stylesheet" href="./style.v2.css?v=20250203" />
-    <link rel="stylesheet" href="style.css?v=20250203" />
+    <link rel="stylesheet" href="../../style.v2.css?v=20250203" />
+    <link rel="stylesheet" href="../../style.css?v=20250203" />
 
-    <script src="./analysis-data.js?v=20250203"></script>
-    <script src="./encyclopedia-data.js?v=20250203"></script>
+    <script src="../../analysis-data.js?v=20250203"></script>
+    <script src="../../encyclopedia-data.js?v=20250203"></script>
 
     <style>
         /* Base Styles & CSS Reset */
@@ -127,47 +124,24 @@
         .btn-primary:active { transform: scale(0.97); }
         .btn-secondary { background-color: #F3F4F6; color: var(--text-color-main); }
 
-        /* Recent Logs */
-   .recent-logs {
-     margin: 4rem 0;
-   }
-   .log-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     gap: 1.5rem;
-     margin: 2rem 0;
-   }
-   .log-card {
-     padding: 1.5rem;
-     border: 1px solid #eee;
-     border-radius: 8px;
-   }
-   .log-card h3 a {
-     text-decoration: none;
-     color: #000;
-   }
-   .log-card .excerpt {
-     color: #666;
-     margin: 0.5rem 0;
-   }
-   .log-card time {
-     font-size: 0.9rem;
-     color: #999;
-   }
-   .log-card .tag {
-     display: inline-block;
-     padding: 0.25rem 0.5rem;
-     background: #f0f0f0;
-     border-radius: 4px;
-     font-size: 0.8rem;
-     margin-top: 0.5rem;
-   }
-   .view-all {
-     display: inline-block;
-     margin-top: 1rem;
-     color: #000;
-     text-decoration: none;
-   }
+        /* Tools Grid */
+       .tools-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 2rem;
+         margin: 2rem 0;
+       }
+       .tool-card {
+         padding: 2rem;
+         border: 1px solid #eee;
+         border-radius: 8px;
+       }
+       .tool-card h3 {
+         margin-bottom: 1rem;
+       }
+       .tool-card.coming-soon {
+         opacity: 0.5;
+       }
 
         /* Responsive */
         @media (max-width: 992px) { .encyclopedia-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -200,103 +174,54 @@
     })(window, document, "clarity", "script", "v5dcajl5yl");
 </script>
 </head>
-<body class="ui-v2">
-
+<body>
     <header>
      <nav class="main-nav">
-       <a href="/" class="logo">chulbuji</a>
+       <a href="/en" class="logo">chulbuji</a>
        <div class="nav-menu">
-         <a href="/">Home</a>
-         <a href="/log">Log</a>
-         <a href="/projects">Projects</a>
-         <a href="/tools">Tools</a>
-         <a href="/insight">Insight</a>
-         <a href="/about">About</a>
+         <a href="/en">Home</a>
+         <a href="/en/log">Log</a>
+         <a href="/en/projects">Projects</a>
+         <a href="/en/tools">Tools</a>
+         <a href="/en/insight">Insight</a>
+         <a href="/en/about">About</a>
        </div>
-       <a href="/en" class="lang-toggle">EN</a>
+       <a href="/" class="lang-toggle">KO</a>
      </nav>
    </header>
+     
+     <main>
+       <section class="tools-intro">
+         <h1>Tools</h1>
+         <p>Tools are byproducts; the log is the story.</p>
+       </section>
 
-    <!-- 2. Main Container -->
-    <main class="container">
-
-
-        <!-- 4. Hero Section (Relocated) -->
-        <section class="hero">
-          <h1>생각을 구조로, 구조를 실행으로</h1>
-          <p class="subtitle">AI와 함께 흐릿한 생각을 선명하게 만듭니다.</p>
-          <p class="subtitle">도구는 부산물, 기록이 주인공입니다.</p>
-          <div class="cta-buttons">
-            <a href="/log" class="btn-primary">기록 보기</a>
-            <a href="/insight" class="btn-secondary">인사이트 리포트</a>
-          </div>
-          <p class="tag">실험·기록·업데이트</p>
-        </section>
-
-   <section class="recent-logs">
-     <h2>최신 기록</h2>
-     <div class="log-grid">
-       <article class="log-card">
-         <h3><a href="/log/001-rebrand-launch">리브랜딩 출항</a></h3>
-         <p class="excerpt">로또 샘플에서 기록 허브로의 전환을 시작했다...</p>
-         <time>2025-02-06</time>
-         <span class="tag">rebrand</span>
-       </article>
-       
-       <!-- 더미 데이터 2개 더 -->
-       <article class="log-card">
-         <h3><a href="#">Coming Soon</a></h3>
-         <p class="excerpt">곧 공개됩니다</p>
-       </article>
-       <article class="log-card">
-         <h3><a href="#">Coming Soon</a></h3>
-         <p class="excerpt">곧 공개됩니다</p>
-       </article>
-     </div>
-     <a href="/log" class="view-all">모든 기록 보기 →</a>
-   </section>
-    </main>
+       <section class="tools-grid">
+         <div class="tool-card">
+           <h3>Lotto Number Generator</h3>
+           <p>AI analyzes patterns to recommend numbers.</p>
+           <a href="/en/tools/lotto" class="btn-primary">Try it</a>
+         </div>
+         
+         <!-- Future tools -->
+         <div class="tool-card coming-soon">
+           <h3>Record Analyzer</h3>
+           <p>Coming Soon</p>
+         </div>
+       </section>
+     </main>
 
    <footer>
      <div class="footer-content">
        <div class="footer-links">
-         <a href="privacy.html">Privacy</a>
+         <a href="../../privacy.html">Privacy</a>
          <span>|</span>
-         <a href="terms.html">Terms</a>
+         <a href="../../terms.html">Terms</a>
          <span>|</span>
-         <a href="contact.html">Contact</a>
+         <a href="../../contact.html">Contact</a>
        </div>
        <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
      </div>
    </footer>
-
-    <!-- 8. Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Dynamic Card Rendering
-            const mathContainer = document.getElementById('featured-card-container-math');
-            const taxContainer = document.getElementById('featured-card-container-tax');
-            const encyclopediaContainer = document.getElementById('encyclopedia-grid');
-
-            if (mathContainer && typeof analysisData !== 'undefined') {
-                const mathReport = analysisData.find(item => item.id === 'math-report');
-                if (mathReport) mathContainer.innerHTML = `<h3 class="card-title">${mathReport.title}</h3><p class="card-description">${mathReport.description}</p><a href="report-math.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
-            }
-            if (taxContainer && typeof analysisData !== 'undefined') {
-                const taxReport = analysisData.find(item => item.id === 'tax-report');
-                if (taxReport) taxContainer.innerHTML = `<h3 class="card-title">${taxReport.title}</h3><p class="card-description">${taxReport.description}</p><a href="report-tax.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
-            }
-            if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
-                encyclopediaData.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `<h3 class="card-title">${item.title}</h3><p class="card-description">${item.description}</p><a href="${item.href}" class="btn btn-secondary" style="margin-top: auto;">더 깊이 보기</a>`;
-                    encyclopediaContainer.appendChild(card);
-                });
-            }
-
-
-        });
-    </script>
 </body>
 </html>
