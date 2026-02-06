@@ -175,26 +175,7 @@
 
     <!-- 2. Main Container -->
     <main class="container">
-        <!-- 3. Main Grid (Restored) -->
-        <div class="main-grid">
-            <div class="card generator-card">
-                <h2 id="main-title" class="card-title" data-i18n-key="generatorTitle">사고 정리형 번호 조합 생성기 (CSPRNG)</h2>
-                <p id="main-desc" classs="card-description" style="flex-grow: 0;" data-i18n-key="generatorDesc">암호학적으로 안전한 난수로 편향 없이 번호 조합을 생성합니다. 결과를 예측하거나 보장하지 않으며, 확률·통계 개념을 이해하기 위한 도구입니다.</p>
-                <div class="generator-controls">
-                    <label id="mode-label" for="lotto-mode" data-i18n-key="generatorModeLabel">생성 모드</label>
-                    <select id="lotto-mode">
-                        <option value="ko645" data-i18n-key="modeKo645">대한민국 로또 6/45</option>
-                        <option value="cnssq" data-i18n-key="modeCnSsq">중국 쌍색구</option>
-                        <option value="uspb" data-i18n-key="modeUsPb">미국 파워볼</option>
-                        <option value="calmax" data-i18n-key="modeCaLmax">캐나다 로또맥스</option>
-                    </select>
-                </div>
-                <div id="lotto-result"></div>
-                <button id="gen-btn" class="btn btn-primary" data-i18n-key="generatorBtn">무작위 조합 생성</button>
-            </div>
-            <div id="featured-card-container-math" class="card"></div>
-            <div id="featured-card-container-tax" class="card"></div>
-        </div>
+
 
         <!-- 4. Hero Section (Relocated) -->
         <section class="hero">
@@ -208,11 +189,7 @@
           <p class="tag">Experiment · Log · Iterate</p>
         </section>
 
-        <!-- 5. Encyclopedia Section -->
-        <section class="encyclopedia-section">
-            <h2 class="section-title">복권 정보 백과사전</h2>
-            <div id="encyclopedia-grid" class="encyclopedia-grid"></div>
-        </section>
+
     </main>
 
 <footer>
@@ -236,7 +213,7 @@
                 if (mathReport) mathContainer.innerHTML = `<h3 class="card-title">${mathReport.title}</h3><p class="card-description">${mathReport.description}</p><a href="report-math.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
             }
             if (taxContainer && typeof analysisData !== 'undefined') {
-                const taxReport = analysisData.find(item => item.id === 'tax-report');
+                const taxReport = analysisData.find(item => item.id === 'tax-tax');
                 if (taxReport) taxContainer.innerHTML = `<h3 class="card-title">${taxReport.title}</h3><p class="card-description">${taxReport.description}</p><a href="report-tax.html" class="btn btn-secondary" style="margin-top: auto;">리포트 보기</a>`;
             }
             if (encyclopediaContainer && typeof encyclopediaData !== 'undefined') {
@@ -247,79 +224,6 @@
                     encyclopediaContainer.appendChild(card);
                 });
             }
-
-            // Lotto Number Generator
-            const generateBtn = document.getElementById('generate-lotto-btn');
-            const resultDiv = document.getElementById('lotto-result');
-            const modeSelect = document.getElementById('lotto-mode');
-
-            if (!generateBtn || !resultDiv || !modeSelect) return;
-
-            const lottoRules = {
-                ko645:  { mainCount: 6, mainMax: 45, colors: ['#fbc400', '#69c8f2', '#ff7272', '#aaa', '#b0d840'] },
-                cnssq:  { mainCount: 6, mainMax: 33, bonus: { count: 1, max: 16 }, colors: ['#ff7272'] },
-                uspb:   { mainCount: 5, mainMax: 69, bonus: { count: 1, max: 26 }, colors: ['#eee'] },
-                calmax: { mainCount: 7, mainMax: 50, colors: ['#69c8f2'] },
-            };
-
-            function pickUnique(count, max, min = 1, exclude = new Set()) {
-                const numbers = new Set();
-                const range = max - min + 1;
-                if (count > (range - exclude.size)) return [];
-                const randomValues = new Uint32Array(count * 3);
-                while (numbers.size < count) {
-                    crypto.getRandomValues(randomValues);
-                    for (const val of randomValues) {
-                        const num = (val % range) + min;
-                        if (!exclude.has(num)) numbers.add(num);
-                        if (numbers.size >= count) break;
-                    }
-                }
-                return Array.from(numbers).sort((a, b) => a - b);
-            }
-
-            function generateLottoNumbers(mode) {
-                const rules = lottoRules[mode];
-                if (!rules) return { main: [], bonus: [] };
-                const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
-                const bonusNumbers = rules.bonus ? pickUnique(rules.bonus.count, rules.bonus.max, 1, new Set(mainNumbers)) : [];
-                return { main: mainNumbers, bonus: bonusNumbers };
-            }
-
-            function renderResult(result, mode) {
-                resultDiv.innerHTML = '';
-                const rules = lottoRules[mode];
-                result.main.forEach(num => {
-                    const ball = document.createElement('span');
-                    ball.className = 'lotto-ball';
-                    ball.textContent = num;
-                    if(mode === 'ko645') {
-                        ball.style.background = rules.colors[Math.floor((num - 1) / 10)] || '#ccc';
-                    } else if (mode === 'uspb') {
-                        ball.style.color = '#333';
-                        ball.style.background = rules.colors[0];
-                    } else {
-                        ball.style.background = rules.colors[0] || '#ccc';
-                    }
-                    resultDiv.appendChild(ball);
-                });
-                result.bonus.forEach(num => {
-                    const ball = document.createElement('span');
-                    ball.className = 'lotto-ball lotto-ball--bonus';
-                    ball.textContent = num;
-                    resultDiv.appendChild(ball);
-                });
-            }
-
-            const performGeneration = () => {
-                const selectedMode = modeSelect.value;
-                const result = generateLottoNumbers(selectedMode);
-                renderResult(result, selectedMode);
-            };
-
-            generateBtn.addEventListener('click', performGeneration);
-            modeSelect.addEventListener('change', performGeneration);
-            performGeneration(); // Initial generation on load
         });
     </script>
 </body>
