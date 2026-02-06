@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lottery Number Generator | chulbuji</title>
+  <meta name="description" content="Generate random lottery numbers using cryptographically secure algorithms. A fair and unbiased number generator for educational purposes.">
+  <link rel="canonical" href="https://chulbuji.com/en/tools/lotto">
+  <link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools/lotto">
+  <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools/lotto">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="/style.v2.css?v=20250203" />
+  <link rel="stylesheet" href="/style.css?v=20250203" />
+
+  <style>
+    :root {
+      --background-color: #F3F4F6;
+      --primary-color: #1E3A8A;
+      --text-color-main: #1F2937;
+      --text-color-muted: #6B7280;
+      --card-background: #FFFFFF;
+      --border-color: #E5E7EB;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --card-radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color-main);
+      line-height: 1.6;
+    }
+    a { color: var(--primary-color); text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+    }
+    .lang-toggle {
+      padding: 0.5rem 1rem;
+      border: 1px solid #333;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .card { background-color: var(--card-background); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 24px; display: flex; flex-direction: column; }
+    .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+    .card-description { font-size: 0.95rem; color: var(--text-color-muted); flex-grow: 1; margin-bottom: 20px; }
+
+    .generator-card { grid-column: 1 / -1; }
+    .generator-controls { margin: 16px 0; display: flex; align-items: center; gap: 10px; }
+    #lotto-result { display: flex; justify-content: center; align-items: center; min-height: 60px; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+    .lotto-ball { display: inline-flex; justify-content: center; align-items: center; width: 44px; height: 44px; border-radius: 50%; font-weight: 700; font-size: 1.1rem; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
+    .lotto-ball--bonus { background: linear-gradient(145deg, #d63333, #b32a2a); }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+    .footer-links {
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: #666;
+    }
+
+    .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700; text-align: center; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-primary { background-color: var(--primary-color); color: #FFFFFF; }
+    .btn-primary:active { transform: scale(0.97); }
+
+    @media (max-width: 768px) {
+      .main-nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <a href="/en" class="logo">chulbuji</a>
+      <div class="nav-menu">
+        <a href="/en">Home</a>
+        <a href="/en/log">Log</a>
+        <a href="/en/projects">Projects</a>
+        <a href="/en/tools">Tools</a>
+        <a href="/en/insight">Insight</a>
+        <a href="/en/about">About</a>
+      </div>
+      <a href="/tools/lotto/" class="lang-toggle">KO</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card generator-card" style="margin-top: 2rem;">
+      <h1 class="card-title">Random Number Combination Generator (CSPRNG)</h1>
+      <p class="card-description" style="flex-grow: 0;">
+        Generate unbiased number combinations using cryptographically secure random numbers.
+        This tool does not predict or guarantee any lottery results.
+        It is designed for educational purposes to understand probability and statistics concepts.
+      </p>
+      <div class="generator-controls">
+        <label for="lotto-mode">Generation Mode</label>
+        <select id="lotto-mode">
+          <option value="ko645">South Korea Lotto 6/45</option>
+          <option value="cnssq">China Double Color Ball</option>
+          <option value="uspb">US Powerball</option>
+          <option value="calmax">Canada Lotto Max</option>
+        </select>
+      </div>
+      <div id="lotto-result"></div>
+      <button id="gen-btn" class="btn btn-primary">Generate Random Combination</button>
+
+      <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem; color: #666;">
+        <strong>Disclaimer:</strong> This tool is for entertainment and educational purposes only.
+        We do not encourage gambling. Lottery results are completely random, and this generator
+        cannot predict winning numbers. Please gamble responsibly and in accordance with local laws.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/en/privacy">Privacy</a> |
+      <a href="/en/terms">Terms</a> |
+      <a href="/en/contact">Contact</a>
+    </div>
+    <p>&copy; 2026 chulbuji.com. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const generateBtn = document.getElementById('gen-btn');
+      const resultDiv = document.getElementById('lotto-result');
+      const modeSelect = document.getElementById('lotto-mode');
+
+      if (!generateBtn || !resultDiv || !modeSelect) return;
+
+      const lottoRules = {
+        ko645:  { mainCount: 6, mainMax: 45, colors: ['#fbc400', '#69c8f2', '#ff7272', '#aaa', '#b0d840'] },
+        cnssq:  { mainCount: 6, mainMax: 33, bonus: { count: 1, max: 16 }, colors: ['#ff7272'] },
+        uspb:   { mainCount: 5, mainMax: 69, bonus: { count: 1, max: 26 }, colors: ['#eee'] },
+        calmax: { mainCount: 7, mainMax: 50, colors: ['#69c8f2'] },
+      };
+
+      function pickUnique(count, max, min = 1, exclude = new Set()) {
+        const numbers = new Set();
+        const range = max - min + 1;
+        if (count > (range - exclude.size)) return [];
+        const randomValues = new Uint32Array(count * 3);
+        while (numbers.size < count) {
+          crypto.getRandomValues(randomValues);
+          for (const val of randomValues) {
+            const num = (val % range) + min;
+            if (!exclude.has(num)) numbers.add(num);
+            if (numbers.size >= count) break;
+          }
+        }
+        return Array.from(numbers).sort((a, b) => a - b);
+      }
+
+      function generateLottoNumbers(mode) {
+        const rules = lottoRules[mode];
+        if (!rules) return { main: [], bonus: [] };
+        const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
+        const bonusNumbers = rules.bonus ? pickUnique(rules.bonus.count, rules.bonus.max, 1, new Set(mainNumbers)) : [];
+        return { main: mainNumbers, bonus: bonusNumbers };
+      }
+
+      function renderResult(result, mode) {
+        resultDiv.innerHTML = '';
+        const rules = lottoRules[mode];
+        result.main.forEach(num => {
+          const ball = document.createElement('span');
+          ball.className = 'lotto-ball';
+          ball.textContent = num;
+          if(mode === 'ko645') {
+            ball.style.background = rules.colors[Math.floor((num - 1) / 10)] || '#ccc';
+          } else if (mode === 'uspb') {
+            ball.style.color = '#333';
+            ball.style.background = rules.colors[0];
+          } else {
+            ball.style.background = rules.colors[0] || '#ccc';
+          }
+          resultDiv.appendChild(ball);
+        });
+        result.bonus.forEach(num => {
+          const ball = document.createElement('span');
+          ball.className = 'lotto-ball lotto-ball--bonus';
+          ball.textContent = num;
+          resultDiv.appendChild(ball);
+        });
+      }
+
+      const performGeneration = () => {
+        const selectedMode = modeSelect.value;
+        const result = generateLottoNumbers(selectedMode);
+        renderResult(result, selectedMode);
+      };
+
+      generateBtn.addEventListener('click', performGeneration);
+      modeSelect.addEventListener('change', performGeneration);
+      performGeneration();
+    });
+  </script>
+</body>
+</html>
