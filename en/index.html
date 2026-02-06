@@ -48,13 +48,29 @@
         a { color: var(--primary-color); text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header */
-        .header { background-color: var(--card-background); border-bottom: 1px solid var(--border-color); padding: 16px 0; }
-        .header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 900; color: var(--text-color-main); }
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { margin-left: 20px; font-weight: 500; color: var(--text-color-muted); }
-        .lang-selector { appearance: none; background: transparent; border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; }
+   /* Navigation */
+   .main-nav {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 1rem 2rem;
+     border-bottom: 1px solid #eee;
+   }
+   .nav-menu {
+     display: flex;
+     gap: 1.5rem;
+   }
+   .nav-menu a {
+     text-decoration: none;
+     color: #333;
+   }
+   .lang-toggle {
+     padding: 0.5rem 1rem;
+     border: 1px solid #333;
+     border-radius: 4px;
+     text-decoration: none;
+     color: #333;
+   }
 
         /* Sections Styling */
         .card { background-color: var(--card-background); border-radius: var(--card-radius); box-shadow: var(--card-shadow); padding: 24px; display: flex; flex-direction: column; }
@@ -81,10 +97,24 @@
         /* Encyclopedia & Footer */
         .section-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin: 60px 0 24px; }
         .encyclopedia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .footer { margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; }
-        .footer-links a { font-size: 0.9rem; margin: 0 10px; color: var(--text-color-muted); }
-        .footer .disclaimer { font-size: 0.75rem; color: #9ca3af; max-width: 600px; margin: 20px auto 0; line-height: 1.5; }
-        .footer .copyright { font-size: 0.85rem; color: var(--text-color-muted); margin-top: 16px; }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            margin: 0 0.5rem;
+            text-decoration: none;
+            color: #666;
+        }
+        .copyright {
+            font-size: 0.9rem;
+            color: #999;
+        }
         
         .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700; text-align: center; cursor: pointer; border: none; transition: all 0.2s; }
         .btn-primary { background-color: var(--primary-color); color: #FFFFFF; }
@@ -93,8 +123,15 @@
 
         /* Responsive */
         @media (max-width: 992px) { .encyclopedia-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 767px) {
-            .main-nav { display: none; }
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
             .hero h1 { font-size: 2rem; }
             .main-grid, .encyclopedia-grid { grid-template-columns: 1fr; }
         }
@@ -117,20 +154,20 @@
 </head>
 <body class="ui-v2">
 
-    <!-- 1. Header -->
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="logo"><strong>chulbuji.com</strong></a>
-            <div class="header-right">
-                <nav class="main-nav">
-                    <a href="index.html">Home</a>
-                    <a href="../about.html">About</a>
-                    <a href="../contact.html">Contact</a>
-                </nav>
-                <a href="/" class="lang-toggle">KO</a>
-            </div>
-        </div>
-    </header>
+    <header>
+     <nav class="main-nav">
+       <a href="/en" class="logo">chulbuji</a>
+       <div class="nav-menu">
+         <a href="/en">Home</a>
+         <a href="/en/log">Log</a>
+         <a href="/en/projects">Projects</a>
+         <a href="/en/tools">Tools</a>
+         <a href="/en/insight">Insight</a>
+         <a href="/en/about">About</a>
+       </div>
+       <a href="/" class="lang-toggle">KO</a>
+     </nav>
+   </header>
 
     <!-- 2. Main Container -->
     <main class="container">
@@ -174,19 +211,18 @@
         </section>
     </main>
 
-    <!-- 7. Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="about.html">소개</a>
-                <a href="privacy.html">개인정보처리방침</a>
-                <a href="terms.html">이용약관</a>
-                <a href="contact.html">연락처</a>
-            </div>
-            <p class="disclaimer">본 사이트에서 제공하는 분석 정보와 번호 생성 결과는 통계적 확률에 기반한 참고 자료이며, 실제 당첨을 보장하지 않습니다. 복권 구매에 대한 책임은 본인에게 있습니다. 과도한 구매는 건전한 생활을 해칠 수 있습니다.</p>
-            <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
-        </div>
-    </footer>
+   <footer>
+     <div class="footer-content">
+       <div class="footer-links">
+         <a href="../privacy.html">Privacy</a>
+         <span>|</span>
+         <a href="../terms.html">Terms</a>
+         <span>|</span>
+         <a href="../contact.html">Contact</a>
+       </div>
+       <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
+     </div>
+   </footer>
 
     <!-- 8. Scripts -->
     <script>
