@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의하기 | chulbuji.com</title>
-    <meta name="description" content="chulbuji.com에 문의사항이 있으신가요? 이메일과 GitHub 정보를 확인해주세요.">
+    <meta name="description" content="chulbuji.com에 문의사항이 있으신가요? 이메일, 피드백 폼을 통해 연락해주세요.">
     <link rel="canonical" href="https://chulbuji.com/contact">
     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/contact" />
     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/contact" />
@@ -21,7 +21,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-KZJ3H02EQ5');
     </script>
     <script type="text/javascript">
@@ -31,6 +30,80 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "v5dcajl5yl");
     </script>
+    <style>
+        .email-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .email-btn-primary {
+            background: #1976d2;
+            color: #fff;
+        }
+        .email-btn-primary:hover {
+            background: #1565c0;
+        }
+        .email-btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .email-btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        .feedback-form-container {
+            margin-top: 1.5rem;
+        }
+        .feedback-form-container iframe {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .form-placeholder {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -52,40 +125,179 @@
         <article>
             <header>
                 <h1>문의하기</h1>
-                <p class="intro-paragraph">chulbuji.com에 대한 피드백, 협업 제안, 또는 궁금한 점이 있으시면 아래 정보를 통해 연락주세요. 보내주신 모든 의견을 소중히 검토하겠습니다.</p>
+                <p style="font-size: 1.1rem; color: #666; margin-top: 1rem;">
+                    chulbuji.com에 대한 피드백, 협업 제안, 또는 궁금한 점이 있으시면 아래 방법을 통해 연락해주세요.
+                </p>
             </header>
 
-            <section>
-                <h2>1. 이메일</h2>
+            <!-- 이메일 섹션 - 3중 안전장치 -->
+            <section style="margin-top: 2rem;">
+                <h2>1. 이메일로 연락하기</h2>
                 <p>모든 문의는 아래 이메일 주소로 보내주시면 영업일 기준 2~3일 내에 답변 드립니다.</p>
+
                 <div class="highlight-box">
-                    <p><strong>Email:</strong> <a href="mailto:hello@chulbuji.com">hello@chulbuji.com</a></p>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                        <strong>Email:</strong>
+                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a>
+                    </p>
+
+                    <div class="email-actions">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Feedback%20for%20chulbuji.com"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-primary">
+                            📧 Gmail로 보내기
+                        </a>
+                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com"
+                           class="email-btn email-btn-secondary">
+                            ✉️ 메일 앱으로 보내기
+                        </a>
+                        <button type="button"
+                                onclick="copyEmail()"
+                                class="email-btn email-btn-secondary">
+                            📋 이메일 복사
+                        </button>
+                    </div>
                 </div>
             </section>
-            
-            <section>
-                <h2>2. GitHub</h2>
+
+            <!-- 피드백 폼 섹션 -->
+            <section style="margin-top: 3rem;">
+                <h2>2. 고객의 소리 (피드백 폼)</h2>
+                <p>
+                    더 나은 서비스를 위해 여러분의 소중한 의견을 기다립니다.
+                    버그 제보, 기능 제안, 협업 문의 등 어떤 내용이든 환영합니다.
+                </p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                    💡 수집된 정보는 문의 응답 목적으로만 사용되며,
+                    <a href="/privacy" style="color: #1976d2;">개인정보처리방침</a>에 따라 안전하게 관리됩니다.
+                </p>
+
+                <div class="feedback-form-container" id="feedback-form-container">
+                    <!-- 폼이 설정되면 iframe이 표시됨 -->
+                </div>
+            </section>
+
+            <!-- GitHub 섹션 -->
+            <section style="margin-top: 3rem;">
+                <h2>3. GitHub</h2>
                 <p>프로젝트와 관련된 코드, 기여 및 이슈에 대한 논의는 GitHub을 통해 참여하실 수 있습니다.</p>
                 <div class="highlight-box">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/yongsub-kim64" target="_blank" rel="noopener noreferrer">github.com/yongsub-kim64</a></p>
+                    <p style="font-size: 1.1rem;">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/yongsub-kim64/product-builder-lecture"
+                           style="color: #1976d2;"
+                           target="_blank"
+                           rel="noopener noreferrer">github.com/yongsub-kim64</a>
+                    </p>
                 </div>
             </section>
-            
-            <section>
-                <h2>3. 문의 안내 메시지</h2>
-                <p>저희는 항상 여러분의 소중한 의견을 기다리고 있습니다. 서비스 개선을 위한 제안, 협업 문의, 그리고 기타 궁금한 점에 대해 언제든지 편하게 연락해주세요.</p>
-                <p>신속하고 정확한 답변을 위해 문의 내용에 대한 구체적인 설명과 함께 연락처 정보를 남겨주시면 감사하겠습니다.</p>
+
+            <!-- 문의 카테고리 안내 -->
+            <section style="margin-top: 3rem;">
+                <h2>4. 문의 유형 안내</h2>
+                <ul style="padding-left: 2rem; margin-top: 1rem;">
+                    <li><strong>버그 제보:</strong> 도구 사용 중 발생한 오류나 문제점</li>
+                    <li><strong>기능 제안:</strong> 새로운 기능이나 개선 아이디어</li>
+                    <li><strong>협업 문의:</strong> 파트너십, 공동 프로젝트 제안</li>
+                    <li><strong>일반 문의:</strong> 기타 궁금한 점이나 의견</li>
+                </ul>
             </section>
         </article>
     </main>
 
-<footer>
-  <div class="footer-links">
-    <a href="/privacy">Privacy</a> |
-    <a href="/terms">Terms</a> |
-    <a href="/contact">Contact</a>
-  </div>
-  <p>© 2026 chulbuji.com. All rights reserved.</p>
-</footer>
+    <footer>
+        <div class="footer-links">
+            <a href="/privacy">Privacy</a> |
+            <a href="/terms">Terms</a> |
+            <a href="/contact">Contact</a>
+        </div>
+        <p>© 2026 chulbuji.com. All rights reserved.</p>
+    </footer>
+
+    <!-- Toast 알림 -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // ========== 설정 ==========
+        // 피드백 폼 URL (Google Form, Tally 등)
+        // 폼을 생성한 후 이 URL을 교체하세요
+        const FEEDBACK_FORM_URL = ''; // TODO: 폼 URL 입력
+
+        // ========== 이메일 복사 기능 ==========
+        function copyEmail() {
+            const email = 'hello@chulbuji.com';
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email)
+                    .then(() => showToast('이메일이 복사되었습니다!'))
+                    .catch(() => fallbackCopy(email));
+            } else {
+                fallbackCopy(email);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast('이메일이 복사되었습니다!');
+            } catch (err) {
+                showToast('복사에 실패했습니다. 직접 복사해주세요.');
+            }
+
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // ========== 피드백 폼 렌더링 ==========
+        function renderFeedbackForm() {
+            const container = document.getElementById('feedback-form-container');
+
+            if (!FEEDBACK_FORM_URL || FEEDBACK_FORM_URL === '' || FEEDBACK_FORM_URL === 'TODO') {
+                container.innerHTML = `
+                    <div class="form-placeholder">
+                        <p style="margin-bottom: 1rem;">📝 피드백 폼이 아직 설정되지 않았습니다.</p>
+                        <p>위의 이메일 또는 Gmail 버튼을 이용해 연락해주세요.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <a href="${FEEDBACK_FORM_URL}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-secondary">
+                            🔗 새 탭에서 폼 열기
+                        </a>
+                    </div>
+                    <iframe
+                        src="${FEEDBACK_FORM_URL}"
+                        height="900"
+                        loading="lazy"
+                        title="피드백 폼">
+                    </iframe>
+                `;
+            }
+        }
+
+        // 페이지 로드 시 폼 렌더링
+        document.addEventListener('DOMContentLoaded', renderFeedbackForm);
+    </script>
 </body>
 </html>

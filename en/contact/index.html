@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | chulbuji.com</title>
-    <meta name="description" content="Get in touch with chulbuji.com. Contact us for questions, feedback, or collaboration inquiries.">
+    <meta name="description" content="Get in touch with chulbuji.com. Contact us for questions, feedback, or collaboration inquiries via email or feedback form.">
     <link rel="canonical" href="https://chulbuji.com/en/contact">
     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/contact">
     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/contact">
@@ -13,6 +13,81 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
+
+    <style>
+        .email-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .email-btn-primary {
+            background: #1976d2;
+            color: #fff;
+        }
+        .email-btn-primary:hover {
+            background: #1565c0;
+        }
+        .email-btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .email-btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+        .feedback-form-container {
+            margin-top: 1.5rem;
+        }
+        .feedback-form-container iframe {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .form-placeholder {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -39,39 +114,77 @@
                 </p>
             </header>
 
+            <!-- Email Section - Triple Safety Net -->
             <section style="margin-top: 2rem;">
-                <h2>Email</h2>
+                <h2>1. Contact via Email</h2>
                 <p>For all inquiries, please reach out via email. We typically respond within 2-3 business days.</p>
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                    <p style="font-size: 1.2rem;"><strong>Email:</strong> <a href="mailto:hello@chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a></p>
+
+                <div class="highlight-box">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+                        <strong>Email:</strong>
+                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a>
+                    </p>
+
+                    <div class="email-actions">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Feedback%20for%20chulbuji.com"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-primary">
+                            📧 Send via Gmail
+                        </a>
+                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com"
+                           class="email-btn email-btn-secondary">
+                            ✉️ Send via Mail App
+                        </a>
+                        <button type="button"
+                                onclick="copyEmail()"
+                                class="email-btn email-btn-secondary">
+                            📋 Copy email
+                        </button>
+                    </div>
                 </div>
             </section>
 
-            <section style="margin-top: 2rem;">
-                <h2>GitHub</h2>
+            <!-- Feedback Form Section -->
+            <section style="margin-top: 3rem;">
+                <h2>2. Feedback Form</h2>
+                <p>
+                    We value your input and welcome all feedback. Whether it's a bug report,
+                    feature suggestion, or collaboration inquiry, we'd love to hear from you.
+                </p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                    💡 We collect only the minimum information necessary to respond to your inquiry.
+                    Your data is handled according to our <a href="/en/privacy" style="color: #1976d2;">Privacy Policy</a>.
+                </p>
+
+                <div class="feedback-form-container" id="feedback-form-container">
+                    <!-- Form will be rendered here -->
+                </div>
+            </section>
+
+            <!-- GitHub Section -->
+            <section style="margin-top: 3rem;">
+                <h2>3. GitHub</h2>
                 <p>For code-related discussions, issues, or contributions, please visit our GitHub repository.</p>
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                    <p style="font-size: 1.2rem;"><strong>GitHub:</strong> <a href="https://github.com/yongsub-kim64/product-builder-lecture" style="color: #1976d2;" target="_blank" rel="noopener noreferrer">github.com/yongsub-kim64</a></p>
+                <div class="highlight-box">
+                    <p style="font-size: 1.1rem;">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/yongsub-kim64/product-builder-lecture"
+                           style="color: #1976d2;"
+                           target="_blank"
+                           rel="noopener noreferrer">github.com/yongsub-kim64</a>
+                    </p>
                 </div>
             </section>
 
-            <section style="margin-top: 2rem;">
-                <h2>What We'd Love to Hear</h2>
+            <!-- Inquiry Types -->
+            <section style="margin-top: 3rem;">
+                <h2>4. Types of Inquiries</h2>
                 <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li><strong>Feedback:</strong> Suggestions to improve our tools or content</li>
-                    <li><strong>Questions:</strong> Inquiries about our experiments or methodology</li>
-                    <li><strong>Collaboration:</strong> Ideas for joint projects or partnerships</li>
-                    <li><strong>Bug Reports:</strong> Issues you've encountered while using our tools</li>
-                </ul>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>Response Time</h2>
-                <p>We read every message and strive to respond as quickly as possible. For faster responses, please include:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li>A clear subject line describing your inquiry</li>
-                    <li>Relevant details or context</li>
-                    <li>Your preferred method of contact</li>
+                    <li><strong>Bug Reports:</strong> Issues encountered while using our tools</li>
+                    <li><strong>Feature Suggestions:</strong> Ideas for new features or improvements</li>
+                    <li><strong>Collaboration:</strong> Partnership or joint project proposals</li>
+                    <li><strong>General Inquiries:</strong> Any other questions or comments</li>
                 </ul>
             </section>
         </article>
@@ -85,5 +198,90 @@
         </div>
         <p>&copy; 2026 chulbuji.com. All rights reserved.</p>
     </footer>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // ========== Configuration ==========
+        // Feedback form URL (Google Form, Tally, etc.)
+        // Replace this URL after creating your form
+        const FEEDBACK_FORM_URL = ''; // TODO: Enter form URL
+
+        // ========== Email Copy Function ==========
+        function copyEmail() {
+            const email = 'hello@chulbuji.com';
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email)
+                    .then(() => showToast('Email copied to clipboard!'))
+                    .catch(() => fallbackCopy(email));
+            } else {
+                fallbackCopy(email);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast('Email copied to clipboard!');
+            } catch (err) {
+                showToast('Copy failed. Please copy manually.');
+            }
+
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // ========== Feedback Form Rendering ==========
+        function renderFeedbackForm() {
+            const container = document.getElementById('feedback-form-container');
+
+            if (!FEEDBACK_FORM_URL || FEEDBACK_FORM_URL === '' || FEEDBACK_FORM_URL === 'TODO') {
+                container.innerHTML = `
+                    <div class="form-placeholder">
+                        <p style="margin-bottom: 1rem;">📝 Feedback form is not yet configured.</p>
+                        <p>Please use the email options above to contact us.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <a href="${FEEDBACK_FORM_URL}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-secondary">
+                            🔗 Open form in new tab
+                        </a>
+                    </div>
+                    <iframe
+                        src="${FEEDBACK_FORM_URL}"
+                        height="900"
+                        loading="lazy"
+                        title="Feedback Form">
+                    </iframe>
+                `;
+            }
+        }
+
+        // Render form on page load
+        document.addEventListener('DOMContentLoaded', renderFeedbackForm);
+    </script>
 </body>
 </html>
