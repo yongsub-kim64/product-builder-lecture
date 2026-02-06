@@ -63,9 +63,13 @@
         .lotto-ball--bonus { background: linear-gradient(145deg, #d63333, #b32a2a); }
         
         /* Hero Section (Relocated) */
-        .hero { text-align: center; padding: 60px 0; margin: 60px 0; }
-        .hero h1 { font-size: 2.5rem; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
-        .hero .subtitle { max-width: 680px; margin: 0 auto; font-size: 1.1rem; color: var(--text-color-muted); }
+        .hero { text-align: center; padding: 4rem 2rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 0.5rem; }
+        .cta-buttons { margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; }
+        .btn-primary { padding: 0.75rem 1.5rem; background: #000; color: #fff; text-decoration: none; border-radius: 4px; }
+        .btn-secondary { padding: 0.75rem 1.5rem; background: #fff; color: #000; border: 1px solid #000; text-decoration: none; border-radius: 4px; }
+        .tag { font-size: 0.9rem; color: #999; }
 
         /* Encyclopedia & Footer */
         .section-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin: 60px 0 24px; }
@@ -149,8 +153,14 @@
 
         <!-- 4. Hero Section (Relocated) -->
         <section class="hero">
-            <h1 data-i18n-key="introTitle">철부지의 두 번째 여행</h1>
-            <p class="subtitle" data-i18n-key="introSubtitle">34년간 반도체 칩을 만들던 손으로, 이제는 데이터를 바탕으로 생각을 정리하는 도구를 만듭니다. 60대에 시작한 1인 창업가의 기록.</p>
+          <h1>생각을 구조로, 구조를 실행으로</h1>
+          <p class="subtitle">AI와 함께 흐릿한 생각을 선명하게 만듭니다.</p>
+          <p class="subtitle">도구는 부산물, 기록이 주인공입니다.</p>
+          <div class="cta-buttons">
+            <a href="/log" class="btn-primary">기록 보기</a>
+            <a href="/insight" class="btn-secondary">인사이트 리포트</a>
+          </div>
+          <p class="tag">실험·기록·업데이트</p>
         </section>
 
         <!-- 5. Encyclopedia Section -->
