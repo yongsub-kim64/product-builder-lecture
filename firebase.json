@@ -16,6 +16,48 @@
           }
         ]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/en/tools/genertor",
+        "destination": "/en/tools/generator",
+        "type": 301
+      },
+      {
+        "source": "/tools/genertor",
+        "destination": "/tools/generator",
+        "type": 301
+      },
+      {
+        "source": "/en/privacy",
+        "destination": "/privacy",
+        "type": 301
+      },
+      {
+        "source": "/en/terms",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/en/contact",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/en/cotact",
+        "destination": "/contact",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/en/tools/generator",
+        "destination": "/tools/lotto/index.html"
+      },
+      {
+        "source": "/tools/generator",
+        "destination": "/tools/lotto/index.html"
+      }
     ]
   }
 }
