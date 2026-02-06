@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title>실험 기록 | chulbuji</title>
+     <meta name="description" content="AI와의 대화, 실험, 인사이트를 기록합니다. 생각의 진화 과정을 투명하게 공개합니다.">
+     <link rel="canonical" href="https://chulbuji.com/log">
+     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/log">
+     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <link rel="stylesheet" href="./style.v2.css?v=20250203" />
+    <link rel="stylesheet" href="style.css?v=20250203" />
+
+    <style>
+        /* Base Styles & CSS Reset */
+        :root {
+            --background-color: #F3F4F6;
+            --primary-color: #1E3A8A;
+            --text-color-main: #1F2937;
+            --text-color-muted: #6B7280;
+            --card-background: #FFFFFF;
+            --border-color: #E5E7EB;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --card-radius: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color-main);
+            line-height: 1.6;
+        }
+        a { color: var(--primary-color); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+   /* Navigation */
+   .main-nav {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 1rem 2rem;
+     border-bottom: 1px solid #eee;
+   }
+   .nav-menu {
+     display: flex;
+     gap: 1.5rem;
+   }
+   .nav-menu a {
+     text-decoration: none;
+     color: #333;
+   }
+   .lang-toggle {
+     padding: 0.5rem 1rem;
+     border: 1px solid #333;
+     border-radius: 4px;
+     text-decoration: none;
+     color: #333;
+   }
+   
+   /* Log List */
+   .log-header {
+     text-align: center;
+     margin: 3rem 0;
+   }
+   .log-list {
+     max-width: 800px;
+     margin: 0 auto;
+   }
+   .log-list .log-card {
+     margin-bottom: 3rem;
+     padding-bottom: 3rem;
+     border-bottom: 1px solid #eee;
+   }
+   .log-card h2 a {
+     color: #000;
+     text-decoration: none;
+   }
+   .log-card .en-summary {
+     background: #f8f9fa;
+     padding: 1rem;
+     border-radius: 8px;
+     margin: 1rem 0;
+   }
+   .log-card .en-summary strong {
+     display: block;
+     margin-bottom: 0.5rem;
+   }
+   .log-card .excerpt {
+     color: #333;
+     line-height: 1.6;
+     margin: 1rem 0;
+   }
+   .log-card .meta {
+     display: flex;
+     gap: 1rem;
+     align-items: center;
+     margin-top: 1rem;
+   }
+   .log-card time {
+     color: #666;
+     font-size: 0.9rem;
+   }
+        .tag {
+     display: inline-block;
+     padding: 0.25rem 0.5rem;
+     background: #f0f0f0;
+     border-radius: 4px;
+     font-size: 0.8rem;
+     margin-top: 0.5rem;
+   }
+
+   footer {
+     margin-top: 4rem;
+     padding: 2rem;
+     border-top: 1px solid #eee;
+     text-align: center;
+   }
+   .footer-links {
+     margin-bottom: 1rem;
+   }
+   .footer-links a {
+     margin: 0 0.5rem;
+     text-decoration: none;
+     color: #666;
+   }
+   .copyright {
+     font-size: 0.9rem;
+     color: #999;
+   }
+
+    </style>
+</head>
+<body>
+    <header>
+     <nav class="main-nav">
+       <a href="/" class="logo">chulbuji</a>
+       <div class="nav-menu">
+         <a href="/">Home</a>
+         <a href="/log">Log</a>
+         <a href="/projects">Projects</a>
+         <a href="/tools">Tools</a>
+         <a href="/insight">Insight</a>
+         <a href="/about">About</a>
+       </div>
+       <a href="/en" class="lang-toggle">EN</a>
+     </nav>
+   </header>
+     
+     <main>
+       <section class="log-header">
+         <h1>실험 기록</h1>
+         <p>AI와의 대화, 실험, 인사이트를 투명하게 기록합니다.</p>
+       </section>
+
+       <section class="log-list">
+         <article class="log-card">
+           <h2><a href="/log/001-rebrand-launch">리브랜딩 출항</a></h2>
+           <div class="en-summary">
+             <strong>🌐 English Summary:</strong>
+             <p>Launching the rebrand from "lotto sample" to "record hub". Tools move to /tools, logs become the hero. This is the first step.</p>
+           </div>
+           <p class="excerpt">
+             오늘부터 chulbuji.com은 "로또 샘플"이 아니다. 
+             우리는 생각을 구조로, 구조를 실행으로 바꾸는 기록 허브가 된다...
+           </p>
+           <div class="meta">
+             <time>2025-02-06</time>
+             <span class="tag">rebrand</span>
+             <span class="tag">launch</span>
+           </div>
+         </article>
+         
+         <!-- 더 많은 로그가 여기에 추가될 예정 -->
+       </section>
+     </main>
+
+   <footer>
+     <div class="footer-content">
+       <div class="footer-links">
+         <a href="privacy.html">Privacy</a>
+         <span>|</span>
+         <a href="terms.html">Terms</a>
+         <span>|</span>
+         <a href="contact.html">Contact</a>
+       </div>
+       <p class="copyright">© 2026 chulbuji.com. All rights reserved.</p>
+     </div>
+   </footer>
+</body>
+</html>
