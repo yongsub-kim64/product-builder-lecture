@@ -153,12 +153,32 @@
                     feature suggestion, or collaboration inquiry, we'd love to hear from you.
                 </p>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
-                    💡 We collect only the minimum information necessary to respond to your inquiry.
-                    Your data is handled according to our <a href="/en/privacy" style="color: #1976d2;">Privacy Policy</a>.
+                    We welcome your feedback. We collect only the minimum information needed to respond.
+                    See our <a href="/privacy" style="color: #1976d2;">Privacy Policy</a>.
                 </p>
 
-                <div class="feedback-form-container" id="feedback-form-container">
-                    <!-- Form will be rendered here -->
+                <div class="feedback-form-container">
+                    <div class="form-wrap">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?embedded=true"
+                            width="100%"
+                            height="1200"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Chulbuji.com Feedback Form"
+                        >Loading…</iframe>
+                    </div>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?usp=header"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-secondary">
+                            🔗 Open the form in a new tab
+                        </a>
+                    </p>
                 </div>
             </section>
 
@@ -203,11 +223,6 @@
     <div id="toast" class="toast"></div>
 
     <script>
-        // ========== Configuration ==========
-        // Feedback form URL (Google Form, Tally, etc.)
-        // Replace this URL after creating your form
-        const FEEDBACK_FORM_URL = ''; // TODO: Enter form URL
-
         // ========== Email Copy Function ==========
         function copyEmail() {
             const email = 'hello@chulbuji.com';
@@ -248,40 +263,6 @@
                 toast.classList.remove('show');
             }, 2500);
         }
-
-        // ========== Feedback Form Rendering ==========
-        function renderFeedbackForm() {
-            const container = document.getElementById('feedback-form-container');
-
-            if (!FEEDBACK_FORM_URL || FEEDBACK_FORM_URL === '' || FEEDBACK_FORM_URL === 'TODO') {
-                container.innerHTML = `
-                    <div class="form-placeholder">
-                        <p style="margin-bottom: 1rem;">📝 Feedback form is not yet configured.</p>
-                        <p>Please use the email options above to contact us.</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div style="margin-bottom: 1rem;">
-                        <a href="${FEEDBACK_FORM_URL}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="email-btn email-btn-secondary">
-                            🔗 Open form in new tab
-                        </a>
-                    </div>
-                    <iframe
-                        src="${FEEDBACK_FORM_URL}"
-                        height="900"
-                        loading="lazy"
-                        title="Feedback Form">
-                    </iframe>
-                `;
-            }
-        }
-
-        // Render form on page load
-        document.addEventListener('DOMContentLoaded', renderFeedbackForm);
     </script>
 </body>
 </html>

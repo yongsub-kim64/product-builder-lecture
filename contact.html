@@ -169,12 +169,32 @@
                     버그 제보, 기능 제안, 협업 문의 등 어떤 내용이든 환영합니다.
                 </p>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
-                    💡 수집된 정보는 문의 응답 목적으로만 사용되며,
-                    <a href="/privacy" style="color: #1976d2;">개인정보처리방침</a>에 따라 안전하게 관리됩니다.
+                    의견을 환영합니다. 답변을 위해 필요한 최소 정보만 수집합니다.
+                    자세한 내용은 <a href="/privacy" style="color: #1976d2;">Privacy Policy</a>를 참고해 주세요.
                 </p>
 
-                <div class="feedback-form-container" id="feedback-form-container">
-                    <!-- 폼이 설정되면 iframe이 표시됨 -->
+                <div class="feedback-form-container">
+                    <div class="form-wrap">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?embedded=true"
+                            width="100%"
+                            height="1200"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Chulbuji.com 피드백 폼"
+                        >Loading…</iframe>
+                    </div>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?usp=header"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="email-btn email-btn-secondary">
+                            🔗 새 탭에서 폼 열기
+                        </a>
+                    </p>
                 </div>
             </section>
 
@@ -219,11 +239,6 @@
     <div id="toast" class="toast"></div>
 
     <script>
-        // ========== 설정 ==========
-        // 피드백 폼 URL (Google Form, Tally 등)
-        // 폼을 생성한 후 이 URL을 교체하세요
-        const FEEDBACK_FORM_URL = ''; // TODO: 폼 URL 입력
-
         // ========== 이메일 복사 기능 ==========
         function copyEmail() {
             const email = 'hello@chulbuji.com';
@@ -264,40 +279,6 @@
                 toast.classList.remove('show');
             }, 2500);
         }
-
-        // ========== 피드백 폼 렌더링 ==========
-        function renderFeedbackForm() {
-            const container = document.getElementById('feedback-form-container');
-
-            if (!FEEDBACK_FORM_URL || FEEDBACK_FORM_URL === '' || FEEDBACK_FORM_URL === 'TODO') {
-                container.innerHTML = `
-                    <div class="form-placeholder">
-                        <p style="margin-bottom: 1rem;">📝 피드백 폼이 아직 설정되지 않았습니다.</p>
-                        <p>위의 이메일 또는 Gmail 버튼을 이용해 연락해주세요.</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div style="margin-bottom: 1rem;">
-                        <a href="${FEEDBACK_FORM_URL}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="email-btn email-btn-secondary">
-                            🔗 새 탭에서 폼 열기
-                        </a>
-                    </div>
-                    <iframe
-                        src="${FEEDBACK_FORM_URL}"
-                        height="900"
-                        loading="lazy"
-                        title="피드백 폼">
-                    </iframe>
-                `;
-            }
-        }
-
-        // 페이지 로드 시 폼 렌더링
-        document.addEventListener('DOMContentLoaded', renderFeedbackForm);
     </script>
 </body>
 </html>
