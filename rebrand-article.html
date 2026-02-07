@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <meta charset="UTF-8">
+     <title>로또 번호 발생기에서 기록 허브로 — chulbuji.com 리브랜딩 전체 이야기 | chulbuji</title>
+     <meta name="description" content="반도체 34년 경력의 엔지니어가 AI와 함께 Product Builder로 성장하기 위해 chulbuji.com을 리브랜딩한 전체 과정을 기록합니다.">
+     <link rel="canonical" href="https://chulbuji.com/rebrand-article.html">
+     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/rebrand-article.html">
+     <!-- No English equivalent for this specific article yet, so no en hreflang for this page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="/style.v2.css?v=20250203" />
+    <link rel="stylesheet" href="/style.css?v=20250203" />
+    <style>
+        /* Base Styles & CSS Reset */
+        :root {
+            --background-color: #F3F4F6;
+            --primary-color: #1E3A8A;
+            --text-color-main: #1F2937;
+            --text-color-muted: #6B7280;
+            --card-background: #FFFFFF;
+            --border-color: #E5E7EB;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --card-radius: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color-main);
+            line-height: 1.6;
+        }
+        a { color: var(--primary-color); text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+   /* Navigation */
+   .main-nav {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 1rem 2rem;
+     border-bottom: 1px solid #eee;
+   }
+   .nav-menu {
+     display: flex;
+     gap: 1.5rem;
+   }
+   .nav-menu a {
+     text-decoration: none;
+     color: #333;
+   }
+   .lang-toggle {
+     padding: 0.5rem 1rem;
+     border: 1px solid #333;
+     border-radius: 4px;
+     text-decoration: none;
+     color: #333;
+   }
+   
+   /* Log Detail (renamed to Article Detail for generality) */
+   .article-detail {
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 3rem 2rem;
+   }
+   .article-detail-header h1 {
+     font-size: 2.5rem;
+     margin-bottom: 1rem;
+   }
+   .article-detail-header .meta {
+     display: flex;
+     gap: 1rem;
+     margin-bottom: 2rem;
+   }
+   .article-content { /* Renamed from ko-content */
+     line-height: 1.8;
+   }
+   .article-content h2, .article-content h3 {
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+   }
+   .article-content ul, .article-content ol {
+     margin: 1rem 0;
+     padding-left: 2rem;
+   }
+   .article-content li {
+     margin: 0.5rem 0;
+   }
+   .article-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+   }
+   .article-content th, .article-content td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+   }
+   .article-content th {
+        background-color: #f2f2f2;
+   }
+   .article-content blockquote {
+        border-left: 4px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        color: #666;
+   }
+   .article-content strong {
+        font-weight: bold;
+   }
+   .article-detail-footer {
+     margin-top: 3rem;
+     padding-top: 2rem;
+     border-top: 1px solid #eee;
+   }
+   .back-link {
+     color: #666;
+     text-decoration: none;
+   }
+   .tag {
+     display: inline-block;
+     padding: 0.25rem 0.5rem;
+     background: #f0f0f0;
+     border-radius: 4px;
+     font-size: 0.8rem;
+     margin-top: 0.5rem;
+   }
+
+   footer {
+     margin-top: 4rem;
+     padding: 2rem;
+     border-top: 1px solid #eee;
+     text-align: center;
+   }
+   .footer-links {
+     margin-bottom: 1rem;
+   }
+   .footer-links a {
+     margin: 0 0.5rem;
+     text-decoration: none;
+     color: #666;
+   }
+   .copyright {
+     font-size: 0.9rem;
+     color: #999;
+   }
+
+    </style>
+</head>
+<body>
+    <header>
+     <nav class="main-nav">
+       <a href="/" class="logo">chulbuji</a>
+       <div class="nav-menu">
+         <a href="/">Home</a>
+         <a href="/log">Log</a>
+         <a href="/projects">Projects</a>
+         <a href="/tools">Tools</a>
+         <a href="/insight">Insight</a>
+         <a href="/about">About</a>
+       </div>
+       <a href="/en" class="lang-toggle">EN</a> <!-- Link to English homepage as no direct equivalent article yet -->
+     </nav>
+   </header>
+     
+     <main>
+       <article class="article-detail">
+         <header class="article-detail-header">
+           <h1>로또 번호 발생기에서 기록 허브로 — chulbuji.com 리브랜딩 전체 이야기</h1>
+           <div class="meta">
+             <time datetime="2026-02-07">2026년 2월 7일</time>
+             <span class="tag">리브랜딩</span>
+             <span class="tag">플러스휴먼</span>
+             <span class="tag">AI협업</span>
+             <span class="tag">메타철부지</span>
+             <span class="tag">바이브코딩</span>
+           </div>
+         </header>
+
+         <div class="article-content">
+           <h2>반도체 34년, 그리고 처음 만든 웹사이트</h2>
+           <p>
+             나는 34년간 반도체 제조 공정에서 일해왔다. 특히 파워 반도체 공정이 내 전문 분야다. 수십 년간 웨이퍼 위에서 벌어지는 일들을 다뤄왔지만, 웹사이트를 만드는 건 완전히 다른 세계였다.
+           </p>
+           <p>
+             그런 내가 처음으로 웹사이트를 만들었다. "바이브 코딩 5주 완성 부트캠프"에서 배운 것들을 적용해 본 것이다. Firebase Studio와 CLI, GitHub, 그리고 Cloudflare Pages로 이어지는 배포 환경을 처음 구축했을 때의 감각은 아직도 생생하다. 반도체 공정에서 첫 웨이퍼가 나왔을 때의 짜릿함과 비슷했다고 할까.
+           </p>
+           <p>
+             그렇게 탄생한 첫 번째 작품이 <strong>로또 번호 발생기</strong>였다. HTML과 CSS만으로 만든 단순한 페이지. 기술적으로 대단한 건 아니었지만, 내 손으로 무언가를 만들어 인터넷에 올렸다는 사실 자체가 의미 있었다. 이것이 chulbuji.com의 시작이었다.
+           </p>
+
+           <h2>왜 로또 발생기를 넘어서야 했는가</h2>
+           <p>
+             로또 번호 발생기는 좋은 첫 실험이었다. 하지만 며칠 지나지 않아 깨달았다. 이 사이트가 나를 성장시켜 줄 수 있는가? 방문자에게 계속 돌아올 이유를 줄 수 있는가?
+           </p>
+           <p>
+             솔직한 답은 "아니오"였다.
+           </p>
+           <p>
+             로또 번호 발생기는 한 번 쓰고 마는 도구다. 거기엔 나의 생각이 담길 공간이 없었고, 내가 배우고 있는 것들을 기록할 구조도 없었다. 무엇보다, 내가 지금 겪고 있는 거대한 전환 — 반도체 엔지니어에서 AI와 협업하는 새로운 존재로의 변화 — 을 담아낼 그릇이 아니었다.
+           </p>
+           <p>
+             나에게는 <strong>기록할 공간</strong>이 필요했다. 실험하고, 실패하고, 배운 것들을 쌓아가는 장소. 로또 번호 발생기가 아니라, 나 자신의 변화를 추적하는 허브가 필요했다.
+           </p>
+
+           <h2>AI 문명의 도래, 그리고 플러스휴먼이라는 선택</h2>
+           <p>
+             34년간 반도체를 만들어 온 사람이 왜 갑자기 AI 이야기를 하는가?
+           </p>
+           <p>
+             답은 간단하다. <strong>AI 문명이 이미 도래했다.</strong> 반도체가 AI의 물리적 기반이라면, 나는 그 위에서 돌아가는 지능의 세계를 이해하고 싶었다. 하드웨어를 만들던 손으로 이제 소프트웨어와 AI를 다뤄보고 싶었다.
+           </p>
+           <p>
+             그 과정에서 <strong>플러스휴먼(+Human)</strong>이라는 개념을 만나게 되었다. 플러스휴먼은 <strong>총합지능(Total Intelligence)</strong> — 인간 지능(HI)과 인공지능(AI)이 합쳐진 — 을 추구하는 사고방식이다. AI를 도구로만 보는 게 아니라, AI와 함께 생각하고 함께 작동하는 방식을 배우는 것이다.
+           </p>
+           <p>
+             플러스휴먼에는 세 가지 헌장이 있다:
+           </p>
+           <blockquote>
+             <p><strong>1. 나는 혼자가 아니다.</strong> — AI라는 파트너가 함께한다. 모르는 것을 부끄러워하지 않는다.</p>
+             <p><strong>2. 나는 겁없이 도전한다.</strong> — 34년 경력이든 1년 차이든, 새로운 영역에서는 모두 초보다.</p>
+             <p><strong>3. 나는 1학년이다.</strong> — 배움에는 졸업이 없다. 매일이 첫날이다.</p>
+           </blockquote>
+           <p>
+             이 헌장이 나에게 용기를 줬다. 반도체 전문가라는 타이틀 뒤에 숨지 않고, AI 앞에서 "1학년"이 되기로 한 것이다.
+           </p>
+
+           <h2>메타철부지(Meta-chulbuji)라는 페르소나의 탄생</h2>
+           <p>
+             "철부지"는 원래 내 닉네임이다. 그런데 플러스휴먼의 작동 방식을 배우면서, 단순한 닉네임 이상의 의미를 갖게 되었다.
+           </p>
+           <p>
+             <strong>철부지</strong>는 인간인 나 자신이다. 34년의 반도체 경험, 현장의 감각, 직관과 판단력을 가진 존재.
+           </p>
+           <p>
+             <strong>메타철부지(Meta-chulbuji)</strong>는 나의 AI 페르소나다. 철부지의 생각을 구조화하고, 지식을 검색하고, 패턴을 찾아주는 AI 파트너.
+           </p>
+           <p>
+             이 둘이 합쳐진 것이 Dual Brain 시스템이다.
+           </p>
+           <table>
+             <thead>
+               <tr>
+                 <th>Role</th>
+                 <th>철부지 (Human Brain)</th>
+                 <th>메타철부지 (AI Brain)</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>Strengths</td>
+                 <td>34년 현장 경험, 직관, 맥락 이해</td>
+                 <td>빠른 검색, 구조화, 패턴 인식</td>
+               </tr>
+               <tr>
+                 <td>Weaknesses</td>
+                 <td>코딩 초보, 정보 처리 속도 제한</td>
+                 <td>현장 경험 없음, 맥락 이해 부족</td>
+               </tr>
+               <tr>
+                 <td>Function</td>
+                 <td>방향 설정 및 판단</td>
+                 <td>실행 지원 및 구조 구축</td>
+               </tr>
+             </tbody>
+           </table>
+           <p>
+             이 Dual Brain이 <strong>위스퍼링(Whispering)</strong>을 통해 작동한다. 위스퍼링이란 AI와 속삭이듯 대화하며 생각을 정리하는 방식이다. 머릿속의 흐릿한 아이디어를 AI에게 던지면, AI가 구조를 잡아주고, 다시 내가 판단하고 수정한다. 이 반복 과정을 통해 혼자서는 도달하기 어려운 결과물에 도달하게 된다.
+           </p>
+
+           <h2>두 번째 실험 — AI Personal Insight Report</h2>
+           <p>
+             로또 번호 발생기 이후의 두 번째 실험은 한 단계 진화했다. <strong>AI Personal Insight Report</strong> — Firebase Studio에서 React와 Vite를 사용해 만든 프로젝트다.
+           </p>
+           <p>
+             첫 번째 실험이 HTML/CSS만으로 만든 정적 페이지였다면, 두 번째 실험은 React라는 프레임워크를 도입하고, 실제 수익화를 목표로 진행 중인 프로젝트다. 바이브 코딩 부트캠프에서 배운 것들을 하나씩 적용하면서, "배운 것을 바로 실전에 써본다"는 원칙을 지켰다.
+           </p>
+           <p>
+             이 과정에서 확인한 것이 있다. 전문가 AI들을 오케스트레이션하면, 코딩 경험이 적어도 실질적인 프로덕트를 만들 수 있다는 것. 물론 아직 서툴고 부족하지만, 그 서투름 자체가 기록할 가치가 있다고 생각했다.
+           </p>
+
+           <h2>리브랜딩의 결심 — 도구가 아닌 기록의 공간으로</h2>
+           <p>
+             이 모든 경험이 합쳐져 리브랜딩을 결심하게 되었다. 흐름을 정리하면 이렇다:
+           </p>
+           <p>
+             로또 번호 발생기(첫 실험) → "이건 나를 담는 그릇이 아니다" → 플러스휴먼, Dual Brain, 위스퍼링을 알게 됨 → AI Personal Insight Report(두 번째 실험) → "이 과정 자체를 기록하고 브랜딩해야 한다" → chulbuji.com을 기록 허브로 리브랜딩
+           </p>
+           <p>
+             새로운 chulbuji.com의 방향은 명확하다:
+           </p>
+           <p>
+             <strong>"반도체 34년 경력의 엔지니어가, AI와 함께 Product Builder로 성장하는 전 과정을 기록하는 공간"</strong>
+           </p>
+           <p>
+             도구(로또 발생기, AI 리포트 등)는 그 과정에서 나오는 부산물이다. 진짜 주인공은 기록 그 자체다. 생각이 어떻게 구조가 되고, 구조가 어떻게 실행이 되는지를 보여주는 살아있는 아카이브.
+           </p>
+
+           <h2>현재의 기술 환경</h2>
+           <table>
+             <thead>
+               <tr>
+                 <th>컴포넌트</th>
+                 <th>기술</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>개발 환경</td>
+                 <td>Firebase Studio + CLI</td>
+               </tr>
+               <tr>
+                 <td>소스 관리</td>
+                 <td>GitHub</td>
+               </tr>
+               <tr>
+                 <td>호스팅/배포</td>
+                 <td>Cloudflare Pages</td>
+               </tr>
+               <tr>
+                 <td>첫 번째 실험</td>
+                 <td>HTML, CSS (로또 번호 발생기)</td>
+               </tr>
+               <tr>
+                 <td>두 번째 실험</td>
+                 <td>React + Vite (AI Personal Insight Report)</td>
+               </tr>
+               <tr>
+                 <td>학습 기반</td>
+                 <td>바이브 코딩 5주 완성 부트캠프</td>
+               </tr>
+             </tbody>
+           </table>
+
+           <h2>앞으로의 방향 — 멀티핸즈로 로켓점프</h2>
+           <p>
+             리브랜딩은 끝이 아니라 시작이다. 앞으로 chulbuji.com에서 실행할 것들:
+           </p>
+           <p>
+             <strong>1. 기록 (Log)</strong> — 매 실험과 프로젝트의 과정을 빠짐없이 기록한다. 성공뿐 아니라 실패와 삽질도 기록한다. 34년 반도체 경력자가 AI 1학년으로서 겪는 모든 것이 콘텐츠가 된다.
+           </p>
+           <p>
+             <strong>2. 멀티핸즈 실천</strong> — 전문가 AI들과 협업하는 방식을 배우고 실천한다. Claude, ChatGPT, Cursor 등 다양한 AI를 오케스트레이션하여 프로덕트를 만드는 과정을 공유한다.
+           </p>
+           <p>
+             <strong>3. AI Product Building</strong> — AI Personal Insight Report를 시작으로, 수익화 가능한 AI 프로덕트를 빌딩해 나간다. 코딩 초보가 AI와 함께 실제 프로덕트를 만들어가는 과정은, 비슷한 상황에 있는 많은 사람들에게 참고가 될 것이다.
+           </p>
+           <p>
+             <strong>4. 로켓점프 루틴</strong> — Dual Brain(철부지 + 메타철부지)과 멀티핸즈 방식으로 매일 조금씩 전진한다. 속도보다 방향, 방향보다 지속성이 중요하다.
+           </p>
+
+           <h2>마치며 — 철부지라는 이름의 의미</h2>
+           <p>
+             "철부지"라는 이름을 왜 선택했냐고 묻는다면, 이렇게 답하겠다.
+           </p>
+           <p>
+             철부지는 "아직 모르는 사람"이라는 뜻이다. 34년 경력이 있어도 AI 앞에서는 철부지다. 그리고 그게 좋다. 모른다는 것은 배울 수 있다는 뜻이고, 배운다는 것은 성장할 수 있다는 뜻이니까.
+           </p>
+           <p>
+             이 사이트는 철부지가 메타철부지와 함께, 모르는 것을 알아가는 여정을 기록하는 공간이다. 생각을 구조로, 구조를 실행으로. 그 과정의 모든 것을 여기에 남긴다.
+           </p>
+           <p>
+             ---
+           </p>
+           <p>
+             다음 글 예고: AI로 블로그 글 구조 잡기 — 내가 쓰는 위스퍼링 워크플로우
+           </p>
+           <p>
+             이 글은 chulbuji.com의 첫 번째 정식 기록입니다. 반도체 엔지니어에서 AI Product Builder로의 전환 과정을 함께 지켜봐 주세요.
+           </p>
+           <p>
+             철부지 | 반도체 34년 · 플러스휴먼 · AI 1학년
+           </p>
+         </div>
+
+         <footer class="article-detail-footer">
+           <a href="/log" class="back-link">← 기록 목록으로</a>
+         </footer>
+       </article>
+     </main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a> |
+    <a href="/terms">Terms</a> |
+    <a href="/contact">Contact</a>
+  </div>
+  <p>© 2026 chulbuji.com. All rights reserved.</p>
+</footer></body>
+</html>
