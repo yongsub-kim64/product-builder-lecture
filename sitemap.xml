@@ -7,18 +7,114 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chulbuji.com/" />
   </url>
-  <url><loc>https://chulbuji.com/log</loc></url>
-  <url><loc>https://chulbuji.com/projects</loc></url>
-  <url><loc>https://chulbuji.com/tools</loc></url>
-  <url><loc>https://chulbuji.com/insight</loc></url>
-  <url><loc>https://chulbuji.com/about</loc></url>
-  <url><loc>https://chulbuji.com/privacy</loc></url>
-  <url><loc>https://chulbuji.com/terms</loc></url>
-  <url><loc>https://chulbuji.com/contact</loc></url>
+  <url>
+    <loc>https://chulbuji.com/log</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/log" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/projects</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/projects" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/tools</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/insight</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/insight" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/insight" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/about" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/privacy/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/terms</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/terms/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/contact/" />
+  </url>
+  <url><loc>https://chulbuji.com/lotto-article-1.html</loc></url>
+  <url><loc>https://chulbuji.com/lotto-article-2.html</loc></url>
+  <url><loc>https://chulbuji.com/history-of-lotto.html</loc></url>
+  <url><loc>https://chulbuji.com/strategy-guide.html</loc></url>
+  <url>
+    <loc>https://chulbuji.com/log/001-rebrand-launch.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/log/001-rebrand-launch.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log/001-rebrand-launch.html" />
+  </url>
+  <url>
+      <loc>https://chulbuji.com/tools/lotto/</loc>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools/lotto/" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools/lotto/" />
+  </url>
   <url>
     <loc>https://chulbuji.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://chulbuji.com/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/log</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/log" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/projects" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/tools</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/insight</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/insight" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/insight" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/about" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/privacy/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/terms/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/contact/" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/log/001-rebrand-launch.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/log/001-rebrand-launch.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log/001-rebrand-launch.html" />
+  </url>
+  <url>
+    <loc>https://chulbuji.com/en/tools/lotto/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://chulbuji.com/tools/lotto/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://chulbuji.com/en/tools/lotto/" />
   </url>
 </urlset>
