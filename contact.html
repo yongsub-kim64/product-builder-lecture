@@ -31,39 +31,229 @@
         })(window, document, "clarity", "script", "v5dcajl5yl");
     </script>
     <style>
-        .email-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
+        body {
+            background-color: #FAFAF8;
+            color: #1a1a1a;
         }
-        .email-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            line-height: 1.85;
+            font-size: 16.5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+        }
+        .intro-box {
+            background-color: #F7F3EE;
+            border: 1px solid #ebe7e0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #555555;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #2C5F7C;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center; /* Center label for sections */
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+        .section-divider {
+            border: none;
+            border-top: 1px solid #e0ddd8;
+            margin: 48px 0;
+        }
+        .section-divider-bottom {
+            border: none;
+            border-top: 1px solid #e0ddd8;
+            margin-top: 64px;
+            padding-top: 48px;
+        }
+
+        /* Email Card */
+        .email-card {
+            background-color: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 0 auto; /* Center the card */
+            max-width: 500px; /* Limit width for better appearance */
+        }
+        .email-address {
+            color: #2C5F7C;
+            font-size: 1.35rem;
             font-weight: 600;
             text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
+            display: block;
+            margin-bottom: 1.5rem;
+            word-break: break-all; /* For long email addresses on small screens */
         }
-        .email-btn-primary {
-            background: #1976d2;
+        .email-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .email-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.4rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent; /* Default for outline */
+            flex-shrink: 0; /* Prevent shrinking on small screens */
+        }
+        .email-button.primary {
+            background-color: #2C5F7C;
             color: #fff;
         }
-        .email-btn-primary:hover {
-            background: #1565c0;
+        .email-button.primary:hover {
+            background-color: #1a3c50; /* Darker shade */
         }
-        .email-btn-secondary {
-            background: #f0f0f0;
-            color: #333;
+        .email-button.secondary {
+            background-color: #E8F0F5;
+            color: #2C5F7C;
         }
-        .email-btn-secondary:hover {
-            background: #e0e0e0;
+        .email-button.secondary:hover {
+            background-color: #d1e0e8;
         }
+        .email-button.outline {
+            background-color: transparent;
+            border-color: #e0ddd8;
+            color: #1a1a1a;
+        }
+        .email-button.outline:hover {
+            border-color: #2C5F7C;
+            color: #2C5F7C;
+        }
+        @media (max-width: 600px) {
+            .email-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .email-button {
+                width: 100%;
+            }
+        }
+        .email-note {
+            font-size: 0.82rem;
+            color: #888;
+            margin-top: 1.5rem;
+        }
+
+        /* Feedback Form */
+        .feedback-description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #555555;
+        }
+        .privacy-link {
+            color: #2C5F7C;
+            text-decoration: underline;
+        }
+        .form-wrapper {
+            background-color: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 12px;
+            overflow: hidden; /* For iframe border-radius */
+            margin-top: 2rem;
+            max-width: 700px; /* Adjust as needed */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-wrapper iframe {
+            display: block; /* Remove extra space below iframe */
+        }
+        .form-fallback {
+            background-color: #FAFAF8;
+            border-top: 1px solid #e0ddd8;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .fallback-link {
+            color: #2C5F7C;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 1rem;
+        }
+        .social-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: #fff;
+            border: 1px solid #e0ddd8;
+            border-radius: 10px;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+        .social-chip:hover {
+            border-color: #2C5F7C;
+            color: #2C5F7C;
+            transform: translateY(-1px);
+        }
+        .social-chip svg {
+            width: 20px;
+            height: 20px;
+        }
+        @media (max-width: 600px) {
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-chip {
+                width: 100%;
+                max-width: 300px; /* Max width for mobile chips */
+            }
+        }
+
+        /* Closing Statement */
+        .closing-statement {
+            text-align: center;
+            color: #888;
+            font-size: 0.92rem;
+        }
+
+        /* Toast Message */
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -76,32 +266,12 @@
             font-size: 0.95rem;
             z-index: 9999;
             opacity: 0;
-            transition: opacity 0.3s;
+            visibility: hidden; /* Hide completely when not shown */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
         .toast.show {
             opacity: 1;
-        }
-        .feedback-form-container {
-            margin-top: 1.5rem;
-        }
-        .feedback-form-container iframe {
-            width: 100%;
-            max-width: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-        }
-        .form-placeholder {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            color: #666;
-        }
-        .highlight-box {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1rem;
+            visibility: visible;
         }
     </style>
 </head>
@@ -121,111 +291,61 @@
      </nav>
    </header>
 
-    <main style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.8;">
-        <article>
-            <header>
-                <h1>문의하기</h1>
-                <p style="font-size: 1.1rem; color: #666; margin-top: 1rem;">
-                    chulbuji.com에 대한 피드백, 협업 제안, 또는 궁금한 점이 있으시면 아래 방법을 통해 연락해주세요.
-                </p>
-            </header>
+    <main class="container">
+        <h1 class="page-title">대화를 시작해볼까요?</h1>
 
-            <!-- 이메일 섹션 - 3중 안전장치 -->
-            <section style="margin-top: 2rem;">
-                <h2>1. 이메일로 연락하기</h2>
-                <p>모든 문의는 아래 이메일 주소로 보내주시면 영업일 기준 2~3일 내에 답변 드립니다.</p>
+        <div class="intro-box">
+            <p>이 기록을 보다가 떠오른 생각이 있으신가요? 날카로운 피드백이든, 가벼운 안부든, 함께 만들어보고 싶은 아이디어든 — 무엇이든 환영합니다.</p>
+            <p>AI와 함께 성장하는 여정에 동료가 생기는 건, 언제나 반가운 일이니까요.</p>
+        </div>
 
-                <!--email_off-->
-                <div class="highlight-box">
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">
-                        <strong>Email:</strong>
-                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a>
-                    </p>
-
-                    <div class="email-actions">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Feedback%20for%20chulbuji.com"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="email-btn email-btn-primary">
-                            📧 Gmail로 보내기
-                        </a>
-                        <a href="mailto:hello@chulbuji.com?subject=Feedback%20for%20chulbuji.com"
-                           class="email-btn email-btn-secondary">
-                            ✉️ 메일 앱으로 보내기
-                        </a>
-                        <button type="button"
-                                onclick="copyEmail()"
-                                class="email-btn email-btn-secondary">
-                            📋 이메일 복사
-                        </button>
-                    </div>
+        <section class="section">
+            <p class="section-label">Direct</p>
+            <h2 class="section-title">이메일로 이야기 나누기</h2>
+            <div class="email-card">
+                <a href="mailto:hello@chulbuji.com?subject=chulbuji.com에서 보내는 메시지" class="email-address">hello@chulbuji.com</a>
+                <div class="email-buttons">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=chulbuji.com%EC%97%90%EC%84%9C%20%EB%B3%B4%EB%82%B4%EB%8A%94%20%EB%A9%94%EC%8B%9C%EC%A7%80" target="_blank" rel="noopener noreferrer" class="email-button primary">Gmail로 보내기</a>
+                    <a href="mailto:hello@chulbuji.com?subject=chulbuji.com에서 보내는 메시지" class="email-button secondary">메일 앱으로 보내기</a>
+                    <button type="button" class="email-button outline" id="copy-email-btn">주소 복사</button>
                 </div>
-                <!--email_on-->
-            </section>
+                <p class="email-note">보통 2~3일 내에 답변드립니다</p>
+            </div>
+        </section>
 
-            <!-- 피드백 폼 섹션 -->
-            <section style="margin-top: 3rem;">
-                <h2>2. 고객의 소리 (피드백 폼)</h2>
-                <p>
-                    더 나은 서비스를 위해 여러분의 소중한 의견을 기다립니다.
-                    버그 제보, 기능 제안, 협업 문의 등 어떤 내용이든 환영합니다.
-                </p>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
-                    의견을 환영합니다. 답변을 위해 필요한 최소 정보만 수집합니다.
-                    자세한 내용은 <a href="/privacy" style="color: #1976d2;">Privacy Policy</a>를 참고해 주세요.
-                </p>
+        <hr class="section-divider">
 
-                <div class="feedback-form-container">
-                    <div class="form-wrap">
-                        <iframe
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?embedded=true"
-                            width="100%"
-                            height="1200"
-                            frameborder="0"
-                            marginheight="0"
-                            marginwidth="0"
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Chulbuji.com 피드백 폼"
-                        >Loading…</iframe>
-                    </div>
-                    <p style="margin-top: 1rem; text-align: center;">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?usp=header"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="email-btn email-btn-secondary">
-                            🔗 새 탭에서 폼 열기
-                        </a>
-                    </p>
+        <section class="section">
+            <p class="section-label">Feedback</p>
+            <h2 class="section-title">생각을 나눠주세요</h2>
+            <p class="feedback-description">버그 제보, 기능 제안, 협업 문의 — 형식에 구애받지 마세요. 답변에 필요한 최소한의 정보만 수집하며, 자세한 내용은 <a href="/privacy" class="privacy-link">Privacy Policy</a>를 참고해주세요.</p>
+            <div class="form-wrapper">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?embedded=true" width="100%" min-height="520px" frameborder="0" loading="lazy" title="피드백 폼"></iframe>
+                <div class="form-fallback">
+                    <p>폼이 보이지 않나요? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="fallback-link">새 탭에서 열기 →</a></p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- GitHub 섹션 -->
-            <section style="margin-top: 3rem;">
-                <h2>3. GitHub</h2>
-                <p>프로젝트와 관련된 코드, 기여 및 이슈에 대한 논의는 GitHub을 통해 참여하실 수 있습니다.</p>
-                <div class="highlight-box">
-                    <p style="font-size: 1.1rem;">
-                        <strong>GitHub:</strong>
-                        <a href="https://github.com/yongsub-kim64/product-builder-lecture"
-                           style="color: #1976d2;"
-                           target="_blank"
-                           rel="noopener noreferrer">github.com/yongsub-kim64</a>
-                    </p>
-                </div>
-            </section>
+        <hr class="section-divider">
 
-            <!-- 문의 카테고리 안내 -->
-            <section style="margin-top: 3rem;">
-                <h2>4. 문의 유형 안내</h2>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li><strong>버그 제보:</strong> 도구 사용 중 발생한 오류나 문제점</li>
-                    <li><strong>기능 제안:</strong> 새로운 기능이나 개선 아이디어</li>
-                    <li><strong>협업 문의:</strong> 파트너십, 공동 프로젝트 제안</li>
-                    <li><strong>일반 문의:</strong> 기타 궁금한 점이나 의견</li>
-                </ul>
-            </section>
-        </article>
+        <section class="section">
+            <p class="section-label">Elsewhere</p>
+            <h2 class="section-title">다른 곳에서 만나기</h2>
+            <div class="social-links">
+                <a href="https://github.com/yongsub-kim64" target="_blank" rel="noopener noreferrer" class="social-chip github">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    GitHub
+                </a>
+            </div>
+        </section>
+
+        <hr class="section-divider-bottom">
+        <div class="closing-statement">
+            <p>chulbuji.com은 한 사람이 운영하는 작은 기록소입니다.</p>
+            <p>모든 메시지를 직접 읽고, 직접 답변합니다.</p>
+        </div>
     </main>
 
     <footer>
@@ -242,12 +362,19 @@
 
     <script>
         // ========== 이메일 복사 기능 ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', copyEmail);
+            }
+        });
+
         function copyEmail() {
             const email = 'hello@chulbuji.com';
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(email)
-                    .then(() => showToast('이메일이 복사되었습니다!'))
+                    .then(() => showToast('이메일 주소가 복사되었습니다!'))
                     .catch(() => fallbackCopy(email));
             } else {
                 fallbackCopy(email);
@@ -264,7 +391,7 @@
 
             try {
                 document.execCommand('copy');
-                showToast('이메일이 복사되었습니다!');
+                showToast('이메일 주소가 복사되었습니다!');
             } catch (err) {
                 showToast('복사에 실패했습니다. 직접 복사해주세요.');
             }
