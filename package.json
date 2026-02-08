@@ -3,5 +3,8 @@
   "private": true,
   "scripts": {
     "ship": "bash scripts/ship.sh"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }
