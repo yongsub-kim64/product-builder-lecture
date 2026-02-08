@@ -15,20 +15,38 @@
 
     <title>Thought to structure. Structure to action. | chulbuji</title>
     <meta name="description" content="Clarifying fuzzy ideas with AI—and documenting the process. Tools are byproducts; the log is the story.">
-    <meta name="author" content="Chulbuji">
+    <meta name="keywords" content="AI Product Builder, Build in Public, Product Development, AI Tools, chulbuji">
+    <meta name="author" content="chulbuji">
 
     <link rel="canonical" href="https://chulbuji.com/en">
+
+    <!-- hreflang -->
     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/">
     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en">
     <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/">
-  
+
     <!-- Open Graph -->
+    <meta property="og:site_name" content="chulbuji">
     <meta property="og:title" content="Thought to structure. Structure to action. | chulbuji">
     <meta property="og:description" content="Clarifying fuzzy ideas with AI—and documenting the process. Tools are byproducts; the log is the story.">
     <meta property="og:url" content="https://chulbuji.com/en">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://chulbuji.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="chulbuji - AI Product Builder">
+    <meta name="twitter:description" content="Thought to structure. Structure to action.">
+    <meta name="twitter:image" content="https://chulbuji.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- AdSense: Facade Pattern (Lazy Load) -->
     <script>
@@ -54,6 +72,10 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
+
+    <!-- Week 1: Mobile optimization CSS -->
+    <link rel="stylesheet" href="/mobile-improvements.css?v=20250208" />
+    <link rel="stylesheet" href="/components.css?v=20250208" />
 
     <!-- Performance: Load data scripts during idle time (non-critical) -->
     <script>
@@ -243,6 +265,92 @@
           <p class="tag">Experiment · Log · Iterate</p>
         </section>
 
+        <!-- Week 1: Stats Bar -->
+        <section class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-content">
+              <div class="stat-value" id="products-live">1</div>
+              <div class="stat-label">Live</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">🧪</div>
+            <div class="stat-content">
+              <div class="stat-value" id="products-building">0</div>
+              <div class="stat-label">Building</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">💡</div>
+            <div class="stat-content">
+              <div class="stat-value" id="ideas-count">5</div>
+              <div class="stat-label">Ideas</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">📅</div>
+            <div class="stat-content">
+              <div class="stat-value">Day 30</div>
+              <div class="stat-label">Journey</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Week 1: Featured Project (Honest Version) -->
+        <section class="featured-project">
+          <div class="featured-header">
+            <span class="badge badge-live">🚀 Live</span>
+            <span class="featured-date">Launched 2026-01-15</span>
+          </div>
+
+          <div class="featured-content">
+            <div class="featured-icon">🎲</div>
+            <h2>Lotto Number Generator</h2>
+            <p class="featured-description">
+              First project from the 5-week AI Builder program.
+              Built in collaboration with AI.
+            </p>
+
+            <!-- Honest project metrics -->
+            <div class="featured-meta">
+              <span class="meta-item">
+                <span class="meta-icon">🛠️</span>
+                Built in 2 weeks
+              </span>
+              <span class="meta-item">
+                <span class="meta-icon">⚡</span>
+                MVP complete
+              </span>
+              <span class="meta-item">
+                <span class="meta-icon">🎯</span>
+                Looking for first users
+              </span>
+            </div>
+
+            <!-- Honest status message -->
+            <div class="featured-callout">
+              <p>
+                <strong>🎉 Just launched!</strong><br>
+                Be the first user and share your feedback.
+                Your input makes this product better.
+              </p>
+            </div>
+
+            <div class="featured-cta">
+              <a href="/en/tools/lotto" class="btn btn-primary">
+                Be the First User →
+              </a>
+              <a href="/en/log/001-rebrand-launch" class="btn btn-secondary">
+                Read the Story
+              </a>
+            </div>
+          </div>
+        </section>
+
    <section class="recent-logs">
      <h2>Latest Logs</h2>
      <div class="log-grid">
@@ -295,5 +403,11 @@
         });
     </script>
     <script src="/language-switcher.js"></script>
+
+    <!-- Week 1: Quality checks -->
+    <script defer src="/quality-checks.js?v=20250208"></script>
+
+    <!-- Week 1: Firebase Stats (optional - enable after Firebase setup) -->
+    <!-- <script defer src="/firebase-stats.js?v=20250208"></script> -->
 </body>
 </html>
