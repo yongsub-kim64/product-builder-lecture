@@ -1,5 +1,12 @@
 /* ===== UI v3 Skin: Thinking Tool / Minimal SaaS ===== */
 
+/* === PERFORMANCE OPTIMIZATION === */
+/* Font loading optimization for better LCP */
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-display: swap; /* Show fallback immediately, swap when loaded */
+}
+
 /* === COLOR & FONT SYSTEM === */
 .ui-v2 {
   --bg: #F8F9FB;
@@ -24,6 +31,7 @@
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed; /* Performance: Faster text rendering on mobile */
 }
 
 .ui-v2 h1, .ui-v2 h2, .ui-v2 h3 {
@@ -108,6 +116,8 @@ body > footer p {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
   padding: 14px 0;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  will-change: box-shadow; /* Performance: Prepare for animation */
+  contain: layout style; /* Performance: Limit layout recalculation */
 }
 
 .main-header .main-nav {
@@ -404,6 +414,21 @@ body > footer p {
 
 /* === MOBILE OPTIMIZATION (768px and below) === */
 @media (max-width: 768px) {
+  /* Performance: Reduce animations and effects on mobile */
+  .main-header {
+    backdrop-filter: none; /* Remove expensive blur effect */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
+    will-change: auto; /* Remove will-change on mobile */
+  }
+
+  .ui-v2 .card {
+    transition: none; /* Remove hover transitions on mobile */
+  }
+
+  .main-header .nav-menu a::after {
+    display: none; /* Remove underline animation on mobile */
+  }
+
   /* Header mobile optimization */
   .main-header .main-nav {
     padding: 0 16px;
@@ -488,8 +513,21 @@ body > footer p {
 }
 
 @media (max-width: 640px) {
+  /* Performance: Further optimize for small mobile screens */
+  * {
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight for better performance */
+  }
+
+  .main-header {
+    box-shadow: none; /* Remove shadow for performance */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Simpler border instead */
+  }
+
   .ui-v2 main { padding: 24px 12px 60px; }
-  .ui-v2 .card { padding: 24px; }
+  .ui-v2 .card {
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Lighter shadow */
+  }
   .ui-v2 .main-grid { gap: 16px; }
   .ui-v2 .header { padding: 10px 0; }
   .ui-v2 .btn {
