@@ -15,6 +15,87 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="/style.v2.css?v=20250203" />
   <link rel="stylesheet" href="/style.css?v=20250203" />
+  <style>
+    body {
+      background-color: #FAFAF8;
+      color: #1a1a1a;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .lang-toggle-container {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .lang-toggle-container button {
+      background-color: #E8F0F5;
+      border: 1px solid #e0ddd8;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .lang-toggle-container button.active {
+      background-color: #2C5F7C;
+      color: white;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .page-header h1 {
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+    .page-header p {
+      color: #555555;
+    }
+    .section {
+      border-top: 1px solid #e0ddd8;
+      padding: 3rem 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #2C5F7C;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .section-body {
+      font-size: 16.5px;
+      line-height: 1.85;
+    }
+    .highlight-box {
+      border-left: 3px solid #2C5F7C;
+      background-color: #E8F0F5;
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 2rem;
+    }
+    .card {
+      border: 1px solid #e0ddd8;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      color: #2C5F7C;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .goal-section {
+      text-align: center;
+      border: 1px solid #e0ddd8;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -32,66 +113,62 @@
     </nav>
   </header>
 
-  <main style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.8;">
-    <h1 style="margin-bottom: 2rem;">About Us</h1>
+  <main class="container">
+    <header class="page-header">
+      <h1>About chulbuji.com</h1>
+      <p>One person's growth log in the age of AI</p>
+    </header>
 
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">Who We Are</h2>
-      <p>
-        chulbuji.com is an <strong>experimental platform</strong> that documents the journey of building products with AI assistance. We operate with a unique "dual-brain" concept where human creativity (chulbuji) collaborates with AI intelligence (meta-chulbuji) to transform ideas into reality.
-      </p>
-    </section>
-
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">Our Mission</h2>
-      <p>
-        We believe that the <strong>process of creation is just as valuable as the final product</strong>. Our mission is to:
-      </p>
-      <ul style="padding-left: 2rem; margin-top: 1rem;">
-        <li>Document our experiments transparently, including both successes and failures</li>
-        <li>Share insights from working alongside AI in product development</li>
-        <li>Create useful tools as byproducts of our experimentation</li>
-        <li>Build a knowledge base for others interested in AI-assisted development</li>
-      </ul>
-    </section>
-
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">What We Do</h2>
-      <ul style="padding-left: 2rem;">
-        <li><strong>Experiment:</strong> We test ideas rapidly through conversation with AI</li>
-        <li><strong>Build:</strong> We create prototypes and tools quickly</li>
-        <li><strong>Document:</strong> We record our process in detailed logs</li>
-        <li><strong>Share:</strong> We publish insights and learnings publicly</li>
-      </ul>
-      <p style="margin-top: 1rem; color: #666; font-style: italic;">
-        "Tools are byproducts; the record is the main character."
-      </p>
-    </section>
-
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">Our Content</h2>
-      <p>On chulbuji.com, you'll find:</p>
-      <ul style="padding-left: 2rem; margin-top: 1rem;">
-        <li><strong>Experiment Logs:</strong> Detailed documentation of our development process</li>
-        <li><strong>Projects:</strong> Ongoing and completed works</li>
-        <li><strong>Tools:</strong> Utility applications built during our experiments</li>
-        <li><strong>Insights:</strong> Analysis and patterns discovered through our work</li>
-      </ul>
-    </section>
-
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">Contact</h2>
-      <p>We welcome your questions, feedback, and collaboration ideas.</p>
-      <!--email_off-->
-      <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-        <p>
-          <strong>Email:</strong> <a href="mailto:hello@chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a>
-        </p>
-        <p style="margin-top: 0.5rem;">
-          <strong>GitHub:</strong> <a href="https://github.com/yongsub-kim64/product-builder-lecture" style="color: #1976d2;" target="_blank" rel="noopener noreferrer">github.com/yongsub-kim64</a>
-        </p>
+    <section class="section">
+      <p class="section-label">01 — Identity</p>
+      <h2 class="section-title">One Human, Two Brains</h2>
+      <div class="section-body">
+        <p>chulbuji.com is a growth log — a living record of one person's ongoing experiment with learning, thinking, and creating alongside AI.</p>
+        <p>Instead of freezing before the tidal wave of technological change, I chose to embrace AI as a second brain. There is <strong>'chulbuji'</strong> — the human mind that feels its way through the world with intuition and raw curiosity. And there is <strong>'meta-chulbuji'</strong> — the AI mind that gives those loose thoughts structure and reach. This site chronicles the Dual-Brain collaboration between the two: unfiltered, in real time.</p>
+        <div class="highlight-box">
+          <p>Learning wider, exploring deeper, and building things today that yesterday's version of me couldn't have imagined. This is a space that trusts the process over the product, and the experiment over the polished outcome.</p>
+        </div>
       </div>
-      <!--email_on-->
+    </section>
+
+    <section class="section">
+      <p class="section-label">02 — Perspective</p>
+      <h2 class="section-title">AI doesn't hand you answers — it sharpens your questions</h2>
+      <div class="section-body">
+        <p>I don't think of AI as a faster search engine or an answer machine. To me, AI is a <strong>partner</strong> that stretches my thinking and gives shape to half-formed ideas — which is exactly why I call it meta-chulbuji.</p>
+        <p><strong>The evolution of inquiry</strong> — Conversations with AI change the questions I ask. "How do I do this?" deepens into "Why does this work this way?", and then into "What new possibilities open up if I redesign this entirely?"</p>
+        <p><strong>The velocity of execution</strong> — Ideas that used to live only in my head now become rapid prototypes through AI collaboration. They don't need to be perfect. Some things only reveal themselves once you've built them.</p>
+        <p><strong>Experience as a lasting asset</strong> — Tools change. Technologies pass. But the insights I gain through the process stay with me. The real content of this site isn't how to use a tool — it's <em>how using that tool changed the person holding it</em>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-label">03 — What You'll Find Here</p>
+      <h2 class="section-title">The Update Log</h2>
+      <div class="section-body">
+        <p>Three kinds of records accumulate here over time.</p>
+        <div class="card">
+          <h3 class="card-title">Log — Raw Records</h3>
+          <p>Morning conversations with AI, the messy process of shaping ideas and putting them into motion. Unpolished snapshots of a mind at work.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Projects — Things We Built</h3>
+          <p>Tools, services, and experiments brought to life through Dual-Brain collaboration. Small and imperfect, perhaps — but real, and made.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Insights — Discoveries About Myself</h3>
+          <p>Shifts in thinking and fragments of self-understanding that emerged through AI interaction — things I never would have found thinking alone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="goal-section">
+      <p class="section-label">04 — Goal</p>
+      <h2 class="section-title">Keep updating. Keep becoming.</h2>
+      <div class="section-body">
+        <p>My goal is not to stack up polished achievements. It is to remain a person who keeps asking slightly better questions, seeing with a slightly wider lens — a <strong>human who never stops self-updating</strong> in the uncharted territory of AI civilization.</p>
+        <p>If you've found your way here while wrestling with similar questions, I hope these records offer a small spark. We can each grow at our own pace, in our own way.</p>
+      </div>
     </section>
   </main>
 
