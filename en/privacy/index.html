@@ -3,138 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | chulbuji.com</title>
-    <meta name="description" content="Privacy Policy for chulbuji.com. Learn how we collect, use, and protect your personal information.">
-    <link rel="canonical" href="https://chulbuji.com/en/privacy">
-    <link rel="alternate" hreflang="ko" href="https://chulbuji.com/privacy">
-    <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/privacy">
-    <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/en/privacy">
-
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="stylesheet" href="/style.v2.css?v=20250203" />
-    <link rel="stylesheet" href="/style.css?v=20250203" />
+    <title>Privacy Policy | 개인정보처리방침 — chulbuji.com</title>
+    <meta name="description" content="chulbuji.com Privacy Policy covering Korean PIPA, GDPR, and CCPA.">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght @300;400;500;600;700&family=Inter:wght @300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8; --text: #1a1a1a; --text-secondary: #555;
+            --text-muted: #888; --accent: #2C5F7C; --accent-light: #E8F0F5;
+            --accent-warm: #F7F3EE; --border: #e0ddd8; --card-bg: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans KR', 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.9; font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 760px; margin: 0 auto; padding: 80px 24px 120px; }
+        .page-header { margin-bottom: 40px; }
+        .page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .page-header .effective-date { font-size: 0.88rem; color: var(--text-muted); }
+        .intro-box {
+            background: var(--accent-warm); border-radius: 12px; padding: 24px 28px;
+            margin-bottom: 48px; border: 1px solid #ebe7e0;
+        }
+        .intro-box p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.85; }
+        .policy-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .policy-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .policy-section h2 {
+            font-size: 1.15rem; font-weight: 600; margin-bottom: 16px; color: var(--text);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-num {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--accent); font-weight: 600; background: var(--accent-light);
+            padding: 3px 10px; border-radius: 4px; flex-shrink: 0;
+        }
+        .policy-section p { color: var(--text-secondary); margin-bottom: 12px; }
+        .policy-section p:last-child { margin-bottom: 0; }
+        .policy-section a { color: var(--accent); text-decoration: none; }
+        .policy-section a:hover { text-decoration: underline; }
+        .policy-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        .policy-table th {
+            background: var(--accent-light); color: var(--accent); font-weight: 600;
+            text-align: left; padding: 10px 14px; border: 1px solid var(--border);
+            font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .policy-table td { padding: 10px 14px; border: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+        .policy-table tr:nth-child(even) td { background: #fafaf8; }
+        .info-card {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px 22px; margin: 12px 0;
+        }
+        .info-card .card-label {
+            font-size: 0.78rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        .info-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0; }
+        .highlight-box {
+            background: var(--accent-light); border-left: 3px solid var(--accent);
+            padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0;
+        }
+        .highlight-box p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+        .region-block {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; padding: 24px 28px; margin: 20px 0;
+        }
+        .region-block h3 {
+            font-size: 1.02rem; font-weight: 600; margin-bottom: 14px;
+            color: var(--accent); display: flex; align-items: center; gap: 8px;
+        }
+        .region-block p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px; }
+        .region-block p:last-child { margin-bottom: 0; }
+        .contact-box {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; padding: 28px; text-align: center;
+        }
+        .contact-box .role { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px; }
+        .contact-box .name { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+        .contact-box a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .contact-box a:hover { text-decoration: underline; }
+        /* Keeping this style as is, but lang-en will be explicitly visible */
+        .lang-ko, .lang-en { display: none; }
+        .lang-ko.visible, .lang-en.visible { display: block; }
+        @media (max-width: 600px) {
+            .container { padding: 48px 18px 80px; }
+            .page-header h1 { font-size: 1.6rem; }
+            .policy-table { font-size: 0.82rem; }
+            .policy-table th, .policy-table td { padding: 8px 10px; }
+            .region-block { padding: 18px 20px; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="main-nav">
-            <a href="/en" class="logo">chulbuji</a>
-            <div class="nav-menu">
-                <a href="/en">Home</a>
-                <a href="/en/log">Log</a>
-                <a href="/en/projects">Projects</a>
-                <a href="/en/tools">Tools</a>
-                <a href="/en/insight">Insight</a>
-                <a href="/en/about">About</a>
-            </div>
-            <a href="/privacy" class="lang-toggle">KO</a>
-        </nav>
-    </header>
+<div class="container">
+    <!-- ==================== ENGLISH ==================== -->
+    <div class="lang-en visible">
 
-    <main style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.8;">
-        <article>
-            <header>
-                <h1>Privacy Policy</h1>
-                <p style="color: #666; margin-top: 0.5rem;">Last Updated: February 2026</p>
-            </header>
-
-            <section style="margin-top: 2rem;">
-                <h2>1. Introduction</h2>
-                <p>Welcome to chulbuji.com. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard information when you visit our website.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>2. Information We Collect</h2>
-                <p>We may collect the following types of information:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li><strong>Automatically Collected Data:</strong> When you visit our site, we may automatically collect certain information such as your IP address, browser type, device information, and pages visited. This data is collected through cookies and similar technologies.</li>
-                    <li><strong>Voluntarily Provided Information:</strong> If you contact us via email, we collect the information you provide, such as your name and email address.</li>
-                </ul>
-                <h3 style="margin-top: 1.5rem;">2-1. Contact / Feedback Form</h3>
-                <p>When you submit our feedback form (hosted via Google Forms), we may collect: message content, inquiry category, page URL (optional), reply email (optional), consent, and submission timestamp.</p>
-                <p>This data is used solely to respond to your inquiry and is periodically deleted after the inquiry is resolved.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>3. How We Use Your Information</h2>
-                <p>We use the information we collect for the following purposes:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li>To operate and maintain our website</li>
-                    <li>To improve user experience and website functionality</li>
-                    <li>To analyze website traffic and usage patterns</li>
-                    <li>To respond to your inquiries and communications</li>
-                    <li>To comply with legal obligations</li>
-                </ul>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>4. Cookies and Tracking Technologies</h2>
-                <p>Our website uses cookies and similar tracking technologies to enhance your browsing experience. These include:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li><strong>Essential Cookies:</strong> Necessary for the website to function properly.</li>
-                    <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website (e.g., Google Analytics).</li>
-                    <li><strong>Advertising Cookies:</strong> Used by third-party advertising partners (e.g., Google AdSense) to display relevant advertisements.</li>
-                </ul>
-                <p style="margin-top: 1rem;">You can manage cookie preferences through your browser settings. Note that disabling certain cookies may affect website functionality.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>5. Third-Party Services</h2>
-                <p>We use third-party services that may collect information about you:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li><strong>Google Analytics:</strong> For website traffic analysis. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
-                    <li><strong>Google AdSense:</strong> For displaying advertisements. See <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google's Advertising Policies</a>.</li>
-                    <li><strong>Firebase Hosting:</strong> For website hosting services.</li>
-                </ul>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>6. Data Retention</h2>
-                <p>We retain personal information only for as long as necessary to fulfill the purposes outlined in this policy, or as required by law. Analytics data is typically retained for up to 26 months.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>7. Your Rights</h2>
-                <p>Depending on your location, you may have the following rights regarding your personal data:</p>
-                <ul style="padding-left: 2rem; margin-top: 1rem;">
-                    <li>Right to access your personal data</li>
-                    <li>Right to request correction of inaccurate data</li>
-                    <li>Right to request deletion of your data</li>
-                    <li>Right to opt-out of certain data processing</li>
-                </ul>
-                <p style="margin-top: 1rem;">To exercise these rights, please contact us at the email address below.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>8. Children's Privacy</h2>
-                <p>Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>9. Changes to This Policy</h2>
-                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.</p>
-            </section>
-
-            <section style="margin-top: 2rem;">
-                <h2>10. Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                <!--email_off-->
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                    <p><strong>Email:</strong> <a href="mailto:hello@chulbuji.com">hello@chulbuji.com</a></p>
-                    <p><strong>Website:</strong> <a href="https://chulbuji.com">chulbuji.com</a></p>
-                </div>
-                <!--email_on-->
-            </section>
-        </article>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/en/privacy">Privacy</a> |
-            <a href="/en/terms">Terms</a> |
-            <a href="/en/contact">Contact</a>
+        <div class="page-header">
+            <h1>Privacy Policy</h1>
+            <p class="effective-date">Effective: February 8, 2026 | Last updated: February 8, 2026</p>
         </div>
-        <p>&copy; 2026 chulbuji.com. All rights reserved.</p>
-    </footer>
-    <script src="/language-switcher.js"></script>
+
+        <div class="intro-box">
+            <p>chulbuji.com is a one-person space for recording, experimenting, and building with AI. I take your personal data seriously and handle it in compliance with the Korean Personal Information Protection Act (PIPA), the EU General Data Protection Regulation (GDPR), the California Consumer Privacy Act as amended by the CPRA (CCPA), and other applicable laws.</p>
+            <p style="margin-top:8px;">This policy applies to all services offered through chulbuji.com, including the website, AI tools, and both free and paid products. If you reside in the EU/EEA or California, please see the region-specific sections below for additional rights.</p>
+        </div>
+
+        <!-- 01 -->
+        <div class="policy-section">
+            <h2><span class="section-num">01</span> Information I Collect</h2>
+            <p>What I collect depends on how you interact with the site.</p>
+            <table class="policy-table">
+                <thead><tr><th style="width:28%;">When</th><th>What</th><th style="width:22%;">How</th></tr></thead>
+                <tbody>
+                    <tr><td>Browsing the site</td><td>IP address, cookies, visit timestamps, pages viewed, device and browser information</td><td>Automatic</td></tr>
+                    <tr><td>Submitting feedback</td><td>Message content, inquiry type, page URL (optional), reply email (optional), consent, submission time</td><td>You provide it</td></tr>
+                    <tr><td>Creating an account</td><td>Email address, password (stored encrypted), display name (optional)</td><td>You provide it</td></tr>
+                    <tr><td>Making a payment</td><td>Payment details (card number, expiry, etc.) — processed by a third-party payment provider and never stored directly on this site</td><td>Via payment provider</td></tr>
+                    <tr><td>Using AI tools</td><td>Prompts you enter, generated outputs, usage logs</td><td>Through service use</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 02 -->
+        <div class="policy-section">
+            <h2><span class="section-num">02</span> How and Why I Use Your Information</h2>
+            <p>I use the data I collect only for the purposes listed below, along with the legal basis for each under GDPR Article 6.</p>
+            <table class="policy-table">
+                <thead><tr><th style="width:24%;">Purpose</th><th>Details</th><th style="width:22%;">Legal Basis</th></tr></thead>
+                <tbody>
+                    <tr><td>Service delivery</td><td>Providing content, running AI tools, maintaining service reliability</td><td>Contract</td></tr>
+                    <tr><td>Account management</td><td>Registration, identity verification, access control, fraud prevention</td><td>Contract</td></tr>
+                    <tr><td>Payments</td><td>Processing subscriptions, one-time purchases, and refunds</td><td>Contract</td></tr>
+                    <tr><td>Improvement</td><td>Usage analytics, new feature development, user experience enhancement</td><td>Legitimate interest</td></tr>
+                    <tr><td>Communication</td><td>Responding to feedback and inquiries</td><td>Consent / Legitimate interest</td></tr>
+                    <tr><td>Legal compliance</td><td>Meeting obligations under applicable laws and resolving disputes</td><td>Legal obligation</td></tr>
+                </tbody>
+            </table>
+            <p>I do not sell your personal information. I do not use it for automated decision-making or profiling that produces legal or similarly significant effects.</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="policy-section">
+            <h2><span class="section-num">03</span> Data Retention and Deletion</h2>
+            <p>Personal data is deleted once its purpose has been fulfilled. Where law requires longer retention, the data is kept only for the legally mandated period.</p>
+            <table class="policy-table">
+                <thead><tr><th style="width:40%;">Record type</th><th style="width:20%;">Retention</th><th>Legal basis</th></tr></thead>
+                <tbody>
+                    <tr><td>Contracts and cancellations</td><td>5 years</td><td>E-Commerce Act (Korea)</td></tr>
+                    <tr><td>Payment and supply records</td><td>5 years</td><td>E-Commerce Act (Korea)</td></tr>
+                    <tr><td>Consumer complaints and disputes</td><td>3 years</td><td>E-Commerce Act (Korea)</td></tr>
+                    <tr><td>Advertising records</td><td>6 months</td><td>E-Commerce Act (Korea)</td></tr>
+                    <tr><td>Service usage logs</td><td>3 months</td><td>Telecommunications Privacy Act (Korea)</td></tr>
+                    <tr><td>Analytics data</td><td>26 months</td><td>Google Analytics default</td></tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">
+                <p><strong>Deletion method:</strong> Electronic files are erased using irreversible technical methods (low-level formatting, overwriting). Paper documents are shredded or incinerated.</p>
+            </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="policy-section">
+            <h2><span class="section-num">04</span> AI Tool Data Handling</h2>
+            <p>When you use AI tools on chulbuji.com, the following principles govern your prompts and outputs.</p>
+            <div class="info-card"><p class="card-label">Data ownership</p><p>Your prompts and the outputs they generate belong to you.</p></div>
+            <div class="info-card"><p class="card-label">No training use</p><p>I do not use your input data to train or fine-tune any AI models.</p></div>
+            <div class="info-card"><p class="card-label">Third-party AI providers</p><p>AI features may be processed through external APIs (e.g., OpenAI, Anthropic). Each service's privacy policy applies in addition to this one. I clearly indicate which provider powers each tool.</p></div>
+            <div class="info-card"><p class="card-label">Storage and deletion</p><p>Prompts and outputs are retained only as long as needed. You can request deletion at any time, and I will process it without delay.</p></div>
+        </div>
+
+        <!-- 05 -->
+        <div class="policy-section">
+            <h2><span class="section-num">05</span> Cookies and Tracking</h2>
+            <table class="policy-table">
+                <thead><tr><th style="width:25%;">Type</th><th>Description</th><th style="width:20%;">Example</th></tr></thead>
+                <tbody>
+                    <tr><td>Essential</td><td>Required for core functions (login persistence, language settings). Cannot be disabled.</td><td>Session cookies</td></tr>
+                    <tr><td>Analytics</td><td>Help me understand how visitors use the site to improve it.</td><td>Google Analytics</td></tr>
+                    <tr><td>Advertising</td><td>Used by third-party ad partners to serve relevant ads.</td><td>Google AdSense</td></tr>
+                </tbody>
+            </table>
+            <p>You can manage cookies through your browser settings. Disabling essential cookies may affect site functionality. EU/EEA visitors: non-essential cookies are only set with your prior consent.</p>
+        </div>
+
+        <!-- 06 -->
+        <div class="policy-section">
+            <h2><span class="section-num">06</span> Third-Party Services</h2>
+            <p>I do not share your personal data with third parties except where you have consented or where required by law. The following services are used:</p>
+            <table class="policy-table">
+                <thead><tr><th style="width:28%;">Service</th><th style="width:32%;">Purpose</th><th>Privacy Policy</th></tr></thead>
+                <tbody>
+                    <tr><td>Google Analytics</td><td>Traffic analysis</td><td><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></td></tr>
+                    <tr><td>Google AdSense</td><td>Ad serving</td><td><a href="https://policies.google.com/technologies/ads" target="_blank">Google Ad Policies</a></td></tr>
+                    <tr><td>Firebase</td><td>Hosting and infrastructure</td><td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td></tr>
+                    <tr><td>Payment provider</td><td>Transaction processing</td><td>To be announced at launch</td></tr>
+                    <tr><td>AI API providers</td><td>AI tool processing</td><td>Specified per service</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 07 -->
+        <div class="policy-section">
+            <h2><span class="section-num">07</span> International Data Transfers</h2>
+            <p>Your data may be transferred to and processed in countries outside your country of residence, including the United States, where some of the third-party services above are based.</p>
+            <table class="policy-table">
+                <thead><tr><th style="width:25%;">Recipient</th><th style="width:20%;">Country</th><th style="width:25%;">Data</th><th>Safeguard</th></tr></thead>
+                <tbody>
+                    <tr><td>Google (Analytics, AdSense)</td><td>United States</td><td>Cookies, usage data</td><td>EU Standard Contractual Clauses (SCC)</td></tr>
+                    <tr><td>AI API providers</td><td>United States</td><td>Prompts, outputs</td><td>Data Processing Agreements (DPA)</td></tr>
+                    <tr><td>Payment provider</td><td>Varies</td><td>Payment info</td><td>PCI DSS compliance</td></tr>
+                </tbody>
+            </table>
+            <p>Transfers are carried out in accordance with GDPR Article 46 and Korean PIPA Article 28-8, using appropriate safeguards.</p>
+        </div>
+
+        <!-- 08 -->
+        <div class="policy-section">
+            <h2><span class="section-num">08</span> Your Rights</h2>
+            <p>You have the following rights regardless of your location. Additional region-specific rights are listed in the sections below.</p>
+            <div class="info-card"><p class="card-label">Access</p><p>Request to see what personal data I hold about you.</p></div>
+            <div class="info-card"><p class="card-label">Correction and deletion</p><p>Ask me to correct inaccurate data or delete your personal information.</p></div>
+            <div class="info-card"><p class="card-label">Restrict processing</p><p>Request that I stop processing your data.</p></div>
+            <div class="info-card"><p class="card-label">Withdraw consent</p><p>Withdraw consent to data collection and use at any time.</p></div>
+            <p style="margin-top:12px;">To exercise any right, email <a href="mailto:hello @chulbuji.com">hello@chulbuji.com</a>. I will respond within 10 days (or 30 days where GDPR applies).</p>
+        </div>
+
+        <!-- 09 — REGIONAL: EEA -->
+        <div class="policy-section">
+            <h2><span class="section-num">09</span> Additional Rights for EEA Residents (GDPR)</h2>
+            <p>If you are in the European Economic Area, the following additional rights and disclosures apply under the General Data Protection Regulation.</p>
+            <div class="region-block">
+                <h3>🇪🇺 EEA-Specific Rights</h3>
+                <div class="info-card"><p class="card-label">Data portability</p><p>You have the right to receive your personal data in a structured, commonly used, machine-readable format (e.g., JSON or CSV) and to transmit it to another controller.</p></div>
+                <div class="info-card"><p class="card-label">Right to object</p><p>You may object to processing based on legitimate interest at any time. I will cease processing unless I can demonstrate compelling legitimate grounds.</p></div>
+                <div class="info-card"><p class="card-label">Automated decision-making</p><p>I do not make decisions based solely on automated processing that produce legal or similarly significant effects on you. If this changes in the future, I will update this policy and obtain explicit consent.</p></div>
+                <div class="info-card"><p class="card-label">Supervisory authority</p><p>You have the right to lodge a complaint with your local data protection supervisory authority.</p></div>
+                <p style="margin-top:12px;"><strong>Cookie consent:</strong> Non-essential cookies (analytics and advertising) are only activated after you give explicit consent, in compliance with the ePrivacy Directive.</p>
+                <p><strong>Data controller:</strong> chulbuji (hello @chulbuji.com), based in South Korea. As a small-scale controller without an EU establishment, I am not required to appoint an EU representative under GDPR Article 27(2), but I am fully responsive to all EEA inquiries via email.</p>
+            </div>
+        </div>
+
+        <!-- 10 — REGIONAL: California -->
+        <div class="policy-section">
+            <h2><span class="section-num">10</span> Additional Rights for California Residents (CCPA/CPRA)</h2>
+            <p>If you are a California resident, the following additional disclosures and rights apply under the California Consumer Privacy Act as amended by the California Privacy Rights Act.</p>
+            <div class="region-block">
+                <h3>🇺🇸 California-Specific Disclosures</h3>
+                <p><strong>Sale and sharing of personal information:</strong> I do not sell your personal information. I do not share your personal information for cross-context behavioral advertising purposes. You have the right to opt out of any future sale or sharing by contacting me at <a href="mailto:hello @chulbuji.com">hello@chulbuji.com</a>.</p>
+                <div class="info-card"><p class="card-label">Right to know</p><p>You can request the categories and specific pieces of personal information I have collected about you, the sources, the business purposes, and any third parties with whom I shared it.</p></div>
+                <div class="info-card"><p class="card-label">Right to delete</p><p>You can request deletion of personal information I have collected from you, subject to legal exceptions.</p></div>
+                <div class="info-card"><p class="card-label">Right to correct</p><p>You can request correction of inaccurate personal information.</p></div>
+                <div class="info-card"><p class="card-label">Right to limit use of sensitive data</p><p>If I collect sensitive personal information, you can direct me to limit its use to what is necessary for the service.</p></div>
+                <div class="info-card"><p class="card-label">Non-discrimination</p><p>I will not discriminate against you for exercising any of these rights.</p></div>
+                <p style="margin-top:12px;">To exercise these rights, email <a href="mailto:hello @chulbuji.com">hello@chulbuji.com</a>. I will verify your identity before processing your request and respond within 45 days.</p>
+                <p><strong>Categories collected in the past 12 months:</strong> Identifiers (email, IP address), commercial information (purchase history), internet activity (browsing, usage data), and inferences (AI-generated content). None of these categories have been sold.</p>
+            </div>
+        </div>
+
+        <!-- 11 — REGIONAL: Korea -->
+        <div class="policy-section">
+            <h2><span class="section-num">11</span> Additional Rights for South Korean Residents (PIPA)</h2>
+            <div class="region-block">
+                <h3>🇰🇷 Korean-Specific Disclosures</h3>
+                <p>Under the Korean Personal Information Protection Act, you have the right to access, correct, delete, and suspend processing of your personal data. Requests are processed within 10 days. If acting through a representative, a power of attorney is required.</p>
+                <p>For privacy-related complaints, you may also contact the following Korean government agencies:</p>
+                <p style="font-size:0.85rem; color:var(--text-muted);">
+                    Personal Information Infringement Report Center (privacy.kisa.or.kr / 118)<br>
+                    Personal Information Dispute Mediation Committee (kopico.go.kr / 1833-6972)<br>
+                    Supreme Prosecutors' Office Cyber Investigation (spo.go.kr / 1301)<br>
+                    National Police Agency Cyber Bureau (ecrm.police.go.kr / 182)
+                </p>
+            </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="policy-section">
+            <h2><span class="section-num">12</span> Security Measures</h2>
+            <p>• <strong>Encryption:</strong> Passwords and sensitive data are encrypted at rest and in transit.</p>
+            <p>• <strong>Access control:</strong> Access to systems handling personal data is restricted and audited.</p>
+            <p>• <strong>Secure transmission:</strong> All data travels over SSL/TLS.</p>
+            <p>• <strong>Regular audits:</strong> I review security vulnerabilities on a regular basis.</p>
+        </div>
+
+        <!-- 13 -->
+        <div class="policy-section">
+            <h2><span class="section-num">13</span> Children's Privacy</h2>
+            <p>This service does not accept registrations from children under the age of 14 in South Korea, 16 in the EU/EEA (or the lower age set by individual member states), or 13 in the United States. I do not knowingly collect personal data from children. If I learn that a child's data has been collected, I will delete it without delay.</p>
+        </div>
+
+        <!-- 14 -->
+        <div class="policy-section">
+            <h2><span class="section-num">14</span> Changes to This Policy</h2>
+            <p>This policy may be updated to reflect changes in law, services, or practices. I will post a site notice at least 7 days before changes take effect. For significant changes — such as new data categories or revised purposes — I will provide 30 days' notice and, where required, obtain fresh consent.</p>
+        </div>
+
+        <!-- 15 -->
+        <div class="policy-section">
+            <h2><span class="section-num">15</span> Governing Law and Language</h2>
+            <p>This policy is governed by the laws of the Republic of Korea. However, mandatory local laws applicable to your region of residence (including GDPR and CCPA) prevail to the extent they conflict with this policy. In case of discrepancy between the Korean and English versions of this policy, the Korean version shall prevail.</p>
+        </div>
+
+        <!-- 16 -->
+        <div class="policy-section">
+            <h2><span class="section-num">16</span> Privacy Officer and Contact</h2>
+            <div class="contact-box">
+                <p class="role">Privacy Officer / Data Controller</p>
+                <p class="name">chulbuji</p>
+                <p><a href="mailto:hello @chulbuji.com">hello@chulbuji.com</a></p>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:12px;">Based in South Korea. Responsive to all privacy inquiries worldwide.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
