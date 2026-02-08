@@ -14,8 +14,26 @@
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179"
-     crossorigin="anonymous"></script>
+    <!-- AdSense: Facade Pattern (Lazy Load) -->
+    <script>
+      (function() {
+        var adsLoaded = false;
+        function loadAdSense() {
+          if (adsLoaded) return;
+          adsLoaded = true;
+          var ads = document.createElement('script');
+          ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7468475842823179';
+          ads.async = true;
+          ads.crossOrigin = 'anonymous';
+          document.head.appendChild(ads);
+        }
+        // Load after 3 seconds OR on user interaction
+        setTimeout(loadAdSense, 3000);
+        ['scroll', 'touchstart', 'click', 'mousemove'].forEach(function(event) {
+          window.addEventListener(event, loadAdSense, { once: true, passive: true });
+        });
+      })();
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZJ3H02EQ5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
