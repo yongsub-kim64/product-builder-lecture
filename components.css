@@ -195,6 +195,73 @@
   flex-wrap: wrap;
 }
 
+/* Featured Callout - 정직한 상태 메시지 */
+.featured-callout {
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
+  border-left: 4px solid #6366F1;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.featured-callout:hover {
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(139, 92, 246, 0.15) 100%
+  );
+  border-left-width: 6px;
+}
+
+.featured-callout p {
+  margin: 0;
+  line-height: 1.7;
+  color: #4B5563;
+  font-size: 0.95rem;
+}
+
+.featured-callout strong {
+  color: #6366F1;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* "첫 사용자 되기" 버튼 강조 */
+.featured-cta .btn-primary {
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-cta .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.featured-cta .btn-primary:hover::before {
+  left: 100%;
+}
+
+.featured-cta .btn-primary:hover {
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+
 /* Featured Project 모바일 최적화 */
 @media (max-width: 768px) {
   .featured-project {
@@ -221,6 +288,19 @@
 
   .meta-item {
     font-size: 0.875rem;
+  }
+
+  .featured-callout {
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+
+  .featured-callout p {
+    font-size: 0.9rem;
+  }
+
+  .featured-callout strong {
+    font-size: 1rem;
   }
 
   .featured-cta {
