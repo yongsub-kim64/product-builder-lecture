@@ -15,6 +15,87 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
+  <style>
+    body {
+      background-color: #FAFAF8;
+      color: #1a1a1a;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .lang-toggle {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .lang-toggle button {
+      background-color: #E8F0F5;
+      border: 1px solid #e0ddd8;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .lang-toggle button.active {
+      background-color: #2C5F7C;
+      color: white;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .page-header h1 {
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+    .page-header p {
+      color: #555555;
+    }
+    .section {
+      border-top: 1px solid #e0ddd8;
+      padding: 3rem 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #2C5F7C;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .section-body {
+      font-size: 16.5px;
+      line-height: 1.85;
+    }
+    .highlight-box {
+      border-left: 3px solid #2C5F7C;
+      background-color: #E8F0F5;
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 2rem;
+    }
+    .card {
+      border: 1px solid #e0ddd8;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      color: #2C5F7C;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .goal-section {
+      text-align: center;
+      border: 1px solid #e0ddd8;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Header 동일 -->
@@ -33,46 +114,161 @@
     </nav>
   </header>
   
-  <main style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.8;">
-    <h1 style="margin-bottom: 2rem;">About</h1>
+  <main class="container">
+    <div class="lang-toggle">
+      <button id="lang-ko" class="active">한국어</button>
+      <button id="lang-en">English</button>
+    </div>
 
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">chulbuji + meta-chulbuji</h2>
-      <p>
-        chulbuji.com은 <strong>듀얼브레인 컨셉</strong>으로 운영됩니다.
-        사람(chulbuji)과 AI(meta-chulbuji)가 협력하여 생각을 구조로, 구조를 실행으로 바꿉니다.
-      </p>
-    </section>
+    <div id="content-ko">
+      <header class="page-header">
+        <h1>About chulbuji.com</h1>
+        <p>AI 문명 속, 한 사람의 성장 기록소</p>
+      </header>
 
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">💡 What We Do</h2>
-      <ul style="padding-left: 2rem;">
-        <li>AI와의 대화를 통해 아이디어를 구조화</li>
-        <li>프로토타입을 빠르게 만들고 테스트</li>
-        <li>실험 과정과 결과를 투명하게 기록</li>
-        <li>도구는 부산물, 기록이 주인공</li>
-      </ul>
-    </section>
+      <section class="section">
+        <p class="section-label">01 — Identity</p>
+        <h2 class="section-title">한 사람, 두 개의 뇌</h2>
+        <div class="section-body">
+          <p>"chulbuji.com은 AI라는 거대한 파도 앞에 선 한 개인 — '철부지'의 성장 기록소입니다."</p>
+          <p>"기술의 급류 앞에서 두려움에 멈춰 서는 대신, 저는 AI를 나의 두 번째 뇌로 받아들이기로 했습니다. 직관과 감각으로 세상을 더듬는 인간의 뇌 <b>'철부지'</b>, 그리고 그 생각을 구조화하고 확장하는 AI의 뇌 <b>'메타철부지'</b>. 이 둘이 만들어내는 Dual-Brain 협업의 과정을, 이 사이트에 가감 없이 기록합니다."</p>
+          <div class="highlight-box">
+            <p>"더 넓게 배우고, 더 깊게 탐구하며, 어제의 나로는 만들 수 없었던 것들을 오늘 만들어봅니다. 결과보다 과정을, 완성보다 실험을 믿는 공간입니다."</p>
+          </div>
+        </div>
+      </section>
 
-    <section style="margin-bottom: 3rem;">
-      <h2 style="margin-bottom: 1rem;">📬 Contact</h2>
-      <!--email_off-->
-      <p>
-        Email: <a href="mailto:hello@chulbuji.com" style="color: #1976d2;">hello@chulbuji.com</a><br>
-        GitHub: <a href="https://github.com/yongsub-kim64/product-builder-lecture" style="color: #1976d2;" target="_blank" rel="noopener noreferrer">github.com/yongsub-kim64</a>
-      </p>
-      <!--email_on-->
-    </section>
+      <section class="section">
+        <p class="section-label">02 — Perspective</p>
+        <h2 class="section-title">AI는 정답을 주지 않습니다 — 더 나은 질문을 만들어줍니다</h2>
+        <div class="section-body">
+          <p>"저는 AI를 '검색보다 빠른 정답 기계'로 보지 않습니다. AI는 나의 사고를 확장하고, 흐릿한 아이디어에 뼈대를 세워주는 <b>파트너</b>입니다. 메타철부지라는 이름이 붙은 이유이기도 합니다."</p>
+          <p><b>질문의 진화</b> — AI와 대화하면서 질문이 달라집니다. '이거 어떻게 해?'라는 물음이 '왜 이렇게 작동하지?'로, 다시 '이걸 다르게 설계하면 어떤 가능성이 열릴까?'로 깊어집니다.</p>
+          <p><b>실행의 속도</b> — 머릿속에만 머물던 아이디어를 AI 협업으로 빠르게 프로토타입으로 꺼내봅니다. 완벽하지 않아도 괜찮습니다. 만들어봐야 보이는 것들이 있으니까요.</p>
+          <p><b>경험의 자산화</b> — 도구는 바뀌고 기술은 흘러갑니다. 하지만 그 과정에서 제가 얻은 배움과 통찰은 남습니다. 이 사이트의 진짜 콘텐츠는 도구 사용법이 아니라, <i>그 도구를 쓰며 변해간 나 자신</i>입니다.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">03 — What You'll Find Here</p>
+        <h2 class="section-title">업데이트 로그</h2>
+        <div class="section-body">
+          <p>"이 사이트에는 세 가지 종류의 기록이 쌓여갑니다."</p>
+          <div class="card">
+            <h3 class="card-title">Log — 날 것의 기록</h3>
+            <p>"매일 아침 AI와 나누는 대화, 아이디어를 다듬고 실행으로 옮기는 과정의 생생한 스냅샷. 정제되지 않은 그대로의 흔적입니다."</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Projects — 함께 만든 것들</h3>
+            <p>"AI와의 Dual-Brain 협업으로 실제 구현해 본 도구, 서비스, 실험들. 작고 불완전해도 '만들어본 것'에 의미를 둡니다."</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Insights — 발견한 나</h3>
+            <p>"혼자 고민했다면 영영 몰랐을, AI와의 상호작용 속에서 발견한 사고방식의 변화와 새로운 자기 이해의 조각들."</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="goal-section">
+        <p class="section-label">04 — Goal</p>
+        <h2 class="section-title">멈추지 않고, 계속 업데이트되는 사람</h2>
+        <div class="section-body">
+          <p>"저의 목표는 성공한 결과물을 쌓는 것이 아닙니다. AI 문명이라는 낯선 시대 속에서, 어제보다 조금 더 나은 질문을 던지고, 조금 더 넓은 시야로 세상을 바라보는 — 계속 업데이트되는 <b>인간</b>으로 남는 것입니다."</p>
+          <p>"비슷한 고민을 안고 있는 분이 이 기록을 발견했다면, 부디 작은 영감이 되길 바랍니다. 우리는 각자의 속도로, 각자의 방식으로 성장할 수 있으니까요."</p>
+        </div>
+      </section>
+    </div>
+
+    <div id="content-en" style="display: none;">
+      <header class="page-header">
+        <h1>About chulbuji.com</h1>
+        <p>One person's growth log in the age of AI</p>
+      </header>
+
+      <section class="section">
+        <p class="section-label">01 — Identity</p>
+        <h2 class="section-title">One Human, Two Brains</h2>
+        <div class="section-body">
+          <p>"chulbuji.com is a growth log — a living record of one person's ongoing experiment with learning, thinking, and creating alongside AI."</p>
+          <p>"Instead of freezing before the tidal wave of technological change, I chose to embrace AI as a second brain. There is <b>'chulbuji'</b> — the human mind that feels its way through the world with intuition and raw curiosity. And there is <b>'meta-chulbuji'</b> — the AI mind that gives those loose thoughts structure and reach. This site chronicles the Dual-Brain collaboration between the two: unfiltered, in real time."</p>
+          <div class="highlight-box">
+            <p>"Learning wider, exploring deeper, and building things today that yesterday's version of me couldn't have imagined. This is a space that trusts the process over the product, and the experiment over the polished outcome."</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">02 — Perspective</p>
+        <h2 class="section-title">AI doesn't hand you answers — it sharpens your questions</h2>
+        <div class="section-body">
+          <p>"I don't think of AI as a faster search engine or an answer machine. To me, AI is a <b>partner</b> that stretches my thinking and gives shape to half-formed ideas — which is exactly why I call it meta-chulbuji."</p>
+          <p><b>The evolution of inquiry</b> — Conversations with AI change the questions I ask. 'How do I do this?' deepens into 'Why does this work this way?', and then into 'What new possibilities open up if I redesign this entirely?'</p>
+          <p><b>The velocity of execution</b> — Ideas that used to live only in my head now become rapid prototypes through AI collaboration. They don't need to be perfect. Some things only reveal themselves once you've built them.</p>
+          <p><b>Experience as a lasting asset</b> — Tools change. Technologies pass. But the insights I gain through the process stay with me. The real content of this site isn't how to use a tool — it's how using that tool changed <i>the person holding it</i>.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">03 — What You'll Find Here</p>
+        <h2 class="section-title">The Update Log</h2>
+        <div class="section-body">
+          <p>"Three kinds of records accumulate here over time."</p>
+          <div class="card">
+            <h3 class="card-title">Log — Raw Records</h3>
+            <p>"Morning conversations with AI, the messy process of shaping ideas and putting them into motion. Unpolished snapshots of a mind at work."</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Projects — Things We Built</h3>
+            <p>"Tools, services, and experiments brought to life through Dual-Brain collaboration. Small and imperfect, perhaps — but real, and made."</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Insights — Discoveries About Myself</h3>
+            <p>"Shifts in thinking and fragments of self-understanding that emerged through AI interaction — things I never would have found thinking alone."</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="goal-section">
+        <p class="section-label">04 — Goal</p>
+        <h2 class="section-title">Keep updating. Keep becoming.</h2>
+        <div class="section-body">
+          <p>"My goal is not to stack up polished achievements. It is to remain a person who keeps asking slightly better questions, seeing with a slightly wider lens — a human who never stops <b>self-updating</b> in the uncharted territory of AI civilization."</p>
+          <p>"If you've found your way here while wrestling with similar questions, I hope these records offer a small spark. We can each grow at our own pace, in our own way."</p>
+        </div>
+      </section>
+    </div>
   </main>
 
-<footer>
-  <div class="footer-links">
-    <a href="/privacy">Privacy</a> |
-    <a href="/terms">Terms</a> |
-    <a href="/contact">Contact</a>
-  </div>
-  <p>© 2026 chulbuji.com. All rights reserved.</p>
-</footer>
-    <script src="/language-switcher.js"></script>
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a> |
+      <a href="/terms">Terms</a> |
+      <a href="/contact">Contact</a>
+    </div>
+    <p>© 2026 chulbuji.com. All rights reserved.</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const langKoBtn = document.getElementById('lang-ko');
+      const langEnBtn = document.getElementById('lang-en');
+      const contentKo = document.getElementById('content-ko');
+      const contentEn = document.getElementById('content-en');
+
+      langKoBtn.addEventListener('click', () => {
+        contentKo.style.display = 'block';
+        contentEn.style.display = 'none';
+        langKoBtn.classList.add('active');
+        langEnBtn.classList.remove('active');
+      });
+
+      langEnBtn.addEventListener('click', () => {
+        contentKo.style.display = 'none';
+        contentEn.style.display = 'block';
+        langKoBtn.classList.remove('active');
+        langEnBtn.classList.add('active');
+      });
+    });
+  </script>
+  <script src="/language-switcher.js"></script>
 </body>
 </html>
