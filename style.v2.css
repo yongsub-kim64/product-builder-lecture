@@ -54,6 +54,49 @@
   margin-top: 64px;
 }
 
+/* === PAGE CONTENT CENTERING (All pages) === */
+/* Ensures consistent centered layout across all subpages */
+body > main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Footer content centering */
+body > footer {
+  max-width: 1000px;
+  margin: 4rem auto 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body > footer .footer-links {
+  margin-bottom: 1rem;
+}
+
+body > footer .footer-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: var(--text-muted, #6B7280);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+body > footer .footer-links a:hover {
+  color: var(--primary, #313d4f);
+  text-decoration: none;
+}
+
+body > footer .copyright,
+body > footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted, #999);
+  margin: 0;
+}
+
 /* === UNIFIED HEADER STYLES === */
 .main-header {
   position: sticky;
@@ -336,6 +379,27 @@
   .ui-v2 .container {
     max-width: 1200px;
   }
+
+  /* Page content - optimal reading width */
+  body > main {
+    max-width: 1000px;
+  }
+
+  body > footer {
+    max-width: 1000px;
+  }
+}
+
+/* === WIDE DESKTOP (1200px and above) === */
+@media (min-width: 1200px) {
+  /* Enhanced readability with golden ratio inspired margins */
+  body > main {
+    padding: 4rem 3rem;
+  }
+
+  body > footer {
+    padding: 2.5rem 3rem;
+  }
 }
 
 /* === MOBILE OPTIMIZATION (768px and below) === */
@@ -436,6 +500,16 @@
   .ui-v2 main.container,
   body.ui-v2 > .container:not(footer):not(header) {
     padding-top: 24px;
+  }
+
+  /* Page content mobile optimization */
+  body > main {
+    padding: 2rem 1rem;
+  }
+
+  body > footer {
+    margin-top: 3rem;
+    padding: 1.5rem 1rem;
   }
 }
 
