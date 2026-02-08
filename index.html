@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 
+    <!-- Performance: Preload critical CSS for faster LCP -->
+    <link rel="preload" href="/style.v2.css?v=20250203" as="style">
+
     <title>생각을 구조로, 구조를 실행으로 | chulbuji</title>
     <meta name="description" content="AI와 함께 흐릿한 생각을 선명하게 만듭니다. 도구는 부산물, 기록이 주인공입니다.">
     <link rel="canonical" href="https://chulbuji.com/">
@@ -35,8 +38,32 @@
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
 
-    <script defer src="/analysis-data.js?v=20250203"></script>
-    <script defer src="/encyclopedia-data.js?v=20250203"></script>
+    <!-- Performance: Load data scripts during idle time (non-critical) -->
+    <script>
+      // Load non-critical scripts when browser is idle
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          var scripts = ['/analysis-data.js?v=20250203', '/encyclopedia-data.js?v=20250203'];
+          scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            document.head.appendChild(script);
+          });
+        });
+      } else {
+        // Fallback for browsers without requestIdleCallback
+        setTimeout(function() {
+          var scripts = ['/analysis-data.js?v=20250203', '/encyclopedia-data.js?v=20250203'];
+          scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            document.head.appendChild(script);
+          });
+        }, 1000);
+      }
+    </script>
 
     <style>
         /* Base Styles & CSS Reset */

@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Thought to structure. Structure to action. | chulbuji</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Performance: Resource hints for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+
+    <!-- Performance: Preload critical CSS for faster LCP -->
+    <link rel="preload" href="/style.v2.css?v=20250203" as="style">
+
+    <title>Thought to structure. Structure to action. | chulbuji</title>
     <meta name="description" content="Clarifying fuzzy ideas with AI—and documenting the process. Tools are byproducts; the log is the story.">
     <meta name="author" content="Chulbuji">
 
@@ -27,8 +37,32 @@
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
 
-    <script src="/analysis-data.js?v=20250203"></script>
-    <script src="/encyclopedia-data.js?v=20250203"></script>
+    <!-- Performance: Load data scripts during idle time (non-critical) -->
+    <script>
+      // Load non-critical scripts when browser is idle
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          var scripts = ['/analysis-data.js?v=20250203', '/encyclopedia-data.js?v=20250203'];
+          scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            document.head.appendChild(script);
+          });
+        });
+      } else {
+        // Fallback for browsers without requestIdleCallback
+        setTimeout(function() {
+          var scripts = ['/analysis-data.js?v=20250203', '/encyclopedia-data.js?v=20250203'];
+          scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            document.head.appendChild(script);
+          });
+        }, 1000);
+      }
+    </script>
 
     <style>
         /* Base Styles & CSS Reset */
