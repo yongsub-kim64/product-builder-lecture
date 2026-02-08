@@ -15,20 +15,37 @@
 
     <title>생각을 구조로, 구조를 실행으로 | chulbuji</title>
     <meta name="description" content="AI와 함께 흐릿한 생각을 선명하게 만듭니다. 도구는 부산물, 기록이 주인공입니다.">
+    <meta name="keywords" content="AI Product Builder, Build in Public, 제품 개발, AI 도구, chulbuji, 로또 번호 생성기">
+    <meta name="author" content="chulbuji">
     <link rel="canonical" href="https://chulbuji.com/">
-    
+
     <!-- hreflang -->
     <link rel="alternate" hreflang="ko" href="https://chulbuji.com/">
     <link rel="alternate" hreflang="en" href="https://chulbuji.com/en">
     <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/">
-    
+
     <!-- Open Graph -->
+    <meta property="og:site_name" content="chulbuji">
     <meta property="og:title" content="생각을 구조로, 구조를 실행으로 | chulbuji">
     <meta property="og:description" content="AI와 함께 흐릿한 생각을 선명하게 만듭니다.">
     <meta property="og:url" content="https://chulbuji.com/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://chulbuji.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="chulbuji - AI Product Builder">
+    <meta name="twitter:description" content="생각을 구조로, 구조를 실행으로">
+    <meta name="twitter:image" content="https://chulbuji.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- AdSense: Facade Pattern (Lazy Load) -->
     <script>
@@ -55,6 +72,10 @@
 
     <link rel="stylesheet" href="/style.v2.css?v=20250203" />
     <link rel="stylesheet" href="/style.css?v=20250203" />
+
+    <!-- Week 1: 모바일 최적화 CSS -->
+    <link rel="stylesheet" href="/mobile-improvements.css?v=20250208" />
+    <link rel="stylesheet" href="/components.css?v=20250208" />
 
     <!-- Performance: Load data scripts during idle time (non-critical) -->
     <script>
@@ -286,6 +307,78 @@
           <p class="tag">실험·기록·업데이트</p>
         </section>
 
+        <!-- Week 1: Stats Bar -->
+        <section class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-content">
+              <div class="stat-value" id="products-live">1</div>
+              <div class="stat-label">출시</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">🧪</div>
+            <div class="stat-content">
+              <div class="stat-value" id="products-building">0</div>
+              <div class="stat-label">진행중</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">💡</div>
+            <div class="stat-content">
+              <div class="stat-value" id="ideas-count">5</div>
+              <div class="stat-label">아이디어</div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-icon">📅</div>
+            <div class="stat-content">
+              <div class="stat-value">Day 30</div>
+              <div class="stat-label">여정</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Week 1: Featured Project -->
+        <section class="featured-project">
+          <div class="featured-header">
+            <span class="badge badge-live">🚀 Live</span>
+            <span class="featured-date">2026-01-15 출시</span>
+          </div>
+
+          <div class="featured-content">
+            <div class="featured-icon">🎲</div>
+            <h2>로또 번호 생성기</h2>
+            <p class="featured-description">
+              5주 AI Builder 과정의 첫 프로젝트.
+              AI와 협업하여 만든 첫 제품입니다.
+            </p>
+
+            <div class="featured-meta">
+              <span class="meta-item">
+                <span class="meta-icon">👥</span>
+                <span id="lotto-users">150+</span>명 사용
+              </span>
+              <span class="meta-item">
+                <span class="meta-icon">⭐</span>
+                <span id="lotto-rating">4.5</span>/5.0
+              </span>
+            </div>
+
+            <div class="featured-cta">
+              <a href="/tools/lotto" class="btn btn-primary">
+                사용해보기 →
+              </a>
+              <a href="/log/001-rebrand-launch" class="btn btn-secondary">
+                개발 과정 보기
+              </a>
+            </div>
+          </div>
+        </section>
+
    <section class="recent-logs">
      <h2>최신 기록</h2>
      <div class="log-grid">
@@ -340,5 +433,11 @@
         });
     </script>
     <script src="/language-switcher.js"></script>
+
+    <!-- Week 1: 품질 검증 스크립트 -->
+    <script defer src="/quality-checks.js?v=20250208"></script>
+
+    <!-- Week 1: Firebase Stats (선택사항 - Firebase 설정 후 활성화) -->
+    <!-- <script defer src="/firebase-stats.js?v=20250208"></script> -->
 </body>
 </html>
