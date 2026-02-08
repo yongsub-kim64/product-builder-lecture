@@ -104,13 +104,24 @@
         }
     </style>
 </head>
-<body>
+<body class="ui-v2">
+<header class="main-header">
+    <nav class="main-nav">
+        <a href="/" class="logo">chulbuji</a>
+        <div class="nav-menu">
+            <a href="/">Home</a>
+            <a href="/log">Log</a>
+            <a href="/projects">Projects</a>
+            <a href="/tools">Tools</a>
+            <a href="/insight">Insight</a>
+            <a href="/about">About</a>
+        </div>
+        <div class="lang-switch">
+            <a href="/en/privacy/" class="lang-btn-box">EN</a>
+        </div>
+    </nav>
+</header>
 <div class="container">
-
-    <div class="lang-toggle">
-        <button class="lang-btn active" onclick="switchLang('ko')">한국어</button>
-        <button class="lang-btn" onclick="switchLang('en')">English</button>
-    </div>
 
     <!-- ==================== KOREAN ==================== -->
     <div class="lang-ko visible">
