@@ -22,6 +22,8 @@
   color: var(--text-body);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .ui-v2 h1, .ui-v2 h2, .ui-v2 h3 {
@@ -57,10 +59,12 @@
   position: sticky;
   top: 0;
   z-index: 100; /* Ensure it's on top */
-  backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.85);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 12px 0;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+  padding: 14px 0;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .main-header .main-nav {
@@ -90,11 +94,32 @@
   font-weight: 500;
   color: var(--text-body, #4B5563);
   font-size: 1rem;
-  transition: color 0.2s;
+  padding: 8px 4px;
+  position: relative;
+  transition: color 0.25s ease;
 }
+
+.main-header .nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary, #313d4f), var(--primary-hover, #3c4a60));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1px;
+}
+
 .main-header .nav-menu a:hover {
   color: var(--primary, #313d4f);
   text-decoration: none;
+}
+
+.main-header .nav-menu a:hover::after {
+  transform: scaleX(1);
 }
 
 .main-header .lang-switch {
@@ -249,6 +274,67 @@
   }
   .report-card-tax {
     grid-area: report2;
+  }
+}
+
+/* === DESKTOP POLISHING (1024px and above) === */
+@media (min-width: 1024px) {
+  /* Enhanced header spacing with golden ratio inspired gaps */
+  .main-header .main-nav {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+
+  .main-header .logo {
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-right: 48px; /* Golden ratio inspired spacing */
+  }
+
+  .main-header .nav-menu {
+    gap: 32px; /* Increased from 24px for better breathing room */
+  }
+
+  .main-header .nav-menu a {
+    font-size: 0.95rem;
+    letter-spacing: -0.005em;
+    padding: 10px 6px;
+  }
+
+  /* Enhanced language button for desktop */
+  .main-header .lang-btn-box {
+    padding: 9px 18px;
+    font-size: 0.9rem;
+    margin-left: 48px; /* Balanced spacing with logo */
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .main-header .lang-btn-box:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Subtle interaction feedback */
+  .main-header .logo {
+    transition: color 0.3s ease;
+  }
+
+  .main-header .logo:hover {
+    color: var(--primary, #313d4f);
+  }
+}
+
+/* === ULTRA-WIDE DESKTOP (1600px and above) === */
+@media (min-width: 1600px) {
+  /* Prevent excessive spacing on very wide screens */
+  .main-header .main-nav {
+    max-width: 1280px;
+  }
+
+  .ui-v2 .container {
+    max-width: 1200px;
   }
 }
 
