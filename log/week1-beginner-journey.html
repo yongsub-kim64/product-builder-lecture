@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>[Week 1 항해 일지] 프롬프트도 못 쓰던 초보가 AI와 협업으로 웹사이트를 고치다 | chulbuji Log</title>
+    <meta name="description" content="링크 깨짐 지옥에서 바이브 코딩으로 탈출한 초보의 Week 1 여정">
+    <meta name="keywords" content="AI협업, 초보개발자, 바이브코딩, ClaudeAI, 웹개발입문">
+    <meta name="author" content="chulbuji">
+    <link rel="canonical" href="https://chulbuji.com/log/week1-beginner-journey.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://chulbuji.com/log/week1-beginner-journey.html">
+    <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log/week1-beginner-journey.html">
+    <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/log/week1-beginner-journey.html">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="chulbuji">
+    <meta property="og:title" content="[Week 1 항해 일지] 프롬프트도 못 쓰던 초보가 AI와 협업으로 웹사이트를 고치다">
+    <meta property="og:description" content="프롬프트 작성조차 못 하던 초보가 Claude AI와 협업하며 링크 깨짐, 404 에러를 하나씩 해결하고 Week 1 모바일 최적화까지 완성한 바이브 코딩 경험담">
+    <meta property="og:url" content="https://chulbuji.com/log/week1-beginner-journey.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-02-08">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://chulbuji.com/images/week1-thumbnail.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[Week 1 항해 일지] 프롬프트도 못 쓰던 초보가 AI와 협업으로 웹사이트를 고치다">
+    <meta name="twitter:description" content="링크 깨짐 지옥에서 바이브 코딩으로 탈출한 초보의 Week 1 여정">
+    <meta name="twitter:image" content="https://chulbuji.com/images/week1-thumbnail.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="/style.v2.css?v=20250203" />
+    <link rel="stylesheet" href="/style.css?v=20250203" />
+    <link rel="stylesheet" href="/mobile-improvements.css?v=20250208" />
+    <link rel="stylesheet" href="/components.css?v=20250208" />
+    <style>
+        :root {
+            --background-color: #F3F4F6;
+            --primary-color: #1E3A8A;
+            --text-color-main: #1F2937;
+            --text-color-muted: #6B7280;
+            --card-background: #FFFFFF;
+            --border-color: #E5E7EB;
+        }
+        body {
+            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 24px; }
+        a { color: var(--primary-color); text-decoration: none; font-weight: 500;}
+        a:hover { text-decoration: underline; }
+
+        .main-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid var(--border-color); background-color: var(--card-background); }
+        .nav-menu { display: flex; gap: 1.5rem; }
+        .lang-toggle { padding: 0.5rem 1rem; border: 1px solid var(--primary-color); border-radius: 4px; color: var(--primary-color); }
+
+        .log-detail-header h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.3; }
+        .log-detail-header .meta { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center; }
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; background: #E5E7EB; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+
+        .ko-content h2 { font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        .ko-content h3 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .ko-content p, .ko-content ul, .ko-content ol, .ko-content blockquote { margin-bottom: 1.5rem; }
+        .ko-content ul, .ko-content ol { padding-left: 1.5rem; }
+        .ko-content li { margin-bottom: 0.5rem; }
+        .ko-content blockquote { border-left: 4px solid var(--primary-color); padding: 1rem 1.5rem; background-color: #f0f7ff; margin-left: 0; margin-right: 0; }
+        .ko-content pre { background-color: #1F2937; color: #F3F4F6; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; }
+        .ko-content code { font-size: 0.9em; }
+        .ko-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .ko-content th, .ko-content td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
+        .ko-content th { background-color: #F9FAFB; font-weight: 600; }
+
+        .log-detail-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .back-link { font-weight: 600; }
+        
+        footer { margin-top: 4rem; padding: 2rem; text-align: center; color: var(--text-color-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+     <nav class="main-nav">
+       <a href="/" class="logo">chulbuji</a>
+       <div class="nav-menu">
+         <a href="/">Home</a>
+         <a href="/log">Log</a>
+         <a href="/projects">Projects</a>
+         <a href="/tools">Tools</a>
+         <a href="/insight">Insight</a>
+         <a href="/about">About</a>
+       </div>
+       <a href="/en/log/week1-beginner-journey.html" class="lang-toggle">EN</a>
+     </nav>
+   </header>
+     
+     <main class="container">
+       <article class="log-detail">
+         <header class="log-detail-header">
+           <h1>[Week 1 항해 일지] 프롬프트도 못 쓰던 초보가 AI와 협업으로 웹사이트를 고치다</h1>
+           <div class="meta">
+             <time datetime="2026-02-08">2026년 2월 8일</time>
+             <span class="tag">AI협업</span>
+             <span class="tag">초보개발자</span>
+             <span class="tag">바이브코딩</span>
+           </div>
+         </header>
+
+         <div class="ko-content">
+            <blockquote>"하나 고치면 다른 게 깨지는 무한 루프에서, 바이브 코딩으로 탈출하기까지"</blockquote>
+
+            <h2>📅 항해 정보</h2>
+            <ul>
+                <li><strong>날짜</strong>: 2026년 2월 8일</li>
+                <li><strong>항해사</strong>: chulbuji (코딩 왕초보 → AI 협업 빌더 지망생)</li>
+                <li><strong>동료</strong>: Claude Sonnet 4.5</li>
+                <li><strong>출발점</strong>: 링크 깨진 웹사이트</li>
+                <li><strong>목적지</strong>: 모바일 최적화 완료</li>
+            </ul>
+
+            <hr>
+
+            <h2>🎬 프롤로그: 나는 프롬프트도 못 썼다</h2>
+            <h3>2주 전의 나</h3>
+            <pre><code>나: "웹사이트 좀 고쳐줘"
+Claude: "어떤 부분을 고치고 싶으신가요?"
+나: "그냥... 예쁘게?"
+Claude: "구체적으로 어떤 스타일을 원하시나요?"
+나: "...모르겠어요"</code></pre>
+            <p>이게 2주 전 내 프롬프트 수준이었다.</p>
+            <p><strong>5주 AI Builder 과정</strong>을 시작하고 첫 번째로 배운 건:<br> "AI에게 질문하는 것도 기술이다"</p>
+            
+            <hr>
+
+            <h2>💥 Week 0: 지옥의 무한 루프</h2>
+            <h3>문제 1: 링크가 계속 깨진다</h3>
+            <p><strong>상황</strong>:</p>
+            <ul>
+                <li>홈페이지에서 "로그" 클릭 → 404 에러</li>
+                <li>로그 페이지에서 "홈" 클릭 → 또 404 에러</li>
+            </ul>
+            <p><strong>나의 시도</strong>:</p>
+            <pre><code>&lt;!-- 이렇게 고쳤더니... --&gt;
+&lt;a href="log.html"&gt;로그&lt;/a&gt;
+
+&lt;!-- 이번엔 이게 안 됨 --&gt;
+&lt;a href="/log.html"&gt;로그&lt;/a&gt;
+
+&lt;!-- 다시 이렇게 하면... --&gt;
+&lt;a href="./log.html"&gt;로그&lt;/a&gt;</code></pre>
+            <p><strong>결과</strong>: 영원히 해결 안 됨</p>
+            <p><strong>Claude에게 물어봄</strong>:</p>
+            <pre><code>나: "링크가 자꾸 깨져요. log.html이 맞나요? /log.html이 맞나요?"
+Claude: "절대 경로와 상대 경로의 차이를 설명해드릴게요..."</code></pre>
+            <p>10분 뒤, 드디어 이해했다:</p>
+            <ul>
+                <li><code>log.html</code> = 같은 폴더에서 찾기</li>
+                <li><code>/log.html</code> = 루트에서 찾기</li>
+                <li><code>./log.html</code> = 현재 폴더에서 찾기</li>
+            </ul>
+            <p><strong>배운 것</strong>: AI한테 물어볼 때 "안 돼요"보다 "log.html과 /log.html의 차이가 뭔가요?"가 훨씬 좋은 질문이다.</p>
+
+            <h3>문제 2: 한글/영어 전환 지옥</h3>
+            <p><strong>상황</strong>:</p>
+            <pre><code>한글 페이지에서 "English" 클릭 → 잘 됨
+영어 페이지에서 "한국어" 클릭 → 404</code></pre>
+            <p><strong>하나 고치면 다른 게 깨지는 마법</strong>:</p>
+            <pre><code>// 1차 시도
+function switchLanguage() {
+  window.location.href = '/en/index.html';  // 한글→영어 OK!
+}
+// 결과: 영어→한글 404 💀
+
+// 2차 시도
+function switchLanguage() {
+  window.location.href = 'index.html';  // 영어→한글 OK!
+}
+// 결과: 한글→영어 404 💀
+
+// 3차 시도: Claude에게 SOS
+나: "하나 고치면 다른 게 깨져요... 어떻게 해야 하나요?"</code></pre>
+            <p><strong>Claude의 해결책</strong>:</p>
+            <pre><code>function switchLanguage() {
+  const currentPath = window.location.pathname;
+  
+  if (currentPath.includes('/en/')) {
+    // 영어 → 한글
+    window.location.href = currentPath.replace('/en/', '/');
+  } else {
+    // 한글 → 영어
+    window.location.href = '/en' + currentPath;
+  }
+}</code></pre>
+            <p><strong>놀라운 점</strong>:</p>
+            <ul>
+                <li><code>window.location.pathname</code>이라는 게 현재 경로를 알려준다는 걸 처음 알았음</li>
+                <li><code>includes()</code>로 '/en/'이 있는지 확인할 수 있다는 것도 처음 알았음</li>
+                <li><code>replace()</code>로 경로를 바꿀 수 있다는 것도...</li>
+            </ul>
+            <p><strong>배운 것</strong>: 코드를 복붙만 하지 말고, 한 줄씩 물어보면서 이해하니까 다음에 비슷한 문제가 생겼을 때 스스로 해결할 수 있었다.</p>
+
+            <h3>문제 3: CSS가 안 먹힌다?</h3>
+            <p><strong>상황</strong>:</p>
+            <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+            <p>이렇게 했는데 스타일이 안 적용됨.</p>
+            <p><strong>시도 1</strong>: 캐시 문제인가? → Ctrl+F5 → 안 됨<br>
+            <strong>시도 2</strong>: 경로 문제인가? → <code>/style.css</code> → 여전히 안 됨<br>
+            <strong>시도 3</strong>: 파일 이름 문제인가? → <code>style.v2.css</code>로 바꿈 → ...됨?!</p>
+            <p><strong>Claude에게 물어봄</strong>:</p>
+            <pre><code>나: "왜 style.css는 안 되고 style.v2.css는 되나요?"
+Claude: "브라우저 캐시 때문입니다. 파일명을 바꾸면 브라우저가 새 파일로 인식합니다."</code></pre>
+            <p><strong>배운 것</strong>:</p>
+            <ul>
+                <li>브라우저 캐시라는 게 있음</li>
+                <li><code>?v=2</code> 같은 버전 파라미터를 붙이는 방법도 있음</li>
+                <li>이게 그 유명한 "캐시 무효화" 문제였음</li>
+            </ul>
+            <hr>
+
+            <h2>🎯 Week 1: 드디어 제대로 시작하다</h2>
+            <h3>Day 1 아침: Claude에게 진짜 질문하기</h3>
+            <p><strong>Before (2주 전)</strong>:</p>
+            <pre><code>나: "웹사이트 고쳐줘"</code></pre>
+            <p><strong>After (지금)</strong>:</p>
+            <pre><code>나: "chulbuji.com의 모바일 화면에서 버튼이 너무 작아서 클릭하기 어려워요. 
+     Apple 가이드라인에 맞춰 터치 영역을 44px 이상으로 만들고 싶은데,
+     mobile-improvements.css 파일을 새로 만들어서 적용하는 게 좋을까요?"</code></pre>
+            <p><strong>놀라운 변화</strong>: Claude가 바로 실행 가능한 코드를 줬다!</p>
+            <pre><code>/* Claude의 답변 */
+ @media (max-width: 768px) {
+  .nav-links a {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+}</code></pre>
+            <p><strong>배운 것</strong>:</p>
+            <ul>
+                <li>구체적으로 질문할수록 정확한 답을 얻음</li>
+                <li>"고쳐줘"보다 "44px 이상, mobile-improvements.css 파일"이 훨씬 좋은 프롬프트</li>
+            </ul>
+            <h3>Day 1 오후: 바이브 코딩 시작</h3>
+            <p><strong>바이브 코딩이란?</strong></p>
+            <blockquote>코드를 완벽히 이해하지 못해도, 핵심만 파악하고 AI와 협업하며 결과물을 만드는 것</blockquote>
+            <p><strong>실전 예시</strong>:</p>
+            <p>Claude가 376줄의 <code>mobile-improvements.css</code>를 만들어줬다.</p>
+            <p><strong>내가 한 일</strong>:</p>
+            <pre><code>/* 1. 이건 이해했음 */
+ @media (max-width: 768px) {  /* 모바일 화면에서만 적용 */
+  
+/* 2. 이것도 이해했음 */  
+  min-height: 44px;  /* 터치 영역 최소 크기 */
+
+/* 3. 이건 몰라서 물어봄 */
+  padding: env(safe-area-inset-top);  /* 이게 뭐죠? */
+}</code></pre>
+            <p><strong>Claude의 설명</strong>:</p>
+            <blockquote>"iPhone의 노치(상단 검은 부분)를 피해서 콘텐츠를 표시하는 거예요. 안 하면 버튼이 노치에 가려질 수 있어요."</blockquote>
+            <p><strong>바이브 포인트</strong>:</p>
+            <ul>
+                <li>376줄 전체를 이해할 필요 없음</li>
+                <li>핵심 10줄만 이해하면 됨</li>
+                <li>나머지는 "아, 노치 대응이구나" 정도만 알고 넘어감</li>
+                <li>모르는 부분은 필요할 때 다시 물어보면 됨</li>
+            </ul>
+            <h3>Day 1 저녁: Stats Bar 만들기</h3>
+            <p><strong>목표</strong>: 홈페이지에 통계 섹션 추가</p>
+            <p><strong>내가 Claude에게 준 지시</strong>:</p>
+            <pre><code>"홈페이지 Hero 섹션 아래에 통계를 보여주는 섹션을 만들고 싶어요.
+
+구조:
+- 2x2 그리드 (모바일)
+- 각 카드에 이모지, 숫자, 라벨
+- 연한 보라색 배경
+- 호버하면 살짝 올라오는 효과
+
+내용:
+- 🚀 출시: 1개
+- 🧪 진행중: 0개
+- 💡 아이디어: 5개
+- 📅 여정: Day 30
+
+참고: Product Hunt 스타일처럼 깔끔하게"</code></pre>
+            <p><strong>결과</strong>: Claude가 정확히 내가 원하는 걸 만들어줌!</p>
+            <pre><code>&lt;section class="stats-bar"&gt;
+  &lt;div class="stat-item"&gt;
+    &lt;div class="stat-emoji"&gt;🚀&lt;/div&gt;
+    &lt;div class="stat-value"&gt;1&lt;/div&gt;
+    &lt;div class="stat-label"&gt;출시&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- ...반복 --&gt;
+&lt;/section&gt;</code></pre>
+            <p><strong>바이브 포인트</strong>:</p>
+            <ul>
+                <li>HTML 구조는 이해했음 (div 안에 div 3개)</li>
+                <li>CSS는 복붙했음 (468줄... 다 모름)</li>
+                <li>하지만 결과물은 완벽하게 작동함</li>
+                <li>나중에 숫자 바꾸고 싶으면 <code>&lt;div class="stat-value"&gt;1&lt;/div&gt;</code>만 고치면 됨</li>
+            </ul>
+            <hr>
+            <h2>📚 참고 자료 활용법 (바이브 스타일)</h2>
+            <h3>1. CSS Grid 가이드</h3>
+            <p><strong>Claude의 링크</strong>: <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Grid_Layout" target="_blank">MDN - CSS Grid Layout</a></p>
+            <p><strong>내가 한 것</strong>:</p>
+            <ul>
+                <li>✅ 5분만 읽음</li>
+                <li>✅ <code>grid-template-columns: repeat(2, 1fr)</code> 이해함</li>
+                <li>✅ 나머지는 스킵</li>
+                <li>✅ 필요하면 다시 검색</li>
+            </ul>
+            <h3>2. Apple HIG (Human Interface Guidelines)</h3>
+            <p><strong>Claude의 언급</strong>: "터치 영역은 최소 44x44pt로 해주세요"</p>
+            <p><strong>내가 한 것</strong>:</p>
+            <ul>
+                <li>✅ "왜 44px인지" Claude에게 물어봄</li>
+                <li>✅ "Apple 가이드라인입니다" 답변 받음</li>
+                <li>✅ 실제 문서는 안 읽음 (Claude가 요약해줌)</li>
+            </ul>
+            <h3>3. Open Graph 프로토콜</h3>
+            <p><strong>Claude의 제안</strong>: "SEO를 위해 Open Graph 태그를 추가하세요"</p>
+            <p><strong>내가 한 것</strong>:</p>
+            <ul>
+                <li>✅ Claude에게 "Open Graph가 뭐예요?" 물어봄</li>
+                <li>✅ "카카오톡 링크 공유할 때 미리보기입니다" 답변 받음</li>
+                <li>✅ 공식 문서는 안 읽음</li>
+                <li>✅ Claude가 준 코드 3줄만 복붙</li>
+            </ul>
+            <hr>
+            <h2>🎢 Week 1의 진짜 성과</h2>
+            <h3>정량적 성과</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>Before</th>
+                        <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>프롬프트 품질</strong></td>
+                        <td>"예쁘게 해줘"</td>
+                        <td>"2x2 그리드, 44px 터치 영역..."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>문제 해결 시간</strong></td>
+                        <td>3시간 (링크 하나)</td>
+                        <td>10분 (구조적 이해)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>코드 이해도</strong></td>
+                        <td>0%</td>
+                        <td>30% (핵심만)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>정성적 성과: 바이브 코딩 마스터</h3>
+            <p><strong>Before: 막막한 초보</strong><br> 문제 발생 → 구글링 → 이해 못함 → 포기</p>
+            <p><strong>After: AI 협업 빌더</strong><br> 문제 발생 → Claude에게 구체적 질문 → 설명 듣기 → 핵심만 이해 → 적용 → 작동!</p>
+            <hr>
+            <h2>💡 2주간의 성장: Before vs After</h2>
+            <h3>Before (2주 전)</h3>
+            <p><strong>프롬프트 수준</strong>: "웹사이트 고쳐줘", "링크가 안 돼요"</p>
+            <p><strong>문제 해결 방식</strong>: 구글링 → 블로그 10개 읽기 → 이해 못함 → 포기</p>
+            <h3>After (지금)</h3>
+            <p><strong>프롬프트 수준</strong>: "모바일 화면(768px 이하)에서 버튼 터치 영역을 44px로 만들고...", "log.html과 /log.html의 차이가 뭔가요?"</p>
+            <p><strong>문제 해결 방식</strong>: Claude에게 구체적 질문 → 핵심 파악 → 적용 → 해결!</p>
+            <hr>
+            <h2>🚀 Week 2 계획: 더 진화하기</h2>
+            <h3>기술 목표</h3>
+            <ul>
+                <li>Firebase 실시간 통계 연동</li>
+                <li>이미지 제작 (Canva, AI)</li>
+                <li>영어 페이지 동기화</li>
+            </ul>
+            <h3>학습 목표</h3>
+            <ul>
+                <li>프롬프트 업그레이드 (Level 5 → 7)</li>
+                <li>핵심 개념 깊게 이해 (Grid, async/await)</li>
+            </ul>
+            <hr>
+            <h2>💬 초보 빌더들에게</h2>
+            <p>"나도 못 했는데 당신도 할 수 있어요"</p>
+            <p>2주 전만 해도 프롬프트를 어떻게 쓰는지 몰랐고, 링크 하나 고치는데 3시간 걸렸어요. 지금은 구체적인 프롬프트로 Claude와 대화하고, 문제가 생기면 원인을 물어보고, 핵심만 이해하고 나머지는 바이브로 처리해요.</p>
+            <blockquote>"AI 시대에는 '코드를 외우는 능력'이 아니라 'AI와 협업하는 능력'이 중요하다"</blockquote>
+            <hr>
+            <p><strong>✍️ 작성</strong>: chulbuji (프롬프트도 못 쓰던 초보 → 바이브 코딩 수행자)<br>
+            <strong>🤝 협업</strong>: Claude Sonnet 4.5 (인내심 무한대 멘토)<br>
+            <strong>📅 날짜</strong>: 2026년 2월 8일<br>
+            <strong>🏷️ 태그</strong>: #바이브코딩 #AI협업 #초보빌더 #ClaudeAI #점진적개선</p>
+         </div>
+
+         <footer class="log-detail-footer">
+           <a href="/log" class="back-link">← 기록 목록으로</a>
+         </footer>
+       </article>
+     </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a> |
+        <a href="/terms">Terms</a> |
+        <a href="/contact">Contact</a>
+      </div>
+      <p>© 2026 chulbuji.com. All rights reserved.</p>
+    </footer>
+    <script src="/language-switcher.js"></script>
+</body>
+</html>

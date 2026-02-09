@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Week 1 Log] How a Beginner Who Couldn't Write Prompts Fixed a Website with AI | chulbuji Log</title>
+    <meta name="description" content="A beginner's Week 1 journey of escaping a hell of broken links with vibe coding.">
+    <meta name="keywords" content="AI Collaboration, Beginner Developer, Vibe Coding, ClaudeAI, Web Dev Journey">
+    <meta name="author" content="chulbuji">
+    <link rel="canonical" href="https://chulbuji.com/en/log/week1-beginner-journey.html">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://chulbuji.com/log/week1-beginner-journey.html">
+    <link rel="alternate" hreflang="en" href="https://chulbuji.com/en/log/week1-beginner-journey.html">
+    <link rel="alternate" hreflang="x-default" href="https://chulbuji.com/log/week1-beginner-journey.html">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="chulbuji">
+    <meta property="og:title" content="[Week 1 Log] How a Beginner Who Couldn't Write Prompts Fixed a Website with AI">
+    <meta property="og:description" content="The journey of a complete beginner who, with the help of Claude AI, fixed broken links and 404 errors to complete a Week 1 mobile optimization challenge.">
+    <meta property="og:url" content="https://chulbuji.com/en/log/week1-beginner-journey.html">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-02-08">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:image" content="https://chulbuji.com/images/week1-thumbnail.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[Week 1 Log] How a Beginner Who Couldn't Write Prompts Fixed a Website with AI">
+    <meta name="twitter:description" content="A beginner's Week 1 journey of escaping a hell of broken links with vibe coding.">
+    <meta name="twitter:image" content="https://chulbuji.com/images/week1-thumbnail.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="/style.v2.css?v=20250203" />
+    <link rel="stylesheet" href="/style.css?v=20250203" />
+    <link rel="stylesheet" href="/mobile-improvements.css?v=20250208" />
+    <link rel="stylesheet" href="/components.css?v=20250208" />
+    <style>
+        :root {
+            --background-color: #F3F4F6;
+            --primary-color: #1E3A8A;
+            --text-color-main: #1F2937;
+            --text-color-muted: #6B7280;
+            --card-background: #FFFFFF;
+            --border-color: #E5E7EB;
+        }
+        body {
+            font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 24px; }
+        a { color: var(--primary-color); text-decoration: none; font-weight: 500;}
+        a:hover { text-decoration: underline; }
+
+        .main-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid var(--border-color); background-color: var(--card-background); }
+        .nav-menu { display: flex; gap: 1.5rem; }
+        .lang-toggle { padding: 0.5rem 1rem; border: 1px solid var(--primary-color); border-radius: 4px; color: var(--primary-color); }
+
+        .log-detail-header h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.3; }
+        .log-detail-header .meta { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center; }
+        .tag { display: inline-block; padding: 0.25rem 0.75rem; background: #E5E7EB; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+
+        .en-content h2 { font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        .en-content h3 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .en-content p, .en-content ul, .en-content ol, .en-content blockquote { margin-bottom: 1.5rem; }
+        .en-content ul, .en-content ol { padding-left: 1.5rem; }
+        .en-content li { margin-bottom: 0.5rem; }
+        .en-content blockquote { border-left: 4px solid var(--primary-color); padding: 1rem 1.5rem; background-color: #f0f7ff; margin-left: 0; margin-right: 0; }
+        .en-content pre { background-color: #1F2937; color: #F3F4F6; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; }
+        .en-content code { font-size: 0.9em; }
+        .en-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .en-content th, .en-content td { border: 1px solid var(--border-color); padding: 0.75rem; text-align: left; }
+        .en-content th { background-color: #F9FAFB; font-weight: 600; }
+
+        .log-detail-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .back-link { font-weight: 600; }
+        
+        footer { margin-top: 4rem; padding: 2rem; text-align: center; color: var(--text-color-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+     <nav class="main-nav">
+       <a href="/en" class="logo">chulbuji</a>
+       <div class="nav-menu">
+         <a href="/en">Home</a>
+         <a href="/en/log">Log</a>
+         <a href="/en/projects">Projects</a>
+         <a href="/en/tools">Tools</a>
+         <a href="/en/insight">Insight</a>
+         <a href="/en/about">About</a>
+       </div>
+       <a href="/log/week1-beginner-journey.html" class="lang-toggle">KO</a>
+     </nav>
+   </header>
+     
+     <main class="container">
+       <article class="log-detail">
+         <header class="log-detail-header">
+           <h1>[Week 1 Log] How a Beginner Who Couldn't Write Prompts Fixed a Website with AI</h1>
+           <div class="meta">
+             <time datetime="2026-02-08">February 8, 2026</time>
+             <span class="tag">AI Collaboration</span>
+             <span class="tag">Beginner Developer</span>
+             <span class="tag">Vibe Coding</span>
+           </div>
+         </header>
+
+         <div class="en-content">
+            <blockquote>"From an infinite loop of fixing one thing and breaking another, to escaping with Vibe Coding."</blockquote>
+
+            <h2>📅 Voyage Info</h2>
+            <ul>
+                <li><strong>Date</strong>: February 8, 2026</li>
+                <li><strong>Navigator</strong>: chulbuji (Coding Novice → Aspiring AI Co-Builder)</li>
+                <li><strong>Partner</strong>: Claude Sonnet 4.5</li>
+                <li><strong>Starting Point</strong>: A website with broken links</li>
+                <li><strong>Destination</strong>: Mobile optimization complete</li>
+            </ul>
+
+            <hr>
+
+            <h2>🎬 Prologue: I Couldn't Even Write a Prompt</h2>
+            <h3>Me, two weeks ago:</h3>
+            <pre><code>Me: "Fix my website."
+Claude: "What part would you like to fix?"
+Me: "Just... make it look nice?"
+Claude: "What specific style are you looking for?"
+Me: "...I don't know."</code></pre>
+            <p>That was the level of my prompting skills two weeks ago.</p>
+            <p>The first thing I learned after starting the <strong>5-Week AI Builder Course</strong> was:<br> "Asking AI questions is a skill in itself."</p>
+            
+            <hr>
+
+            <h2>💥 Week 0: The Infinite Loop of Hell</h2>
+            <h3>Problem 1: The links keep breaking</h3>
+            <p><strong>Situation</strong>:</p>
+            <ul>
+                <li>Click "Log" on the homepage → 404 Error</li>
+                <li>Click "Home" on the log page → Another 404 Error</li>
+            </ul>
+            <p><strong>My attempts</strong>:</p>
+            <pre><code>&lt;!-- I fixed it like this... --&gt;
+&lt;a href="log.html"&gt;Log&lt;/a&gt;
+
+&lt;!-- ...and now this one breaks. --&gt;
+&lt;a href="/log.html"&gt;Log&lt;/a&gt;
+
+&lt;!-- If I change it back... --&gt;
+&lt;a href="./log.html"&gt;Log&lt;/a&gt;</code></pre>
+            <p><strong>Result</strong>: Never-ending problem.</p>
+            <p><strong>I asked Claude</strong>:</p>
+            <pre><code>Me: "My links keep breaking. Is it log.html or /log.html?"
+Claude: "Let me explain the difference between absolute and relative paths..."</code></pre>
+            <p>10 minutes later, I finally got it:</p>
+            <ul>
+                <li><code>log.html</code> = Look in the same folder.</li>
+                <li><code>/log.html</code> = Look from the root directory.</li>
+                <li><code>./log.html</code> = Look in the current folder.</li>
+            </ul>
+            <p><strong>What I learned</strong>: Asking "What's the difference between log.html and /log.html?" is a much better question than just saying "It doesn't work."</p>
+
+            <h3>Problem 2: The hell of language switching</h3>
+            <p><strong>Situation</strong>:</p>
+            <pre><code>Click "English" on the Korean page → Works fine.
+Click "한국어" on the English page → 404.</code></pre>
+            <p><strong>The magic of fixing one thing and breaking another</strong>:</p>
+            <pre><code>// Attempt 1
+function switchLanguage() {
+  window.location.href = '/en/index.html';  // KO→EN OK!
+}
+// Result: EN→KO 404 💀
+
+// Attempt 2
+function switchLanguage() {
+  window.location.href = 'index.html';  // EN→KO OK!
+}
+// Result: KO→EN 404 💀
+
+// Attempt 3: SOS to Claude
+Me: "When I fix one, the other breaks... What should I do?"</code></pre>
+            <p><strong>Claude's solution</strong>:</p>
+            <pre><code>function switchLanguage() {
+  const currentPath = window.location.pathname;
+  
+  if (currentPath.includes('/en/')) {
+    // English → Korean
+    window.location.href = currentPath.replace('/en/', '/');
+  } else {
+    // Korean → English
+    window.location.href = '/en' + currentPath;
+  }
+}</code></pre>
+            <p><strong>What amazed me</strong>:</p>
+            <ul>
+                <li>I learned for the first time that <code>window.location.pathname</code> gives you the current path.</li>
+                <li>I also learned that <code>includes()</code> can check for '/en/'.</li>
+                <li>And that you can change the path with <code>replace()</code>...</li>
+            </ul>
+            <p><strong>What I learned</strong>: Instead of just copy-pasting code, I understood it by asking about each line. Now I can solve similar problems myself next time.</p>
+
+            <hr>
+
+            <h2>🎯 Week 1: A Proper Start</h2>
+            <h3>Day 1 Morning: Asking Claude a *real* question</h3>
+            <p><strong>Before (2 weeks ago)</strong>:</p>
+            <pre><code>Me: "Fix my website."</code></pre>
+            <p><strong>After (Now)</strong>:</p>
+            <pre><code>Me: "On the mobile view of chulbuji.com, the buttons are too small to tap. 
+     I want to make the touch areas at least 44px, following Apple's guidelines.
+     Would it be best to create a new file, mobile-improvements.css, to apply this?"</code></pre>
+            <p><strong>The amazing change</strong>: Claude gave me immediately usable code!</p>
+            <pre><code>/* Claude's response */
+@media (max-width: 768px) {
+  .nav-links a {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+}</code></pre>
+            <p><strong>What I learned</strong>: The more specific the question, the more accurate the answer. "At least 44px, in a mobile-improvements.css file" is a much better prompt than "Fix it."</p>
+
+            <h3>Day 1 Afternoon: Starting Vibe Coding</h3>
+            <p><strong>What is Vibe Coding?</strong></p>
+            <blockquote>The act of building something by grasping the core concepts and collaborating with AI, even without a perfect understanding of the code.</blockquote>
+            <p><strong>A practical example</strong>:</p>
+            <p>Claude generated 376 lines of <code>mobile-improvements.css</code>.</p>
+            <p><strong>What I did</strong>:</p>
+            <pre><code>/* 1. I understood this */
+@media (max-width: 768px) {  /* Apply only on mobile screens */
+  
+/* 2. I understood this too */  
+  min-height: 44px;  /* Minimum touch area size */
+
+/* 3. I didn't know this, so I asked */
+  padding: env(safe-area-inset-top);  /* What's this? */
+}</code></pre>
+            <p><strong>Claude's explanation</strong>:</p>
+            <blockquote>"It's to display content while avoiding the iPhone's notch (the black area at the top). Without it, buttons might get hidden by the notch."</blockquote>
+            <p><strong>The Vibe Point</strong>:</p>
+            <ul>
+                <li>You don't need to understand all 376 lines.</li>
+                <li>Understanding the key 10 lines is enough.</li>
+                <li>For the rest, just know "Oh, this is for the notch," and move on.</li>
+                <li>If you need to know more later, you can just ask again.</li>
+            </ul>
+            <hr>
+            <h2>🎢 The Real Achievements of Week 1</h2>
+            <h3>Quantitative Results</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Before</th>
+                        <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Prompt Quality</strong></td>
+                        <td>"Make it pretty."</td>
+                        <td>"A 2x2 grid, 44px touch area, Product Hunt style..."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Problem-Solving Time</strong></td>
+                        <td>3 hours (for one link)</td>
+                        <td>10 minutes (with structural understanding)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Code Comprehension</strong></td>
+                        <td>0%</td>
+                        <td>30% (just the core)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Qualitative Result: Mastering Vibe Coding</h3>
+            <p><strong>Before: A clueless beginner</strong><br> Problem → Google → Don't understand → Give up</p>
+            <p><strong>After: An AI Co-Builder</strong><br> Problem → Ask Claude a specific question → Listen to the explanation → Grasp the core → Apply → It works!</p>
+            <hr>
+            <h2>💡 Two Weeks of Growth: Before vs. After</h2>
+            <h3>Before (2 weeks ago)</h3>
+            <p><strong>Prompt Level</strong>: "Fix my website," "The link doesn't work."</p>
+            <p><strong>Problem-Solving Method</strong>: Google → Read 10 blogs → Don't understand → Give up.</p>
+            <h3>After (Now)</h3>
+            <p><strong>Prompt Level</strong>: "Make button touch areas 44px for screens under 768px and write it in mobile-improvements.css," "What's the difference between log.html and /log.html?"</p>
+            <p><strong>Problem-Solving Method</strong>: Ask Claude a specific question → Grasp the core → Apply → Solved!</p>
+            <hr>
+            <h2>🚀 Week 2 Plan: Evolving Further</h2>
+            <h3>Technical Goals</h3>
+            <ul>
+                <li>Integrate real-time stats with Firebase.</li>
+                <li>Create images (Canva, AI).</li>
+                <li>Synchronize the English pages.</li>
+            </ul>
+            <h3>Learning Goals</h3>
+            <ul>
+                <li>Upgrade prompting skills (Level 5 → 7).</li>
+                <li>Deepen understanding of core concepts (Grid, async/await).</li>
+            </ul>
+            <hr>
+            <h2>💬 To fellow beginner builders</h2>
+            <p>"I couldn't do it, which means you can do it too."</p>
+            <p>Just two weeks ago, I didn't know how to write a prompt and it took me 3 hours to fix one link. Now, I have conversations with Claude using specific prompts, ask for the cause when problems arise, and handle things with Vibe Coding by understanding just the core.</p>
+            <blockquote>"In the age of AI, it's not the ability to memorize code that matters, but the ability to collaborate with AI."</blockquote>
+            <hr>
+            <p><strong>✍️ Author</strong>: chulbuji (From a beginner who couldn't write prompts → A Vibe Coder)<br>
+            <strong>🤝 Collaborator</strong>: Claude Sonnet 4.5 (A mentor with infinite patience)<br>
+            <strong>📅 Date</strong>: February 8, 2026<br>
+            <strong>🏷️ Tags</strong>: #VibeCoding #AICollaboration #BeginnerBuilder #ClaudeAI #IncrementalImprovement</p>
+         </div>
+
+         <footer class="log-detail-footer">
+           <a href="/en/log" class="back-link">← Back to Log</a>
+         </footer>
+       </article>
+     </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="/en/privacy">Privacy</a> |
+        <a href="/en/terms">Terms</a> |
+        <a href="/en/contact">Contact</a>
+      </div>
+      <p>© 2026 chulbuji.com. All rights reserved.</p>
+    </footer>
+    <script src="/language-switcher.js"></script>
+</body>
+</html>
