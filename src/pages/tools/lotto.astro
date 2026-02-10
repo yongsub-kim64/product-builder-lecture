@@ -375,10 +375,34 @@ const categories = {
     if (!generateBtn || !resultDiv || !modeSelect) return;
 
     const lottoRules = {
-      ko645: { mainCount: 6, mainMax: 45, colors: ['#fbc400', '#69c8f2', '#ff7272', '#aaa', '#b0d840'] },
-      cnssq: { mainCount: 6, mainMax: 33, bonus: { count: 1, max: 16 }, colors: ['#ff7272'] },
-      uspb: { mainCount: 5, mainMax: 69, bonus: { count: 1, max: 26 }, colors: ['#eee'] },
-      calmax: { mainCount: 7, mainMax: 50, colors: ['#69c8f2'] },
+      ko645: {
+        mainCount: 6,
+        mainMax: 45,
+        colors: [
+          'linear-gradient(145deg, #ffd700 0%, #fbc400 50%, #d4a500 100%)', // Yellow
+          'linear-gradient(145deg, #87ceeb 0%, #69c8f2 50%, #4a9fd8 100%)', // Blue
+          'linear-gradient(145deg, #ff8c8c 0%, #ff7272 50%, #e05555 100%)', // Red
+          'linear-gradient(145deg, #c0c0c0 0%, #aaa 50%, #888 100%)',       // Gray
+          'linear-gradient(145deg, #c8e86c 0%, #b0d840 50%, #95ba35 100%)'  // Green
+        ]
+      },
+      cnssq: {
+        mainCount: 6,
+        mainMax: 33,
+        bonus: { count: 1, max: 16 },
+        colors: ['linear-gradient(145deg, #ff8c8c 0%, #ff7272 50%, #e05555 100%)']
+      },
+      uspb: {
+        mainCount: 5,
+        mainMax: 69,
+        bonus: { count: 1, max: 26 },
+        colors: ['linear-gradient(145deg, #ffffff 0%, #f5f5f5 50%, #ddd 100%)']
+      },
+      calmax: {
+        mainCount: 7,
+        mainMax: 50,
+        colors: ['linear-gradient(145deg, #87ceeb 0%, #69c8f2 50%, #4a9fd8 100%)']
+      },
     };
 
     function pickUnique(count: number, max: number, min: number = 1, exclude: Set<number> = new Set()): number[] {
