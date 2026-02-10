@@ -1,0 +1,410 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Contact Us" description="Get in touch with chulbuji.com for questions, feedback, or collaboration inquiries via email or feedback form">
+  <div class="contact-page">
+    <h2 class="page-subtitle">Let's Start a Conversation</h2>
+
+    <div class="intro-box">
+      <p>Have something on your mind after exploring this record? Whether it's sharp feedback, a friendly hello, or an idea to build together — everything is welcome.</p>
+      <p>Finding a companion on the journey of growing with AI is always a joy.</p>
+    </div>
+
+    <!-- Email Section -->
+    <section class="contact-section">
+      <p class="section-label">Direct</p>
+      <h2 class="section-title">Get in Touch via Email</h2>
+      <div class="email-card">
+        <a href="mailto:hello@chulbuji.com?subject=Message from chulbuji.com" class="email-address" id="email-link">hello@chulbuji.com</a>
+        <div class="email-buttons">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Message%20from%20chulbuji.com" target="_blank" rel="noopener noreferrer" class="email-button primary">Send via Gmail</a>
+          <a href="mailto:hello@chulbuji.com?subject=Message from chulbuji.com" class="email-button secondary">Send via Mail App</a>
+          <button type="button" class="email-button outline" id="copy-email-btn">Copy Address</button>
+        </div>
+        <p class="email-note">I usually respond within 2-3 days</p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Feedback Section -->
+    <section class="contact-section">
+      <p class="section-label">Feedback</p>
+      <h2 class="section-title">Share Your Thoughts</h2>
+      <p class="feedback-description">Bug reports, feature suggestions, collaboration inquiries — don't worry about the format. I collect only the minimum information needed for a response. For more details, please refer to the <a href="/en/privacy" class="privacy-link">Privacy Policy</a>.</p>
+      <div class="form-wrapper">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?embedded=true" width="100%" height="520" frameborder="0" loading="lazy" title="Feedback Form"></iframe>
+        <div class="form-fallback">
+          <p>Can't see the form? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY08t_4M1eIpdBZhDSI-jjC0s5S6WUvZSlkkgPaXbqRo8YdQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="fallback-link">Open in new tab →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Social Media Section -->
+    <section class="contact-section">
+      <p class="section-label">Elsewhere</p>
+      <h2 class="section-title">Connect Elsewhere</h2>
+      <div class="social-links">
+        <a href="https://github.com/yongsub-kim64" target="_blank" rel="noopener noreferrer" class="social-chip">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </section>
+
+    <hr class="section-divider-bottom">
+
+    <!-- Closing -->
+    <div class="closing-statement">
+      <p>chulbuji.com is a small record space run by one person.</p>
+      <p>I personally read every message and respond to each one directly.</p>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+</PageLayout>
+
+<style>
+  .contact-page {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.85;
+  }
+
+  .page-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #1a1a1a;
+  }
+
+  .intro-box {
+    background-color: #F7F3EE;
+    border: 1px solid #ebe7e0;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #555555;
+  }
+
+  .intro-box p {
+    margin-bottom: 0.5rem;
+  }
+
+  .intro-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #2C5F7C;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid #e0ddd8;
+    margin: 48px 0;
+  }
+
+  .section-divider-bottom {
+    border: none;
+    border-top: 1px solid #e0ddd8;
+    margin-top: 64px;
+    padding-top: 48px;
+  }
+
+  /* Email Card */
+  .email-card {
+    background-color: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .email-address {
+    color: #2C5F7C;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1.5rem;
+    word-break: break-all;
+  }
+
+  .email-address:hover {
+    text-decoration: underline;
+  }
+
+  .email-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .email-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+    flex-shrink: 0;
+  }
+
+  .email-button.primary {
+    background-color: #2C5F7C;
+    color: #fff;
+    border: none;
+  }
+
+  .email-button.primary:hover {
+    background-color: #1a3c50;
+  }
+
+  .email-button.secondary {
+    background-color: #E8F0F5;
+    color: #2C5F7C;
+    border: none;
+  }
+
+  .email-button.secondary:hover {
+    background-color: #d1e0e8;
+  }
+
+  .email-button.outline {
+    background-color: transparent;
+    border-color: #e0ddd8;
+    color: #1a1a1a;
+  }
+
+  .email-button.outline:hover {
+    border-color: #2C5F7C;
+    color: #2C5F7C;
+  }
+
+  .email-note {
+    font-size: 0.82rem;
+    color: #888;
+    margin-top: 1.5rem;
+  }
+
+  /* Feedback Form */
+  .feedback-description {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #555555;
+  }
+
+  .privacy-link {
+    color: #2C5F7C;
+    text-decoration: underline;
+  }
+
+  .form-wrapper {
+    background-color: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-wrapper iframe {
+    display: block;
+  }
+
+  .form-fallback {
+    background-color: #FAFAF8;
+    border-top: 1px solid #e0ddd8;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .fallback-link {
+    color: #2C5F7C;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  /* Social Links */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .social-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #fff;
+    border: 1px solid #e0ddd8;
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .social-chip:hover {
+    border-color: #2C5F7C;
+    color: #2C5F7C;
+    transform: translateY(-1px);
+  }
+
+  .social-chip svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Closing Statement */
+  .closing-statement {
+    text-align: center;
+    color: #888;
+    font-size: 0.92rem;
+  }
+
+  .closing-statement p {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Toast Message */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  .toast.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 600px) {
+    .contact-page {
+      padding: 2rem 1rem;
+    }
+
+    .email-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .email-button {
+      width: 100%;
+    }
+
+    .social-links {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-chip {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+
+<script>
+  // Email copy functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', copyEmail);
+    }
+  });
+
+  function copyEmail() {
+    const email = 'hello@chulbuji.com';
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email)
+        .then(() => showToast('Email address copied!'))
+        .catch(() => fallbackCopy(email));
+    } else {
+      fallbackCopy(email);
+    }
+  }
+
+  function fallbackCopy(text: string) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      document.execCommand('copy');
+      showToast('Email address copied!');
+    } catch (err) {
+      showToast('Copy failed. Please copy manually.');
+    }
+
+    document.body.removeChild(textarea);
+  }
+
+  function showToast(message: string) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2500);
+  }
+</script>

@@ -1,0 +1,422 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get lottery-related articles only
+const allLottoArticles = await getCollection('en/log', ({ data }) => {
+  return data.showInLog === false && data.published !== false;
+});
+
+// Categorize articles
+const categories = {
+  probability: {
+    title: 'Probability & Statistics',
+    icon: '📊',
+    articles: allLottoArticles.filter(a =>
+      ['lotto-analysis-1', 'report-math', 'article-04', 'article-05'].includes(a.slug.split('/').pop() || '')
+    )
+  },
+  practical: {
+    title: 'Practical Information',
+    icon: '💰',
+    articles: allLottoArticles.filter(a =>
+      ['article-03', 'lotto-analysis-2', 'report-tax'].includes(a.slug.split('/').pop() || '')
+    )
+  },
+  general: {
+    title: 'General Information',
+    icon: '🎯',
+    articles: allLottoArticles.filter(a =>
+      ['history-of-lotto', 'article-06', 'strategy-guide'].includes(a.slug.split('/').pop() || '')
+    )
+  }
+};
+---
+
+<PageLayout
+  title="Lottery Number Generator"
+  description="This tool does not analyze past data, does not recommend specific numbers, and randomly generates 6 numbers from 1 to 45."
+>
+  <div class="lotto-page">
+    <!-- Number Generator -->
+    <div class="generator-card">
+      <h2 class="generator-title">Random Lottery Number Generator</h2>
+      <p class="generator-desc">
+        This tool does not analyze past data.<br>
+        It does not recommend specific numbers and randomly generates 6 numbers from 1 to 45.<br>
+        It does not increase winning probability and is an experimental tool to reduce randomness and selection burden.
+      </p>
+      <p class="disclaimer">※ Does not guarantee winning or increase probability.</p>
+
+      <div class="generator-controls">
+        <label for="lotto-mode">Generation Mode</label>
+        <select id="lotto-mode">
+          <option value="ko645">Korea Lotto 6/45</option>
+          <option value="cnssq">China Double Color Ball</option>
+          <option value="uspb">USA Powerball</option>
+          <option value="calmax">Canada Lotto Max</option>
+        </select>
+      </div>
+
+      <div id="lotto-result"></div>
+
+      <button id="gen-btn" class="btn-primary">Generate Random Numbers</button>
+    </div>
+
+    <!-- Related Articles Section -->
+    <section class="articles-section">
+      <header class="articles-header">
+        <h2>📚 Lottery Reading Materials</h2>
+        <p>Everything about lottery — from probability and statistics to practical information and history</p>
+      </header>
+
+      {Object.entries(categories).map(([key, category]) => (
+        category.articles.length > 0 && (
+          <div class="article-category">
+            <h3 class="category-title">
+              <span class="category-icon">{category.icon}</span>
+              {category.title}
+            </h3>
+            <div class="articles-grid">
+              {category.articles.map((article) => (
+                <a href={`/en/log/${article.slug.split('/').pop()}`} class="article-card">
+                  <h4>{article.data.title}</h4>
+                  <p class="article-excerpt">{article.data.excerpt}</p>
+                  <div class="article-tags">
+                    {article.data.tags?.map((tag: string) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      ))}
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .lotto-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+
+  /* Generator Styles */
+  .generator-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-bottom: 3rem;
+  }
+
+  .generator-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1F2937;
+  }
+
+  .generator-desc {
+    font-size: 0.95rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+    color: #6B7280;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .generator-controls {
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .generator-controls label {
+    font-weight: 600;
+    color: #1F2937;
+  }
+
+  .generator-controls select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1F2937;
+    background: white;
+    cursor: pointer;
+  }
+
+  #lotto-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .lotto-ball {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .lotto-ball:hover {
+    transform: scale(1.1);
+  }
+
+  .lotto-ball--bonus {
+    background: linear-gradient(145deg, #d63333, #b32a2a) !important;
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background-color: #1e40af;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  /* Articles Section Styles */
+  .articles-section {
+    margin-top: 4rem;
+  }
+
+  .articles-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .articles-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1F2937;
+  }
+
+  .articles-header p {
+    font-size: 1rem;
+    color: #6B7280;
+  }
+
+  .article-category {
+    margin-bottom: 3rem;
+  }
+
+  .category-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .article-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .article-card:hover {
+    border-color: #2C5F7C;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .article-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1F2937;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .article-excerpt {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #F3F4F6;
+    color: #4B5563;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .lotto-page {
+      padding: 0 1rem 3rem;
+    }
+
+    .generator-card {
+      padding: 1.5rem;
+    }
+
+    .generator-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .generator-controls select {
+      width: 100%;
+    }
+
+    .lotto-ball {
+      width: 38px;
+      height: 38px;
+      font-size: 1rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .articles-header h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const generateBtn = document.getElementById('gen-btn');
+    const resultDiv = document.getElementById('lotto-result');
+    const modeSelect = document.getElementById('lotto-mode') as HTMLSelectElement;
+
+    if (!generateBtn || !resultDiv || !modeSelect) return;
+
+    const lottoRules = {
+      ko645: { mainCount: 6, mainMax: 45, colors: ['#fbc400', '#69c8f2', '#ff7272', '#aaa', '#b0d840'] },
+      cnssq: { mainCount: 6, mainMax: 33, bonus: { count: 1, max: 16 }, colors: ['#ff7272'] },
+      uspb: { mainCount: 5, mainMax: 69, bonus: { count: 1, max: 26 }, colors: ['#eee'] },
+      calmax: { mainCount: 7, mainMax: 50, colors: ['#69c8f2'] },
+    };
+
+    function pickUnique(count: number, max: number, min: number = 1, exclude: Set<number> = new Set()): number[] {
+      const numbers = new Set<number>();
+      const range = max - min + 1;
+      if (count > (range - exclude.size)) return [];
+      const randomValues = new Uint32Array(count * 3);
+      while (numbers.size < count) {
+        crypto.getRandomValues(randomValues);
+        for (const val of randomValues) {
+          const num = (val % range) + min;
+          if (!exclude.has(num)) numbers.add(num);
+          if (numbers.size >= count) break;
+        }
+      }
+      return Array.from(numbers).sort((a, b) => a - b);
+    }
+
+    function generateLottoNumbers(mode: string): { main: number[], bonus: number[] } {
+      const rules = lottoRules[mode as keyof typeof lottoRules];
+      if (!rules) return { main: [], bonus: [] };
+      const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
+      const bonusNumbers = rules.bonus ? pickUnique(rules.bonus.count, rules.bonus.max, 1, new Set(mainNumbers)) : [];
+      return { main: mainNumbers, bonus: bonusNumbers };
+    }
+
+    function renderResult(result: { main: number[], bonus: number[] }, mode: string) {
+      resultDiv.innerHTML = '';
+      const rules = lottoRules[mode as keyof typeof lottoRules];
+
+      result.main.forEach(num => {
+        const ball = document.createElement('span');
+        ball.className = 'lotto-ball';
+        ball.textContent = String(num);
+        if (mode === 'ko645') {
+          ball.style.background = rules.colors[Math.floor((num - 1) / 10)] || '#ccc';
+        } else if (mode === 'uspb') {
+          ball.style.color = '#333';
+          ball.style.background = rules.colors[0];
+        } else {
+          ball.style.background = rules.colors[0] || '#ccc';
+        }
+        resultDiv.appendChild(ball);
+      });
+
+      result.bonus.forEach(num => {
+        const ball = document.createElement('span');
+        ball.className = 'lotto-ball lotto-ball--bonus';
+        ball.textContent = String(num);
+        resultDiv.appendChild(ball);
+      });
+    }
+
+    const performGeneration = () => {
+      const selectedMode = modeSelect.value;
+      const result = generateLottoNumbers(selectedMode);
+      renderResult(result, selectedMode);
+    };
+
+    generateBtn.addEventListener('click', performGeneration);
+    modeSelect.addEventListener('change', performGeneration);
+    performGeneration(); // Initial generation on load
+  });
+</script>

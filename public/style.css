@@ -1,0 +1,420 @@
+/* === CSS Reset & Global Styles === */
+:root {
+  --background-color: #F8F9FA;
+  --primary-color: #1E3A8A; /* Deep Navy */
+  --primary-hover-color: #1c347a;
+  --text-color-main: #212529;
+  --text-color-muted: #6C757D;
+  --card-background: #FFFFFF;
+  --border-color: #DEE2E6;
+  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  --card-radius: 16px;
+  --font-sans: 'Noto Sans KR', 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background-color);
+  color: var(--text-color-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* === Main Layout Containers === */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
+
+/* === Header === */
+.header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-color-main);
+}
+
+.logo .highlight {
+  color: var(--primary-color);
+}
+
+.main-nav a {
+  margin-left: 24px;
+  font-weight: 500;
+  color: var(--text-color-muted);
+}
+
+.main-nav a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.lang-selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* === Hero Section === */
+.hero {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero h1 .highlight {
+  color: var(--primary-color);
+}
+
+.hero .subtitle {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  color: var(--text-color-muted);
+}
+
+/* === Bento Grid Layout === */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* === Card Base Style === */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.card .tag.math {
+  background-color: #EBF4FF;
+  color: #1E3A8A;
+}
+
+.card .tag.tax {
+  background-color: #E6F7F0;
+  color: #047857;
+}
+
+.card .card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card .card-description {
+  font-size: 0.95rem;
+  color: var(--text-color-muted);
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+/* === Bento Grid Item Sizing === */
+.bento-grid .card-large {
+  grid-column: span 2;
+}
+
+.bento-grid .card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* === Encyclopedia Section === */
+.encyclopedia-section {
+  margin-top: 80px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.encyclopedia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #F1F3F5;
+  color: var(--text-color-main);
+}
+
+.btn-secondary:hover {
+  background-color: #E9ECEF;
+  color: var(--text-color-main);
+  text-decoration: none;
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+}
+
+/* === Number Generator Styles === */
+#result {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#result .lotto-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#result .lotto-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Colors from original JS */
+.color-1 .lotto-number { background-color: #f59e0b; }
+.color-2 .lotto-number { background-color: #10b981; }
+.color-3 .lotto-number { background-color: #3b82f6; }
+.color-4 .lotto-number { background-color: #ef4444; }
+.color-5 .lotto-number { background-color: #8b5cf6; }
+
+
+/* === Footer === */
+.footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  margin: 0 12px;
+  font-size: 0.9rem;
+  color: var(--text-color-muted);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer .copyright {
+  font-size: 0.9rem;
+  color: var(--text-color-muted);
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+  .bento-grid,
+  .encyclopedia-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-grid .card-large {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero {
+    padding: 60px 0;
+  }
+
+  .bento-grid,
+  .encyclopedia-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-grid .card-large {
+    grid-column: span 1;
+  }
+
+  .main-nav {
+    display: none; /* Simple responsive approach: hide nav on mobile */
+  }
+}
+/* ==========================================================================
+   [FIX] Article Detail Page Styles - Card Design (Essential)
+   ========================================================================== */
+/* 1. 전체 배경을 회색으로 설정하여 카드와 대비를 줌 */
+body {
+    background-color: #F8F9FA !important;
+}
+
+/* 2. 아티클 컨테이너 기본 설정 (모바일) */
+.article-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 3. 텍스트 스타일 (가독성 강화) */
+.article-container h1 { font-size: 26px; font-weight: 800; margin-bottom: 12px; line-height: 1.35; color: #212529; }
+.article-container h2 { font-size: 22px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #E9ECEF; color: #343A40; }
+.article-container p, .article-container li { font-size: 17px; line-height: 1.75; color: #495057; margin-bottom: 16px; word-break: keep-all; }
+.article-container ul, .article-container ol { padding-left: 20px; margin-bottom: 24px; }
+.article-container strong { color: #212529; font-weight: 700; background: linear-gradient(to top, #ffeb3b 20%, transparent 20%); }
+
+/* 4. 강조 박스 스타일 */
+.highlight-box {
+    background-color: #EFF6FF;
+    border-left: 5px solid #1E40AF;
+    padding: 24px;
+    margin: 30px 0;
+    border-radius: 8px;
+}
+.highlight-box p, .highlight-box li { margin: 0; color: #1E3A8A; font-weight: 600; }
+
+/* 5. 뒤로가기 버튼 */
+.back-link {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 12px 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #495057;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.back-link:hover { background-color: #F1F3F5; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+/* 6. ★핵심★ PC/태블릿에서 '카드 디자인' 적용 (768px 이상) */
+ @media (min-width: 768px) {
+    .article-container {
+        max-width: 760px;       /* 너무 넓지 않게 제한 */
+        margin: 60px auto;      /* 화면 중앙 정렬 */
+        padding: 60px;          /* 내부 여백 넉넉하게 */
+        background-color: #FFFFFF; /* 흰색 배경 (카드 효과) */
+        border-radius: 24px;    /* 둥근 모서리 */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 그림자 효과 */
+    }
+
+    .article-container h1 { font-size: 38px; }
+    .article-container p, .article-container li { font-size: 18px; }
+}
+/* =========================================
+   [NEW] Mode Selector Specific Styles
+   ========================================= */
+.generator-controls #lotto-mode {
+  margin-left: 0;
+  width: fit-content;
+  min-width: 200px; /* For mobile touch convenience */
+  max-width: 100%;
+}

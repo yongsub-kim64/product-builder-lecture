@@ -1,0 +1,47 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title="인사이트" description="학습과 개발에 대한 통찰">
+  <div class="insight-content">
+    <p>학습과 개발 과정에서 얻은 통찰을 공유합니다.</p>
+    
+    <div class="coming-soon">
+      <h3>준비 중</h3>
+      <p>곧 다양한 인사이트 콘텐츠가 추가될 예정입니다.</p>
+      <ul>
+        <li>AI 협업 방법론</li>
+        <li>웹 개발 베스트 프랙티스</li>
+        <li>프로젝트 관리 팁</li>
+      </ul>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .insight-content {
+    line-height: 1.7;
+  }
+  
+  .coming-soon {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f0f7ff;
+    border-left: 4px solid #667eea;
+    border-radius: 4px;
+  }
+  
+  .coming-soon h3 {
+    margin-bottom: 1rem;
+    color: #667eea;
+  }
+  
+  .coming-soon ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .coming-soon li {
+    margin-bottom: 0.5rem;
+  }
+</style>

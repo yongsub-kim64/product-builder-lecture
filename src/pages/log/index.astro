@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LogCard from '../../components/LogCard.astro';
+import { getCollection } from 'astro:content';
+
+const logPosts = await getCollection('ko/log', ({ data }) => {
+  return data.published !== false && data.showInLog !== false;
+});
+const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="기록" description="학습과 개발 과정을 기록합니다">
+  <div class="log-list">
+    <header class="page-header">
+      <h1>기록</h1>
+      <p>실험·기록·업데이트</p>
+    </header>
+    
+    <div class="posts-grid">
+      {sortedPosts.map((post) => (
+        <LogCard
+          title={post.data.title}
+          excerpt={post.data.excerpt}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .log-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

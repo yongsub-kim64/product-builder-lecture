@@ -1,0 +1,458 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="이용약관"
+  description="chulbuji.com 서비스 이용에 관한 기본 약관"
+>
+  <div class="terms-page">
+    <!-- Header -->
+    <header class="terms-header">
+      <p class="effective-date">시행일자: 2026년 2월 3일</p>
+      <p class="intro-text">
+        chulbuji.com(이하 '사이트')는 이용자에게 다양한 서비스를 제공하며,<br>
+        본 약관은 서비스 이용에 관한 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.
+      </p>
+    </header>
+
+    <!-- Quick Navigation -->
+    <nav class="terms-nav">
+      <p class="nav-title">빠른 이동</p>
+      <div class="nav-links">
+        <a href="#section-1">서비스 소개</a>
+        <a href="#section-2">이용자 의무</a>
+        <a href="#section-3">면책 조항</a>
+        <a href="#section-4">지적재산권</a>
+        <a href="#section-5">약관 변경</a>
+        <a href="#section-6">문의처</a>
+      </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="terms-content">
+      <!-- Section 1 -->
+      <section id="section-1" class="terms-section">
+        <div class="section-number">01</div>
+        <h2>서비스 소개</h2>
+        <div class="section-content">
+          <p>
+            본 사이트는 AI 기반 아이디어 구조화 도구, 프로토타입 생성 가이드,
+            실험 기록 공유 등 다양한 정보 및 기능을 제공합니다.
+          </p>
+          <div class="highlight-box">
+            <strong>무료 제공</strong>
+            <p>모든 서비스는 무료로 제공되며, 별도의 회원가입 없이 이용 가능합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2" class="terms-section">
+        <div class="section-number">02</div>
+        <h2>이용자 의무</h2>
+        <div class="section-content">
+          <p>이용자는 다음 행위를 하여서는 안 됩니다.</p>
+          <ul class="obligation-list">
+            <li>
+              <span class="bullet">×</span>
+              <span>다른 이용자의 개인정보 도용 및 무단 사용</span>
+            </li>
+            <li>
+              <span class="bullet">×</span>
+              <span>서비스의 운영을 방해하거나 정상적인 이용을 저해하는 행위</span>
+            </li>
+            <li>
+              <span class="bullet">×</span>
+              <span>허위 사실을 유포하거나 타인의 명예를 훼손하는 행위</span>
+            </li>
+            <li>
+              <span class="bullet">×</span>
+              <span>지적재산권 등 타인의 권리를 침해하는 행위</span>
+            </li>
+            <li>
+              <span class="bullet">×</span>
+              <span>기타 관계 법령에 위배되는 행위</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="section-3" class="terms-section">
+        <div class="section-number">03</div>
+        <h2>면책 조항</h2>
+        <div class="section-content">
+          <div class="warning-box">
+            <strong>⚠️ 중요</strong>
+            <p>
+              본 사이트는 서비스 제공과 관련하여 기술적 오류 및 기타 불가피한 사유로
+              인한 손해에 대해 책임을 지지 않습니다.
+            </p>
+          </div>
+          <p>
+            서비스에 게재된 정보, 자료, 사실의 신뢰도 및 정확성에 대해서는 보증하지 않으며,
+            이용자의 판단과 책임 하에 이용해야 합니다.
+          </p>
+          <p>
+            사이트에 연결된 외부 링크를 통해 접속한 타 웹사이트의 콘텐츠 및 서비스에
+            대해서는 어떠한 책임도 지지 않습니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="section-4" class="terms-section">
+        <div class="section-number">04</div>
+        <h2>지적재산권</h2>
+        <div class="section-content">
+          <p>
+            본 사이트 내의 모든 콘텐츠(텍스트, 이미지, 코드 등)에 대한 지적재산권은
+            chulbuji.com에 귀속됩니다.
+          </p>
+          <div class="info-box">
+            <div class="info-row">
+              <strong class="prohibited">🚫 금지</strong>
+              <span>사전 동의 없는 무단 복제, 배포, 변경 등의 행위</span>
+            </div>
+            <div class="info-row">
+              <strong class="allowed">✓ 허용</strong>
+              <span>개인적인 학습 및 비상업적 목적의 이용</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="section-5" class="terms-section">
+        <div class="section-number">05</div>
+        <h2>약관 변경</h2>
+        <div class="section-content">
+          <p>
+            본 약관은 필요에 따라 변경될 수 있으며, 변경 사항은 사이트에 공지한 날로부터
+            효력이 발생합니다.
+          </p>
+          <p>
+            이용자는 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단할 수 있습니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="section-6" class="terms-section">
+        <div class="section-number">06</div>
+        <h2>문의처</h2>
+        <div class="section-content">
+          <p>서비스 이용약관 관련 문의사항은 아래 이메일로 보내주시기 바랍니다.</p>
+          <div class="contact-box">
+            <strong>Email</strong>
+            <a href="mailto:hello@chulbuji.com" class="contact-email">hello@chulbuji.com</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .terms-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header */
+  .terms-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e0ddd8;
+  }
+
+  .terms-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  }
+
+  .effective-date {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Navigation */
+  .terms-nav {
+    background-color: #F7F3EE;
+    border: 1px solid #ebe7e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .nav-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2C5F7C;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .nav-links a {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid #e0ddd8;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .nav-links a:hover {
+    border-color: #2C5F7C;
+    color: #2C5F7C;
+    transform: translateY(-1px);
+  }
+
+  /* Content Sections */
+  .terms-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .terms-section {
+    position: relative;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-number {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #f0f0f0;
+    line-height: 1;
+  }
+
+  .terms-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2C5F7C;
+  }
+
+  .section-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .section-content p {
+    margin-bottom: 1rem;
+  }
+
+  /* Highlight Box */
+  .highlight-box {
+    background-color: #E8F0F5;
+    border-left: 4px solid #2C5F7C;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .highlight-box strong {
+    display: block;
+    color: #2C5F7C;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-box p {
+    margin: 0;
+    color: #555;
+  }
+
+  /* Warning Box */
+  .warning-box {
+    background-color: #FFF8E1;
+    border-left: 4px solid #FFA726;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .warning-box strong {
+    display: block;
+    color: #F57C00;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .warning-box p {
+    margin: 0;
+    color: #555;
+  }
+
+  /* Info Box */
+  .info-box {
+    background-color: #F7F3EE;
+    border: 1px solid #ebe7e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 0;
+  }
+
+  .info-row:not(:last-child) {
+    border-bottom: 1px solid #e0ddd8;
+  }
+
+  .info-row strong {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  .info-row strong.prohibited {
+    background-color: #FFEBEE;
+    color: #C62828;
+  }
+
+  .info-row strong.allowed {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+  }
+
+  .info-row span {
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  /* Obligation List */
+  .obligation-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+  }
+
+  .obligation-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #FAFAF8;
+    border: 1px solid #e0ddd8;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  .obligation-list .bullet {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background-color: #FFEBEE;
+    color: #C62828;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .obligation-list span:last-child {
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  /* Contact Box */
+  .contact-box {
+    background-color: white;
+    border: 1px solid #e0ddd8;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .contact-box strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2C5F7C;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-email:hover {
+    color: #1a3c50;
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .terms-page {
+      padding: 1.5rem 1rem;
+    }
+
+    .terms-header h1 {
+      font-size: 2rem;
+    }
+
+    .section-number {
+      display: none;
+    }
+
+    .terms-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      grid-template-columns: 1fr;
+    }
+
+    .info-row {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: Date;
+  tags?: string[];
+}
+
+const { title, description, date, tags } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="post-container">
+    <article class="post-content">
+      <header class="post-header">
+        <h1>{title}</h1>
+        {date && (
+          <time datetime={date.toISOString()}>
+            {date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        )}
+        {tags && tags.length > 0 && (
+          <div class="tags">
+            {tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </header>
+      
+      <div class="post-body">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .post-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .post-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .post-header time {
+    color: #666;
+    font-size: 0.95rem;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  
+  .post-body {
+    margin-top: 2rem;
+    line-height: 1.7;
+  }
+  
+  .post-body :global(h2) {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-body :global(h3) {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .post-body :global(p) {
+    margin-bottom: 1rem;
+  }
+  
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+  
+  .post-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-body :global(code) {
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+  }
+  
+  .post-body :global(pre) {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .post-body :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+</style>

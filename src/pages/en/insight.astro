@@ -1,0 +1,47 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Insight" description="Insights on learning and development">
+  <div class="insight-content">
+    <p>Sharing insights gained from the learning and development process.</p>
+    
+    <div class="coming-soon">
+      <h3>Coming Soon</h3>
+      <p>Various insight content will be added soon.</p>
+      <ul>
+        <li>AI Collaboration Methodology</li>
+        <li>Web Development Best Practices</li>
+        <li>Project Management Tips</li>
+      </ul>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .insight-content {
+    line-height: 1.7;
+  }
+  
+  .coming-soon {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f0f7ff;
+    border-left: 4px solid #667eea;
+    border-radius: 4px;
+  }
+  
+  .coming-soon h3 {
+    margin-bottom: 1rem;
+    color: #667eea;
+  }
+  
+  .coming-soon ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .coming-soon li {
+    margin-bottom: 0.5rem;
+  }
+</style>

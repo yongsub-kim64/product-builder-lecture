@@ -1,0 +1,123 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations, getBasePath } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const basePath = getBasePath(lang);
+---
+
+<header class="site-header">
+  <div class="container">
+    <a href={basePath + '/'} class="logo">chulbuji</a>
+    
+    <nav class="main-nav">
+      <a href={basePath + '/'}>{t('nav.home')}</a>
+      <a href={basePath + '/log'}>{t('nav.log')}</a>
+      <a href={basePath + '/projects'}>{t('nav.projects')}</a>
+      <a href={basePath + '/tools'}>{t('nav.tools')}</a>
+      <a href={basePath + '/insight'}>{t('nav.insight')}</a>
+      <a href={basePath + '/about'}>{t('nav.about')}</a>
+    </nav>
+    
+    <LanguageSwitcher />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid #e5e5e5;
+    padding: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem) 0;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 0.8rem + 1vw, 2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(1rem, 0.8rem + 1vw, 2rem);
+  }
+
+  .logo {
+    font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    white-space: nowrap;
+    /* Better touch target */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: clamp(1rem, 0.8rem + 1vw, 1.75rem);
+    flex: 1;
+  }
+
+  .main-nav a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+    white-space: nowrap;
+    font-size: clamp(0.9375rem, 0.9rem + 0.175vw, 1.0625rem);
+    font-weight: 500;
+    /* Better touch targets for mobile */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0;
+  }
+
+  .main-nav a:hover {
+    color: #667eea;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-wrap: wrap;
+    }
+
+    .main-nav {
+      order: 3;
+      width: 100%;
+      justify-content: flex-start;
+      gap: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      /* Hide scrollbar but keep functionality */
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-nav a {
+      font-size: clamp(0.9375rem, 0.9rem + 0.175vw, 1rem);
+      /* Ensure minimum touch target on mobile */
+      min-height: 48px;
+      padding: 0.5rem 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-nav {
+      gap: 0.75rem;
+    }
+
+    .main-nav a {
+      font-size: 0.9375rem;
+    }
+  }
+</style>

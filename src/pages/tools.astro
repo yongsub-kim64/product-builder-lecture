@@ -1,0 +1,91 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title="도구" description="실험 과정에서 탄생한 도구들">
+  <div class="tools-content">
+    <p class="subtitle">
+      도구는 부산물, 기록이 주인공입니다.<br>
+      실험 과정에서 탄생한 도구들을 소개합니다.
+    </p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>🎲 로또 번호 생성기</h3>
+        <p>이 도구는 과거 데이터를 분석하지 않고, 특정 번호를 추천하지 않으며, 1~45 중 6개의 숫자를 무작위로 생성합니다.</p>
+        <a href="/tools/lotto" class="tool-link">사용하기 →</a>
+      </div>
+
+      <div class="tool-card">
+        <h3>📊 기록 분석기</h3>
+        <p>기록된 데이터를 분석하여 인사이트를 도출합니다. 당신의 기록에서 숨겨진 의미를 찾아보세요.</p>
+        <a href="/insight" class="tool-link">사용하기 →</a>
+      </div>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .tools-content {
+    line-height: 1.7;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .tool-card {
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: white;
+    transition: box-shadow 0.2s;
+  }
+
+  .tool-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .tool-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .tool-card p {
+    margin-bottom: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .tool-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .tool-link:hover {
+    background: #333;
+  }
+
+  @media (max-width: 768px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

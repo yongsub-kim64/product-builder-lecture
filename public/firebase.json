@@ -1,0 +1,73 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/sitemap.xml",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/en/tools/generator",
+        "destination": "/en/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/generator/",
+        "destination": "/en/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/genertor",
+        "destination": "/en/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/tools/genertor/",
+        "destination": "/en/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/tools/genertor",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/tools/genertor/",
+        "destination": "/tools/lotto/",
+        "type": 301
+      },
+      {
+        "source": "/en/term",
+        "destination": "/en/terms",
+        "type": 301
+      },
+      {
+        "source": "/en/cotact",
+        "destination": "/en/contact",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/tools/generator",
+        "destination": "/tools/lotto/index.html"
+      },
+      {
+        "source": "/en/about",
+        "destination": "/en/about.html"
+      }
+    ]
+  }
+}

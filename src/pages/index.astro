@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LogCard from '../components/LogCard.astro';
+import { getCollection } from 'astro:content';
+
+const logPosts = await getCollection('ko/log', ({ data }) => data.published !== false);
+const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+---
+
+<BaseLayout 
+  title="홈" 
+  description="AI와 함께 흐릿한 생각을 선명하게 만듭니다"
+>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>생각을 구조로, 구조를 실행으로</h1>
+      <p class="subtitle">AI와 함께 흐릿한 생각을 선명하게 만듭니다</p>
+      <p class="tagline">도구는 부산물, 기록이 주인공입니다</p>
+      <div class="cta">
+        <a href="/log" class="btn-primary">기록 보기</a>
+        <a href="/about" class="btn-secondary">소개</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="latest-posts">
+    <h2>최근 기록</h2>
+    <div class="posts-grid">
+      {sortedPosts.map((post) => (
+        <LogCard
+          title={post.data.title}
+          excerpt={post.data.excerpt}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+    <div class="view-all">
+      <a href="/log">모든 기록 보기 →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: clamp(3rem, 2rem + 5vw, 6rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    margin-bottom: clamp(0.75rem, 0.5rem + 1.25vw, 1.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+    margin-bottom: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+    opacity: 0.95;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .cta {
+    display: flex;
+    gap: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: clamp(0.75rem, 0.65rem + 0.5vw, 1rem) clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Better touch targets */
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: white;
+    color: #667eea;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: #667eea;
+  }
+
+  .latest-posts {
+    max-width: 1200px;
+    margin: clamp(3rem, 2rem + 5vw, 5rem) auto;
+    padding: 0 clamp(1rem, 0.8rem + 1vw, 2rem);
+  }
+
+  .latest-posts h2 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+    text-align: center;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  }
+
+  .view-all {
+    text-align: center;
+  }
+
+  .view-all a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    /* Better touch target */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .view-all a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import { getLangFromUrl, getBasePath } from '../utils/i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  slug: string;
+  status?: 'active' | 'completed' | 'archived';
+  tags?: string[];
+}
+
+const { title, description, date, slug, status = 'active', tags } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const basePath = getBasePath(lang);
+
+const statusLabels = {
+  active: lang === 'ko' ? '진행중' : 'Active',
+  completed: lang === 'ko' ? '완료' : 'Completed',
+  archived: lang === 'ko' ? '보관' : 'Archived',
+};
+---
+
+<article class="project-card">
+  <div class="project-header">
+    <h2>
+      <a href={`${basePath}/projects/${slug}`}>{title}</a>
+    </h2>
+    <span class={`status status-${status}`}>{statusLabels[status]}</span>
+  </div>
+  
+  <p class="description">{description}</p>
+  
+  {tags && tags.length > 0 && (
+    <div class="tags">
+      {tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  )}
+  
+  <time datetime={date.toISOString()}>
+    {date.toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', { 
+      year: 'numeric', 
+      month: 'long' 
+    })}
+  </time>
+</article>
+
+<style>
+  .project-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  
+  .project-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .project-card h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .project-card h2 a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.2s;
+  }
+  
+  .project-card h2 a:hover {
+    color: #0066cc;
+  }
+  
+  .status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .status-active {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .status-completed {
+    background: #e8f5e9;
+    color: #388e3c;
+  }
+  
+  .status-archived {
+    background: #f5f5f5;
+    color: #666;
+  }
+  
+  .description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  
+  .tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  
+  .project-card time {
+    color: #999;
+    font-size: 0.85rem;
+  }
+</style>
