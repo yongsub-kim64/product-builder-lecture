@@ -1,6 +1,6 @@
 ---
 title: "Embracing AI with the Spirit of Sangseon Yaksu (上善若水)"
-date: 2026-02-10
+date: 2026-02-11
 excerpt: "Building a digital home with AI, journeying through growth with the flow of change. Will you join my rocket jump?"
 tags: ["AI", "Growth", "SangseonYaksu", "DigitalTransformation", "chulbuji.com"]
 published: true
