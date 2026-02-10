@@ -1,7 +1,7 @@
 ---
 title: "AI 문명 생존기: 수석 아키텍트 길들이기와 v2.0 지침 선포"
 date: 2026-02-09
-description: "AI에게 노동을 맡기고 인간은 사유에 집중하는 '진정한 협업'의 시작점을 기록합니다."
+excerpt: "AI에게 노동을 맡기고 인간은 사유에 집중하는 '진정한 협업'의 시작점을 기록합니다."
 tags: ["AI-Native", "Meta-Chulbuji", "Astro", "Workflow"]
 ---
 

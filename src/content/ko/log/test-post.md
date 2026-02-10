@@ -1,7 +1,7 @@
 ---
 title: "AI와 함께하는 첫 번째 자동화 포스팅"
 date: 2024-02-10
-description: "Astro Content Collections를 통해 마크다운 파일 하나로 페이지가 자동 생성되는 것을 테스트합니다."
+excerpt: "Astro Content Collections를 통해 마크다운 파일 하나로 페이지가 자동 생성되는 것을 테스트합니다."
 tags: ["System", "Astro", "Automation"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "긴 프롬프트를 버린 날, 토큰이 살아났다"
 date: 2026-02-10
-description: "chulbuji.com 리빌딩으로 배운 '작게-정확하게' AI 협업 운영법"
+excerpt: "chulbuji.com 리빌딩으로 배운 '작게-정확하게' AI 협업 운영법"
 tags: ["AI-Native", "Workflow", "Astro", "Efficiency"]
 ---
 

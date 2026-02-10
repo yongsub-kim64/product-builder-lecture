@@ -1,6 +1,6 @@
 ---
 title: "첫 번째 자동화 기록"
-description: "Astro Content Collections를 사용한 첫 번째 마크다운 포스트입니다."
+excerpt: "Astro Content Collections를 사용한 첫 번째 마크다운 포스트입니다."
 date: 2026-02-09
 tags: ["Astro", "CMS", "Automation"]
 ---
