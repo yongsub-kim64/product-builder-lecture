@@ -16,7 +16,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
       <p class="section-label">Direct</p>
       <h2 class="section-title">Get in Touch via Email</h2>
       <div class="email-card">
-        <a href="mailto:hello@chulbuji.com?subject=Message from chulbuji.com" class="email-address" id="email-link">hello@chulbuji.com</a>
+        <a href="mailto:hello@chulbuji.com?subject=Message from chulbuji.com" class="email-address" id="email-link" title="Click to open mail app (Ctrl+Click to copy)">hello@chulbuji.com</a>
+        <p class="email-hint">💡 If the mail app doesn't open, please use the buttons below</p>
         <div class="email-buttons">
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Message%20from%20chulbuji.com" target="_blank" rel="noopener noreferrer" class="email-button primary">Send via Gmail</a>
           <a href="mailto:hello@chulbuji.com?subject=Message from chulbuji.com" class="email-button secondary">Send via Mail App</a>
@@ -167,6 +168,13 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   .email-address:active {
     opacity: 0.8;
+  }
+
+  .email-hint {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0.5rem 0 1.5rem;
+    font-style: italic;
   }
 
   .email-buttons {
@@ -372,7 +380,23 @@ import PageLayout from '../../layouts/PageLayout.astro';
   document.addEventListener('DOMContentLoaded', () => {
     const copyEmailBtn = document.getElementById('copy-email-btn');
     if (copyEmailBtn) {
-      copyEmailBtn.addEventListener('click', copyEmail);
+      copyEmailBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        copyEmail();
+      });
+    }
+
+    // Email address link: Try to open mail app, or copy with modifier key
+    const emailLink = document.getElementById('email-link');
+    if (emailLink) {
+      emailLink.addEventListener('click', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+          copyEmail();
+          showToast('Email address copied!');
+        }
+        // Normal click attempts mailto:
+      });
     }
   });
 
@@ -406,7 +430,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
     document.body.removeChild(textarea);
   }
 
-  function showToast(message: string) {
+  function showToast(message: string, duration: number = 2500) {
     const toast = document.getElementById('toast');
     if (!toast) return;
 
@@ -415,6 +439,6 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
     setTimeout(() => {
       toast.classList.remove('show');
-    }, 2500);
+    }, duration);
   }
 </script>
