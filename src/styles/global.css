@@ -112,11 +112,6 @@ a {
   color: var(--primary-color);
   text-decoration: none;
   transition: color 0.2s;
-  /* Minimum touch target size for mobile accessibility */
-  display: inline-block;
-  min-height: 44px; /* iOS/Android recommended minimum */
-  line-height: 1.5;
-  padding: 0.25rem 0;
 }
 
 a:hover {
@@ -127,6 +122,18 @@ a:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* Touch target optimization for navigation and interactive links */
+nav a,
+.btn-primary,
+.btn-secondary,
+.tool-link,
+.project-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0;
 }
 
 /* Code blocks - Optimized font sizing */
@@ -278,7 +285,7 @@ img {
 /* Responsive - Mobile-specific adjustments */
 
 @media (max-width: 768px) {
-  /* Ensure links have adequate touch targets */
+  /* Ensure navigation links have adequate touch targets */
   nav a, button, .btn-primary, .btn-secondary {
     min-height: 48px;
     display: inline-flex;
@@ -298,11 +305,6 @@ img {
 }
 
 @media (max-width: 480px) {
-  /* Ensure minimum touch targets on small phones */
-  a:not(nav a) {
-    min-height: 44px;
-  }
-
   /* Adjust container padding for very small screens */
   .container {
     padding: 0 1rem;
