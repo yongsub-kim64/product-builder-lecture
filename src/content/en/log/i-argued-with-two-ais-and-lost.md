@@ -8,7 +8,7 @@ published: true
 
 Yesterday in a meeting, I was persuaded by two AIs.
 
-"Metacheolbuji" are AIs (GPT, Gemini) with my persona. These two ganged up on me. A human CEO championing safety versus AI aides arguing for real-world application. To cut to the chase, I surrendered.
+"Meta-chulbuji" are AIs (GPT, Gemini) with my persona. These two ganged up on me. A human CEO championing safety versus AI aides arguing for real-world application. To cut to the chase, I surrendered.
 
 ---
 
@@ -24,7 +24,7 @@ The AIs were different.
 
 "Sir, you can't read the customer's true feelings in a sandbox."
 
-Metacheolbuji fired the first shot. GPT chimed in.
+Meta-chulbuji fired the first shot. GPT chimed in.
 
 "Who would seriously share their concerns while entering a fake credit card number like 4242...? Data from a test environment is just test data."
 
