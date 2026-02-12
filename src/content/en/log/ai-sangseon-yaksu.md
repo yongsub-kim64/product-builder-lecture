@@ -6,8 +6,6 @@ tags: ["AI", "Growth", "SangseonYaksu", "DigitalTransformation", "chulbuji.com"]
 published: true
 ---
 
-# Embracing AI with the Spirit of Sangseon Yaksu (上善若水)
-
 ## Building a Digital Home, Now Opening Its Doors
 Over the past five weeks, starting with zero coding knowledge, I completed my digital home, chulbuji.com.
 Night after night, I engaged in 'Whispering' with AI, constructing its framework, installing doors, and switching on the lights. Some might dismiss this as "just building a website." However, for me, this experience was more than just acquiring technical skills; it was a confirmation of the possibility that "I can do this too."
