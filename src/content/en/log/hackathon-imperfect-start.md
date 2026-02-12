@@ -98,6 +98,8 @@ In my next post, I'll share the process of actually building the product with Me
 
 Since I started imperfectly, I'll show you the imperfect process as it is.
 
+**For more details about the project, visit the [Projects page](/en/projects).**
+
 ---
 
 *If this post helped you, try pulling out your drawer ideas too. There's no perfect time to start. Today is simply that day.*
