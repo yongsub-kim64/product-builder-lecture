@@ -1,6 +1,6 @@
 ---
 title: "I Argued with Two AIs, and I Lost"
-date: 2026-02-12
+date: 2026-02-13
 excerpt: "The operational strategy I learned from the 'Safety vs. Production' debate"
 tags: ["AI", "DecisionMaking", "Production", "BetaTest", "OpsStrategy"]
 published: true
