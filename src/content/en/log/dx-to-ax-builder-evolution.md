@@ -38,7 +38,7 @@ The knowledge I've accumulated over five years is no longer a collection of frag
 
 So I stopped hesitating and threw my hat into the ring for the **[JoCoding x OpenAI x Primer Hackathon]**. I didn't have a perfect plan or a grand roadmap, but what mattered was throwing one small thing out into the world today.
 
-And so, the **<Meta-chulbuji Whispering Insight Report>** was born.
+And so, the **[<Meta-chulbuji Whispering Insight Report>](https://insight.chulbuji.com/)** was born.
 
 This is how the product works:
 - **What it is:** A personalized report that automatically captures and organizes latent ideas and key insights from your conversation logs with AI.
