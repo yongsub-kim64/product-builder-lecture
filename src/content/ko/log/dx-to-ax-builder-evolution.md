@@ -65,7 +65,7 @@ ChatGPT, Claude, Gemini… 이들은 단순히 질문에 답하는 챗봇이 아
 
 **“배웠으니, 이제는 만들자.”**
 
-[Action Now] 지금 바로 첫 번째 인사이트 리포트를 받아보세요 👉 **<Meta-chulbuji Whispering Insight Report> 즉시 생성하기**
+[Action Now] 지금 바로 첫 번째 인사이트 리포트를 받아보세요 👉 **[<메타철부지 위스퍼링 인사이트 리포트>](https://insight.chulbuji.com/)**
 
 ---
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJlY2Ok69toaU-6yCawXkcvcyb-FkSeBwxnJZFF8hHxlrRmA/viewform?usp=publish-editor" target="_blank">한 줄 피드백 남기기(20초)</a>

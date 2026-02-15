@@ -65,7 +65,7 @@ From 'Reboot' in 2021 to 'Plus-Human' in 2026. This five-year journey is ultimat
 
 **"I've learned, so now I'll build."**
 
-[Action Now] Get your first insight report right away 👉 **Generate your <Meta-chulbuji Whispering Insight Report> now**
+[Action Now] Get your first insight report right away 👉 **[<Meta-chulbuji Whispering Insight Report>](https://insight.chulbuji.com/)**
 
 ---
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJlY2Ok69toaU-6yCawXkcvcyb-FkSeBwxnJZFF8hHxlrRmA/viewform?usp=publish-editor" target="_blank">Leave a one-line feedback (20s)</a>
