@@ -133,6 +133,6 @@ Chulbuji Official은 완벽한 음악가의 공간이 아닙니다. 메타철부
 
 ---
 
-**[Action Now]** 당신의 첫 AI 창작, 오늘 시작해보세요 👉 **[메타철부지 위스퍼링 인사이트 리포트](https://insight.chulbuji.com/)**
+**[Action Now]** 더 많은 AI 음악 실험을 보고 싶다면 👉 **[Chulbuji Official 구독](https://youtu.be/9fGsUV4R-78?si=TyOj7rGylSw8Cn4k)**
 
 <a href="https://docs.google.com/forms/d/1PnLt0-pFSfDV25xmmHZB9N8cWOQRFOXZDWQmH6Xf0q0/viewform" target="_blank">한 줄 피드백 남기기(20초)</a>

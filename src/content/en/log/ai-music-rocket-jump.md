@@ -133,6 +133,6 @@ Now it's your turn.
 
 ---
 
-**[Action Now]** Start your first AI creation today 👉 **[Meta-chulbuji Whispering Insight Report](https://insight.chulbuji.com/)**
+**[Action Now]** Want to see more AI music experiments? 👉 **[Subscribe to Chulbuji Official](https://youtu.be/9fGsUV4R-78?si=TyOj7rGylSw8Cn4k)**
 
 <a href="https://docs.google.com/forms/d/1PnLt0-pFSfDV25xmmHZB9N8cWOQRFOXZDWQmH6Xf0q0/viewform" target="_blank">Leave one-line feedback (20 seconds)</a>
