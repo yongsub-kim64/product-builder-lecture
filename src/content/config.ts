@@ -39,4 +39,5 @@ export const collections = {
   'en/log': logCollection,
   'ko/projects': projectsCollection,
   'en/projects': projectsCollection,
+  'ko/insight': logCollection,
 };

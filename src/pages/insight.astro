@@ -1,47 +1,58 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LogCard from '../components/LogCard.astro';
+import { getCollection } from 'astro:content';
+
+const insightPosts = await getCollection('ko/insight', ({ data }) => data.published !== false);
+const sortedPosts = insightPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<PageLayout title="인사이트" description="학습과 개발에 대한 통찰">
-  <div class="insight-content">
-    <p>학습과 개발 과정에서 얻은 통찰을 공유합니다.</p>
-    
-    <div class="coming-soon">
-      <h3>준비 중</h3>
-      <p>곧 다양한 인사이트 콘텐츠가 추가될 예정입니다.</p>
-      <ul>
-        <li>AI 협업 방법론</li>
-        <li>웹 개발 베스트 프랙티스</li>
-        <li>프로젝트 관리 팁</li>
-      </ul>
+<BaseLayout title="인사이트" description="AI Product Builder 전환 기록과 AX 실행 인사이트">
+  <div class="insight-page">
+    <header class="page-header">
+      <h1>인사이트</h1>
+      <p>AI Product Builder 전환 기록과 AX 실행 인사이트</p>
+    </header>
+
+    <div class="posts-grid">
+      {sortedPosts.map((post) => (
+        <LogCard
+          title={post.data.title}
+          excerpt={post.data.excerpt}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+          section="insight"
+        />
+      ))}
     </div>
   </div>
-</PageLayout>
+</BaseLayout>
 
 <style>
-  .insight-content {
-    line-height: 1.7;
+  .insight-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 4rem) clamp(1rem, 0.8rem + 1vw, 2rem);
   }
-  
-  .coming-soon {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: #f0f7ff;
-    border-left: 4px solid #667eea;
-    border-radius: 4px;
+
+  .page-header {
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   }
-  
-  .coming-soon h3 {
-    margin-bottom: 1rem;
-    color: #667eea;
-  }
-  
-  .coming-soon ul {
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-  }
-  
-  .coming-soon li {
+
+  .page-header h1 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
     margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: #555;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
   }
 </style>

@@ -7,9 +7,10 @@ interface Props {
   date: Date;
   slug: string;
   tags?: string[];
+  section?: string;
 }
 
-const { title, excerpt, date, slug, tags } = Astro.props;
+const { title, excerpt, date, slug, tags, section = 'log' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const basePath = getBasePath(lang);
@@ -25,7 +26,7 @@ const basePath = getBasePath(lang);
   </time>
   
   <h2>
-    <a href={`${basePath}/log/${slug}`}>{title}</a>
+    <a href={`${basePath}/${section}/${slug}`}>{title}</a>
   </h2>
   
   <p class="excerpt">{excerpt}</p>
@@ -38,7 +39,7 @@ const basePath = getBasePath(lang);
     </div>
   )}
   
-  <a href={`${basePath}/log/${slug}`} class="read-more">
+  <a href={`${basePath}/${section}/${slug}`} class="read-more">
     {t('log.readMore')} →
   </a>
 </article>
