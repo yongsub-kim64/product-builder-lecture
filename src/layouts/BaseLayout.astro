@@ -6,11 +6,14 @@ import { getLangFromUrl } from '../utils/i18n';
 interface Props {
   title: string;
   description?: string;
+  titleOverride?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, titleOverride } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const metaTitle = titleOverride ?? `${title} | chulbuji`;
+const ogTitle = titleOverride ?? title;
 ---
 
 <!DOCTYPE html>
@@ -21,14 +24,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="canonical" href={canonicalURL} />
   
-  <title>{title} | chulbuji</title>
+  <title>{metaTitle}</title>
   {description && <meta name="description" content={description} />}
-  
+
   <!-- Open Graph -->
-  <meta property="og:title" content={title} />
+  <meta property="og:title" content={ogTitle} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalURL} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={ogTitle} />
+  {description && <meta name="twitter:description" content={description} />}
   
   <!-- Alternate languages -->
   <link rel="alternate" hreflang="ko" href={`https://chulbuji.com${Astro.url.pathname.replace(/^\/en/, '')}`} />

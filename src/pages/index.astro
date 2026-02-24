@@ -7,21 +7,21 @@ const logPosts = await getCollection('ko/log', ({ data }) => data.published !== 
 const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 ---
 
-<BaseLayout 
-  title="홈" 
-  description="AI와 함께 흐릿한 생각을 선명하게 만듭니다"
+<BaseLayout
+  title="철부지 | AI Product Builder 전환 기록"
+  titleOverride="철부지 | AI Product Builder 전환 기록 - chulbuji.com"
+  description="34년 반도체 엔지니어 철부지의 AI Product Builder 전환 기록. 듀얼 브레인(인간+AI) 오케스트레이션으로 AX를 실행합니다."
 >
-  <div class="hero">
+  <section class="hero">
     <div class="hero-content">
-      <h1>생각을 구조로, 구조를 실행으로</h1>
-      <p class="subtitle">AI와 함께 흐릿한 생각을 선명하게 만듭니다</p>
-      <p class="tagline">도구는 부산물, 기록이 주인공입니다</p>
+      <h1>AI와 함께 작동하는 인간, 철부지의 AI Product Builder 전환 기록</h1>
+      <p class="subtitle">듀얼 브레인과 멀티 전문가 AI 오케스트레이션을 통해<br class="br-desktop" /> AX(AI Transformation)를 실행하고 결과를 축적합니다.</p>
       <div class="cta">
-        <a href="/log" class="btn-primary">기록 보기</a>
-        <a href="/about" class="btn-secondary">소개</a>
+        <a href="/insight" class="btn-primary">대표 결과물 보기</a>
+        <a href="/about" class="btn-secondary">About: 철부지 + 메타철부지</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <section class="latest-posts">
     <h2>최근 기록</h2>
@@ -56,26 +56,31 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    font-size: clamp(1.75rem, 1.25rem + 2.5vw, 3rem);
     margin-bottom: clamp(0.75rem, 0.5rem + 1.25vw, 1.5rem);
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     font-weight: 800;
+    word-break: keep-all;
   }
 
   .subtitle {
-    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
-    margin-bottom: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
     opacity: 0.95;
-    line-height: 1.4;
-    font-weight: 500;
+    line-height: 1.6;
+    font-weight: 400;
+    word-break: keep-all;
   }
 
-  .tagline {
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
-    opacity: 0.9;
-    line-height: 1.5;
+  .br-desktop {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .br-desktop {
+      display: inline;
+    }
   }
 
   .cta {
