@@ -7,21 +7,21 @@ const logPosts = await getCollection('en/log', ({ data }) => data.published !== 
 const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 ---
 
-<BaseLayout 
-  title="Home" 
-  description="Transforming vague thoughts into clear structures with AI"
+<BaseLayout
+  title="Chulbuji | AI Product Builder Transformation"
+  titleOverride="Chulbuji | AI Product Builder Transformation - chulbuji.com"
+  description="A 34-year semiconductor engineer's AI Product Builder transformation record. Executing AX through dual-brain (human+AI) orchestration."
 >
-  <div class="hero">
+  <section class="hero">
     <div class="hero-content">
-      <h1>From Thoughts to Structures, Structures to Execution</h1>
-      <p class="subtitle">Transforming vague thoughts into clear structures with AI</p>
-      <p class="tagline">Tools are byproducts, records are protagonists</p>
+      <h1>A Human Operating with AI: Chulbuji's AI Product Builder Transformation Record</h1>
+      <p class="subtitle">Executing AX (AI Transformation) and accumulating results<br class="br-desktop" /> through dual-brain and multi-expert AI orchestration.</p>
       <div class="cta">
-        <a href="/en/log" class="btn-primary">View Log</a>
-        <a href="/en/about" class="btn-secondary">About</a>
+        <a href="/en/insight" class="btn-primary">View Key Results</a>
+        <a href="/en/about" class="btn-secondary">About: Chulbuji + Meta-Chulbuji</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <section class="latest-posts">
     <h2>Latest Posts</h2>
@@ -56,26 +56,29 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    font-size: clamp(1.75rem, 1.25rem + 2.5vw, 3rem);
     margin-bottom: clamp(0.75rem, 0.5rem + 1.25vw, 1.5rem);
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     font-weight: 800;
   }
 
   .subtitle {
-    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
-    margin-bottom: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
     opacity: 0.95;
-    line-height: 1.4;
-    font-weight: 500;
+    line-height: 1.6;
+    font-weight: 400;
   }
 
-  .tagline {
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
-    opacity: 0.9;
-    line-height: 1.5;
+  .br-desktop {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .br-desktop {
+      display: inline;
+    }
   }
 
   .cta {
