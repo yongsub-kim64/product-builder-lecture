@@ -1,47 +1,58 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LogCard from '../../components/LogCard.astro';
+import { getCollection } from 'astro:content';
+
+const insightPosts = await getCollection('en/insight', ({ data }) => data.published !== false);
+const sortedPosts = insightPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<PageLayout title="Insight" description="Insights on learning and development">
-  <div class="insight-content">
-    <p>Sharing insights gained from the learning and development process.</p>
-    
-    <div class="coming-soon">
-      <h3>Coming Soon</h3>
-      <p>Various insight content will be added soon.</p>
-      <ul>
-        <li>AI Collaboration Methodology</li>
-        <li>Web Development Best Practices</li>
-        <li>Project Management Tips</li>
-      </ul>
+<BaseLayout title="Insight" description="AI Product Builder transformation records and AX execution insights">
+  <div class="insight-page">
+    <header class="page-header">
+      <h1>Insight</h1>
+      <p>AI Product Builder transformation records and AX execution insights</p>
+    </header>
+
+    <div class="posts-grid">
+      {sortedPosts.map((post) => (
+        <LogCard
+          title={post.data.title}
+          excerpt={post.data.excerpt}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+          section="insight"
+        />
+      ))}
     </div>
   </div>
-</PageLayout>
+</BaseLayout>
 
 <style>
-  .insight-content {
-    line-height: 1.7;
+  .insight-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 4rem) clamp(1rem, 0.8rem + 1vw, 2rem);
   }
-  
-  .coming-soon {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: #f0f7ff;
-    border-left: 4px solid #667eea;
-    border-radius: 4px;
+
+  .page-header {
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   }
-  
-  .coming-soon h3 {
-    margin-bottom: 1rem;
-    color: #667eea;
-  }
-  
-  .coming-soon ul {
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-  }
-  
-  .coming-soon li {
+
+  .page-header h1 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
     margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: #555;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
   }
 </style>
