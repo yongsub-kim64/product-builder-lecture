@@ -1,15 +1,17 @@
 ---
-title: "About chulbuji.com"
-description: "One person's growth log in the age of AI"
+title: "About: Chulbuji + Meta-Chulbuji"
+description: "A 34-year semiconductor engineer transforming into an AI Product Builder — the story of Chulbuji and Meta-Chulbuji"
 ---
+
+A human operating with AI — Chulbuji's AI Product Builder transformation record
 
 ## 01 — Identity
 
-### One Human, Two Brains
+### Chulbuji + Meta-Chulbuji: Dual Brain
 
-"chulbuji.com is a growth log — a living record of one person's ongoing experiment with learning, thinking, and creating alongside AI."
+"chulbuji.com is the transformation record of a 34-year semiconductor process engineer — 'Chulbuji' — becoming an AI Product Builder. This is where AX (AI Transformation) gets executed and accumulated, not just declared."
 
-"Instead of freezing before the tidal wave of technological change, I chose to embrace AI as a second brain. There is **'chulbuji'** — the human mind that feels its way through the world with intuition and raw curiosity. And there is **'meta-chulbuji'** — the AI mind that gives those loose thoughts structure and reach. This site chronicles the Dual-Brain collaboration between the two: unfiltered, in real time."
+"Instead of freezing before the tidal wave of technological change, I chose to embrace AI as a second brain. There is **'Chulbuji'** — the human mind that holds intent and direction. And there is **'Meta-Chulbuji'** — the AI mind that gives those thoughts structure and executes on them. This site chronicles the Dual-Brain collaboration between the two: unfiltered, in real time."
 
 > "Learning wider, exploring deeper, and building things today that yesterday's version of me couldn't have imagined. This is a space that trusts the process over the product, and the experiment over the polished outcome."
 
@@ -45,8 +47,8 @@ description: "One person's growth log in the age of AI"
 
 ## 04 — Goal
 
-### Keep updating. Keep becoming.
+### Transformation is not a declaration — it's accumulation.
 
-"My goal is not to stack up polished achievements. It is to remain a person who keeps asking slightly better questions, seeing with a slightly wider lens — a human who never stops **self-updating** in the uncharted territory of AI civilization."
+"My goal is not to stack up polished achievements. It is to execute AX through dual-brain and multi-expert AI orchestration, and to build that record openly. To remain a human who never stops **self-updating** in the uncharted territory of AI civilization."
 
 "If you've found your way here while wrestling with similar questions, I hope these records offer a small spark. We can each grow at our own pace, in our own way."
