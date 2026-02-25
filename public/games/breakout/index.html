@@ -341,8 +341,11 @@ function resetPaddleBall() {
   p.w = isMobile ? clamp(Math.round(baseW * 1.7), 160, Math.round(W * 0.55)) : baseW;
   p.h = CONFIG.paddleHeight;
   p.x = (W - p.w) / 2;
-  // 모바일: 손가락이 패들 위로 닿아도 시야를 가리지 않도록 하단 여백 2.5배 확보
-  p.y = isMobile ? H - 130 : H - 54;
+  // Z Fold 언폴드(가로 > 세로 터치 기기): 비율 기반 여백, 일반 모바일: 고정 130px, 데스크톱: 54px
+  const isWideFold = isMobile && W > H;
+  p.y = isWideFold ? H - Math.max(60, Math.round(H * 0.15))
+      : isMobile   ? H - 130
+      : H - 54;
   const b = state.ball;
   b.r = CONFIG.ballRadius;
   b.x = W / 2;
