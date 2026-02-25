@@ -16,7 +16,7 @@ export const games: Game[] = [
     descriptionKo: 'AI와 협업하여 만든 클래식 블록 깨기 게임. 터치 & 키보드 조작 지원.',
     descriptionEn: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
-    insightSlug: null,
+    insightSlug: 'insight-002',
     thumbnail: '/games/breakout.png',
     emoji: '🧱',
   },
