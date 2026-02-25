@@ -170,3 +170,4 @@ dist/                       # 빌드 출력 (git 제외)
 ## Known Issues
 
 - `ko/projects` 컬렉션 미구축 (빌드 경고 발생, 기능 영향 없음)
+
