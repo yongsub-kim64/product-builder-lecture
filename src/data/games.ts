@@ -17,7 +17,7 @@ export const games: Game[] = [
     descriptionEn: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
     insightSlug: null,
-    thumbnail: null,
+    thumbnail: '/games/breakout.png',
     emoji: '🧱',
   },
   {
