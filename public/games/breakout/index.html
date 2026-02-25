@@ -349,10 +349,14 @@ function makeBricks() {
 
 function resetPaddleBall() {
   const p = state.paddle;
-  p.w = clamp(CONFIG.paddleWidth - (state.level - 1) * 2, 110, 160);
+  const isMobile = navigator.maxTouchPoints > 0;
+  // 기본 너비 계산 후 모바일은 1.7배 확장, 캔버스 55% 상한
+  const baseW = clamp(CONFIG.paddleWidth - (state.level - 1) * 2, 110, 160);
+  p.w = isMobile ? clamp(Math.round(baseW * 1.7), 160, Math.round(W * 0.55)) : baseW;
   p.h = CONFIG.paddleHeight;
   p.x = (W - p.w) / 2;
-  p.y = H - 54;
+  // 모바일: 손가락이 패들 위로 닿아도 시야를 가리지 않도록 하단 여백 2.5배 확보
+  p.y = isMobile ? H - 130 : H - 54;
   const b = state.ball;
   b.r = CONFIG.ballRadius;
   b.x = W / 2;
