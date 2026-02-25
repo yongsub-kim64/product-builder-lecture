@@ -56,20 +56,19 @@ const categories = {
           <option value="uspb">미국 파워볼</option>
           <option value="calmax">캐나다 로또맥스</option>
         </select>
+        <label for="set-count">발행 세트 수</label>
+        <select id="set-count">
+          <option value="1">1세트</option>
+          <option value="2">2세트</option>
+          <option value="3">3세트</option>
+          <option value="4">4세트</option>
+          <option value="5">5세트</option>
+        </select>
       </div>
 
       <div id="lotto-result"></div>
 
-      <div class="btn-controls">
-        <button id="gen-btn" class="btn-primary">무작위 번호 생성하기</button>
-        <div class="set-selector">
-          <button class="set-btn" data-count="1">1</button>
-          <button class="set-btn" data-count="2">2</button>
-          <button class="set-btn" data-count="3">3</button>
-          <button class="set-btn" data-count="4">4</button>
-          <button class="set-btn" data-count="5">5</button>
-        </div>
-      </div>
+      <button id="gen-btn" class="btn-primary">무작위 번호 생성하기</button>
     </div>
 
     <!-- 관련 기사 섹션 -->
@@ -227,14 +226,9 @@ const categories = {
     background-color: #e03a3a !important;
   }
 
-  .btn-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
   .btn-primary {
-    flex-grow: 1;
+    display: block;
+    width: 100%;
     padding: 1rem;
     border-radius: 12px;
     font-size: 1rem;
@@ -253,30 +247,6 @@ const categories = {
 
   .btn-primary:active {
     transform: scale(0.97);
-  }
-
-  .set-selector {
-    display: flex;
-    gap: 0.4rem;
-    flex-shrink: 0;
-  }
-
-  .set-btn {
-    width: 38px;
-    height: 50px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    border: 1px solid #E5E7EB;
-    background: white;
-    color: #1F2937;
-    transition: all 0.2s;
-  }
-
-  .set-btn:hover {
-    border-color: #1E3A8A;
-    color: #1E3A8A;
   }
 
   /* 기사 섹션 스타일 */
@@ -410,16 +380,6 @@ const categories = {
     }
   }
 
-  @media (max-width: 480px) {
-    .btn-controls {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .set-selector {
-      justify-content: center;
-    }
-  }
 </style>
 
 <script>
@@ -427,35 +387,9 @@ const categories = {
     const generateBtn = document.getElementById('gen-btn');
     const resultDiv = document.getElementById('lotto-result');
     const modeSelect = document.getElementById('lotto-mode') as HTMLSelectElement;
-    const setButtons = document.querySelectorAll<HTMLButtonElement>('.set-btn');
+    const setCountSelect = document.getElementById('set-count') as HTMLSelectElement;
 
-    if (!generateBtn || !resultDiv || !modeSelect) return;
-
-    let selectedSetCount = 1;
-
-    function updateSetButtons(activeCount: number) {
-      setButtons.forEach(btn => {
-        if (parseInt(btn.dataset.count || '1') === activeCount) {
-          btn.style.backgroundColor = '#1E3A8A';
-          btn.style.color = '#ffffff';
-          btn.style.borderColor = '#1E3A8A';
-        } else {
-          btn.style.backgroundColor = '#ffffff';
-          btn.style.color = '#1F2937';
-          btn.style.borderColor = '#E5E7EB';
-        }
-      });
-    }
-
-    setButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectedSetCount = parseInt(btn.dataset.count || '1');
-        updateSetButtons(selectedSetCount);
-        performGeneration();
-      });
-    });
-
-    updateSetButtons(1);
+    if (!generateBtn || !resultDiv || !modeSelect || !setCountSelect) return;
 
     const lottoRules = {
       ko645: {
@@ -540,14 +474,16 @@ const categories = {
 
     const performGeneration = () => {
       const selectedMode = modeSelect.value;
+      const setCount = parseInt(setCountSelect.value);
       resultDiv.innerHTML = '';
-      for (let i = 0; i < selectedSetCount; i++) {
+      for (let i = 0; i < setCount; i++) {
         resultDiv.appendChild(renderSet(generateLottoNumbers(selectedMode), selectedMode));
       }
     };
 
     generateBtn.addEventListener('click', performGeneration);
     modeSelect.addEventListener('change', performGeneration);
+    setCountSelect.addEventListener('change', performGeneration);
     performGeneration();
   });
 </script>
