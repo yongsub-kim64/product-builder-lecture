@@ -166,16 +166,16 @@ const categories = {
     gap: 8px;
   }
 
-  .lotto-ball {
+  :global(.lotto-ball) {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     font-weight: 700;
     font-size: 1.4rem;
-    color: white;
+    color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     position: relative;
     box-shadow:
@@ -186,19 +186,19 @@ const categories = {
     transition: all 0.3s ease;
   }
 
-  .lotto-ball::before {
+  :global(.lotto-ball::before) {
     content: '';
     position: absolute;
     top: 15%;
     left: 20%;
     width: 40%;
     height: 30%;
-    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
     border-radius: 50%;
     pointer-events: none;
   }
 
-  .lotto-ball:hover {
+  :global(.lotto-ball:hover) {
     transform: translateY(-3px) scale(1.05);
     box-shadow:
       0 6px 12px rgba(0,0,0,0.25),
@@ -207,8 +207,8 @@ const categories = {
       inset 0 2px 4px rgba(255,255,255,0.3);
   }
 
-  .lotto-ball--bonus {
-    background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%) !important;
+  :global(.lotto-ball--bonus) {
+    background-color: #e03a3a !important;
   }
 
   .btn-primary {
@@ -350,9 +350,9 @@ const categories = {
       width: 100%;
     }
 
-    .lotto-ball {
-      width: 54px;
-      height: 54px;
+    :global(.lotto-ball) {
+      width: 44px;
+      height: 44px;
       font-size: 1.2rem;
     }
 
@@ -378,30 +378,24 @@ const categories = {
       ko645: {
         mainCount: 6,
         mainMax: 45,
-        colors: [
-          'linear-gradient(145deg, #ffd700 0%, #fbc400 50%, #d4a500 100%)', // Yellow
-          'linear-gradient(145deg, #87ceeb 0%, #69c8f2 50%, #4a9fd8 100%)', // Blue
-          'linear-gradient(145deg, #ff8c8c 0%, #ff7272 50%, #e05555 100%)', // Red
-          'linear-gradient(145deg, #c0c0c0 0%, #aaa 50%, #888 100%)',       // Gray
-          'linear-gradient(145deg, #c8e86c 0%, #b0d840 50%, #95ba35 100%)'  // Green
-        ]
+        colors: ['#f5b22a', '#3a85e0', '#e03a3a', '#888888', '#4caf50']
       },
       cnssq: {
         mainCount: 6,
         mainMax: 33,
         bonus: { count: 1, max: 16 },
-        colors: ['linear-gradient(145deg, #ff8c8c 0%, #ff7272 50%, #e05555 100%)']
+        colors: ['#e03a3a']
       },
       uspb: {
         mainCount: 5,
         mainMax: 69,
         bonus: { count: 1, max: 26 },
-        colors: ['linear-gradient(145deg, #ffffff 0%, #f5f5f5 50%, #ddd 100%)']
+        colors: ['#cccccc']
       },
       calmax: {
         mainCount: 7,
         mainMax: 50,
-        colors: ['linear-gradient(145deg, #87ceeb 0%, #69c8f2 50%, #4a9fd8 100%)']
+        colors: ['#3a85e0']
       },
     };
 
@@ -438,12 +432,12 @@ const categories = {
         ball.className = 'lotto-ball';
         ball.textContent = String(num);
         if (mode === 'ko645') {
-          ball.style.background = rules.colors[Math.floor((num - 1) / 10)] || '#ccc';
+          ball.style.backgroundColor = rules.colors[Math.floor((num - 1) / 10)] || '#ccc';
         } else if (mode === 'uspb') {
-          ball.style.color = '#333';
-          ball.style.background = rules.colors[0];
+          ball.style.color = '#333333';
+          ball.style.backgroundColor = rules.colors[0];
         } else {
-          ball.style.background = rules.colors[0] || '#ccc';
+          ball.style.backgroundColor = rules.colors[0] || '#ccc';
         }
         resultDiv.appendChild(ball);
       });
