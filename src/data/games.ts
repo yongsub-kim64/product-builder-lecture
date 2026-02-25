@@ -5,6 +5,8 @@ export interface Game {
   descriptionEn: string;
   tags: string[];
   insightSlug: string | null;
+  thumbnail: string | null;
+  emoji: string;
 }
 
 export const games: Game[] = [
@@ -15,6 +17,8 @@ export const games: Game[] = [
     descriptionEn: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
     insightSlug: null,
+    thumbnail: null,
+    emoji: '🧱',
   },
   {
     id: 'tetris',
@@ -23,6 +27,8 @@ export const games: Game[] = [
     descriptionEn: 'Tetris built with pure HTML/CSS/JS. 1-file Vibe Coding demo.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
     insightSlug: null,
+    thumbnail: null,
+    emoji: '🟦',
   },
   {
     id: 'snake',
@@ -31,5 +37,7 @@ export const games: Game[] = [
     descriptionEn: 'Snake game built with AI. Keyboard & swipe gesture support.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
     insightSlug: null,
+    thumbnail: null,
+    emoji: '🐍',
   },
 ];

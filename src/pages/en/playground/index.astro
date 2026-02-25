@@ -22,19 +22,27 @@ import { games } from '../../../data/games';
     <section class="pg-grid">
       {games.map(game => (
         <article class="pg-card">
-          <div class="pg-card__body">
-            <h2 class="pg-card__title">{game.title}</h2>
-            <p class="pg-card__desc">{game.descriptionEn}</p>
-            <div class="pg-card__tags">
-              {game.tags.map(tag => (
-                <span class="pg-tag">{tag}</span>
-              ))}
-            </div>
+          <div class="pg-card__thumb" data-game={game.id}>
+            {game.thumbnail
+              ? <img src={game.thumbnail} alt={game.title} loading="lazy" decoding="async" />
+              : <span class="pg-card__thumb-emoji">{game.emoji}</span>
+            }
           </div>
-          <div class="pg-card__foot">
-            <a href={`/en/playground/${game.id}`} class="pg-btn-play">
-              Play Now →
-            </a>
+          <div class="pg-card__inner">
+            <div class="pg-card__body">
+              <h2 class="pg-card__title">{game.title}</h2>
+              <p class="pg-card__desc">{game.descriptionEn}</p>
+              <div class="pg-card__tags">
+                {game.tags.map(tag => (
+                  <span class="pg-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div class="pg-card__foot">
+              <a href={`/en/playground/${game.id}`} class="pg-btn-play">
+                Play Now →
+              </a>
+            </div>
           </div>
         </article>
       ))}
@@ -88,10 +96,9 @@ import { games } from '../../../data/games';
     background: #fff;
     border: 1px solid #E5E7EB;
     border-radius: 16px;
-    padding: 1.75rem;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
     transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
   }
 
@@ -99,6 +106,56 @@ import { games } from '../../../data/games';
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
     transform: translateY(-3px);
     border-color: #C7D2FE;
+  }
+
+  .pg-card__thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pg-card__thumb[data-game="tetris"] {
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 60%, #a78bfa 100%);
+  }
+
+  .pg-card__thumb[data-game="snake"] {
+    background: linear-gradient(135deg, #065f46 0%, #059669 60%, #34d399 100%);
+  }
+
+  .pg-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .pg-card:hover .pg-card__thumb img {
+    transform: scale(1.04);
+  }
+
+  .pg-card__thumb-emoji {
+    font-size: 3.5rem;
+    line-height: 1;
+    opacity: 0.85;
+    transition: transform 0.3s ease;
+  }
+
+  .pg-card:hover .pg-card__thumb-emoji {
+    transform: scale(1.12);
+  }
+
+  .pg-card__inner {
+    padding: 1.25rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: 1;
   }
 
   .pg-card__body {
