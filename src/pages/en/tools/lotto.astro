@@ -60,7 +60,16 @@ const categories = {
 
       <div id="lotto-result"></div>
 
-      <button id="gen-btn" class="btn-primary">Generate Random Numbers</button>
+      <div class="btn-controls">
+        <button id="gen-btn" class="btn-primary">Generate Random Numbers</button>
+        <div class="set-selector">
+          <button class="set-btn" data-count="1">1</button>
+          <button class="set-btn" data-count="2">2</button>
+          <button class="set-btn" data-count="3">3</button>
+          <button class="set-btn" data-count="4">4</button>
+          <button class="set-btn" data-count="5">5</button>
+        </div>
+      </div>
     </div>
 
     <!-- Related Articles Section -->
@@ -158,10 +167,17 @@ const categories = {
 
   #lotto-result {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
     min-height: 80px;
     margin: 2rem 0;
+  }
+
+  .lotto-set {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
   }
@@ -211,9 +227,14 @@ const categories = {
     background-color: #e03a3a !important;
   }
 
+  .btn-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   .btn-primary {
-    display: block;
-    width: 100%;
+    flex-grow: 1;
     padding: 1rem;
     border-radius: 12px;
     font-size: 1rem;
@@ -232,6 +253,30 @@ const categories = {
 
   .btn-primary:active {
     transform: scale(0.97);
+  }
+
+  .set-selector {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .set-btn {
+    width: 38px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #E5E7EB;
+    background: white;
+    color: #1F2937;
+    transition: all 0.2s;
+  }
+
+  .set-btn:hover {
+    border-color: #1E3A8A;
+    color: #1E3A8A;
   }
 
   /* Articles Section Styles */
@@ -364,6 +409,17 @@ const categories = {
       font-size: 1.5rem;
     }
   }
+
+  @media (max-width: 480px) {
+    .btn-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .set-selector {
+      justify-content: center;
+    }
+  }
 </style>
 
 <script>
@@ -371,8 +427,35 @@ const categories = {
     const generateBtn = document.getElementById('gen-btn');
     const resultDiv = document.getElementById('lotto-result');
     const modeSelect = document.getElementById('lotto-mode') as HTMLSelectElement;
+    const setButtons = document.querySelectorAll<HTMLButtonElement>('.set-btn');
 
     if (!generateBtn || !resultDiv || !modeSelect) return;
+
+    let selectedSetCount = 1;
+
+    function updateSetButtons(activeCount: number) {
+      setButtons.forEach(btn => {
+        if (parseInt(btn.dataset.count || '1') === activeCount) {
+          btn.style.backgroundColor = '#1E3A8A';
+          btn.style.color = '#ffffff';
+          btn.style.borderColor = '#1E3A8A';
+        } else {
+          btn.style.backgroundColor = '#ffffff';
+          btn.style.color = '#1F2937';
+          btn.style.borderColor = '#E5E7EB';
+        }
+      });
+    }
+
+    setButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedSetCount = parseInt(btn.dataset.count || '1');
+        updateSetButtons(selectedSetCount);
+        performGeneration();
+      });
+    });
+
+    updateSetButtons(1);
 
     const lottoRules = {
       ko645: {
@@ -419,12 +502,15 @@ const categories = {
       const rules = lottoRules[mode as keyof typeof lottoRules];
       if (!rules) return { main: [], bonus: [] };
       const mainNumbers = pickUnique(rules.mainCount, rules.mainMax);
-      const bonusNumbers = rules.bonus ? pickUnique(rules.bonus.count, rules.bonus.max, 1, new Set(mainNumbers)) : [];
+      const bonusNumbers = (rules as any).bonus
+        ? pickUnique((rules as any).bonus.count, (rules as any).bonus.max, 1, new Set(mainNumbers))
+        : [];
       return { main: mainNumbers, bonus: bonusNumbers };
     }
 
-    function renderResult(result: { main: number[], bonus: number[] }, mode: string) {
-      resultDiv.innerHTML = '';
+    function renderSet(result: { main: number[], bonus: number[] }, mode: string): HTMLDivElement {
+      const setDiv = document.createElement('div');
+      setDiv.className = 'lotto-set';
       const rules = lottoRules[mode as keyof typeof lottoRules];
 
       result.main.forEach(num => {
@@ -439,25 +525,29 @@ const categories = {
         } else {
           ball.style.backgroundColor = rules.colors[0] || '#ccc';
         }
-        resultDiv.appendChild(ball);
+        setDiv.appendChild(ball);
       });
 
       result.bonus.forEach(num => {
         const ball = document.createElement('span');
         ball.className = 'lotto-ball lotto-ball--bonus';
         ball.textContent = String(num);
-        resultDiv.appendChild(ball);
+        setDiv.appendChild(ball);
       });
+
+      return setDiv;
     }
 
     const performGeneration = () => {
       const selectedMode = modeSelect.value;
-      const result = generateLottoNumbers(selectedMode);
-      renderResult(result, selectedMode);
+      resultDiv.innerHTML = '';
+      for (let i = 0; i < selectedSetCount; i++) {
+        resultDiv.appendChild(renderSet(generateLottoNumbers(selectedMode), selectedMode));
+      }
     };
 
     generateBtn.addEventListener('click', performGeneration);
     modeSelect.addEventListener('change', performGeneration);
-    performGeneration(); // Initial generation on load
+    performGeneration();
   });
 </script>
