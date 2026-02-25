@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { games, type Game } from '../../../data/games';
+
+export function getStaticPaths() {
+  return games.map(game => ({
+    params: { game: game.id },
+    props: { game },
+  }));
+}
+
+interface Props {
+  game: Game;
+}
+
+const { game } = Astro.props;
+const gameUrl = `/games/${game.id}/index.html`;
+---
+
+<BaseLayout
+  title={game.title}
+  titleOverride={`${game.title} | Vibe Coding Playground — chulbuji.com`}
+  description={game.descriptionEn}
+>
+  <div class="gp-layout">
+
+    <div class="gp-topbar">
+      <div class="gp-topbar__left">
+        <a href="/en/playground" class="gp-back">← Playground</a>
+        <span class="gp-title">{game.title}</span>
+      </div>
+      <div class="gp-topbar__actions">
+        {game.insightSlug ? (
+          <a href={`/en/insight/${game.insightSlug}`} class="gp-btn gp-btn--ghost">
+            📝 Making-of
+          </a>
+        ) : (
+          <span class="gp-btn gp-btn--disabled" title="Coming soon">
+            📝 Making-of (soon)
+          </span>
+        )}
+        <a href={gameUrl} target="_blank" rel="noopener" class="gp-btn gp-btn--ghost">
+          ↗ New Tab
+        </a>
+        <button id="fullscreen-btn" class="gp-btn gp-btn--primary">
+          ⛶ Fullscreen
+        </button>
+      </div>
+    </div>
+
+    <div class="gp-frame-wrapper" id="frame-wrapper">
+      <iframe
+        id="game-frame"
+        src={gameUrl}
+        title={game.title}
+        allow="fullscreen"
+        scrolling="no"
+      ></iframe>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .gp-layout {
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--header-h, 62px));
+  }
+
+  .gp-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: 52px;
+    flex-shrink: 0;
+    background: #fff;
+    border-bottom: 1px solid #E5E7EB;
+    gap: 1rem;
+  }
+
+  .gp-topbar__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .gp-back {
+    font-size: 0.875rem;
+    color: #6B7280;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+
+  .gp-back:hover {
+    color: #1E3A8A;
+  }
+
+  .gp-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .gp-topbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .gp-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .gp-btn--primary {
+    background: #1E3A8A;
+    color: #fff;
+  }
+
+  .gp-btn--primary:hover {
+    background: #1e40af;
+  }
+
+  .gp-btn--ghost {
+    background: transparent;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+  }
+
+  .gp-btn--ghost:hover {
+    border-color: #1E3A8A;
+    color: #1E3A8A;
+  }
+
+  .gp-btn--disabled {
+    background: transparent;
+    color: #9CA3AF;
+    border: 1px solid #E5E7EB;
+    cursor: not-allowed;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .gp-frame-wrapper {
+    flex: 1;
+    overflow: hidden;
+    background: #000;
+    touch-action: none;
+  }
+
+  #game-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .gp-topbar {
+      padding: 0 0.75rem;
+      height: 48px;
+    }
+
+    .gp-btn--disabled {
+      display: none;
+    }
+
+    .gp-title {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  function setHeaderHeight() {
+    const header = document.querySelector('.site-header') as HTMLElement | null;
+    if (header) {
+      document.documentElement.style.setProperty(
+        '--header-h',
+        header.offsetHeight + 'px'
+      );
+    }
+  }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const gameFrame = document.getElementById('game-frame') as HTMLIFrameElement | null;
+
+  fullscreenBtn?.addEventListener('click', () => {
+    if (gameFrame?.requestFullscreen) {
+      gameFrame.requestFullscreen();
+    }
+  });
+
+  const wrapper = document.getElementById('frame-wrapper');
+  wrapper?.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+  }, { passive: false });
+</script>

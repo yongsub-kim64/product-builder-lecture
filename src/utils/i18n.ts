@@ -10,10 +10,11 @@ export type Lang = keyof typeof languages;
 export const ui = {
   ko: {
     'nav.home': '홈',
+    'nav.playground': 'Playground',
+    'nav.insight': '인사이트',
     'nav.log': '기록',
     'nav.projects': '프로젝트',
     'nav.tools': '도구',
-    'nav.insight': '인사이트',
     'nav.about': '소개',
     'nav.contact': '연락하기',
     'footer.privacy': '개인정보처리방침',
@@ -27,10 +28,11 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
+    'nav.playground': 'Playground',
+    'nav.insight': 'Insight',
     'nav.log': 'Log',
     'nav.projects': 'Projects',
     'nav.tools': 'Tools',
-    'nav.insight': 'Insight',
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'footer.privacy': 'Privacy',
