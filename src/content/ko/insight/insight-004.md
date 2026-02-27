@@ -8,7 +8,7 @@ published: true
 
 오늘은 코드를 짰다는 말을 못 한다. 질문을 던졌다.
 
-4시간 뒤에 테트리스가 [chulbuji.com/playground](https://chulbuji.com/playground)에 올라갔다. BGM은 Suno로 만들었고, 썸네일 이미지도 AI가 뽑아줬다. 나는 방향을 잡고, Claude Code가 손을 움직였다.
+4시간 뒤에 테트리스가 [chulbuji.com/playground/tetris](https://chulbuji.com/playground/tetris/)에 올라갔다. BGM은 Suno로 만들었고, 썸네일 이미지도 AI가 뽑아줬다. 나는 방향을 잡고, Claude Code가 손을 움직였다.
 
 ---
 
