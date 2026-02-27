@@ -6,35 +6,54 @@
   <title>Tetris — Vibe Coding Demo</title>
   <style>
     :root {
-      --bg: #070a10;
-      --panel: rgba(17,26,35,.78);
-      --line: rgba(90,140,180,.18);
-      --text: #e9eef5;
-      --muted: #9fb0c3;
+      --bg:     #070a10;
+      --panel:  rgba(17,26,35,.78);
+      --line:   rgba(90,140,180,.18);
+      --text:   #e9eef5;
+      --muted:  #9fb0c3;
       --accent: #7dd3fc;
       --danger: #fb7185;
+      --glow:   #00d4ff;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html, body {
       width: 100%; height: 100%;
-      background: radial-gradient(1200px 800px at 20% 0%, #0e1b2b 0%, var(--bg) 55%, #05070c 100%);
+      background: radial-gradient(1200px 800px at 20% 0%,
+        #0e1b2b 0%, var(--bg) 55%, #05070c 100%);
       color: var(--text);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       overflow: hidden;
+    }
+
+    /* ── 앱 전체 레이아웃 ─────────────────── */
+    .app {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100svh;
     }
-    .wrapper {
+
+    /* ── 게임 영역: 보드 + 사이드바 ─────── */
+    .game-area {
       display: flex;
       align-items: flex-start;
       gap: 1.25rem;
     }
+
+    /* ── 보드 테두리 (개선: 밝은 글로우) ── */
     #board {
       display: block;
-      border: 1px solid var(--line);
+      border: 2px solid var(--glow);
+      box-shadow:
+        0 0 16px rgba(0,212,255,.35),
+        0 0 4px  rgba(0,212,255,.8);
       background: #080b12;
+      flex-shrink: 0;
     }
+
+    /* ── 데스크탑 사이드바 ──────────────── */
     .sidebar {
       display: flex;
       flex-direction: column;
@@ -62,18 +81,90 @@
       letter-spacing: -0.02em;
       line-height: 1;
     }
-    #next-canvas {
-      display: block;
-      margin-top: 0.5rem;
-    }
-    .hint {
-      font-size: 0.7rem;
-      color: var(--muted);
-      line-height: 1.9;
-    }
+    #next-canvas { display: block; margin-top: 0.5rem; }
+    .hint { font-size: 0.7rem; color: var(--muted); line-height: 1.9; }
     .hint b { color: var(--text); font-weight: 600; }
 
-    /* 게임 오버 오버레이 */
+    /* ── 모바일 상단 정보바 (기본 숨김) ─── */
+    .mobile-info {
+      display: none;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      padding: 6px 8px;
+      background: rgba(8,11,18,.9);
+      border-bottom: 1px solid rgba(0,212,255,.2);
+      flex-shrink: 0;
+    }
+    .mi-item { text-align: center; }
+    .mi-label {
+      display: block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .mi-val {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    #m-next-canvas { display: block; }
+
+    /* ── 터치 컨트롤 (기본 숨김, 하단 고정) */
+    .touch-pad {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 8px;
+      padding: 10px 28px calc(10px + env(safe-area-inset-bottom, 0px));
+      background: rgba(7,10,16,.92);
+      border-top: 1px solid rgba(0,212,255,.2);
+      justify-items: center;
+    }
+    .tc-btn {
+      width:  68px;
+      height: 64px;
+      border: 1.5px solid rgba(0,212,255,.4);
+      border-radius: 14px;
+      background: rgba(0,212,255,.07);
+      color: var(--text);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.08s;
+    }
+    .tc-btn:active { background: rgba(0,212,255,.25); }
+
+    /* D-pad 배치 */
+    #btn-rotate { grid-area: 1 / 2; }
+    #btn-left   { grid-area: 2 / 1; }
+    #btn-down   { grid-area: 2 / 2; }
+    #btn-right  { grid-area: 2 / 3; }
+
+    /* ── 모바일 미디어 쿼리 ─────────────── */
+    @media (max-width: 639px) {
+      .app {
+        justify-content: flex-start;
+      }
+      .sidebar      { display: none; }
+      .mobile-info  { display: flex; }
+      .touch-pad    { display: grid; }
+      .game-area    { justify-content: center; flex: 1; align-items: center; }
+    }
+
+    /* ── 게임 오버 오버레이 ─────────────── */
     #overlay {
       display: none;
       position: fixed;
@@ -84,6 +175,7 @@
       flex-direction: column;
       gap: 0.9rem;
       text-align: center;
+      z-index: 200;
     }
     #overlay.show { display: flex; }
     #overlay h2 {
@@ -103,76 +195,143 @@
       color: var(--accent);
     }
     #final-score { color: var(--text); font-size: 1.05rem; font-weight: 600; }
+    .overlay-mobile {
+      display: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    @media (max-width: 639px) {
+      .overlay-mobile { display: block; }
+    }
   </style>
 </head>
 <body>
 
-<div class="wrapper">
-  <canvas id="board" width="300" height="600"></canvas>
-  <aside class="sidebar">
-    <div class="panel">
-      <div class="panel-label">Score</div>
-      <div class="panel-value" id="score">0</div>
+<div class="app">
+
+  <!-- 모바일 상단 정보바 -->
+  <div class="mobile-info">
+    <div class="mi-item">
+      <span class="mi-label">Score</span>
+      <span class="mi-val" id="m-score">0</span>
     </div>
-    <div class="panel">
-      <div class="panel-label">Level</div>
-      <div class="panel-value" id="level">1</div>
+    <div class="mi-item">
+      <span class="mi-label">Level</span>
+      <span class="mi-val" id="m-level">1</span>
     </div>
-    <div class="panel">
-      <div class="panel-label">Lines</div>
-      <div class="panel-value" id="lines">0</div>
+    <div class="mi-item">
+      <span class="mi-label">Lines</span>
+      <span class="mi-val" id="m-lines">0</span>
     </div>
-    <div class="panel">
-      <div class="panel-label">Next</div>
-      <canvas id="next-canvas" width="110" height="70"></canvas>
+    <div class="mi-item">
+      <span class="mi-label">Next</span>
+      <canvas id="m-next-canvas" width="44" height="34"></canvas>
     </div>
-    <div class="panel hint">
-      <b>← →</b> 이동<br>
-      <b>↑</b> 회전<br>
-      <b>↓</b> 빠른 하강<br>
-      <b>R</b> 재시작
-    </div>
-  </aside>
+  </div>
+
+  <!-- 게임 영역 -->
+  <div class="game-area">
+    <canvas id="board"></canvas>
+
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-label">Score</div>
+        <div class="panel-value" id="score">0</div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Level</div>
+        <div class="panel-value" id="level">1</div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Lines</div>
+        <div class="panel-value" id="lines">0</div>
+      </div>
+      <div class="panel">
+        <div class="panel-label">Next</div>
+        <canvas id="next-canvas" width="110" height="70"></canvas>
+      </div>
+      <div class="panel hint">
+        <b>← →</b> 이동<br>
+        <b>↑</b> 회전<br>
+        <b>↓</b> 빠른 하강<br>
+        <b>R</b> 재시작
+      </div>
+    </aside>
+  </div>
+
+  <!-- 모바일 터치 컨트롤 (하단 고정) -->
+  <div class="touch-pad">
+    <button class="tc-btn" id="btn-rotate">↑</button>
+    <button class="tc-btn" id="btn-left">←</button>
+    <button class="tc-btn" id="btn-down">↓</button>
+    <button class="tc-btn" id="btn-right">→</button>
+  </div>
+
 </div>
 
+<!-- 게임 오버 -->
 <div id="overlay">
   <h2>Game Over</h2>
   <div id="final-score"></div>
   <p>Press <kbd>R</kbd> to restart</p>
+  <p class="overlay-mobile">화면을 탭하여 재시작</p>
 </div>
 
 <script>
-  /* ── 상수 ─────────────────────────── */
-  const COLS = 10, ROWS = 20, CELL = 30;
+  /* ── 상수 ──────────────────────────── */
+  const COLS = 10, ROWS = 20;
 
-  /* ── 7가지 테트로미노 정의 ─────────── */
+  /* ── 7가지 테트로미노 ───────────────── */
   const PIECES = [
-    { shape: [[1,1,1,1]],              color: '#22d3ee' }, // I
-    { shape: [[1,1],[1,1]],            color: '#fbbf24' }, // O
-    { shape: [[0,1,0],[1,1,1]],        color: '#a78bfa' }, // T
-    { shape: [[0,1,1],[1,1,0]],        color: '#34d399' }, // S
-    { shape: [[1,1,0],[0,1,1]],        color: '#fb7185' }, // Z
-    { shape: [[1,0,0],[1,1,1]],        color: '#60a5fa' }, // J
-    { shape: [[0,0,1],[1,1,1]],        color: '#f97316' }, // L
+    { shape: [[1,1,1,1]],           color: '#22d3ee' }, // I
+    { shape: [[1,1],[1,1]],         color: '#fbbf24' }, // O
+    { shape: [[0,1,0],[1,1,1]],     color: '#a78bfa' }, // T
+    { shape: [[0,1,1],[1,1,0]],     color: '#34d399' }, // S
+    { shape: [[1,1,0],[0,1,1]],     color: '#fb7185' }, // Z
+    { shape: [[1,0,0],[1,1,1]],     color: '#60a5fa' }, // J
+    { shape: [[0,0,1],[1,1,1]],     color: '#f97316' }, // L
   ];
-
-  /* ── 점수 테이블 (라인 수별) ─────── */
   const SCORE_TABLE = [0, 100, 300, 500, 800];
 
+  /* ── DOM 참조 ──────────────────────── */
   const boardCanvas = document.getElementById('board');
-  const ctx = boardCanvas.getContext('2d');
-  const nextCanvas = document.getElementById('next-canvas');
-  const nctx = nextCanvas.getContext('2d');
+  const ctx         = boardCanvas.getContext('2d');
+  const nextCanvas  = document.getElementById('next-canvas');
+  const nctx        = nextCanvas.getContext('2d');
+  const mNextCanvas = document.getElementById('m-next-canvas');
+  const mnctx       = mNextCanvas.getContext('2d');
 
-  /* ── 게임 상태 변수 ──────────────── */
+  /* ── CELL 크기 동적 계산 ────────────
+     모바일: 정보바(~48px) + 터치패드(~146px) + 여백을 제외한
+     공간에 10×20 보드가 딱 맞는 셀 크기를 계산.
+     Z Fold 펼침/접힘 시 resize 이벤트로 재계산됨.           */
+  let CELL = 30;
+
+  function calcCell() {
+    if (window.innerWidth >= 640) {
+      // 데스크탑 / Z Fold 펼친 화면 → 고정 크기
+      CELL = 30;
+    } else {
+      // 모바일: 사용 가능한 너비/높이에서 셀 크기 결정
+      const INFO_H   = 50;   // 상단 정보바
+      const PAD_H    = 146;  // 터치패드 (고정 하단)
+      const MARGIN   = 16;
+      const availW   = window.innerWidth  - MARGIN;
+      const availH   = window.innerHeight - INFO_H - PAD_H - MARGIN;
+      CELL = Math.max(16, Math.floor(Math.min(availW / COLS, availH / ROWS)));
+    }
+    boardCanvas.width  = CELL * COLS;
+    boardCanvas.height = CELL * ROWS;
+  }
+
+  /* ── 게임 상태 ──────────────────────  */
   let board, current, nextPiece;
   let score, level, lines;
   let dropTimer, dropInterval;
   let isGameOver;
 
-  /* ── 초기화 ─────────────────────── */
+  /* ── 초기화 ─────────────────────────  */
   function init() {
-    // 보드: 0 = 빈칸, 문자열 = 고정된 블록의 색상
     board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
     score = 0; level = 1; lines = 0;
     dropTimer = 0; dropInterval = 800;
@@ -188,7 +347,7 @@
     return { shape: p.shape.map(r => [...r]), color: p.color };
   }
 
-  /* ── 새 블록 생성 ───────────────── */
+  /* ── 새 블록 생성 ───────────────────  */
   function spawnPiece() {
     current = {
       shape: nextPiece.shape.map(r => [...r]),
@@ -198,8 +357,7 @@
     };
     nextPiece = randomPiece();
     drawNext();
-
-    // 스폰 즉시 충돌 → 게임 오버
+    // 스폰 즉시 충돌 = 게임 오버
     if (collides(current, current.x, current.y)) {
       isGameOver = true;
       document.getElementById('final-score').textContent = `Score: ${score}`;
@@ -207,30 +365,29 @@
     }
   }
 
-  /* ── 충돌 검사 ──────────────────── */
+  /* ── 충돌 검사 ──────────────────────  */
   function collides(piece, px, py) {
-    for (let r = 0; r < piece.shape.length; r++) {
+    for (let r = 0; r < piece.shape.length; r++)
       for (let c = 0; c < piece.shape[r].length; c++) {
         if (!piece.shape[r][c]) continue;
         const nx = px + c, ny = py + r;
         if (nx < 0 || nx >= COLS || ny >= ROWS) return true;
         if (ny >= 0 && board[ny][nx]) return true;
       }
-    }
     return false;
   }
 
-  /* ── 시계방향 90° 회전 ──────────── */
+  /* ── 시계방향 90° 회전 ──────────────  */
   function rotateShape(shape) {
     const rows = shape.length, cols = shape[0].length;
-    const result = Array.from({ length: cols }, () => Array(rows).fill(0));
+    const res = Array.from({ length: cols }, () => Array(rows).fill(0));
     for (let r = 0; r < rows; r++)
       for (let c = 0; c < cols; c++)
-        result[c][rows - 1 - r] = shape[r][c];
-    return result;
+        res[c][rows - 1 - r] = shape[r][c];
+    return res;
   }
 
-  /* ── 블록 보드에 고정 ───────────── */
+  /* ── 블록 고정 ──────────────────────  */
   function lock() {
     for (let r = 0; r < current.shape.length; r++)
       for (let c = 0; c < current.shape[r].length; c++)
@@ -240,7 +397,7 @@
     spawnPiece();
   }
 
-  /* ── 가로 라인 제거 + 점수 계산 ── */
+  /* ── 가로 라인 제거 + 점수 계산 ─────  */
   function clearLines() {
     let cleared = 0;
     for (let r = ROWS - 1; r >= 0; r--) {
@@ -248,39 +405,44 @@
         board.splice(r, 1);
         board.unshift(Array(COLS).fill(0));
         cleared++;
-        r++; // 같은 인덱스 재검사 (위에서 내려온 행 확인)
+        r++; // 같은 인덱스 재검사
       }
     }
     if (!cleared) return;
     lines += cleared;
     score += SCORE_TABLE[cleared] * level;
-    level = Math.floor(lines / 10) + 1;
+    level  = Math.floor(lines / 10) + 1;
     dropInterval = Math.max(80, 800 - (level - 1) * 72);
     updateUI();
   }
 
-  /* ── UI 수치 업데이트 ───────────── */
+  /* ── UI 업데이트 (데스크탑 + 모바일) ─  */
   function updateUI() {
-    document.getElementById('score').textContent = score;
-    document.getElementById('level').textContent = level;
-    document.getElementById('lines').textContent = lines;
+    document.getElementById('score').textContent   = score;
+    document.getElementById('level').textContent   = level;
+    document.getElementById('lines').textContent   = lines;
+    document.getElementById('m-score').textContent = score;
+    document.getElementById('m-level').textContent = level;
+    document.getElementById('m-lines').textContent = lines;
   }
 
-  /* ── 셀 하나 그리기 ─────────────── */
+  /* ── 셀 하나 그리기 ─────────────────  */
   function drawCell(context, x, y, color) {
     const px = x * CELL, py = y * CELL;
     context.fillStyle = color;
     context.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
-    // 상단 하이라이트
-    context.fillStyle = 'rgba(255,255,255,0.18)';
-    context.fillRect(px + 2, py + 2, CELL - 4, 5);
+    // 상단 하이라이트 (셀 크기에 비례)
+    if (CELL >= 16) {
+      context.fillStyle = 'rgba(255,255,255,0.18)';
+      context.fillRect(px + 2, py + 2, CELL - 4, Math.max(2, Math.floor(CELL / 6)));
+    }
   }
 
-  /* ── 보드 전체 그리기 ───────────── */
+  /* ── 보드 그리기 ────────────────────
+     그리드 라인: opacity 0.15로 가시성 개선  */
   function drawBoard() {
     ctx.clearRect(0, 0, boardCanvas.width, boardCanvas.height);
-    // 격자 선
-    ctx.strokeStyle = 'rgba(90,140,180,0.06)';
+    ctx.strokeStyle = 'rgba(90,140,180,0.15)';
     ctx.lineWidth = 0.5;
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
@@ -290,7 +452,7 @@
     }
   }
 
-  /* ── 고스트 블록 (착지 위치 미리보기) */
+  /* ── 고스트 블록 (착지 위치 미리보기) ─  */
   function drawGhost() {
     let ghostY = current.y;
     while (!collides(current, current.x, ghostY + 1)) ghostY++;
@@ -303,7 +465,7 @@
     ctx.globalAlpha = 1;
   }
 
-  /* ── 현재 블록 그리기 ───────────── */
+  /* ── 현재 블록 그리기 ───────────────  */
   function drawCurrent() {
     for (let r = 0; r < current.shape.length; r++)
       for (let c = 0; c < current.shape[r].length; c++)
@@ -311,77 +473,122 @@
           drawCell(ctx, current.x + c, current.y + r, current.color);
   }
 
-  /* ── 다음 블록 미리보기 그리기 ──── */
-  function drawNext() {
-    nctx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-    const nc = 22;
-    const offX = Math.floor((nextCanvas.width  - nextPiece.shape[0].length * nc) / 2);
-    const offY = Math.floor((nextCanvas.height - nextPiece.shape.length    * nc) / 2);
+  /* ── 다음 블록 미리보기 ─────────────  */
+  function drawNextOn(context, cw, ch) {
+    context.clearRect(0, 0, cw, ch);
+    const nc  = Math.min(
+      Math.floor(cw / (nextPiece.shape[0].length + 0.5)),
+      Math.floor(ch / (nextPiece.shape.length    + 0.5))
+    );
+    const offX = Math.floor((cw - nextPiece.shape[0].length * nc) / 2);
+    const offY = Math.floor((ch - nextPiece.shape.length    * nc) / 2);
     for (let r = 0; r < nextPiece.shape.length; r++)
       for (let c = 0; c < nextPiece.shape[r].length; c++)
         if (nextPiece.shape[r][c]) {
-          nctx.fillStyle = nextPiece.color;
-          nctx.fillRect(offX + c * nc + 1, offY + r * nc + 1, nc - 2, nc - 2);
-          nctx.fillStyle = 'rgba(255,255,255,0.18)';
-          nctx.fillRect(offX + c * nc + 2, offY + r * nc + 2, nc - 4, 5);
+          context.fillStyle = nextPiece.color;
+          context.fillRect(offX + c * nc + 1, offY + r * nc + 1, nc - 2, nc - 2);
+          if (nc >= 10) {
+            context.fillStyle = 'rgba(255,255,255,0.18)';
+            context.fillRect(offX + c * nc + 2, offY + r * nc + 2, nc - 4, Math.max(2, Math.floor(nc / 5)));
+          }
         }
   }
+  function drawNext() {
+    drawNextOn(nctx,  nextCanvas.width,  nextCanvas.height);
+    drawNextOn(mnctx, mNextCanvas.width, mNextCanvas.height);
+  }
 
-  /* ── 키보드 입력 ────────────────── */
+  /* ── 렌더 (입력 후 즉시 재그리기) ───  */
+  function render() {
+    if (!isGameOver && current) { drawBoard(); drawGhost(); drawCurrent(); }
+  }
+
+  /* ── 입력 처리 함수 ─────────────────  */
+  function moveLeft() {
+    if (isGameOver) return;
+    if (!collides(current, current.x - 1, current.y)) current.x--;
+    render();
+  }
+  function moveRight() {
+    if (isGameOver) return;
+    if (!collides(current, current.x + 1, current.y)) current.x++;
+    render();
+  }
+  function moveDown() {
+    if (isGameOver) return;
+    if (!collides(current, current.x, current.y + 1)) {
+      current.y++;
+      score++;
+      updateUI();
+    } else {
+      lock();
+    }
+    dropTimer = 0;
+    render();
+  }
+  function doRotate() {
+    if (isGameOver) return;
+    const rotated = rotateShape(current.shape);
+    const kicks   = [0, -1, 1, -2, 2];
+    for (const kick of kicks) {
+      if (!collides({ shape: rotated }, current.x + kick, current.y)) {
+        current.shape = rotated;
+        current.x    += kick;
+        break;
+      }
+    }
+    render();
+  }
+
+  /* ── 키보드 입력 ────────────────────  */
   document.addEventListener('keydown', e => {
     if (e.key === 'r' || e.key === 'R') { init(); return; }
     if (isGameOver) return;
-
     switch (e.key) {
-      case 'ArrowLeft':
-        e.preventDefault();
-        if (!collides(current, current.x - 1, current.y)) current.x--;
-        break;
-
-      case 'ArrowRight':
-        e.preventDefault();
-        if (!collides(current, current.x + 1, current.y)) current.x++;
-        break;
-
-      case 'ArrowDown':
-        e.preventDefault();
-        if (!collides(current, current.x, current.y + 1)) {
-          current.y++;
-          score++;   // 소프트 드롭 보너스
-          updateUI();
-        } else {
-          lock();
-        }
-        dropTimer = 0;
-        break;
-
-      case 'ArrowUp':
-        e.preventDefault();
-        // 회전 후 벽 킥 (기본 → 좌 1칸 → 우 1칸)
-        const rotated = rotateShape(current.shape);
-        const kicks = [0, -1, 1, -2, 2];
-        for (const kick of kicks) {
-          if (!collides({ shape: rotated }, current.x + kick, current.y)) {
-            current.shape = rotated;
-            current.x += kick;
-            break;
-          }
-        }
-        break;
+      case 'ArrowLeft':  e.preventDefault(); moveLeft();  break;
+      case 'ArrowRight': e.preventDefault(); moveRight(); break;
+      case 'ArrowDown':  e.preventDefault(); moveDown();  break;
+      case 'ArrowUp':    e.preventDefault(); doRotate();  break;
     }
-
-    // 입력 후 즉시 재렌더
-    if (!isGameOver) { drawBoard(); drawGhost(); drawCurrent(); }
   });
 
-  /* ── 메인 게임 루프 ─────────────── */
+  /* ── 터치 버튼 바인딩 ───────────────
+     - 이동 버튼: 롱프레스 시 130ms 간격 연속 입력
+     - 회전 버튼: 탭 1회만 (연속 회전 방지)            */
+  function bindRepeat(id, action) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    let timer = null;
+    const press = e => {
+      e.preventDefault();
+      action();
+      timer = setInterval(action, 130);
+    };
+    const release = () => { if (timer) { clearInterval(timer); timer = null; } };
+    btn.addEventListener('touchstart',  press,   { passive: false });
+    btn.addEventListener('touchend',    release);
+    btn.addEventListener('touchcancel', release);
+    btn.addEventListener('mousedown',   press);
+    btn.addEventListener('mouseup',     release);
+    btn.addEventListener('mouseleave',  release);
+  }
+
+  function bindTap(id, action) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('touchstart', e => { e.preventDefault(); action(); }, { passive: false });
+    btn.addEventListener('mousedown',  () => action());
+  }
+
+  /* ── 모바일: 게임 오버 화면 탭 재시작 ─  */
+  document.getElementById('overlay').addEventListener('click', () => init());
+
+  /* ── 메인 게임 루프 ─────────────────  */
   let lastTime = 0;
   function loop(ts) {
     const dt = ts - lastTime;
     lastTime = ts;
-
     if (!isGameOver) {
-      // 자동 하강 타이머
       dropTimer += dt;
       if (dropTimer >= dropInterval) {
         dropTimer = 0;
@@ -391,18 +598,29 @@
           lock();
         }
       }
-      // 게임 오버 전환 후 한 번 더 체크
-      if (!isGameOver) {
-        drawBoard();
-        drawGhost();
-        drawCurrent();
-      }
+      if (!isGameOver) { drawBoard(); drawGhost(); drawCurrent(); }
     }
-
     requestAnimationFrame(loop);
   }
 
-  /* ── 시작 ──────────────────────── */
+  /* ── 화면 크기 변경 (Z Fold 펼침 등) ─
+     뷰포트 변경 시 CELL 재계산 후 즉시 반영  */
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    // Z Fold 같은 기기는 resize가 연속 발생할 수 있어 디바운스 처리
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      calcCell();
+      render();
+    }, 80);
+  });
+
+  /* ── 시작 ───────────────────────────  */
+  calcCell();
+  bindRepeat('btn-left',  moveLeft);
+  bindRepeat('btn-right', moveRight);
+  bindRepeat('btn-down',  moveDown);
+  bindTap(   'btn-rotate', doRotate);
   init();
   requestAnimationFrame(loop);
 </script>
