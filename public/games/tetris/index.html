@@ -183,9 +183,10 @@
     #btn-down   { grid-area: 2 / 2; }
     #btn-right  { grid-area: 2 / 3; }
 
-    /* ── 터치 기기 레이아웃 (너비 무관, 터치 지원 여부로 판단)
-       Z Fold 펼침 화면처럼 넓어도 터치 기기면 버튼 표시  ── */
-    @media (hover: none) and (pointer: coarse) {
+    /* ── 터치 기기 레이아웃
+       (hover:none) 조건 없이 (pointer:coarse) 단독 사용
+       → 더 넓은 범위의 터치 기기(Z Fold 포함)에서 매칭 보장 ── */
+    @media (pointer: coarse) {
       .app {
         justify-content: flex-start;
       }
@@ -231,8 +232,22 @@
       color: var(--muted);
       font-size: 0.88rem;
     }
-    @media (hover: none) and (pointer: coarse) {
+    @media (pointer: coarse) {
       .overlay-mobile { display: block; }
+    }
+
+    /* ── 전체화면 해제 버튼 ─────────────── */
+    .mi-fs {
+      background: none;
+      border: 1px solid rgba(251,113,133,.45);
+      border-radius: 6px;
+      color: rgba(251,113,133,.9);
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: 36px; height: 28px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      line-height: 1;
     }
   </style>
 </head>
@@ -260,6 +275,10 @@
     </div>
     <div class="mi-item">
       <button class="mi-mute" id="mute-btn-m" aria-label="소리 끄기/켜기">🔊</button>
+    </div>
+    <div class="mi-item">
+      <!-- 전체화면 진입 시에만 표시 -->
+      <button class="mi-fs" id="fs-btn" style="display:none" aria-label="전체화면 해제">✕</button>
     </div>
   </div>
 
@@ -376,11 +395,11 @@
      Z Fold 펼침/접힘 시 resize 이벤트로 재계산됨.           */
   let CELL = 30;
 
+  // CSS와 동일 조건: (pointer: coarse) 단독 사용
+  const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+
   function calcCell() {
-    // 터치 기기 여부: 너비 기준이 아닌 포인터 타입으로 판단
-    // → Z Fold 펼침(넓은 화면)도 터치 기기면 터치 레이아웃 적용
-    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (!isTouch) {
+    if (!isTouchDevice()) {
       // 데스크탑 (마우스) → 고정 셀 크기
       CELL = 30;
     } else {
@@ -654,6 +673,44 @@
     btn.addEventListener('touchstart', e => { e.preventDefault(); action(); }, { passive: false });
     btn.addEventListener('mousedown',  () => action());
   }
+
+  /* ── 전체화면 제어 (모바일 전용) ────────
+     - 첫 터치 시 requestFullscreen() 자동 진입
+     - portrait 방향 고정 (지원 기기만)
+     - ✕ 버튼으로 해제, fullscreenchange로 버튼 상태 동기화  */
+  const fsBtn = document.getElementById('fs-btn');
+
+  function enterFullscreen() {
+    const el  = document.documentElement;
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!req) return;
+    req.call(el)
+      .then(() => {
+        if (screen.orientation && screen.orientation.lock) {
+          screen.orientation.lock('portrait').catch(() => {});
+        }
+      })
+      .catch(() => {});
+  }
+
+  function exitFullscreen() {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    if (exit) exit.call(document);
+  }
+
+  // 전체화면 상태 변경 시 ✕ 버튼 표시/숨김
+  function onFsChange() {
+    const inFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    fsBtn.style.display = inFs ? '' : 'none';
+  }
+  document.addEventListener('fullscreenchange',       onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+  fsBtn.addEventListener('click', exitFullscreen);
+
+  // 첫 터치 시 자동 전체화면 진입 (터치 기기만)
+  document.addEventListener('touchstart', () => {
+    if (isTouchDevice()) enterFullscreen();
+  }, { once: true, passive: true });
 
   /* ── 모바일: 게임 오버 화면 탭 재시작 ─  */
   document.getElementById('overlay').addEventListener('click', () => init());
