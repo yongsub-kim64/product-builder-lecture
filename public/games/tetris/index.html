@@ -236,6 +236,31 @@
       .overlay-mobile { display: block; }
     }
 
+    /* ── 전체화면 뒤로가기 버튼 (좌상단 고정) ── */
+    #fs-back {
+      display: none;          /* 전체화면 진입 시 JS로 표시 */
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 999;
+      height: 44px;
+      padding: 0 16px;
+      background: rgba(7,10,16,.82);
+      border: 1px solid rgba(0,212,255,.35);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+      -webkit-tap-highlight-color: transparent;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    #fs-back:active { background: rgba(0,212,255,.15); }
+
     /* ── 전체화면 해제 버튼 ─────────────── */
     .mi-fs {
       background: none;
@@ -324,6 +349,9 @@
   </div>
 
 </div>
+
+<!-- 전체화면 뒤로가기 버튼 -->
+<button id="fs-back" aria-label="Playground로 돌아가기">← Playground</button>
 
 <!-- BGM (같은 폴더의 bgm.mp3) -->
 <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
@@ -698,14 +726,23 @@
     if (exit) exit.call(document);
   }
 
-  // 전체화면 상태 변경 시 ✕ 버튼 표시/숨김
+  const fsBack = document.getElementById('fs-back');
+
+  // 전체화면 상태 변경 시 버튼 표시/숨김 동기화
   function onFsChange() {
     const inFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
-    fsBtn.style.display = inFs ? '' : 'none';
+    fsBtn.style.display    = inFs ? '' : 'none';
+    fsBack.style.display   = inFs ? 'flex' : 'none';
   }
   document.addEventListener('fullscreenchange',       onFsChange);
   document.addEventListener('webkitfullscreenchange', onFsChange);
   fsBtn.addEventListener('click', exitFullscreen);
+
+  // 뒤로가기: 전체화면 해제 후 /playground 이동
+  fsBack.addEventListener('click', () => {
+    exitFullscreen();
+    window.location.href = '/playground';
+  });
 
   // 첫 터치 시 자동 전체화면 진입 (터치 기기만)
   document.addEventListener('touchstart', () => {
