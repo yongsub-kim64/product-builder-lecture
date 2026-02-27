@@ -22,15 +22,17 @@ import { games } from '../../data/games';
     <section class="pg-grid">
       {games.map(game => (
         <article class="pg-card">
-          <div class="pg-card__thumb" data-game={game.id}>
+          <a href={`/playground/${game.id}`} class="pg-card__thumb" data-game={game.id} tabindex="-1" aria-hidden="true">
             {game.thumbnail
               ? <img src={game.thumbnail} alt={game.title} loading="lazy" decoding="async" />
               : <span class="pg-card__thumb-emoji">{game.emoji}</span>
             }
-          </div>
+          </a>
           <div class="pg-card__inner">
             <div class="pg-card__body">
-              <h2 class="pg-card__title">{game.title}</h2>
+              <h2 class="pg-card__title">
+                <a href={`/playground/${game.id}`}>{game.title}</a>
+              </h2>
               <p class="pg-card__desc">{game.descriptionKo}</p>
               <div class="pg-card__tags">
                 {game.tags.map(tag => (
@@ -176,6 +178,14 @@ import { games } from '../../data/games';
     color: #111827;
     margin: 0;
   }
+
+  /* 제목 링크 스타일 */
+  .pg-card__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .pg-card__title a:hover { color: #1E3A8A; }
 
   .pg-card__desc {
     font-size: 0.9rem;
