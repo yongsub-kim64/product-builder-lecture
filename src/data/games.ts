@@ -11,16 +11,6 @@ export interface Game {
 
 export const games: Game[] = [
   {
-    id: 'breakout',
-    title: 'Breakout',
-    descriptionKo: 'AI와 협업하여 만든 클래식 블록 깨기 게임. 터치 & 키보드 조작 지원.',
-    descriptionEn: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
-    tags: ['Canvas', 'Mobile', 'Vibe Coding'],
-    insightSlug: 'insight-002',
-    thumbnail: '/games/breakout.png',
-    emoji: '🧱',
-  },
-  {
     id: 'tetris',
     title: 'Tetris',
     descriptionKo: '순수 HTML/CSS/JS로 구현한 테트리스. 바이브 코딩 1-file 데모.',
@@ -29,6 +19,16 @@ export const games: Game[] = [
     insightSlug: null,
     thumbnail: '/games/tetris.png',
     emoji: '🟦',
+  },
+  {
+    id: 'breakout',
+    title: 'Breakout',
+    descriptionKo: 'AI와 협업하여 만든 클래식 블록 깨기 게임. 터치 & 키보드 조작 지원.',
+    descriptionEn: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
+    tags: ['Canvas', 'Mobile', 'Vibe Coding'],
+    insightSlug: 'insight-002',
+    thumbnail: '/games/breakout.png',
+    emoji: '🧱',
   },
   {
     id: 'snake',
