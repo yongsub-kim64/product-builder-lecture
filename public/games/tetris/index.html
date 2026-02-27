@@ -85,6 +85,34 @@
     .hint { font-size: 0.7rem; color: var(--muted); line-height: 1.9; }
     .hint b { color: var(--text); font-weight: 600; }
 
+    /* ── 뮤트 버튼 ──────────────────────── */
+    .mute-btn {
+      width: 100%;
+      padding: 0.5rem;
+      background: rgba(0,212,255,.07);
+      border: 1.5px solid rgba(0,212,255,.35);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mute-btn:hover, .mute-btn:active { background: rgba(0,212,255,.18); }
+    /* 모바일 정보바 뮤트 버튼 */
+    .mi-mute {
+      background: none;
+      border: 1px solid rgba(0,212,255,.3);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 1rem;
+      width: 36px; height: 28px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* ── 모바일 상단 정보바 (기본 숨김) ─── */
     .mobile-info {
       display: none;
@@ -230,6 +258,9 @@
       <span class="mi-label">Next</span>
       <canvas id="m-next-canvas" width="44" height="34"></canvas>
     </div>
+    <div class="mi-item">
+      <button class="mi-mute" id="mute-btn-m" aria-label="소리 끄기/켜기">🔊</button>
+    </div>
   </div>
 
   <!-- 게임 영역 -->
@@ -259,6 +290,9 @@
         <b>↓</b> 빠른 하강<br>
         <b>R</b> 재시작
       </div>
+      <div class="panel">
+        <button class="mute-btn" id="mute-btn" aria-label="소리 끄기/켜기">🔊 BGM</button>
+      </div>
     </aside>
   </div>
 
@@ -271,6 +305,9 @@
   </div>
 
 </div>
+
+<!-- BGM (같은 폴더의 bgm.mp3) -->
+<audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
 
 <!-- 게임 오버 -->
 <div id="overlay">
@@ -295,6 +332,35 @@
     { shape: [[0,0,1],[1,1,1]],     color: '#f97316' }, // L
   ];
   const SCORE_TABLE = [0, 100, 300, 500, 800];
+
+  /* ── BGM 제어 ──────────────────────────
+     브라우저 autoplay 정책: 첫 사용자 상호작용 후에만 재생 가능
+     첫 키/터치 시 bgm.play() 시도, 뮤트 버튼으로 토글           */
+  const bgm        = document.getElementById('bgm');
+  let bgmStarted   = false;
+  let bgmMuted     = false;
+
+  function tryPlayBgm() {
+    if (bgmStarted) return;
+    bgm.volume = 0.45;
+    bgm.play().then(() => { bgmStarted = true; }).catch(() => {});
+  }
+
+  function toggleMute() {
+    bgmMuted  = !bgmMuted;
+    bgm.muted = bgmMuted;
+    const icon = bgmMuted ? '🔇 BGM' : '🔊 BGM';
+    const iconM = bgmMuted ? '🔇' : '🔊';
+    document.getElementById('mute-btn').textContent  = icon;
+    document.getElementById('mute-btn-m').textContent = iconM;
+  }
+
+  document.getElementById('mute-btn').addEventListener('click', toggleMute);
+  document.getElementById('mute-btn-m').addEventListener('click', toggleMute);
+
+  // 첫 상호작용 시 BGM 시작
+  document.addEventListener('keydown',    tryPlayBgm);
+  document.addEventListener('touchstart', tryPlayBgm, { passive: true });
 
   /* ── DOM 참조 ──────────────────────── */
   const boardCanvas = document.getElementById('board');
@@ -343,6 +409,8 @@
     dropTimer = 0; dropInterval = 800;
     isGameOver = false;
     document.getElementById('overlay').classList.remove('show');
+    // 재시작 시 BGM 재개
+    if (bgmStarted && !bgmMuted) bgm.play().catch(() => {});
     updateUI();
     nextPiece = randomPiece();
     spawnPiece();
@@ -368,6 +436,7 @@
       isGameOver = true;
       document.getElementById('final-score').textContent = `Score: ${score}`;
       document.getElementById('overlay').classList.add('show');
+      bgm.pause(); // 게임 오버 시 BGM 정지
     }
   }
 

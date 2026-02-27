@@ -27,7 +27,7 @@ export const games: Game[] = [
     descriptionEn: 'Tetris built with pure HTML/CSS/JS. 1-file Vibe Coding demo.',
     tags: ['Canvas', 'Mobile', 'Vibe Coding'],
     insightSlug: null,
-    thumbnail: null,
+    thumbnail: '/games/tetris.png',
     emoji: '🟦',
   },
   {
