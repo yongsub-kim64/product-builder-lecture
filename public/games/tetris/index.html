@@ -1,25 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Tetris</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; height: 100%; background: #0f0f1a; color: #fff; font-family: system-ui, sans-serif; overflow: hidden; }
-  .screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; text-align: center; padding: 2rem; }
-  .icon { font-size: 4rem; }
-  h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
-  p { color: #9CA3AF; font-size: 0.95rem; line-height: 1.6; max-width: 320px; }
-  .badge { display: inline-block; padding: 0.3rem 0.8rem; background: #1E3A8A; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Tetris — Vibe Coding Demo</title>
+  <style>
+    :root {
+      --bg: #070a10;
+      --panel: rgba(17,26,35,.78);
+      --line: rgba(90,140,180,.18);
+      --text: #e9eef5;
+      --muted: #9fb0c3;
+      --accent: #7dd3fc;
+      --danger: #fb7185;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%;
+      background: radial-gradient(1200px 800px at 20% 0%, #0e1b2b 0%, var(--bg) 55%, #05070c 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    #board {
+      display: block;
+      border: 1px solid var(--line);
+      background: #080b12;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-width: 130px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+    }
+    .panel-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .panel-value {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    #next-canvas {
+      display: block;
+      margin-top: 0.5rem;
+    }
+    .hint {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .hint b { color: var(--text); font-weight: 600; }
+
+    /* 게임 오버 오버레이 */
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7,10,16,.88);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.9rem;
+      text-align: center;
+    }
+    #overlay.show { display: flex; }
+    #overlay h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--danger);
+      letter-spacing: -0.02em;
+    }
+    #overlay p { color: var(--muted); font-size: 0.95rem; }
+    #overlay kbd {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      background: rgba(90,140,180,.12);
+      border: 1px solid rgba(90,140,180,.28);
+      border-radius: 5px;
+      font-size: 0.88rem;
+      color: var(--accent);
+    }
+    #final-score { color: var(--text); font-size: 1.05rem; font-weight: 600; }
+  </style>
 </head>
 <body>
-  <div class="screen">
-    <div class="icon">🟦</div>
-    <h1>Tetris</h1>
-    <span class="badge">Vibe Coding Demo</span>
-    <p>게임 파일 준비 중입니다.<br>곧 플레이 가능한 버전이 업로드됩니다.</p>
-  </div>
+
+<div class="wrapper">
+  <canvas id="board" width="300" height="600"></canvas>
+  <aside class="sidebar">
+    <div class="panel">
+      <div class="panel-label">Score</div>
+      <div class="panel-value" id="score">0</div>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Level</div>
+      <div class="panel-value" id="level">1</div>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Lines</div>
+      <div class="panel-value" id="lines">0</div>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Next</div>
+      <canvas id="next-canvas" width="110" height="70"></canvas>
+    </div>
+    <div class="panel hint">
+      <b>← →</b> 이동<br>
+      <b>↑</b> 회전<br>
+      <b>↓</b> 빠른 하강<br>
+      <b>R</b> 재시작
+    </div>
+  </aside>
+</div>
+
+<div id="overlay">
+  <h2>Game Over</h2>
+  <div id="final-score"></div>
+  <p>Press <kbd>R</kbd> to restart</p>
+</div>
+
+<script>
+  /* ── 상수 ─────────────────────────── */
+  const COLS = 10, ROWS = 20, CELL = 30;
+
+  /* ── 7가지 테트로미노 정의 ─────────── */
+  const PIECES = [
+    { shape: [[1,1,1,1]],              color: '#22d3ee' }, // I
+    { shape: [[1,1],[1,1]],            color: '#fbbf24' }, // O
+    { shape: [[0,1,0],[1,1,1]],        color: '#a78bfa' }, // T
+    { shape: [[0,1,1],[1,1,0]],        color: '#34d399' }, // S
+    { shape: [[1,1,0],[0,1,1]],        color: '#fb7185' }, // Z
+    { shape: [[1,0,0],[1,1,1]],        color: '#60a5fa' }, // J
+    { shape: [[0,0,1],[1,1,1]],        color: '#f97316' }, // L
+  ];
+
+  /* ── 점수 테이블 (라인 수별) ─────── */
+  const SCORE_TABLE = [0, 100, 300, 500, 800];
+
+  const boardCanvas = document.getElementById('board');
+  const ctx = boardCanvas.getContext('2d');
+  const nextCanvas = document.getElementById('next-canvas');
+  const nctx = nextCanvas.getContext('2d');
+
+  /* ── 게임 상태 변수 ──────────────── */
+  let board, current, nextPiece;
+  let score, level, lines;
+  let dropTimer, dropInterval;
+  let isGameOver;
+
+  /* ── 초기화 ─────────────────────── */
+  function init() {
+    // 보드: 0 = 빈칸, 문자열 = 고정된 블록의 색상
+    board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+    score = 0; level = 1; lines = 0;
+    dropTimer = 0; dropInterval = 800;
+    isGameOver = false;
+    document.getElementById('overlay').classList.remove('show');
+    updateUI();
+    nextPiece = randomPiece();
+    spawnPiece();
+  }
+
+  function randomPiece() {
+    const p = PIECES[Math.floor(Math.random() * PIECES.length)];
+    return { shape: p.shape.map(r => [...r]), color: p.color };
+  }
+
+  /* ── 새 블록 생성 ───────────────── */
+  function spawnPiece() {
+    current = {
+      shape: nextPiece.shape.map(r => [...r]),
+      color: nextPiece.color,
+      x: Math.floor((COLS - nextPiece.shape[0].length) / 2),
+      y: 0,
+    };
+    nextPiece = randomPiece();
+    drawNext();
+
+    // 스폰 즉시 충돌 → 게임 오버
+    if (collides(current, current.x, current.y)) {
+      isGameOver = true;
+      document.getElementById('final-score').textContent = `Score: ${score}`;
+      document.getElementById('overlay').classList.add('show');
+    }
+  }
+
+  /* ── 충돌 검사 ──────────────────── */
+  function collides(piece, px, py) {
+    for (let r = 0; r < piece.shape.length; r++) {
+      for (let c = 0; c < piece.shape[r].length; c++) {
+        if (!piece.shape[r][c]) continue;
+        const nx = px + c, ny = py + r;
+        if (nx < 0 || nx >= COLS || ny >= ROWS) return true;
+        if (ny >= 0 && board[ny][nx]) return true;
+      }
+    }
+    return false;
+  }
+
+  /* ── 시계방향 90° 회전 ──────────── */
+  function rotateShape(shape) {
+    const rows = shape.length, cols = shape[0].length;
+    const result = Array.from({ length: cols }, () => Array(rows).fill(0));
+    for (let r = 0; r < rows; r++)
+      for (let c = 0; c < cols; c++)
+        result[c][rows - 1 - r] = shape[r][c];
+    return result;
+  }
+
+  /* ── 블록 보드에 고정 ───────────── */
+  function lock() {
+    for (let r = 0; r < current.shape.length; r++)
+      for (let c = 0; c < current.shape[r].length; c++)
+        if (current.shape[r][c])
+          board[current.y + r][current.x + c] = current.color;
+    clearLines();
+    spawnPiece();
+  }
+
+  /* ── 가로 라인 제거 + 점수 계산 ── */
+  function clearLines() {
+    let cleared = 0;
+    for (let r = ROWS - 1; r >= 0; r--) {
+      if (board[r].every(cell => cell !== 0)) {
+        board.splice(r, 1);
+        board.unshift(Array(COLS).fill(0));
+        cleared++;
+        r++; // 같은 인덱스 재검사 (위에서 내려온 행 확인)
+      }
+    }
+    if (!cleared) return;
+    lines += cleared;
+    score += SCORE_TABLE[cleared] * level;
+    level = Math.floor(lines / 10) + 1;
+    dropInterval = Math.max(80, 800 - (level - 1) * 72);
+    updateUI();
+  }
+
+  /* ── UI 수치 업데이트 ───────────── */
+  function updateUI() {
+    document.getElementById('score').textContent = score;
+    document.getElementById('level').textContent = level;
+    document.getElementById('lines').textContent = lines;
+  }
+
+  /* ── 셀 하나 그리기 ─────────────── */
+  function drawCell(context, x, y, color) {
+    const px = x * CELL, py = y * CELL;
+    context.fillStyle = color;
+    context.fillRect(px + 1, py + 1, CELL - 2, CELL - 2);
+    // 상단 하이라이트
+    context.fillStyle = 'rgba(255,255,255,0.18)';
+    context.fillRect(px + 2, py + 2, CELL - 4, 5);
+  }
+
+  /* ── 보드 전체 그리기 ───────────── */
+  function drawBoard() {
+    ctx.clearRect(0, 0, boardCanvas.width, boardCanvas.height);
+    // 격자 선
+    ctx.strokeStyle = 'rgba(90,140,180,0.06)';
+    ctx.lineWidth = 0.5;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        ctx.strokeRect(c * CELL, r * CELL, CELL, CELL);
+        if (board[r][c]) drawCell(ctx, c, r, board[r][c]);
+      }
+    }
+  }
+
+  /* ── 고스트 블록 (착지 위치 미리보기) */
+  function drawGhost() {
+    let ghostY = current.y;
+    while (!collides(current, current.x, ghostY + 1)) ghostY++;
+    if (ghostY === current.y) return;
+    ctx.globalAlpha = 0.18;
+    for (let r = 0; r < current.shape.length; r++)
+      for (let c = 0; c < current.shape[r].length; c++)
+        if (current.shape[r][c])
+          drawCell(ctx, current.x + c, ghostY + r, current.color);
+    ctx.globalAlpha = 1;
+  }
+
+  /* ── 현재 블록 그리기 ───────────── */
+  function drawCurrent() {
+    for (let r = 0; r < current.shape.length; r++)
+      for (let c = 0; c < current.shape[r].length; c++)
+        if (current.shape[r][c])
+          drawCell(ctx, current.x + c, current.y + r, current.color);
+  }
+
+  /* ── 다음 블록 미리보기 그리기 ──── */
+  function drawNext() {
+    nctx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
+    const nc = 22;
+    const offX = Math.floor((nextCanvas.width  - nextPiece.shape[0].length * nc) / 2);
+    const offY = Math.floor((nextCanvas.height - nextPiece.shape.length    * nc) / 2);
+    for (let r = 0; r < nextPiece.shape.length; r++)
+      for (let c = 0; c < nextPiece.shape[r].length; c++)
+        if (nextPiece.shape[r][c]) {
+          nctx.fillStyle = nextPiece.color;
+          nctx.fillRect(offX + c * nc + 1, offY + r * nc + 1, nc - 2, nc - 2);
+          nctx.fillStyle = 'rgba(255,255,255,0.18)';
+          nctx.fillRect(offX + c * nc + 2, offY + r * nc + 2, nc - 4, 5);
+        }
+  }
+
+  /* ── 키보드 입력 ────────────────── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'r' || e.key === 'R') { init(); return; }
+    if (isGameOver) return;
+
+    switch (e.key) {
+      case 'ArrowLeft':
+        e.preventDefault();
+        if (!collides(current, current.x - 1, current.y)) current.x--;
+        break;
+
+      case 'ArrowRight':
+        e.preventDefault();
+        if (!collides(current, current.x + 1, current.y)) current.x++;
+        break;
+
+      case 'ArrowDown':
+        e.preventDefault();
+        if (!collides(current, current.x, current.y + 1)) {
+          current.y++;
+          score++;   // 소프트 드롭 보너스
+          updateUI();
+        } else {
+          lock();
+        }
+        dropTimer = 0;
+        break;
+
+      case 'ArrowUp':
+        e.preventDefault();
+        // 회전 후 벽 킥 (기본 → 좌 1칸 → 우 1칸)
+        const rotated = rotateShape(current.shape);
+        const kicks = [0, -1, 1, -2, 2];
+        for (const kick of kicks) {
+          if (!collides({ shape: rotated }, current.x + kick, current.y)) {
+            current.shape = rotated;
+            current.x += kick;
+            break;
+          }
+        }
+        break;
+    }
+
+    // 입력 후 즉시 재렌더
+    if (!isGameOver) { drawBoard(); drawGhost(); drawCurrent(); }
+  });
+
+  /* ── 메인 게임 루프 ─────────────── */
+  let lastTime = 0;
+  function loop(ts) {
+    const dt = ts - lastTime;
+    lastTime = ts;
+
+    if (!isGameOver) {
+      // 자동 하강 타이머
+      dropTimer += dt;
+      if (dropTimer >= dropInterval) {
+        dropTimer = 0;
+        if (!collides(current, current.x, current.y + 1)) {
+          current.y++;
+        } else {
+          lock();
+        }
+      }
+      // 게임 오버 전환 후 한 번 더 체크
+      if (!isGameOver) {
+        drawBoard();
+        drawGhost();
+        drawCurrent();
+      }
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  /* ── 시작 ──────────────────────── */
+  init();
+  requestAnimationFrame(loop);
+</script>
 </body>
 </html>
