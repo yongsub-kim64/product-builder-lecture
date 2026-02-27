@@ -114,18 +114,20 @@
     }
     #m-next-canvas { display: block; }
 
-    /* ── 터치 컨트롤 (기본 숨김, 하단 고정) */
+    /* ── 터치 컨트롤 (기본 숨김, 플로우 하단 160px) */
     .touch-pad {
       display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 160px;
+      flex-shrink: 0;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-rows: 1fr 1fr;
       gap: 8px;
       padding: 10px 28px calc(10px + env(safe-area-inset-bottom, 0px));
       background: rgba(7,10,16,.92);
       border-top: 1px solid rgba(0,212,255,.2);
       justify-items: center;
+      align-items: center;
     }
     .tc-btn {
       width:  68px;
@@ -153,8 +155,9 @@
     #btn-down   { grid-area: 2 / 2; }
     #btn-right  { grid-area: 2 / 3; }
 
-    /* ── 모바일 미디어 쿼리 ─────────────── */
-    @media (max-width: 639px) {
+    /* ── 터치 기기 레이아웃 (너비 무관, 터치 지원 여부로 판단)
+       Z Fold 펼침 화면처럼 넓어도 터치 기기면 버튼 표시  ── */
+    @media (hover: none) and (pointer: coarse) {
       .app {
         justify-content: flex-start;
       }
@@ -200,7 +203,7 @@
       color: var(--muted);
       font-size: 0.88rem;
     }
-    @media (max-width: 639px) {
+    @media (hover: none) and (pointer: coarse) {
       .overlay-mobile { display: block; }
     }
   </style>
@@ -308,16 +311,19 @@
   let CELL = 30;
 
   function calcCell() {
-    if (window.innerWidth >= 640) {
-      // 데스크탑 / Z Fold 펼친 화면 → 고정 크기
+    // 터치 기기 여부: 너비 기준이 아닌 포인터 타입으로 판단
+    // → Z Fold 펼침(넓은 화면)도 터치 기기면 터치 레이아웃 적용
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) {
+      // 데스크탑 (마우스) → 고정 셀 크기
       CELL = 30;
     } else {
-      // 모바일: 사용 가능한 너비/높이에서 셀 크기 결정
-      const INFO_H   = 50;   // 상단 정보바
-      const PAD_H    = 146;  // 터치패드 (고정 하단)
-      const MARGIN   = 16;
-      const availW   = window.innerWidth  - MARGIN;
-      const availH   = window.innerHeight - INFO_H - PAD_H - MARGIN;
+      // 터치 기기: 정보바(50px) + 터치패드(160px) + 여백 제외한 공간에 피팅
+      const INFO_H = 50;
+      const PAD_H  = 160;
+      const MARGIN = 16;
+      const availW = window.innerWidth  - MARGIN;
+      const availH = window.innerHeight - INFO_H - PAD_H - MARGIN;
       CELL = Math.max(16, Math.floor(Math.min(availW / COLS, availH / ROWS)));
     }
     boardCanvas.width  = CELL * COLS;
