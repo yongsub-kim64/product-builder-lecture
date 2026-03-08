@@ -1,11 +1,11 @@
 ---
 title: "Privacy Policy"
-description: "chulbuji.com Privacy Policy - Compliant with Korean PIPA, EU GDPR, and US CCPA/CPRA"
+description: "chulbuji.com Privacy Policy - Compliant with Korean PIPA, EU GDPR, and US CCPA/CPRA. Covers website, AI tools, and Voice Running Coach health data processing."
 effectiveDate: "February 8, 2026"
-lastUpdated: "February 10, 2026"
+lastUpdated: "March 7, 2026"
 ---
 
-**Effective:** February 8, 2026 | **Last updated:** February 10, 2026
+**Effective:** February 8, 2026 | **Last updated:** March 7, 2026
 
 ---
 
@@ -86,6 +86,36 @@ Prompts and outputs are retained only as long as needed. You can request deletio
 
 ---
 
+## 04-A. Health & Fitness App Data
+
+> 📱 **Voice Running Coach** — This section applies to the Voice Running Coach mobile app only.
+
+### Data collected
+
+| When | What | How |
+|------|------|-----|
+| Using the app | Heart rate (BPM), running pace (min/km), distance, GPS location (optional), workout history | Android Health Connect API, Wear OS Health Services — automatic |
+
+### Purpose
+
+Real-time voice coaching based on heart rate zones during running.
+
+### Data handling principles
+
+- Heart rate, pace, and distance data are used solely to power coaching features.
+- Health data is never sold to third parties or used for advertising purposes.
+- Data is stored locally on device by default; cloud sync is processed only with your explicit consent.
+
+### Medical disclaimer
+
+> This app is for **fitness and wellness purposes only**. It is **NOT** intended for medical diagnosis, treatment, or prevention of any disease or health condition. Consult a healthcare professional before starting any exercise program.
+
+### Android Health Connect
+
+This app accesses health data through the Android Health Connect API. You can change or revoke Health Connect permissions at any time through the Health Connect app on your device.
+
+---
+
 ## 05. Cookies and Tracking
 
 | Type | Description | Example |
@@ -133,8 +163,12 @@ I do not share your personal data with third parties except where you have conse
 | Google Analytics | Traffic analysis | [Google Privacy Policy](https://policies.google.com/privacy) |
 | Google AdSense | Ad serving | [Google Ad Policies](https://policies.google.com/technologies/ads) |
 | Firebase | Hosting and infrastructure | [Firebase Privacy](https://firebase.google.com/support/privacy) |
+| Cloudflare | CDN and hosting infrastructure | [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/) |
 | Payment processors (Toss Payments, Stripe, PayPal, etc.) | Transaction processing, auto-renewal management, refund processing | To be announced upon service selection; refer to each provider's privacy policy |
-| AI API providers (OpenAI, Anthropic, etc.) | AI tool processing | Specified per service |
+| Polar.sh | Payment processing | [Polar Privacy Policy](https://polar.sh/legal/privacy) |
+| Anthropic Claude | AI tool processing — prompts and outputs | [Anthropic Privacy Policy](https://www.anthropic.com/privacy) |
+| OpenAI GPT | AI tool processing — prompts and outputs | [OpenAI Privacy Policy](https://openai.com/privacy) |
+| Android Health Connect | Health data read access (Voice Running Coach app) | [Android / Google Privacy Policy](https://policies.google.com/privacy) |
 
 ---
 
@@ -145,8 +179,9 @@ Your data may be transferred to and processed in countries outside your country 
 | Recipient | Country | Data | Safeguard |
 |-----------|---------|------|-----------|
 | Google (Analytics, AdSense) | United States | Cookies, usage data | EU Standard Contractual Clauses (SCC) |
-| AI API providers | United States | Prompts, outputs | Data Processing Agreements (DPA) |
-| Payment provider | Varies | Payment info | PCI DSS compliance |
+| AI API providers (Anthropic Claude, OpenAI GPT) | United States | Prompts, outputs | Data Processing Agreements (DPA) |
+| Payment processors | Varies by service | Payment info | PCI DSS compliance |
+| Cloudflare | United States / Global | Web traffic metadata | EU Standard Contractual Clauses (SCC) |
 
 Transfers are carried out in accordance with GDPR Article 46 and Korean PIPA Article 28-8, using appropriate safeguards.
 
@@ -168,7 +203,10 @@ Request that I stop processing your data.
 ### Withdraw consent
 Withdraw consent to data collection and use at any time.
 
-To exercise any right, email [hello@chulbuji.com](mailto:hello@chulbuji.com). I will respond within 10 days (or 30 days where GDPR applies).
+### Data portability
+You have the right to receive your personal data in a structured, commonly used, machine-readable format (e.g., JSON or CSV) and to have it transmitted to another controller (GDPR Article 20).
+
+To exercise any of these rights, email [hello@chulbuji.com](mailto:hello@chulbuji.com). Requests will be processed within 10 business days (30 days for GDPR requests).
 
 ---
 
@@ -267,9 +305,22 @@ This policy is governed by the laws of the Republic of Korea. However, mandatory
 
 ---
 
-## 16. Privacy Officer and Contact
+## 16. Data Protection Contacts
 
-**Privacy Officer / Data Controller:** chulbuji  
+**Data Protection Officer / Data Controller:** chulbuji
 **Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
 
 Based in South Korea. Responsive to all privacy inquiries worldwide.
+
+### For Korean residents
+
+For privacy-related reports or consultations:
+
+- **KISA Privacy Center:** [privacy.kisa.or.kr](https://privacy.kisa.or.kr) / 118
+- **Personal Information Dispute Mediation Committee:** kopico.go.kr / 1833-6972
+- **Supreme Prosecutors' Office Cyber Investigation:** spo.go.kr / 1301
+- **National Police Agency Cyber Bureau:** ecrm.police.go.kr / 182
+
+### For EU/EEA residents
+
+You may also contact your local Data Protection Authority (DPA). A list of EU DPAs is available at [edpb.europa.eu](https://www.edpb.europa.eu/about-edpb/about-edpb/members_en).
