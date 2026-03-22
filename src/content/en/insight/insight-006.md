@@ -15,8 +15,10 @@ Segment 1: 200 spm. Segment 2: 3,074 spm. Segment 3: 3,648 spm.
 
 No human takes 3,000 steps per minute. I knew right then — this app couldn't be trusted.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy1.jpg" alt="Today's run summary — 5.43km / 45:53 / 8'26&quot;" />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy1.jpg"
+       style="width:100%;"
+       alt="Today's run summary — 5.43km / 45:53 / 8'26&quot;" />
   <figcaption>Today's run summary — 5.43km / 45:53 / 8'26"</figcaption>
 </figure>
 
@@ -34,8 +36,10 @@ My job was to judge and connect in between.
 And it wasn't just cadence. Pace was jumping between 3 and 14 min/km. Distance was skipping in 400m chunks. The watch and GPS were pulling in opposite directions and colliding. Five separate problems — each diagnosed separately, each handled separately.
 Not "fix everything." One cause at a time. One fix at a time.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy2.jpg" alt="Run history — three days of data, building up" />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy2.jpg"
+       style="width:100%;"
+       alt="Run history — three days of data, building up" />
   <figcaption>Run history — three days of data, building up</figcaption>
 </figure>
 
@@ -50,8 +54,10 @@ Today wasn't a day for adding features.
 It was the day a person who can't read code, working with multiple AIs across clear steps, rebuilt the foundation for data worth trusting.
 The coaching comes after that.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy3.jpg" alt="Split data — Segment 2: 3,074 spm. Segment 3: 3,648 spm. That was the problem." />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy3.jpg"
+       style="width:100%;"
+       alt="Split data — Segment 2: 3,074 spm. Segment 3: 3,648 spm. That was the problem." />
   <figcaption>Split data — Segment 2: 3,074 spm. Segment 3: 3,648 spm. That was the problem.</figcaption>
 </figure>
 

@@ -15,8 +15,10 @@ published: true
 
 사람이 1분에 3000보를 뛸 수는 없다. 이 앱, 믿으면 안 되겠다 싶었다.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy1.jpg" alt="오늘의 러닝 요약 — 5.43km / 45:53 / 8'26&quot;" />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy1.jpg"
+       style="width:100%;"
+       alt="오늘의 러닝 요약 — 5.43km / 45:53 / 8'26&quot;" />
   <figcaption>오늘의 러닝 요약 — 5.43km / 45:53 / 8'26"</figcaption>
 </figure>
 
@@ -37,8 +39,10 @@ published: true
 충돌하고 있었다. 다섯 군데의 문제를 각각 진단하고, 각각 지시했다.
 "전부 고쳐줘"가 아니라 하나씩 원인을 짚고 하나씩 처리하는 방식으로.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy2.jpg" alt="러닝 기록 목록 — 3일 연속 데이터가 쌓이고 있다" />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy2.jpg"
+       style="width:100%;"
+       alt="러닝 기록 목록 — 3일 연속 데이터가 쌓이고 있다" />
   <figcaption>러닝 기록 목록 — 3일 연속 데이터가 쌓이고 있다</figcaption>
 </figure>
 
@@ -55,8 +59,10 @@ published: true
 숫자를 믿을 수 있는 앱으로 만드는 기초를 다시 잡은 날이었다.
 코칭은 그다음이다.
 
-<figure style="text-align:center">
-  <img src="/images/insight/Runbuddy3.jpg" alt="구간 기록 — 2구간 3074spm, 3구간 3648spm. 이게 문제였다" />
+<figure style="text-align:center; max-width:360px; margin:0 auto;">
+  <img src="/images/insight/Runbuddy3.jpg"
+       style="width:100%;"
+       alt="구간 기록 — 2구간 3074spm, 3구간 3648spm. 이게 문제였다" />
   <figcaption>구간 기록 — 2구간 3074spm, 3구간 3648spm. 이게 문제였다</figcaption>
 </figure>
 
