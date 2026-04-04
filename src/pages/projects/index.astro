@@ -40,10 +40,18 @@ const projects = (await getCollection('ko/projects'))
         <a href="/tools/lotto" class="project-link">사용하기 →</a>
       </div>
 
-      <div class="project-card project-card--planned">
-        <span class="project-status status-planned">계획 중</span>
-        <h3>AI 기록 분석기</h3>
-        <p>로드맵에 포함된 프로젝트입니다.</p>
+      <div class="project-card">
+        <span class="project-status status-active">진행 중</span>
+        <h3>Chulbuji RunBuddy</h3>
+        <p>AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다. 500m 구간 코칭, 야외 실측 테스트 진행 중.</p>
+        <a href="/projects/runbuddy" class="project-link">자세히 보기 →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-status status-experimental">실험 중</span>
+        <h3>AI로 주식 자동매매를 배워보는 실험</h3>
+        <p>계좌 개설, API 연동, 모의계좌 세팅 완료. 전략 설계부터 모의매매 테스트를 거쳐 실전 500만원 운용까지 — AI와 함께 배우며 기록하는 자동매매 실험.</p>
+        <a href="/projects/stock-auto-trade" class="project-link">자세히 보기 →</a>
       </div>
 
       <!-- Projects from content collection -->
@@ -126,10 +134,6 @@ const projects = (await getCollection('ko/projects'))
     margin-bottom: 1.5rem;
   }
 
-  .project-card--planned {
-    opacity: 0.5;
-  }
-
   .project-status {
     display: inline-block;
     padding: 0.25rem 0.75rem;
@@ -152,6 +156,11 @@ const projects = (await getCollection('ko/projects'))
   .status-planned {
     background: #fff3e0;
     color: #e65100;
+  }
+
+  .status-experimental {
+    background-color: #fce4ec;
+    color: #c62828;
   }
 
   .project-card h3 {
