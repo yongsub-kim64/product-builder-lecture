@@ -1,0 +1,90 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Chulbuji RunBuddy" description="AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다.">
+  <div class="project-detail">
+    <a href="/projects" class="back-link">← 프로젝트 목록</a>
+
+    <div class="project-header">
+      <span class="project-status status-active">진행 중</span>
+      <h1>Chulbuji RunBuddy</h1>
+    </div>
+
+    <section class="section">
+      <h2>개요</h2>
+      <p>AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다.</p>
+    </section>
+
+    <section class="section">
+      <h2>현재 상태</h2>
+      <p>야외 실측 테스트 진행 중.</p>
+    </section>
+
+    <section class="section">
+      <h2>관련 기록</h2>
+      <p class="placeholder">관련 기록이 곧 업데이트됩니다.</p>
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .project-detail {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-header h1 {
+    margin-top: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .status-active {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .section p {
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .placeholder {
+    color: #999;
+  }
+</style>
