@@ -1,9 +1,60 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
 
-const projects = (await getCollection('en/projects'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = [
+  {
+    updatedAt: new Date('2026-04-07'),
+    status: 'experimental',
+    statusLabel: 'Experimental',
+    title: 'AI Auto-Trading Experiment',
+    description: 'An experiment building and running an automated trading system with AI and ₩5M. No code written by hand — just rules, an AI assistant, and real capital on the line.',
+    href: '/en/projects/stock-auto-trade',
+    linkLabel: 'Learn more →',
+  },
+  {
+    updatedAt: new Date('2026-04-06'),
+    status: 'active',
+    statusLabel: 'In Progress',
+    title: 'Chulbuji RunBuddy',
+    description: 'AI voice coaching running app for Android + Wear OS dual devices. Monitors real-time pace and heart rate, delivering instant voice coaching when targets are missed. 500m interval coaching. Outdoor testing in progress.',
+    href: '/en/projects/runbuddy',
+    linkLabel: 'Learn more →',
+  },
+  {
+    updatedAt: new Date('2026-03-20'),
+    status: 'completed',
+    statusLabel: 'Completed',
+    title: 'Meta Chulbuji: Whispering Insight',
+    description: 'AI-powered voice analysis insight report. JoCoding Hackathon entry.',
+    href: '/en/log/hackathon-imperfect-start',
+    linkLabel: 'Learn More →',
+    thumbnail: 'https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg',
+    thumbnailHref: 'https://youtu.be/OZTfI3xmRFk',
+    thumbnailAlt: 'Meta Chulbuji: Whispering Insight',
+    extraLinks: [
+      { href: 'https://youtu.be/OZTfI3xmRFk', label: 'Hackathon Demo video' },
+      { href: 'https://insight.chulbuji.com', label: 'Visit site' },
+    ],
+  },
+  {
+    updatedAt: new Date('2026-03-15'),
+    status: 'active',
+    statusLabel: 'In Progress',
+    title: 'chulbuji.com Rebranding',
+    description: 'Transition from lottery sample to record hub. A journey of experimentation and recording with AI.',
+    href: '/en/log/001-rebrand-launch',
+    linkLabel: 'Learn More →',
+  },
+  {
+    updatedAt: new Date('2026-03-01'),
+    status: 'completed',
+    statusLabel: 'Completed',
+    title: 'Lottery Number Generator',
+    description: 'Lottery number recommendation tool based on cryptographically secure random number generation.',
+    href: '/en/tools/lotto',
+    linkLabel: 'Use Tool →',
+  },
+].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
 ---
 
 <PageLayout title="Projects" description="Ongoing projects and completed works">
@@ -13,54 +64,22 @@ const projects = (await getCollection('en/projects'))
     </p>
 
     <section class="projects-grid">
-      <!-- Featured Projects from backup -->
-      <div class="project-card">
-        <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener" class="project-thumbnail-link">
-          <img src="https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg"
-               alt="Meta Chulbuji: Whispering Insight"
-               class="project-thumbnail">
-        </a>
-        <span class="project-status status-completed">Completed</span>
-        <h3><a href="https://insight.chulbuji.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">Meta Chulbuji: Whispering Insight</a></h3>
-        <p>AI-powered voice analysis insight report. JoCoding Hackathon entry. <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener">Hackathon Demo video</a>, <a href="https://insight.chulbuji.com" target="_blank" rel="noopener">Visit site</a></p>
-        <a href="/en/log/hackathon-imperfect-start" class="project-link">Learn More →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-active">In Progress</span>
-        <h3>chulbuji.com Rebranding</h3>
-        <p>Transition from lottery sample to record hub. A journey of experimentation and recording with AI.</p>
-        <a href="/en/log/001-rebrand-launch" class="project-link">Learn More →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-completed">Completed</span>
-        <h3>Lottery Number Generator</h3>
-        <p>Lottery number recommendation tool based on cryptographically secure random number generation.</p>
-        <a href="/en/tools/lotto" class="project-link">Use Tool →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-active">In Progress</span>
-        <h3>Chulbuji RunBuddy</h3>
-        <p>AI voice coaching running app for Android + Wear OS dual devices. Monitors real-time pace and heart rate, delivering instant voice coaching when targets are missed. 500m interval coaching. Outdoor testing in progress.</p>
-        <a href="/en/projects/runbuddy" class="project-link">Learn more →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-experimental">Experimental</span>
-        <h3>Learning Stock Auto-Trading with AI</h3>
-        <p>Account setup, API integration, and paper trading account ready. From strategy design to live trading with ₩5M — an honest experiment in learning automated stock trading with AI.</p>
-        <a href="/en/projects/stock-auto-trade" class="project-link">Learn more →</a>
-      </div>
-
-      <!-- Projects from content collection -->
-      {projects.length > 0 && projects.map((project) => (
+      {projects.map((p) => (
         <div class="project-card">
-          <span class="project-status status-completed">Completed</span>
-          <h3>{project.data.title}</h3>
-          <p>{project.data.description}</p>
-          <a href={`/en/projects/${project.slug}`} class="project-link">Learn More →</a>
+          {p.thumbnail && (
+            <a href={p.thumbnailHref} target="_blank" rel="noopener" class="project-thumbnail-link">
+              <img src={p.thumbnail} alt={p.thumbnailAlt} class="project-thumbnail" />
+            </a>
+          )}
+          <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+          <h3>{p.title}</h3>
+          <p>
+            {p.description}
+            {p.extraLinks && p.extraLinks.map((l, i) => (
+              <span> <a href={l.href} target="_blank" rel="noopener">{l.label}</a>{i < p.extraLinks.length - 1 ? ',' : ''}</span>
+            ))}
+          </p>
+          <a href={p.href} class="project-link">{p.linkLabel}</a>
         </div>
       ))}
     </section>

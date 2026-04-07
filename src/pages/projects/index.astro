@@ -1,9 +1,60 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
 
-const projects = (await getCollection('ko/projects'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = [
+  {
+    updatedAt: new Date('2026-04-07'),
+    status: 'experimental',
+    statusLabel: '실험 중',
+    title: 'AI 자동매매 실험',
+    description: 'AI와 함께 500만원으로 자동매매 시스템을 직접 만들고 운용하는 실험. 코드 한 줄 없이, 규칙 엔진과 AI 보조로 실제 자본을 운용하는 경험을 기록한다.',
+    href: '/projects/stock-auto-trade',
+    linkLabel: '자세히 보기 →',
+  },
+  {
+    updatedAt: new Date('2026-04-06'),
+    status: 'active',
+    statusLabel: '진행 중',
+    title: 'Chulbuji RunBuddy',
+    description: 'AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다. 500m 구간 코칭, 야외 실측 테스트 진행 중.',
+    href: '/projects/runbuddy',
+    linkLabel: '자세히 보기 →',
+  },
+  {
+    updatedAt: new Date('2026-03-20'),
+    status: 'completed',
+    statusLabel: '완료',
+    title: '메타철부지: 위스퍼링 인사이트',
+    description: 'AI 기반 음성 분석 인사이트 리포트. 조코딩 해커톤 출품작.',
+    href: '/log/hackathon-imperfect-start',
+    linkLabel: '자세히 보기 →',
+    thumbnail: 'https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg',
+    thumbnailHref: 'https://youtu.be/OZTfI3xmRFk',
+    thumbnailAlt: '메타철부지: 위스퍼링 인사이트',
+    extraLinks: [
+      { href: 'https://youtu.be/OZTfI3xmRFk', label: '해커톤 Demo 영상' },
+      { href: 'https://insight.chulbuji.com', label: '사이트 바로가기' },
+    ],
+  },
+  {
+    updatedAt: new Date('2026-03-15'),
+    status: 'active',
+    statusLabel: '진행 중',
+    title: 'chulbuji.com 리브랜딩',
+    description: '로또 샘플에서 기록 허브로의 전환. AI와 함께하는 실험과 기록의 여정.',
+    href: '/log/001-rebrand-launch',
+    linkLabel: '자세히 보기 →',
+  },
+  {
+    updatedAt: new Date('2026-03-01'),
+    status: 'completed',
+    statusLabel: '완료',
+    title: '로또 번호 생성기',
+    description: '암호학적으로 안전한 난수 생성 기반 로또 번호 추천 도구.',
+    href: '/tools/lotto',
+    linkLabel: '사용하기 →',
+  },
+].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
 ---
 
 <PageLayout title="프로젝트" description="진행 중인 프로젝트와 완료된 작업물들">
@@ -13,54 +64,22 @@ const projects = (await getCollection('ko/projects'))
     </p>
 
     <section class="projects-grid">
-      <!-- Featured Projects from backup -->
-      <div class="project-card">
-        <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener" class="project-thumbnail-link">
-          <img src="https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg"
-               alt="메타철부지: 위스퍼링 인사이트"
-               class="project-thumbnail">
-        </a>
-        <span class="project-status status-completed">완료</span>
-        <h3><a href="https://insight.chulbuji.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">메타철부지: 위스퍼링 인사이트</a></h3>
-        <p>AI 기반 음성 분석 인사이트 리포트. 조코딩 해커톤 출품작. <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener">해커톤 Demo 영상</a>, <a href="https://insight.chulbuji.com" target="_blank" rel="noopener">사이트 바로가기</a></p>
-        <a href="/log/hackathon-imperfect-start" class="project-link">자세히 보기 →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-active">진행 중</span>
-        <h3>chulbuji.com 리브랜딩</h3>
-        <p>로또 샘플에서 기록 허브로의 전환. AI와 함께하는 실험과 기록의 여정.</p>
-        <a href="/log/001-rebrand-launch" class="project-link">자세히 보기 →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-completed">완료</span>
-        <h3>로또 번호 생성기</h3>
-        <p>암호학적으로 안전한 난수 생성 기반 로또 번호 추천 도구.</p>
-        <a href="/tools/lotto" class="project-link">사용하기 →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-active">진행 중</span>
-        <h3>Chulbuji RunBuddy</h3>
-        <p>AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다. 500m 구간 코칭, 야외 실측 테스트 진행 중.</p>
-        <a href="/projects/runbuddy" class="project-link">자세히 보기 →</a>
-      </div>
-
-      <div class="project-card">
-        <span class="project-status status-experimental">실험 중</span>
-        <h3>AI로 주식 자동매매를 배워보는 실험</h3>
-        <p>계좌 개설, API 연동, 모의계좌 세팅 완료. 전략 설계부터 모의매매 테스트를 거쳐 실전 500만원 운용까지 — AI와 함께 배우며 기록하는 자동매매 실험.</p>
-        <a href="/projects/stock-auto-trade" class="project-link">자세히 보기 →</a>
-      </div>
-
-      <!-- Projects from content collection -->
-      {projects.length > 0 && projects.map((project) => (
+      {projects.map((p) => (
         <div class="project-card">
-          <span class="project-status status-completed">완료</span>
-          <h3>{project.data.title}</h3>
-          <p>{project.data.description}</p>
-          <a href={`/projects/${project.slug}`} class="project-link">자세히 보기 →</a>
+          {p.thumbnail && (
+            <a href={p.thumbnailHref} target="_blank" rel="noopener" class="project-thumbnail-link">
+              <img src={p.thumbnail} alt={p.thumbnailAlt} class="project-thumbnail" />
+            </a>
+          )}
+          <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+          <h3>{p.title}</h3>
+          <p>
+            {p.description}
+            {p.extraLinks && p.extraLinks.map((l, i) => (
+              <span> <a href={l.href} target="_blank" rel="noopener">{l.label}</a>{i < p.extraLinks.length - 1 ? ',' : ''}</span>
+            ))}
+          </p>
+          <a href={p.href} class="project-link">{p.linkLabel}</a>
         </div>
       ))}
     </section>
