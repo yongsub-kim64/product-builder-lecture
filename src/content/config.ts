@@ -18,6 +18,10 @@ const logCollection = defineCollection({
     excerpt: z.string(),
     published: z.boolean().default(true),
     showInLog: z.boolean().default(true),
+    project_tag: z.string().optional(),
+    version: z.string().optional(),
+    project_link: z.string().optional(),
+    next_action: z.string().optional(),
   }),
 });
 
