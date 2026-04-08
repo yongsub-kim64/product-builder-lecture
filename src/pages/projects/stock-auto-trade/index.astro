@@ -7,8 +7,9 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <a href="/projects" class="back-link">← 프로젝트 목록</a>
 
     <div class="project-header">
-      <span class="project-status status-experimental">실험 중</span>
+      <span class="project-status status-active">운영 중</span>
       <h1>AI 자동매매 실험</h1>
+      <p class="project-meta">현재 버전: <strong>v1.1</strong> · 최근 업데이트: <strong>2026-04-08</strong></p>
     </div>
 
     <section class="section">
@@ -34,12 +35,22 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>MVP 완성. 첫 모의투자 자동 실행 시작. 결과는 Insight에 계속 기록 중.</p>
+      <p>v1.1 운영 중. 시장 레짐 2중 필터 적용 완료. 레짐 불량 시 신규 매수 자동 차단 작동 확인.</p>
+    </section>
+
+    <section class="section">
+      <h2>업데이트 이력</h2>
+      <ul>
+        <li><strong>v1.1</strong> · 2026-04-08 — 시장 레짐 2중 필터 / 거래대금 100억 필터 / 매도 조건 IMMEDIATE·NEXT_OPEN 분기 / 당일 재매수 금지 / 로그 체계 정리</li>
+        <li><strong>v1.0</strong> · 2026-04-07 — KIS API 연동, 규칙 엔진, 텔레그램 알림, 스케줄러 MVP 완성</li>
+      </ul>
     </section>
 
     <section class="section">
       <h2>관련 기록</h2>
       <ul>
+        <li><a href="/log/2026-04-08-auto-trading-v1.1">자동매매 v1.1 운영 세팅 및 첫 실행 대기 로그</a> (2026-04-08)</li>
+        <li><a href="/log/stock-auto-trade-mvp-complete">자동매매 MVP 완성 로그</a> (2026-04-07)</li>
         <li><a href="/insight/insight-009">AI 자동매매를 만들면서 몰랐던 것</a></li>
       </ul>
     </section>
@@ -84,6 +95,17 @@ import PageLayout from '../../../layouts/PageLayout.astro';
   .status-experimental {
     background-color: #fce4ec;
     color: #c62828;
+  }
+
+  .status-active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .project-meta {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
   }
 
   .section {
