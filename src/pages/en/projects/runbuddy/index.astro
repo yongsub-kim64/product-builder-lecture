@@ -1,5 +1,14 @@
 ---
 import PageLayout from '../../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('en/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'RunBuddy'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('en/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'RunBuddy'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <PageLayout title="Chulbuji RunBuddy" description="AI voice coaching running app for Android + Wear OS dual devices. Monitors real-time pace and heart rate, delivering instant voice coaching when targets are missed.">
@@ -23,7 +32,34 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Related Logs</h2>
-      <p class="placeholder">Related logs coming soon.</p>
+      {relatedLogs.length > 0 ? (
+        <ul class="related-list">
+          {relatedLogs.map(post => (
+            <li>
+              <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related logs yet. Updates coming soon.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>Related Insights</h2>
+      {relatedInsights.length > 0 ? (
+        <ul class="related-list">
+          {relatedInsights.map(post => (
+            <li>
+              <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related insights yet. Updates coming soon.</p>
+      )}
     </section>
   </div>
 </PageLayout>
@@ -86,5 +122,37 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
   .placeholder {
     color: #999;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .related-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
   }
 </style>

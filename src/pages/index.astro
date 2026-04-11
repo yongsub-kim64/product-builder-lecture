@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LogCard from '../components/LogCard.astro';
 import { getCollection } from 'astro:content';
 
-const logPosts = await getCollection('ko/log', ({ data }) => data.published !== false);
+const logPosts = await getCollection('ko/log', ({ data }) => data.published !== false && data.showInLog !== false);
 const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 ---
 
@@ -38,6 +38,14 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
     </div>
     <div class="view-all">
       <a href="/log">모든 기록 보기 →</a>
+    </div>
+  </section>
+
+  <section class="archive-entry">
+    <div class="archive-entry-inner">
+      <h2>전체 아카이브</h2>
+      <p>Log와 Insight를 한 곳에서 시간순으로 탐색하세요.<br>모든 기록과 인사이트가 날짜 기준으로 정리되어 있습니다.</p>
+      <a href="/archive" class="archive-link">아카이브 전체 보기 →</a>
     </div>
   </section>
 </BaseLayout>
@@ -163,6 +171,50 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
 
   .view-all a:hover {
     text-decoration: underline;
+  }
+
+  .archive-entry {
+    background: #f8f8fc;
+    border-top: 1px solid #eee;
+  }
+
+  .archive-entry-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 2rem + 2.5vw, 4rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+    text-align: center;
+  }
+
+  .archive-entry h2 {
+    font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .archive-entry p {
+    color: #555;
+    font-size: clamp(0.9375rem, 0.9rem + 0.1875vw, 1.0625rem);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    word-break: keep-all;
+  }
+
+  .archive-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 0.9rem + 0.1875vw, 1.0625rem);
+    transition: background 0.2s, transform 0.2s;
+    min-height: 48px;
+  }
+
+  .archive-link:hover {
+    background: #764ba2;
+    transform: translateY(-1px);
   }
 
   @media (max-width: 640px) {

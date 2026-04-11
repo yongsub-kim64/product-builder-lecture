@@ -7,9 +7,10 @@ interface Props {
   title: string;
   description?: string;
   titleOverride?: string;
+  noindex?: boolean;
 }
 
-const { title, description, titleOverride } = Astro.props;
+const { title, description, titleOverride, noindex } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const metaTitle = titleOverride ?? `${title} | chulbuji`;
@@ -25,6 +26,7 @@ const ogTitle = titleOverride ?? title;
   <link rel="canonical" href={canonicalURL} />
   
   <title>{metaTitle}</title>
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   {description && <meta name="description" content={description} />}
 
   <!-- Open Graph -->

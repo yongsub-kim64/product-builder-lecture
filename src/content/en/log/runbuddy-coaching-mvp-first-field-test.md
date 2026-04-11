@@ -4,6 +4,8 @@ date: 2026-03-24
 excerpt: "After implementing the coaching-focused MVP, I ran a 500m indoor test. Identified three issues: unresponsive start button, mismatched voice coaching due to missing GPS data, and a coaching interval mismatch with the test distance. Each root cause was isolated and fixed. The patched build gets validated in an outdoor run tomorrow."
 tags: ["RunBuddy", "RunningAppDev", "MVPValidation", "GPSPace", "VoiceCoaching", "AICollabDev"]
 published: true
+project_tag: "RunBuddy"
+project_link: "runbuddy"
 ---
 
 Today I ran the first field test of RunBuddy's coaching-focused MVP.

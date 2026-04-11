@@ -4,6 +4,7 @@ date: 2026-04-10
 excerpt: "I shifted from chasing bugs one by one to a structure that separates judgment from implementation. My coding ability didn't change. What changed was where I focus."
 tags: ["AutoTrading", "AICollaboration", "MetaChulbuji", "StructureDesign", "Operations", "Insight", "ClaudeCode"]
 published: true
+project_tag: "AutoTrading"
 ---
 
 At first, whenever a bug appeared, I followed it myself.

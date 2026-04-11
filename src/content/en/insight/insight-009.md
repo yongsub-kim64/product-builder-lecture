@@ -4,6 +4,7 @@ date: 2026-04-07
 excerpt: "I didn't write a single line of code. But the skill I used most today wasn't coding. It was the ability to precisely instruct 'what to build.'"
 tags: ["AutoTrading", "KIS API", "RuleEngine", "AICollaboration", "BuildingInPublic", "Chulbuji"]
 published: true
+project_tag: "AutoTrading"
 ---
 
 Today I finally finished building an automated trading system. Tomorrow morning, it runs alone for the first time.

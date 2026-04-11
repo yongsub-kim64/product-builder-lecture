@@ -4,6 +4,7 @@ date: 2026-03-09
 excerpt: "I don't know how to code. I've never written a single line myself. But today, the app I built spoke to me. A field test record of Chulbuji RunBuddy."
 tags: ["BuildingInPublic", "RunBuddy", "ShipFirst", "Chulbuji1stYear", "Running"]
 published: true
+project_tag: "RunBuddy"
 ---
 
 I don't know how to code.

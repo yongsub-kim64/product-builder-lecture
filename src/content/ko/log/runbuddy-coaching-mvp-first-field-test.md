@@ -4,6 +4,8 @@ date: 2026-03-24
 excerpt: "코칭 중심 MVP 구현 후 500m 실내 테스트를 진행했다. 시작 버튼 무반응, GPS 부재 시 잘못된 음성 코칭, 코칭 간격 설정과 테스트 거리 불일치 문제를 확인했고, 원인을 분리해 수정했다. 내일 실외 러닝에서 수정본을 다시 검증할 예정이다."
 tags: ["RunBuddy", "러닝앱개발", "MVP검증", "GPS페이스", "음성코칭", "AI협업개발"]
 published: true
+project_tag: "RunBuddy"
+project_link: "runbuddy"
 ---
 
 오늘은 RunBuddy의 코칭 중심 MVP를 처음으로 실기 검증했다.

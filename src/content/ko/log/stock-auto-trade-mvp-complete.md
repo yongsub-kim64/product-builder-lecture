@@ -5,6 +5,8 @@ excerpt: "KIS API 연동, 규칙 엔진, 손실한도 안전장치, 텔레그램
 tags: ["자동매매", "KIS API", "규칙엔진", "AI협업", "BuildingInPublic", "주식자동매매"]
 published: true
 showInLog: true
+project_tag: "자동매매"
+project_link: "stock-auto-trade"
 ---
 
 날짜: 2026-04-07

@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const logs = await getCollection('ko/log', ({ data }) =>
+  data.published !== false && data.showInLog !== false
+);
+const insights = await getCollection('ko/insight', ({ data }) =>
+  data.published !== false
+);
+
+type PostType = 'log' | 'insight';
+type ArchivePost = {
+  slug: string;
+  type: PostType;
+  title: string;
+  excerpt: string;
+  date: Date;
+  tags?: string[];
+  project_tag?: string;
+};
+
+const allPosts: ArchivePost[] = [
+  ...logs.map(p => ({
+    slug: p.slug,
+    type: 'log' as PostType,
+    title: p.data.title,
+    excerpt: p.data.excerpt,
+    date: p.data.date,
+    tags: p.data.tags,
+    project_tag: p.data.project_tag,
+  })),
+  ...insights.map(p => ({
+    slug: p.slug,
+    type: 'insight' as PostType,
+    title: p.data.title,
+    excerpt: p.data.excerpt,
+    date: p.data.date,
+    tags: p.data.tags,
+    project_tag: p.data.project_tag,
+  })),
+].sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const totalLog = logs.length;
+const totalInsight = insights.length;
+---
+
+<BaseLayout
+  title="아카이브"
+  description={`철부지의 모든 기록과 인사이트 — Log ${totalLog}편 · Insight ${totalInsight}편을 시간순으로 탐색합니다.`}
+>
+  <div class="archive-page">
+    <header class="archive-header">
+      <h1>아카이브</h1>
+      <p class="archive-desc">Log와 Insight를 시간순으로 전체 탐색합니다.</p>
+      <div class="archive-stats">
+        <span>Log <strong>{totalLog}</strong></span>
+        <span>Insight <strong>{totalInsight}</strong></span>
+        <span>합계 <strong>{totalLog + totalInsight}</strong></span>
+      </div>
+    </header>
+
+    <div class="filter-bar" role="group" aria-label="유형 필터">
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="log">기록 (Log)</button>
+      <button class="filter-btn" data-filter="insight">인사이트 (Insight)</button>
+    </div>
+
+    <ol class="archive-list" id="archive-list">
+      {allPosts.map(post => (
+        <li class="archive-item" data-type={post.type}>
+          <a href={`/${post.type}/${post.slug}`} class="archive-link">
+            <div class="archive-meta">
+              <time datetime={post.date.toISOString()}>
+                {post.date.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+              </time>
+              <span class={`type-badge type-${post.type}`}>
+                {post.type === 'log' ? 'Log' : 'Insight'}
+              </span>
+              {post.project_tag && (
+                <span class="project-badge">{post.project_tag}</span>
+              )}
+            </div>
+            <h2 class="archive-title">{post.title}</h2>
+            <p class="archive-excerpt">{post.excerpt}</p>
+            {post.tags && post.tags.length > 0 && (
+              <div class="archive-tags">
+                {post.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</BaseLayout>
+
+<style>
+  .archive-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 4rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+  }
+
+  .archive-header {
+    margin-bottom: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  }
+
+  .archive-header h1 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .archive-desc {
+    color: #555;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    margin-bottom: 1rem;
+  }
+
+  .archive-stats {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .archive-stats strong {
+    color: #333;
+    font-weight: 700;
+  }
+
+  /* 필터 */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    background: white;
+    color: #555;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-height: 36px;
+  }
+
+  .filter-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+  }
+
+  .filter-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+  }
+
+  /* 목록 */
+  .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .archive-item {
+    border-bottom: 1px solid #eee;
+  }
+
+  .archive-item:first-child {
+    border-top: 1px solid #eee;
+  }
+
+  .archive-link {
+    display: block;
+    padding: clamp(1rem, 0.8rem + 1vw, 1.5rem) 0;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+
+  .archive-link:hover .archive-title {
+    color: #667eea;
+  }
+
+  .archive-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .archive-meta time {
+    font-size: 0.875rem;
+    color: #888;
+  }
+
+  .type-badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .type-log {
+    background: #e8f4fd;
+    color: #1565c0;
+  }
+
+  .type-insight {
+    background: #f3e8fd;
+    color: #6a1b9a;
+  }
+
+  .project-badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    background: #f0fdf4;
+    color: #166534;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .archive-title {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+
+  .archive-excerpt {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.55;
+    margin-bottom: 0.5rem;
+  }
+
+  .archive-tags {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    background: #f0f0f0;
+    color: #555;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* 필터 숨김 */
+  .archive-item[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLLIElement>('.archive-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter as string;
+
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.type === filter) {
+          item.removeAttribute('hidden');
+        } else {
+          item.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+</script>

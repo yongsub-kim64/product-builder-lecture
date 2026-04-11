@@ -4,6 +4,7 @@ date: 2026-03-22
 excerpt: "Cadence hit 3,648 spm. Pace swung between 3 and 14 min/km. The app ran — but the numbers couldn't be trusted. A day of fixing 5 bugs by directing multiple AIs, one step at a time."
 tags: ["ChulbujiRunbuddy", "VibeCoding", "AICollaboration", "Running", "BuildingInPublic"]
 published: true
+project_tag: "RunBuddy"
 ---
 
 Today I ran 5.43km in 45 minutes and 53 seconds.

@@ -4,6 +4,7 @@ date: 2026-04-09
 excerpt: "Editing the code and having those edits actually take effect are two different things. What I learned from running an automated trading system wasn't strategy — it was operations discipline."
 tags: ["AutoTrading", "Operations", "Insight", "Python", "Scheduler", "SystemsThinking", "PaperTrading", "DevLog"]
 published: true
+project_tag: "AutoTrading"
 ---
 
 Today was one of the most disorienting moments I've had while building this automated trading system.

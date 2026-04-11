@@ -4,6 +4,7 @@ date: 2026-03-09
 excerpt: "코딩을 모른다. 한 줄도 직접 짜본 적 없다. 그런데 오늘, 내가 만든 앱이 나한테 말을 걸었다. Chulbuji RunBuddy 첫 번째 야외 테스트 기록."
 tags: ["BuildingInPublic", "RunBuddy", "ShipFirst", "철부지1학년", "러닝"]
 published: true
+project_tag: "RunBuddy"
 ---
 
 코딩을 모른다.

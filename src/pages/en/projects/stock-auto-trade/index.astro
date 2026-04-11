@@ -1,5 +1,14 @@
 ---
 import PageLayout from '../../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('en/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'AutoTrading'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('en/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'AutoTrading'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <PageLayout title="AI Auto-Trading Experiment" description="An experiment building and running an automated trading system with AI and ₩5M. No code written by hand — just rules, an AI assistant, and real capital on the line.">
@@ -125,15 +134,34 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Related Logs</h2>
-      <ul>
-        <li><a href="/en/log/2026-04-10-auto-trading-11-fixes">KIS Auto-Trading — Two Hours, 11 Items Fixed</a> (2026-04-10 Log)</li>
-        <li><a href="/en/insight/insight-011">I Didn't Have AI Fix the Code — I Redesigned the Structure</a> (2026-04-10 Insight)</li>
-        <li><a href="/en/log/2026-04-09-auto-trading-module-cache">Auto-Trading — Module Cache Issue Identified & Buy Cycle Restored</a> (2026-04-09 Log)</li>
-        <li><a href="/en/insight/insight-010">I Fixed the Code. Why Didn't the System Change?</a> (2026-04-09 Insight)</li>
-        <li><a href="/en/log/2026-04-08-auto-trading-v11">Auto-Trading v1.1 Setup & First Run Standby Log</a> (2026-04-08)</li>
-        <li><a href="/en/log/stock-auto-trade-mvp-complete">Auto-Trading MVP Complete Log</a> (2026-04-07)</li>
-        <li><a href="/en/insight/insight-009">What I Didn't Know Until I Built an AI Trading System</a></li>
-      </ul>
+      {relatedLogs.length > 0 ? (
+        <ul class="related-list">
+          {relatedLogs.map(post => (
+            <li>
+              <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related logs yet.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>Related Insights</h2>
+      {relatedInsights.length > 0 ? (
+        <ul class="related-list">
+          {relatedInsights.map(post => (
+            <li>
+              <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related insights yet. Add <code>project_tag: "AutoTrading"</code> to any insight file to link it here automatically.</p>
+      )}
     </section>
   </div>
 </PageLayout>
@@ -222,6 +250,38 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
   .section ul a:hover {
     text-decoration: underline;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .related-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
   }
 
   .section h3 {

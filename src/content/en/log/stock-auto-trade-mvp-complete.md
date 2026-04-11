@@ -5,6 +5,8 @@ excerpt: "KIS API integration, rule engine, loss-limit safety guard, Telegram al
 tags: ["AutoTrading", "KIS API", "RuleEngine", "AICollaboration", "BuildingInPublic", "StockTrading"]
 published: true
 showInLog: true
+project_tag: "AutoTrading"
+project_link: "stock-auto-trade"
 ---
 
 Date: 2026-04-07

@@ -1,5 +1,14 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('ko/log', ({ data }) =>
+  data.published !== false && data.project_tag === '자동매매'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
+  data.published !== false && data.project_tag === '자동매매'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <PageLayout title="AI 자동매매 실험" description="AI와 함께 500만원으로 자동매매 시스템을 직접 만들고 운용하는 실험. 코드 한 줄 없이, 규칙 엔진과 AI 보조로 실제 자본을 운용하는 경험을 기록한다.">
@@ -124,16 +133,35 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     </section>
 
     <section class="section">
-      <h2>관련 기록</h2>
-      <ul>
-        <li><a href="/log/2026-04-10-auto-trading-11-fixes">KIS 자동매매 — 두 시간, 11개 항목 정비</a> (2026-04-10 Log)</li>
-        <li><a href="/insight/insight-011">AI한테 코드를 고치게 한 게 아니라, 구조를 바꿨다</a> (2026-04-10 Insight)</li>
-        <li><a href="/log/2026-04-09-auto-trading-module-cache">자동매매 — 모듈 캐시 이슈 확인 및 매수 사이클 복구</a> (2026-04-09 Log)</li>
-        <li><a href="/insight/insight-010">코드를 고쳤는데 왜 시스템은 그대로일까</a> (2026-04-09 Insight)</li>
-        <li><a href="/log/2026-04-08-auto-trading-v11">자동매매 v1.1 운영 세팅 및 첫 실행 대기 로그</a> (2026-04-08)</li>
-        <li><a href="/log/stock-auto-trade-mvp-complete">자동매매 MVP 완성 로그</a> (2026-04-07)</li>
-        <li><a href="/insight/insight-009">AI 자동매매를 만들면서 몰랐던 것</a></li>
-      </ul>
+      <h2>관련 기록 (Log)</h2>
+      {relatedLogs.length > 0 ? (
+        <ul class="related-list">
+          {relatedLogs.map(post => (
+            <li>
+              <a href={`/log/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">관련 기록이 아직 없습니다.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>관련 인사이트 (Insight)</h2>
+      {relatedInsights.length > 0 ? (
+        <ul class="related-list">
+          {relatedInsights.map(post => (
+            <li>
+              <a href={`/insight/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">관련 인사이트가 아직 없습니다. Insight 파일에 <code>project_tag: "자동매매"</code>를 추가하면 자동으로 연결됩니다.</p>
+      )}
     </section>
   </div>
 </PageLayout>
@@ -222,6 +250,38 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
   .section ul a:hover {
     text-decoration: underline;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .related-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
   }
 
   .section h3 {

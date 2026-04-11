@@ -4,6 +4,7 @@ date: 2026-03-22
 excerpt: "케이던스 3648spm. 페이스 3분대와 14분대 사이를 오갔다. 앱은 작동했지만 숫자를 믿을 수 없었다. 코드를 모르는 사람이 여러 AI와 단계를 나눠 다섯 군데 버그를 잡은 날."
 tags: ["ChulbujiRunbuddy", "바이브코딩", "AI협업", "달리기", "BuildingInPublic"]
 published: true
+project_tag: "RunBuddy"
 ---
 
 오늘 5.43km, 45분 53초를 달렸다.

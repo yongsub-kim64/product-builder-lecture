@@ -16,9 +16,12 @@ const currentYear = new Date().getFullYear();
       </div>
       
       <nav class="footer-nav">
+        <a href={basePath + '/about'}>{t('footer.about')}</a>
+        <a href={basePath + '/contact'}>{t('footer.contact')}</a>
+        <a href={basePath + '/archive'}>{t('footer.archive')}</a>
         <a href={basePath + '/privacy'}>{t('footer.privacy')}</a>
         <a href={basePath + '/terms'}>{t('footer.terms')}</a>
-        <a href={basePath + '/contact'}>{t('footer.contact')}</a>
+        <a href="https://github.com/yongsub-kim" target="_blank" rel="noopener noreferrer">{t('footer.github')}</a>
       </nav>
     </div>
     
