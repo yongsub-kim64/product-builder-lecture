@@ -9,7 +9,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="project-status status-active">Active</span>
       <h1>AI Auto-Trading Experiment</h1>
-      <p class="project-meta">Current version: <strong>v1.1</strong> · Last updated: <strong>2026-04-09</strong></p>
+      <p class="project-meta">Current version: <strong>v1.1</strong> · Last updated: <strong>2026-04-10</strong></p>
     </div>
 
     <section class="section">
@@ -35,13 +35,88 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     </section>
 
     <section class="section">
-      <h2>Current Status</h2>
-      <p>v1.1 live. Confirmed MA60 gap in the paper trading environment due to the KIS API's 30-day data limit. Fallback logic based on IS_PAPER applied to both is_market_ok() and check_buy_signal(). Regime assessment and stock scan confirmed working correctly under DRY_RUN. Also formalized the operations rule that the long-running scheduler must be restarted after any code change — documented as an SOP.</p>
+      <h2>Current Position</h2>
+      <p><strong>MVP stabilization complete → entering paper trading live verification</strong></p>
+      <p>The goal shifted from building a system that simply runs to building a structure that can actually be operated. This update was that turning point.</p>
+    </section>
+
+    <section class="section">
+      <h2>2026.04.10 Update — Production-Grade Structural Overhaul Complete</h2>
+      <p>This wasn't patching a few lines of code. It was building the infrastructure needed to run an automated trading system reliably. Direction and situation assessment handled by Meta-Chulbuji; actual code analysis, fixes, and verification handled by a specialized dev AI and Claude Code. 11 items overhauled in two hours yesterday evening.</p>
+
+      <h3>✅ Stability Fixes</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Cash balance field replacement</td><td>Wrong field reference → replaced with correct field</td></tr>
+          <tr><td>API retry logic</td><td>Added retry structure on call failure</td></tr>
+          <tr><td>Duplicate buy prevention</td><td>Block duplicate buys on the same ticker</td></tr>
+          <tr><td>Duplicate process prevention</td><td>Prevent multiple scheduler instances from running</td></tr>
+          <tr><td>hold_days bug fix</td><td>Fixed error in position holding day calculation</td></tr>
+          <tr><td>IS_PAPER safety guard</td><td>Prevent paper/live mode cross-contamination</td></tr>
+        </tbody>
+      </table>
+
+      <h3>✅ Strategy Refinements</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>RSI Wilder method</td><td>Previous method → switched to Wilder smoothing</td></tr>
+          <tr><td>RSI range adjustment</td><td>Adjusted to 40–65</td></tr>
+          <tr><td>MA20 deviation cap</td><td>Added condition: within 5% of MA20</td></tr>
+          <tr><td>Investment allocation expanded</td><td>20%, up to ₩1,000,000 per position</td></tr>
+          <tr><td>Trailing stop introduced</td><td>First implementation of profit-zone protection</td></tr>
+        </tbody>
+      </table>
+
+      <h3>✅ Operations Structure</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Buy scan structure</td><td>1× pre-market + 4× intraday</td></tr>
+          <tr><td>DRY RUN / LIVE separation</td><td>Clearly distinguished in logs and Telegram</td></tr>
+          <tr><td>Post-market summary</td><td>Automatic daily operations summary</td></tr>
+          <tr><td>Verification checkpoint</td><td>Monday first-run checklist defined</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>How Operations Work Now</h2>
+      <p>This update established the collaboration structure for the project going forward.</p>
+      <ul>
+        <li><strong>With Meta-Chulbuji</strong> — direction, situation assessment, strategy prioritization</li>
+        <li><strong>With specialized dev AI</strong> — code analysis, fixes, verification, implementation</li>
+      </ul>
+      <p>From chasing each bug myself to focusing on direction and judgment. Dividing the roles changed the pace.</p>
+    </section>
+
+    <section class="section">
+      <h2>Next Milestone</h2>
+      <p><strong>2026.04.14 (Mon) — First paper trading live verification</strong></p>
+      <ul>
+        <li>First confirmation of how the system behaves in a real market session</li>
+        <li>Live validation of buy scan structure, trailing stop, and log separation</li>
+        <li>Any unexpected behavior logged immediately and addressed</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Roadmap</h2>
+      <p>The overhaul is done — but the system isn't finished. Next steps depend on what the first live run reveals.</p>
+      <ul>
+        <li>Review adding volume surge condition</li>
+        <li>Migrate ticker universe to .env</li>
+        <li>Design sector diversification structure</li>
+        <li>Score-based buy prioritization</li>
+        <li>Establish SOP for live account switchover</li>
+      </ul>
     </section>
 
     <section class="section">
       <h2>Update History</h2>
       <ul>
+        <li><strong>2026-04-10</strong> — Production-grade structural overhaul: cash balance field fix / API retry logic / duplicate buy & process prevention / hold_days bug fix / IS_PAPER safety guard / RSI Wilder method / RSI range 40–65 / MA20 deviation 5% cap / allocation 20% up to ₩1M / trailing stop introduced / operations collaboration structure redesigned</li>
         <li><strong>2026-04-09</strong> — Python module cache issue identified — confirmed in live operation that code changes are not reflected without restarting the scheduler. Added diagnostic logs to is_market_ok() / MA60 fallback to close > MA20 for paper trading environment applied / same fallback applied to check_buy_signal() / BUY reason string format error fixed / DRY_RUN buy cycle restored / scheduler restart SOP document created</li>
         <li><strong>v1.1</strong> · 2026-04-08 — Dual regime filter / ₩10B volume filter / IMMEDIATE·NEXT_OPEN sell branching / same-day rebuy block / log system overhaul</li>
         <li><strong>v1.0</strong> · 2026-04-07 — KIS API, rule engine, Telegram alerts, scheduler MVP complete</li>
@@ -51,6 +126,8 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Related Logs</h2>
       <ul>
+        <li><a href="/en/log/2026-04-10-auto-trading-11-fixes">KIS Auto-Trading — Two Hours, 11 Items Fixed</a> (2026-04-10 Log)</li>
+        <li><a href="/en/insight/insight-011">I Didn't Have AI Fix the Code — I Redesigned the Structure</a> (2026-04-10 Insight)</li>
         <li><a href="/en/log/2026-04-09-auto-trading-module-cache">Auto-Trading — Module Cache Issue Identified & Buy Cycle Restored</a> (2026-04-09 Log)</li>
         <li><a href="/en/insight/insight-010">I Fixed the Code. Why Didn't the System Change?</a> (2026-04-09 Insight)</li>
         <li><a href="/en/log/2026-04-08-auto-trading-v11">Auto-Trading v1.1 Setup & First Run Standby Log</a> (2026-04-08)</li>
@@ -145,5 +222,38 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
   .section ul a:hover {
     text-decoration: underline;
+  }
+
+  .section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: #333;
+  }
+
+  .update-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .update-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    font-weight: 600;
+  }
+
+  .update-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+  }
+
+  .update-table tr:nth-child(even) td {
+    background-color: #fafafa;
   }
 </style>
