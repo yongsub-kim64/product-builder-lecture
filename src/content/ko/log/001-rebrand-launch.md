@@ -113,28 +113,9 @@ published: true
 
 ---
 
-## [업데이트: 2026-04-11] 웹사이트 구조 재구성 — 기록형 자산 구조로 전환
+후속 기록: 2026-04-11 기준 웹사이트 구조 재구성 작업은 별도 기록으로 분리했습니다.
 
-오늘 chulbuji.com의 웹사이트 구조를 전면 재정리했다.
-
-**이번에 정비한 것들:**
-
-- **GNB 재배치**: Home / Log / Insight / Projects / About 순서로 정리. 방문자가 기록 흐름을 먼저 보도록 설계.
-- **Footer 재구성**: About / Contact / Archive / Privacy / Terms / GitHub 링크로 정비.
-- **/archive/ 페이지 신설**: Log와 Insight를 한 곳에서 탐색할 수 있는 아카이브 허브 생성. 유형별 필터(전체/기록/인사이트) 포함.
-- **Projects 자동 연결**: `project_tag` 기반으로 각 프로젝트 상세 페이지에 관련 Log/Insight가 자동으로 연결되는 구조로 전환.
-- **Playground/Tools 노인덱스**: 검색 노출이 불필요한 실험 페이지에 noindex 처리 적용.
-- **CONTENT-SOP.md 작성**: Log/Insight/Projects 운영 기준 문서 생성. 앞으로 모든 콘텐츠는 이 SOP 기준으로 발행.
-
-**이 작업의 의미:**
-
-리브랜딩 당시 목표는 "기록하는 공간"을 만드는 것이었다. 당시의 구조는 시작을 위한 틀이었다. 이번 재구성은 그 다음 단계다. 기록이 쌓이면서 서로 연결되고, 프로젝트별로 묶이고, 탐색 가능한 자산이 되는 구조로 갖춰졌다.
-
-단순한 소개 사이트에서 장기 자산 구조로의 전환.
-
-**다음 적용 방향:**
-
-앞으로 모든 Log/Insight/Projects 콘텐츠는 CONTENT-SOP.md 기준으로 발행한다. frontmatter 형식, project_tag 연결, 발행 체크리스트까지 문서화되어 있다. 구조가 생겼으니, 이제 채워나가면 된다.
+→ [웹사이트 구조 재구성 — 기록형 자산 구조로 전환](/log/website-ia-restructure)
 
 ---
 

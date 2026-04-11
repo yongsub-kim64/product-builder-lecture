@@ -29,25 +29,6 @@ The journey has begun.
 
 ---
 
-## [Update: 2026-04-11] Website Restructuring — Shifting to a Record-Asset Architecture
+Follow-up: The 2026-04-11 website restructuring work has been separated into its own log.
 
-Restructured the entire chulbuji.com website today.
-
-**What was reorganized:**
-
-- **GNB reordered**: Home / Log / Insight / Projects / About — visitors now reach the record flow first.
-- **Footer rebuilt**: About / Contact / Archive / Privacy / Terms / GitHub.
-- **/archive/ page created**: A hub to browse all Log and Insight content in one place, with type filters (All / Log / Insight).
-- **Projects auto-linked**: Each project detail page now automatically surfaces related Log and Insight entries via `project_tag`.
-- **Playground/Tools noindexed**: Experimental pages excluded from search indexing.
-- **CONTENT-SOP.md written**: Publishing standards documented for Log/Insight/Projects. All future content follows this SOP.
-
-**What this means:**
-
-The original rebrand goal was to build a space for records. That structure was a starting frame. This restructuring is the next step — records accumulate, connect by project, and become navigable long-term assets.
-
-From a simple intro site to a record-asset architecture.
-
-**What's next:**
-
-All future Log/Insight/Projects content will be published following CONTENT-SOP.md. Frontmatter templates, project_tag linking, and a pre-publish checklist are all documented. The structure is in place — now it gets filled.
+→ [Website Restructuring — Shifting to a Record-Asset Architecture](/en/log/website-ia-restructure)
