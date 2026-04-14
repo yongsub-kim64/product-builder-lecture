@@ -16,37 +16,93 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <a href="/en/projects" class="back-link">← Projects</a>
 
     <div class="project-header">
-      <span class="project-status status-active">Active</span>
+      <span class="project-status status-active">🟢 Live</span>
       <h1>AI Auto-Trading Experiment</h1>
-      <p class="project-meta">Current version: <strong>v1.1</strong> · Last updated: <strong>2026-04-10</strong></p>
+      <p class="project-meta">Current version: <strong>v1.2</strong> · Last updated: <strong>2026-04-14</strong></p>
     </div>
 
     <section class="section">
       <h2>Overview</h2>
-      <p>An experiment building and running an automated trading system with AI and ₩5M. No guarantees of success. Learning while building.</p>
-    </section>
-
-    <section class="section">
-      <h2>Why I Started</h2>
-      <p>34 years as a semiconductor engineer. Systems thinking — designing, verifying, iterating — is wired into how I work. I wanted to apply that same mindset to financial automation.</p>
-      <p>The goal isn't profit. It's the experience of building a system where AI operates real capital — and doing it myself.</p>
-    </section>
-
-    <section class="section">
-      <h2>System Architecture</h2>
-      <ul>
-        <li>A <strong>rule engine</strong> based on moving averages and RSI makes all trading decisions</li>
-        <li>AI assists with analysis and reports — it does not decide</li>
-        <li>Real-time trade alerts via Telegram</li>
-        <li>2-week paper trading validation before switching to a live account</li>
-        <li>Runs as a long-running scheduler process; after any code change, the process is restarted per SOP and the change is visually confirmed.</li>
-      </ul>
+      <p>An experiment building and running an automated trading system with AI and ₩5M.<br>
+      A non-coder handles judgment; AI handles execution. That collaboration structure is the core.</p>
+      <p>The goal isn't profit.<br>
+      The goal is the experience of building a system where AI operates real capital — by hand.</p>
     </section>
 
     <section class="section">
       <h2>Current Position</h2>
-      <p><strong>MVP stabilization complete → entering paper trading live verification</strong></p>
-      <p>The goal shifted from building a system that simply runs to building a structure that can actually be operated. This update was that turning point.</p>
+      <p>2026-04-14. First live order filled. DRY_RUN validation complete — switched to live.</p>
+    </section>
+
+    <section class="section">
+      <h2>Collaboration Structure</h2>
+      <table class="update-table">
+        <thead><tr><th>Role</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td>Strategy direction + situation assessment</td><td>Meta-Chulbuji (GPT)</td></tr>
+          <tr><td>Code analysis + execution</td><td>Claude Code</td></tr>
+          <tr><td>Direction setting + final judgment</td><td>Operator (Chulbuji)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Current Strategy</h2>
+      <table class="update-table">
+        <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Buy signal</td><td>RSI (Wilder) 40–65</td></tr>
+          <tr><td>Trend filter</td><td>Within 5% of MA20</td></tr>
+          <tr><td>Position size</td><td>20% per ticker / max ₩1,000,000</td></tr>
+          <tr><td>Take-profit</td><td>+6% fixed or trailing stop</td></tr>
+          <tr><td>Trailing stop</td><td>Activates at +4% / sells at −2% from peak</td></tr>
+          <tr><td>Stop-loss</td><td>−3%</td></tr>
+          <tr><td>Same-day rebuy</td><td>Blocked</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>2026.04.14 Update — Live Transition Complete</h2>
+      <p>DRY_RUN validation finished; system switched to live. Three fixes before market open, operational additions in the afternoon.</p>
+
+      <h3>✅ STEP 6 — RSI Wilder method + MA20 5% deviation cap</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>RSI method switch</td><td>Previous method → Wilder smoothing</td></tr>
+          <tr><td>MA20 deviation cap</td><td>Block buy if price &gt;5% above MA20 (prevents chasing highs)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>✅ STEP 7 — Trailing stop introduced</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Activation condition</td><td>Trailing activates when gain reaches +4%</td></tr>
+          <tr><td>Sell condition</td><td>Sell when price drops −2% from peak</td></tr>
+        </tbody>
+      </table>
+
+      <h3>✅ STEP 8 — Cash balance fallback logic</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Fallback handling</td><td>Covers cash balance query failure on unexpected API response</td></tr>
+        </tbody>
+      </table>
+
+      <h3>✅ STEP 9 — Operational additions</h3>
+      <table class="update-table">
+        <thead><tr><th>Item</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Trailing activation log</td><td>Real-time visibility into which tickers hit the threshold</td></tr>
+          <tr><td>Post-market Telegram summary</td><td>Automatic portfolio position report after close</td></tr>
+          <tr><td>Scheduler --live flag</td><td>Automated live trading starts tomorrow</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>End-of-day results:</strong> Samsung Electronics +1.60% / Kakao −0.41% / Total portfolio ₩10,002,370</p>
     </section>
 
     <section class="section">
@@ -101,32 +157,21 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     </section>
 
     <section class="section">
-      <h2>Next Milestone</h2>
-      <p><strong>2026.04.14 (Mon) — First paper trading live verification</strong></p>
+      <h2>What's Next</h2>
       <ul>
-        <li>First confirmation of how the system behaves in a real market session</li>
-        <li>Live validation of buy scan structure, trailing stop, and log separation</li>
-        <li>Any unexpected behavior logged immediately and addressed</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Roadmap</h2>
-      <p>The overhaul is done — but the system isn't finished. Next steps depend on what the first live run reveals.</p>
-      <ul>
-        <li>Review adding volume surge condition</li>
-        <li>Migrate ticker universe to .env</li>
-        <li>Design sector diversification structure</li>
-        <li>Score-based buy prioritization</li>
-        <li>Establish SOP for live account switchover</li>
+        <li>STEP 10: Add volume surge condition</li>
+        <li>STEP 11: Migrate ticker universe to .env</li>
+        <li>Review adding sector-diversified tickers</li>
+        <li>Establish live account switchover SOP</li>
       </ul>
     </section>
 
     <section class="section">
       <h2>Update History</h2>
       <ul>
+        <li><strong>2026-04-14 · v1.2</strong> — Live transition complete. STEP 6–9: trailing stop refinement / cash balance fallback / post-market Telegram summary / first live order filled (Kakao 20 shares @ ₩48,350)</li>
         <li><strong>2026-04-10</strong> — Production-grade structural overhaul: cash balance field fix / API retry logic / duplicate buy & process prevention / hold_days bug fix / IS_PAPER safety guard / RSI Wilder method / RSI range 40–65 / MA20 deviation 5% cap / allocation 20% up to ₩1M / trailing stop introduced / operations collaboration structure redesigned</li>
-        <li><strong>2026-04-09</strong> — Python module cache issue identified — confirmed in live operation that code changes are not reflected without restarting the scheduler. Added diagnostic logs to is_market_ok() / MA60 fallback to close > MA20 for paper trading environment applied / same fallback applied to check_buy_signal() / BUY reason string format error fixed / DRY_RUN buy cycle restored / scheduler restart SOP document created</li>
+        <li><strong>2026-04-09</strong> — Python module cache issue identified — confirmed in live operation that code changes are not reflected without restarting the scheduler. Added diagnostic logs to is_market_ok() / MA60 fallback to close &gt; MA20 for paper trading environment applied / same fallback applied to check_buy_signal() / BUY reason string format error fixed / DRY_RUN buy cycle restored / scheduler restart SOP document created</li>
         <li><strong>v1.1</strong> · 2026-04-08 — Dual regime filter / ₩10B volume filter / IMMEDIATE·NEXT_OPEN sell branching / same-day rebuy block / log system overhaul</li>
         <li><strong>v1.0</strong> · 2026-04-07 — KIS API, rule engine, Telegram alerts, scheduler MVP complete</li>
       </ul>
