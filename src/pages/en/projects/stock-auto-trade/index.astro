@@ -30,8 +30,8 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     </section>
 
     <section class="section">
-      <h2>Current Position</h2>
-      <p>2026-04-14. First live order filled. DRY_RUN validation complete — switched to live.</p>
+      <h2>Current Status</h2>
+      <p>🟢 <strong>Live</strong> — First real order executed on 2026-04-14. Switched from DRY_RUN to live trading.</p>
     </section>
 
     <section class="section">
@@ -39,9 +39,9 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
       <table class="update-table">
         <thead><tr><th>Role</th><th>Owner</th></tr></thead>
         <tbody>
-          <tr><td>Strategy direction + situation assessment</td><td>Meta-Chulbuji (GPT)</td></tr>
+          <tr><td>Strategy direction + judgment</td><td>메타철부지 (GPT)</td></tr>
           <tr><td>Code analysis + execution</td><td>Claude Code</td></tr>
-          <tr><td>Direction setting + final judgment</td><td>Operator (Chulbuji)</td></tr>
+          <tr><td>Direction setting + final call</td><td>Operator (철부지)</td></tr>
         </tbody>
       </table>
     </section>
@@ -49,131 +49,37 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <section class="section">
       <h2>Current Strategy</h2>
       <table class="update-table">
-        <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+        <thead><tr><th>Parameter</th><th>Setting</th></tr></thead>
         <tbody>
-          <tr><td>Buy signal</td><td>RSI (Wilder) 40–65</td></tr>
-          <tr><td>Trend filter</td><td>Within 5% of MA20</td></tr>
-          <tr><td>Position size</td><td>20% per ticker / max ₩1,000,000</td></tr>
-          <tr><td>Take-profit</td><td>+6% fixed or trailing stop</td></tr>
-          <tr><td>Trailing stop</td><td>Activates at +4% / sells at −2% from peak</td></tr>
-          <tr><td>Stop-loss</td><td>−3%</td></tr>
-          <tr><td>Same-day rebuy</td><td>Blocked</td></tr>
+          <tr><td>Buy signal</td><td>RSI(Wilder) 40–65</td></tr>
+          <tr><td>Trend filter</td><td>MA20 deviation ≤ 5%</td></tr>
+          <tr><td>Position size</td><td>20% per stock / max ₩1,000,000</td></tr>
+          <tr><td>Take profit</td><td>+6% fixed or trailing stop</td></tr>
+          <tr><td>Trailing stop</td><td>Activated at +4% / sell at –2% from peak</td></tr>
+          <tr><td>Stop loss</td><td>–3%</td></tr>
+          <tr><td>Same-day re-entry</td><td>Blocked</td></tr>
         </tbody>
       </table>
-    </section>
-
-    <section class="section">
-      <h2>2026.04.14 Update — Live Transition Complete</h2>
-      <p>DRY_RUN validation finished; system switched to live. Three fixes before market open, operational additions in the afternoon.</p>
-
-      <h3>✅ STEP 6 — RSI Wilder method + MA20 5% deviation cap</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>RSI method switch</td><td>Previous method → Wilder smoothing</td></tr>
-          <tr><td>MA20 deviation cap</td><td>Block buy if price &gt;5% above MA20 (prevents chasing highs)</td></tr>
-        </tbody>
-      </table>
-
-      <h3>✅ STEP 7 — Trailing stop introduced</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Activation condition</td><td>Trailing activates when gain reaches +4%</td></tr>
-          <tr><td>Sell condition</td><td>Sell when price drops −2% from peak</td></tr>
-        </tbody>
-      </table>
-
-      <h3>✅ STEP 8 — Cash balance fallback logic</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Fallback handling</td><td>Covers cash balance query failure on unexpected API response</td></tr>
-        </tbody>
-      </table>
-
-      <h3>✅ STEP 9 — Operational additions</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Trailing activation log</td><td>Real-time visibility into which tickers hit the threshold</td></tr>
-          <tr><td>Post-market Telegram summary</td><td>Automatic portfolio position report after close</td></tr>
-          <tr><td>Scheduler --live flag</td><td>Automated live trading starts tomorrow</td></tr>
-        </tbody>
-      </table>
-
-      <p><strong>End-of-day results:</strong> Samsung Electronics +1.60% / Kakao −0.41% / Total portfolio ₩10,002,370</p>
-    </section>
-
-    <section class="section">
-      <h2>2026.04.10 Update — Production-Grade Structural Overhaul Complete</h2>
-      <p>This wasn't patching a few lines of code. It was building the infrastructure needed to run an automated trading system reliably. Direction and situation assessment handled by Meta-Chulbuji; actual code analysis, fixes, and verification handled by a specialized dev AI and Claude Code. 11 items overhauled in two hours yesterday evening.</p>
-
-      <h3>✅ Stability Fixes</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Cash balance field replacement</td><td>Wrong field reference → replaced with correct field</td></tr>
-          <tr><td>API retry logic</td><td>Added retry structure on call failure</td></tr>
-          <tr><td>Duplicate buy prevention</td><td>Block duplicate buys on the same ticker</td></tr>
-          <tr><td>Duplicate process prevention</td><td>Prevent multiple scheduler instances from running</td></tr>
-          <tr><td>hold_days bug fix</td><td>Fixed error in position holding day calculation</td></tr>
-          <tr><td>IS_PAPER safety guard</td><td>Prevent paper/live mode cross-contamination</td></tr>
-        </tbody>
-      </table>
-
-      <h3>✅ Strategy Refinements</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>RSI Wilder method</td><td>Previous method → switched to Wilder smoothing</td></tr>
-          <tr><td>RSI range adjustment</td><td>Adjusted to 40–65</td></tr>
-          <tr><td>MA20 deviation cap</td><td>Added condition: within 5% of MA20</td></tr>
-          <tr><td>Investment allocation expanded</td><td>20%, up to ₩1,000,000 per position</td></tr>
-          <tr><td>Trailing stop introduced</td><td>First implementation of profit-zone protection</td></tr>
-        </tbody>
-      </table>
-
-      <h3>✅ Operations Structure</h3>
-      <table class="update-table">
-        <thead><tr><th>Item</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Buy scan structure</td><td>1× pre-market + 4× intraday</td></tr>
-          <tr><td>DRY RUN / LIVE separation</td><td>Clearly distinguished in logs and Telegram</td></tr>
-          <tr><td>Post-market summary</td><td>Automatic daily operations summary</td></tr>
-          <tr><td>Verification checkpoint</td><td>Monday first-run checklist defined</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="section">
-      <h2>How Operations Work Now</h2>
-      <p>This update established the collaboration structure for the project going forward.</p>
-      <ul>
-        <li><strong>With Meta-Chulbuji</strong> — direction, situation assessment, strategy prioritization</li>
-        <li><strong>With specialized dev AI</strong> — code analysis, fixes, verification, implementation</li>
-      </ul>
-      <p>From chasing each bug myself to focusing on direction and judgment. Dividing the roles changed the pace.</p>
-    </section>
-
-    <section class="section">
-      <h2>What's Next</h2>
-      <ul>
-        <li>STEP 10: Add volume surge condition</li>
-        <li>STEP 11: Migrate ticker universe to .env</li>
-        <li>Review adding sector-diversified tickers</li>
-        <li>Establish live account switchover SOP</li>
-      </ul>
     </section>
 
     <section class="section">
       <h2>Update History</h2>
       <ul>
-        <li><strong>2026-04-14 · v1.2</strong> — Live transition complete. STEP 6–9: trailing stop refinement / cash balance fallback / post-market Telegram summary / first live order filled (Kakao 20 shares @ ₩48,350)</li>
-        <li><strong>2026-04-10</strong> — Production-grade structural overhaul: cash balance field fix / API retry logic / duplicate buy & process prevention / hold_days bug fix / IS_PAPER safety guard / RSI Wilder method / RSI range 40–65 / MA20 deviation 5% cap / allocation 20% up to ₩1M / trailing stop introduced / operations collaboration structure redesigned</li>
-        <li><strong>2026-04-09</strong> — Python module cache issue identified — confirmed in live operation that code changes are not reflected without restarting the scheduler. Added diagnostic logs to is_market_ok() / MA60 fallback to close &gt; MA20 for paper trading environment applied / same fallback applied to check_buy_signal() / BUY reason string format error fixed / DRY_RUN buy cycle restored / scheduler restart SOP document created</li>
-        <li><strong>v1.1</strong> · 2026-04-08 — Dual regime filter / ₩10B volume filter / IMMEDIATE·NEXT_OPEN sell branching / same-day rebuy block / log system overhaul</li>
-        <li><strong>v1.0</strong> · 2026-04-07 — KIS API, rule engine, Telegram alerts, scheduler MVP complete</li>
+        <li><strong>2026-04-14</strong> — Switched to live trading. Trailing stop refinement, balance fallback logic, post-market Telegram summary. First real order executed (Kakao 20 shares @ ₩48,350)</li>
+        <li><strong>2026-04-10</strong> — Production-grade stabilization. Balance field fix / API retry / duplicate buy &amp; process prevention / hold_days fix / IS_PAPER safeguard</li>
+        <li><strong>2026-04-09</strong> — Python module cache issue identified and buy cycle restored. Scheduler restart SOP created</li>
+        <li><strong>2026-04-08 · v1.1</strong> — Dual market regime filter / volume filter / sell condition branching / same-day re-entry block / log structure overhaul</li>
+        <li><strong>2026-04-07 · v1.0</strong> — KIS API integration, rule engine, Telegram alerts, scheduler MVP complete</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>STEP 10: Volume spike condition</li>
+        <li>STEP 11: Migrate ticker universe to .env</li>
+        <li>Sector diversification review</li>
+        <li>Live account transition SOP</li>
       </ul>
     </section>
 

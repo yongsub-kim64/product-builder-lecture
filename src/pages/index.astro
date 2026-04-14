@@ -41,6 +41,38 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
     </div>
   </section>
 
+  <section class="featured-projects">
+    <div class="featured-projects-inner">
+      <h2>진행 중인 프로젝트</h2>
+      <ul class="project-list">
+        <li>
+          <span class="status-badge experimental">실험 중</span>
+          <div class="project-info">
+            <a href="/projects/stock-auto-trade">AI 자동매매 실험</a>
+            <p>AI와 함께 500만원으로 자동매매 시스템을 직접 만들고 운용하는 실험.</p>
+          </div>
+        </li>
+        <li>
+          <span class="status-badge active">진행 중</span>
+          <div class="project-info">
+            <a href="/projects/runbuddy">Chulbuji RunBuddy</a>
+            <p>AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스.</p>
+          </div>
+        </li>
+        <li>
+          <span class="status-badge active">진행 중</span>
+          <div class="project-info">
+            <a href="/projects/rebrand">chulbuji.com 리브랜딩</a>
+            <p>로또 샘플에서 기록 허브로의 전환. AI와 함께하는 구조 설계 기록.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="view-all-projects">
+        <a href="/projects">모든 프로젝트 보기 →</a>
+      </div>
+    </div>
+  </section>
+
   <section class="archive-entry">
     <div class="archive-entry-inner">
       <h2>전체 아카이브</h2>
@@ -170,6 +202,111 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
   }
 
   .view-all a:hover {
+    text-decoration: underline;
+  }
+
+  .featured-projects {
+    border-top: 1px solid #eee;
+  }
+
+  .featured-projects-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 2rem + 2.5vw, 4rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+  }
+
+  .featured-projects h2 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    text-align: center;
+  }
+
+  .project-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  }
+
+  .project-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: white;
+    transition: box-shadow 0.2s;
+  }
+
+  .project-list li:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .status-badge {
+    flex-shrink: 0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.15rem;
+  }
+
+  .status-badge.active {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  .status-badge.experimental {
+    background: #fce4ec;
+    color: #c62828;
+  }
+
+  .project-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .project-info a {
+    display: block;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-info a:hover {
+    color: #667eea;
+  }
+
+  .project-info p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  .view-all-projects {
+    text-align: center;
+  }
+
+  .view-all-projects a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .view-all-projects a:hover {
     text-decoration: underline;
   }
 

@@ -3,6 +3,7 @@ title: "Website Restructuring — Shifting to a Record-Asset Architecture"
 date: 2026-04-11
 excerpt: "Two months after the rebrand, records started piling up and the structure needed to follow. A log of the transition from intro site to long-term asset architecture."
 tags: ["SiteOps", "IA", "StructureDesign", "CONTENT-SOP"]
+project_tag: "chulbuji-rebrand"
 published: true
 ---
 

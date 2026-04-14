@@ -3,6 +3,7 @@ title: "Rebrand Launch"
 date: 2026-02-07
 excerpt: "Started the transition from lottery sample to record hub. Tools as byproducts, records as protagonists."
 tags: ["rebrand", "milestone"]
+project_tag: "chulbuji-rebrand"
 published: true
 ---
 

@@ -3,6 +3,7 @@ title: "웹사이트 구조 재구성 — 기록형 자산 구조로 전환"
 date: 2026-04-11
 excerpt: "리브랜딩 이후 두 달, 기록이 쌓이기 시작하자 구조가 필요해졌다. 소개 사이트에서 장기 자산 구조로 전환한 작업 기록."
 tags: ["사이트운영", "IA", "구조설계", "CONTENT-SOP"]
+project_tag: "chulbuji-rebrand"
 published: true
 ---
 
