@@ -3,7 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
 const projects = [
   {
-    updatedAt: new Date('2026-04-07'),
+    updatedAt: new Date('2026-04-14'),
     status: 'experimental',
     statusLabel: '실험 중',
     title: 'AI 자동매매 실험',
@@ -36,31 +36,40 @@ const projects = [
       { href: 'https://insight.chulbuji.com', label: '사이트 바로가기' },
     ],
   },
-  {
-    updatedAt: new Date('2026-04-11'),
-    status: 'active',
-    statusLabel: '진행 중',
-    title: 'chulbuji.com 리브랜딩',
-    description: '로또 샘플에서 기록 허브로의 전환. AI와 함께하는 실험과 기록의 여정.',
-    href: '/projects/rebrand',
-    linkLabel: '자세히 보기 →',
-  },
-  {
-    updatedAt: new Date('2026-03-01'),
-    status: 'completed',
-    statusLabel: '완료',
-    title: '로또 번호 생성기',
-    description: '암호학적으로 안전한 난수 생성 기반 로또 번호 추천 도구.',
-    href: '/tools/lotto',
-    linkLabel: '사용하기 →',
-  },
 ].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
+
+const labs = [
+  {
+    title: '로또 번호 생성기',
+    description: '암호학적으로 안전한 난수 기반 로또 번호 추천 도구.',
+    href: '/tools/lotto',
+    emoji: '🎱',
+  },
+  {
+    title: 'Breakout',
+    description: 'AI와 협업하여 만든 클래식 블록 깨기 게임. 터치 & 키보드 조작 지원.',
+    href: '/playground/breakout',
+    emoji: '🧱',
+  },
+  {
+    title: 'Tetris',
+    description: '순수 HTML/CSS/JS로 구현한 테트리스. 바이브 코딩 1-file 데모.',
+    href: '/playground/tetris',
+    emoji: '🟦',
+  },
+  {
+    title: 'Snake',
+    description: 'AI와 함께 완성한 스네이크 게임. 키보드 & 스와이프 동시 지원.',
+    href: '/playground/snake',
+    emoji: '🐍',
+  },
+];
 ---
 
-<PageLayout title="프로젝트" description="진행 중인 프로젝트와 완료된 작업물들">
+<PageLayout title="프로젝트" description="관련 Log와 Insight가 누적되는 핵심 프로젝트들">
   <div class="projects-page">
     <p class="subtitle">
-      진행 중인 프로젝트와 완료된 작업물들을 소개합니다.
+      관련 Log / Insight가 누적되는 핵심 프로젝트들입니다.
     </p>
 
     <section class="projects-grid">
@@ -83,6 +92,22 @@ const projects = [
         </div>
       ))}
     </section>
+
+    <section class="labs-section">
+      <h2 class="labs-heading">실험실 (Labs)</h2>
+      <p class="labs-desc">작게 만들고 직접 써본 것들. 프로젝트보다 가볍고, 아이디어보다는 무겁다.</p>
+      <ul class="labs-list">
+        {labs.map((item) => (
+          <li class="labs-item">
+            <span class="labs-emoji">{item.emoji}</span>
+            <div class="labs-info">
+              <a href={item.href} class="labs-title">{item.title}</a>
+              <span class="labs-desc-item">{item.description}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </PageLayout>
 
@@ -102,6 +127,7 @@ const projects = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-bottom: 4rem;
   }
 
   .project-card {
@@ -172,11 +198,6 @@ const projects = [
     color: #7b1fa2;
   }
 
-  .status-planned {
-    background: #fff3e0;
-    color: #e65100;
-  }
-
   .status-experimental {
     background-color: #fce4ec;
     color: #c62828;
@@ -203,9 +224,88 @@ const projects = [
     text-decoration: underline;
   }
 
+  /* Labs */
+  .labs-section {
+    border-top: 1px solid #eee;
+    padding-top: 2.5rem;
+  }
+
+  .labs-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .labs-desc {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+
+  .labs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .labs-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .labs-item:last-child {
+    border-bottom: none;
+  }
+
+  .labs-emoji {
+    font-size: 1.25rem;
+    width: 2rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .labs-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .labs-title {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .labs-title:hover {
+    color: #667eea;
+    text-decoration: underline;
+  }
+
+  .labs-desc-item {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.4;
+  }
+
   @media (max-width: 768px) {
     .projects-grid {
       grid-template-columns: 1fr;
+    }
+
+    .labs-info {
+      flex-direction: column;
+      gap: 0.2rem;
     }
   }
 </style>

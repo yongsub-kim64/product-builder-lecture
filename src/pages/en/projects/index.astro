@@ -3,7 +3,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
 const projects = [
   {
-    updatedAt: new Date('2026-04-07'),
+    updatedAt: new Date('2026-04-14'),
     status: 'experimental',
     statusLabel: 'Experimental',
     title: 'AI Auto-Trading Experiment',
@@ -27,7 +27,7 @@ const projects = [
     title: 'Meta Chulbuji: Whispering Insight',
     description: 'AI-powered voice analysis insight report. JoCoding Hackathon entry.',
     href: '/en/log/hackathon-imperfect-start',
-    linkLabel: 'Learn More →',
+    linkLabel: 'Learn more →',
     thumbnail: 'https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg',
     thumbnailHref: 'https://youtu.be/OZTfI3xmRFk',
     thumbnailAlt: 'Meta Chulbuji: Whispering Insight',
@@ -36,31 +36,40 @@ const projects = [
       { href: 'https://insight.chulbuji.com', label: 'Visit site' },
     ],
   },
+].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
+
+const labs = [
   {
-    updatedAt: new Date('2026-03-15'),
-    status: 'active',
-    statusLabel: 'In Progress',
-    title: 'chulbuji.com Rebranding',
-    description: 'Transition from lottery sample to record hub. A journey of experimentation and recording with AI.',
-    href: '/en/projects/rebrand',
-    linkLabel: 'Learn More →',
-  },
-  {
-    updatedAt: new Date('2026-03-01'),
-    status: 'completed',
-    statusLabel: 'Completed',
     title: 'Lottery Number Generator',
     description: 'Lottery number recommendation tool based on cryptographically secure random number generation.',
     href: '/en/tools/lotto',
-    linkLabel: 'Use Tool →',
+    emoji: '🎱',
   },
-].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
+  {
+    title: 'Breakout',
+    description: 'Classic brick-breaking game built with AI. Touch & keyboard support.',
+    href: '/playground/breakout',
+    emoji: '🧱',
+  },
+  {
+    title: 'Tetris',
+    description: 'Tetris built with pure HTML/CSS/JS. 1-file Vibe Coding demo.',
+    href: '/playground/tetris',
+    emoji: '🟦',
+  },
+  {
+    title: 'Snake',
+    description: 'Snake game built with AI. Keyboard & swipe gesture support.',
+    href: '/playground/snake',
+    emoji: '🐍',
+  },
+];
 ---
 
-<PageLayout title="Projects" description="Ongoing projects and completed works">
+<PageLayout title="Projects" description="Core projects where related Logs and Insights accumulate">
   <div class="projects-page">
     <p class="subtitle">
-      Introducing ongoing projects and completed works.
+      Core projects where related Log / Insight records accumulate over time.
     </p>
 
     <section class="projects-grid">
@@ -83,6 +92,22 @@ const projects = [
         </div>
       ))}
     </section>
+
+    <section class="labs-section">
+      <h2 class="labs-heading">Labs</h2>
+      <p class="labs-desc">Small things built and used. Lighter than projects, heavier than ideas.</p>
+      <ul class="labs-list">
+        {labs.map((item) => (
+          <li class="labs-item">
+            <span class="labs-emoji">{item.emoji}</span>
+            <div class="labs-info">
+              <a href={item.href} class="labs-title">{item.title}</a>
+              <span class="labs-desc-item">{item.description}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </PageLayout>
 
@@ -102,6 +127,7 @@ const projects = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-bottom: 4rem;
   }
 
   .project-card {
@@ -172,11 +198,6 @@ const projects = [
     color: #7b1fa2;
   }
 
-  .status-planned {
-    background: #fff3e0;
-    color: #e65100;
-  }
-
   .status-experimental {
     background-color: #fce4ec;
     color: #c62828;
@@ -203,9 +224,88 @@ const projects = [
     text-decoration: underline;
   }
 
+  /* Labs */
+  .labs-section {
+    border-top: 1px solid #eee;
+    padding-top: 2.5rem;
+  }
+
+  .labs-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .labs-desc {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+
+  .labs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .labs-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .labs-item:last-child {
+    border-bottom: none;
+  }
+
+  .labs-emoji {
+    font-size: 1.25rem;
+    width: 2rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .labs-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .labs-title {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .labs-title:hover {
+    color: #667eea;
+    text-decoration: underline;
+  }
+
+  .labs-desc-item {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.4;
+  }
+
   @media (max-width: 768px) {
     .projects-grid {
       grid-template-columns: 1fr;
+    }
+
+    .labs-info {
+      flex-direction: column;
+      gap: 0.2rem;
     }
   }
 </style>
