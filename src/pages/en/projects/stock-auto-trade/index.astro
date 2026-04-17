@@ -18,7 +18,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <div class="project-header">
       <span class="project-status status-active">🟢 Live</span>
       <h1>AI Auto-Trading Experiment</h1>
-      <p class="project-meta">Current version: <strong>v1.2</strong> · Last updated: <strong>2026-04-16</strong></p>
+      <p class="project-meta">Current version: <strong>v1.3</strong> · Last updated: <strong>2026-04-17</strong></p>
     </div>
 
     <section class="section">
@@ -31,7 +31,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>🟢 <strong>Live</strong> — First buy (Kakao) completed after live switch. Trailing stop fired in live trading. Stock universe expanded to 20 tickers. (As of 2026-04-16)</p>
+      <p>🟢 <strong>Live Account Active</strong> — 1-week paper trade complete, live account switch confirmed. 4 bugs fixed. Trailing stop fired on Kakao (+3.01%). Live trading starts 2026-04-21 (Mon) at 08:50. (As of 2026-04-17)</p>
     </section>
 
     <section class="section">
@@ -68,6 +68,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <section class="section">
       <h2>Update History</h2>
       <ul>
+        <li><strong>2026-04-17 · v1.3</strong> — 1-week paper trade complete, live account switch confirmed. 4 bugs fixed (buy amount as loss / loss limit hard-coded / cash balance stuck / account number format). Kakao trailing stop triggered (+3.01%, +₩30,060). Weekly realized P&amp;L: +₩45,060 (+0.58%). Live account API connection verified.</li>
         <li><strong>2026-04-16</strong> — STEP 11·12 complete. Buy scans reduced 4→3/day. Stock universe expanded 5→20. Deviation cap loosened 5%→7%. Max holdings raised 3→5 stocks.</li>
         <li><strong>2026-04-15</strong> — STEP 10 complete. Auto-recovery for stale lock files (psutil PID validation). Trailing stop fired in live trading. Samsung Electronics +3.57% auto-sold. Realized P&amp;L: +₩15,000.</li>
         <li><strong>2026-04-14</strong> — Switched to live trading. Trailing stop refinement, balance fallback logic, post-market Telegram summary. First real order executed (Kakao 20 shares @ ₩48,350)</li>
@@ -81,13 +82,13 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <section class="section">
       <h2>Roadmap</h2>
       <ul>
-        <li>Collect scan performance data for the new 20-stock universe</li>
-        <li>Confirm effect of loosening deviation cap to 7%</li>
-        <li>Monitor risk patterns with up to 5 concurrent holdings</li>
+        <li>Live account trading starts 2026-04-21 (Mon) at 08:50</li>
+        <li>Observe first live stop-loss (–3%) trigger</li>
+        <li>Record first-week profit/loss patterns on live account</li>
+        <li>Collect scan performance data for the 20-stock universe</li>
         <li>Compile per-ticker win rate statistics (in 2 weeks)</li>
         <li>Review adding a volume spike condition</li>
         <li>Establish monthly ticker rebalancing criteria</li>
-        <li>Draft live account transition procedure (post-stabilization)</li>
       </ul>
     </section>
 
