@@ -1,0 +1,247 @@
+---
+import PageLayout from '../../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('en/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'AIContentAssistant'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('en/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'AIContentAssistant'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<PageLayout title="AI Content Assistant" description="An experiment building an AI content tool for small businesses — upload a photo and a short note, and get a blog post, SNS copy, short-form script, and hashtags automatically.">
+  <div class="project-detail">
+    <a href="/en/projects" class="back-link">← Projects</a>
+
+    <div class="project-header">
+      <span class="project-status status-experimental">⚠️ Prototype — Experimental</span>
+      <h1>AI Content Assistant — Working Through a Small Business Marketing Problem with Prototypes</h1>
+      <p class="project-meta">Current version: <strong>v2</strong> · Last updated: <strong>2026-04-22</strong></p>
+    </div>
+
+    <section class="section">
+      <h2>Overview</h2>
+      <p>Local shops don't have time for marketing. Between cooking, serving customers, and managing inventory, there's no room left to post on social media. And outsourcing content creation is too expensive.</p>
+      <p>This project is an attempt to close that gap.<br>
+      Upload one photo and a short note — and the tool generates a blog post, SNS copy, a short-form video script, and hashtags automatically. The target: usable without any writing skill or social media intuition.</p>
+      <p>The goal isn't a finished product.<br>
+      The goal is the experience of building something that actually works — and finding out whether real small business owners can use it.</p>
+    </section>
+
+    <section class="section">
+      <h2>Current Status</h2>
+      <p>⚠️ <strong>Prototype v2 complete</strong> — Mobile web prototype built with Claude Design. Improved screen structure from v1 to v2, reaching a level that operates like a real service. MVP scope defined. Preparing for real-user validation with an actual small business owner. (As of 2026-04-22)</p>
+    </section>
+
+    <section class="section">
+      <h2>Core Features</h2>
+      <table class="update-table">
+        <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Input</td><td>Photo upload + short memo</td></tr>
+          <tr><td>Output — Blog</td><td>Auto-generated long-form blog post</td></tr>
+          <tr><td>Output — SNS</td><td>Short copy for Instagram / Facebook</td></tr>
+          <tr><td>Output — Short-form script</td><td>Video script for Reels / Shorts</td></tr>
+          <tr><td>Output — Hashtags</td><td>Auto-suggested tags by category and location</td></tr>
+          <tr><td>Platform</td><td>Mobile web (no app installation required)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Background</h2>
+      <p>It started while drafting a business plan application. Writing the idea down made it clear that building it directly would be faster than describing it. I used Claude Design to create a mobile web prototype, then improved the screen structure from v1 to v2 until it felt like a real service.</p>
+    </section>
+
+    <section class="section">
+      <h2>Update History</h2>
+      <ul>
+        <li><strong>2026-04-22 · v2</strong> — Screen structure overhaul. Redesigned the input-to-output flow, UI brought to service-level polish. MVP implementation scope defined.</li>
+        <li><strong>2026-04-22 · v1</strong> — First prototype complete. Built with Claude Design, mobile web-based. Core flow implemented: photo + memo input → automatic content generation.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>Show the prototype to one real small business owner — confirm whether they immediately understand what to do on screen</li>
+        <li>Real-user test → incorporate feedback</li>
+        <li>Progress through the validation cycle toward a real service</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Related Logs</h2>
+      {relatedLogs.length > 0 ? (
+        <ul class="related-list">
+          {relatedLogs.map(post => (
+            <li>
+              <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related logs yet. Add <code>project_tag: "AIContentAssistant"</code> to any log file to link it here automatically.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>Related Insights</h2>
+      {relatedInsights.length > 0 ? (
+        <ul class="related-list">
+          {relatedInsights.map(post => (
+            <li>
+              <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">No related insights yet. Add <code>project_tag: "AIContentAssistant"</code> to any insight file to link it here automatically.</p>
+      )}
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .project-detail {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-header h1 {
+    margin-top: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .status-experimental {
+    background-color: #fce4ec;
+    color: #c62828;
+  }
+
+  .project-meta {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .section p {
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .placeholder {
+    color: #999;
+  }
+
+  .section ul {
+    padding-left: 1.25rem;
+    color: #444;
+    line-height: 1.9;
+  }
+
+  .section ul a {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  .section ul a:hover {
+    text-decoration: underline;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .related-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
+  }
+
+  .update-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .update-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    font-weight: 600;
+  }
+
+  .update-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+  }
+
+  .update-table tr:nth-child(even) td {
+    background-color: #fafafa;
+  }
+</style>

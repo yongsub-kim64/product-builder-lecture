@@ -1,0 +1,247 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('ko/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'AI콘텐츠비서'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'AI콘텐츠비서'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<PageLayout title="AI 콘텐츠 비서" description="사진과 짧은 메모만 있으면 블로그 글·SNS 문구·숏폼 대본·해시태그까지 자동으로 만들어주는 소상공인 전용 AI 콘텐츠 도구 실험.">
+  <div class="project-detail">
+    <a href="/projects" class="back-link">← 프로젝트 목록</a>
+
+    <div class="project-header">
+      <span class="project-status status-experimental">⚠️ 프로토타입 실험 중</span>
+      <h1>AI 콘텐츠 비서 — 소상공인의 홍보 문제를 프로토타입으로 풀어보는 중</h1>
+      <p class="project-meta">현재 버전: <strong>v2</strong> · 최근 업데이트: <strong>2026-04-22</strong></p>
+    </div>
+
+    <section class="section">
+      <h2>개요</h2>
+      <p>동네 가게는 홍보할 시간이 없다. 맛있는 음식을 만들고, 손님을 응대하고, 재고를 챙기다 보면 SNS 게시글 하나 올릴 여유가 남지 않는다. 그렇다고 콘텐츠를 외주로 맡기기엔 비용이 부담이다.</p>
+      <p>이 프로젝트는 그 간격을 좁히는 도구를 만들어보려는 시도다.<br>
+      사진 한 장과 짧은 메모를 입력하면, 블로그 글·SNS 문구·숏폼 영상 대본·해시태그가 자동으로 나온다. 글쓰기 능력이나 SNS 감각 없이도 쓸 수 있는 수준이 목표다.</p>
+      <p>목적은 완성된 서비스가 아니다.<br>
+      "실제 소상공인이 쓸 수 있는 도구인지, 작동하는 수준까지 직접 만들어보는 경험"이 이 프로젝트의 목적이다.</p>
+    </section>
+
+    <section class="section">
+      <h2>현재 좌표</h2>
+      <p>⚠️ <strong>프로토타입 v2 완료</strong> — Claude Design으로 모바일 웹 기반 프로토타입 제작. v1에서 v2로 화면 구조 개선, 실제 서비스처럼 작동하는 수준 도달. MVP 구현 범위 정의 완료. 실제 소상공인 대상 실사용 검증 준비 중. (2026-04-22 기준)</p>
+    </section>
+
+    <section class="section">
+      <h2>핵심 기능</h2>
+      <table class="update-table">
+        <thead><tr><th>기능</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>입력</td><td>사진 업로드 + 짧은 메모</td></tr>
+          <tr><td>출력 — 블로그</td><td>본문 형식의 글 자동 생성</td></tr>
+          <tr><td>출력 — SNS</td><td>인스타그램·페이스북용 짧은 문구</td></tr>
+          <tr><td>출력 — 숏폼 대본</td><td>릴스·쇼츠용 영상 대본</td></tr>
+          <tr><td>출력 — 해시태그</td><td>업종·지역 맞춤 태그 자동 추천</td></tr>
+          <tr><td>플랫폼</td><td>모바일 웹 (별도 앱 설치 불필요)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>시작 배경</h2>
+      <p>모두의창업 신청서를 정리하는 과정이 시작이었다. 아이디어를 글로 옮기다 보니, 직접 만들어보는 게 빠르겠다는 판단이 섰다. Claude Design을 활용해 모바일 웹 기반 프로토타입을 제작했고, v2에서 화면 구조를 개선해 실제 서비스처럼 작동하는 수준까지 가져왔다.</p>
+    </section>
+
+    <section class="section">
+      <h2>개발 이력</h2>
+      <ul>
+        <li><strong>2026-04-22 · v2</strong> — 화면 구조 개선. 입력~결과 흐름 재설계, 실제 서비스 수준으로 UI 고도화. MVP 구현 범위 정의 완료.</li>
+        <li><strong>2026-04-22 · v1</strong> — 최초 프로토타입 완성. Claude Design 활용, 모바일 웹 기반. 사진+메모 입력 → 콘텐츠 자동 생성 기본 흐름 구현.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>다음 예정</h2>
+      <ul>
+        <li>실제 소상공인 1명에게 프로토타입을 보여주고 "이 화면에서 뭘 하면 되는지 바로 이해됐는가" 확인</li>
+        <li>실사용 테스트 → 피드백 반영</li>
+        <li>실제 서비스 검증 흐름 진행</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>관련 기록 (Log)</h2>
+      {relatedLogs.length > 0 ? (
+        <ul class="related-list">
+          {relatedLogs.map(post => (
+            <li>
+              <a href={`/log/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">관련 기록이 아직 없습니다. Log 파일에 <code>project_tag: "AI콘텐츠비서"</code>를 추가하면 자동으로 연결됩니다.</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>관련 인사이트 (Insight)</h2>
+      {relatedInsights.length > 0 ? (
+        <ul class="related-list">
+          {relatedInsights.map(post => (
+            <li>
+              <a href={`/insight/${post.slug}`}>{post.data.title}</a>
+              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder">관련 인사이트가 아직 없습니다. Insight 파일에 <code>project_tag: "AI콘텐츠비서"</code>를 추가하면 자동으로 연결됩니다.</p>
+      )}
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .project-detail {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-header h1 {
+    margin-top: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .status-experimental {
+    background-color: #fce4ec;
+    color: #c62828;
+  }
+
+  .project-meta {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .section p {
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .placeholder {
+    color: #999;
+  }
+
+  .section ul {
+    padding-left: 1.25rem;
+    color: #444;
+    line-height: 1.9;
+  }
+
+  .section ul a {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  .section ul a:hover {
+    text-decoration: underline;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .related-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
+  }
+
+  .update-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .update-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    font-weight: 600;
+  }
+
+  .update-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+  }
+
+  .update-table tr:nth-child(even) td {
+    background-color: #fafafa;
+  }
+</style>
