@@ -17,6 +17,13 @@ Moving it to a screen changed things.
 
 ## The Screen Changed the Question
 
+<figure style="text-align:center; max-width:320px; margin:0 auto;">
+  <img src="/images/insight/ai-content-v2-input.jpg"
+       style="width:100%;"
+       alt="AI Content Assistant for small businesses — input screen v2" />
+  <figcaption>Three steps to start — business type, marketing goal, photo upload</figcaption>
+</figure>
+
 My first thought after generating the prototype with Claude Design was: "This is more than I expected." Onboarding, dashboard, input, generating state, results, editing, templates, save confirmation. Walking through the flow, I could immediately see where a user might stop.
 
 When I was writing it out, the question was "what features does it have?" After seeing the screens, the question became "will users know what to do here?" Same idea — different things became visible.
@@ -26,6 +33,13 @@ In a generative AI service, "what it generates" may be less important than it se
 ---
 
 ## A Prototype Is a Thinking Tool, Not a Draft
+
+<figure style="text-align:center; max-width:320px; margin:0 auto;">
+  <img src="/images/insight/ai-content-v2-result.jpg"
+       style="width:100%;"
+       alt="AI Content Assistant — generated results screen" />
+  <figcaption>Output comes in four formats — SNS, blog, short-form script, hashtags</figcaption>
+</figure>
 
 Making v2 after seeing v1 was when the MVP scope became clear. The sequence matters. I didn't define the scope and then build the screens — I saw the screens and then the scope became visible.
 
