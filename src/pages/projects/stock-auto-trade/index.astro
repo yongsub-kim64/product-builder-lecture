@@ -18,7 +18,7 @@ const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
     <div class="project-header">
       <span class="project-status status-active">🟢 실전 운영 중</span>
       <h1>AI 자동매매 실험</h1>
-      <p class="project-meta">현재 버전: <strong>v1.3</strong> · 최근 업데이트: <strong>2026-04-20</strong></p>
+      <p class="project-meta">현재 버전: <strong>v1.3</strong> · 최근 업데이트: <strong>2026-04-22</strong></p>
     </div>
 
     <section class="section">
@@ -31,7 +31,7 @@ const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
 
     <section class="section">
       <h2>현재 좌표</h2>
-      <p>🟢 <strong>실계좌 운영 중</strong> — 실계좌 첫날(2026-04-20) 완료. 버그 2건 수정(토큰 캐시 오염·MA60 폴백). 5종목 첫 체결 (카카오·기아·KB금융·신한지주·NAVER), 투자금 4,690,300원. 장마감 평가손익 -54,030원(-1.08%), 전량 HOLD. (2026-04-20 기준)</p>
+      <p>🟢 <strong>실계좌 운영 중</strong> — 실계좌 3일차(2026-04-22) 완료. 손절 2건 집행(KB금융·카카오, 합계 -61,800원). MA60 필터 하락추세 3종목(NAVER·기아·현대차) 정상 차단 — 4/21 API 교체 첫 실전 검증 완료. 예산 안전마진 부분 검증(13:00 성공/14:00 재실패). KT 신규 진입. 마감 평가잔고 4,906,290원. (2026-04-22 기준)</p>
     </section>
 
     <section class="section">
@@ -68,6 +68,8 @@ const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
     <section class="section">
       <h2>업데이트 이력</h2>
       <ul>
+        <li><strong>2026-04-22</strong> — 실계좌 3일차. 손절 2건 집행(KB금융·카카오, 합계 -61,800원). MA60 필터 하락추세 3종목(NAVER·기아·현대차) 정상 차단 — 4/21 API 교체 첫 실전 검증 완료(65건, MA20+MA60 정상). 예산 안전마진(safe_budget×0.95) 부분 검증: 13:00 성공/14:00 재실패. KT 신규 진입. 마감 평가잔고 4,906,290원.</li>
+        <li><strong>2026-04-21</strong> — MA60 API 교체 완료. inquire-daily-price(30건 고정) → inquire-daily-itemchartprice(65건)로 교체. 4/22 실전에서 하락추세 차단 검증.</li>
         <li><strong>2026-04-20</strong> — 실계좌 첫 운영일. 버그 2건 수정(토큰 캐시 오염·MA60=None 시 MA20 폴백). 5종목 첫 체결(카카오·기아·KB금융·신한지주·NAVER), 투자금 4,690,300원. 잔여 예수금 305,970원. 장마감 평가손익 -54,030원(-1.08%), 전량 HOLD. 텔레그램·데이터 익스포트 정상.</li>
         <li><strong>2026-04-17 · v1.3</strong> — 1주일 모의투자 완료 및 실계좌 전환 결정. 버그 4건 수정(매수금액 손실 인식 / 손실 한도 하드코딩 / 예수금 고착 / 계좌번호 형식 오류). 카카오 트레일링 스탑 발동(+3.01%, +30,060원). 주간 실현손익 +45,060원(+0.58%). 실계좌 API 연결 확인.</li>
         <li><strong>2026-04-16</strong> — STEP 11·12 완료. 매수 스캔 4회→3회 최적화. 종목 유니버스 5→20개 확대. 이격도 5%→7% 완화. 최대 보유 3→5종목.</li>
@@ -83,9 +85,8 @@ const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
     <section class="section">
       <h2>다음 예정</h2>
       <ul>
-        <li>작업 스케줄러 자동 실행 여부 확인 (2026-04-21 08:45)</li>
-        <li>MA60 데이터 반환 건수 확인 (count=130 테스트)</li>
-        <li>손절(-3%) 첫 실전 발동 여부 관찰</li>
+        <li>예산 안전마진 추가 개선 — 안전마진 상향 또는 당일 사용 예산 누적 추적 방식 (2026-04-23 장마감 후)</li>
+        <li>신한지주 손절선 접근 여부 관찰</li>
         <li>실계좌 첫 주 수익/손실 패턴 기록</li>
         <li>20개 종목 스캔 성과 데이터 수집</li>
         <li>종목별 승률 통계 집계 (2주 후)</li>
