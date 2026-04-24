@@ -18,7 +18,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <div class="project-header">
       <span class="project-status status-active">🟢 Live</span>
       <h1>AI Auto-Trading Experiment</h1>
-      <p class="project-meta">Current version: <strong>v1.3</strong> · Last updated: <strong>2026-04-22</strong></p>
+      <p class="project-meta">Current version: <strong>v1.4</strong> · Last updated: <strong>2026-04-24</strong></p>
     </div>
 
     <section class="section">
@@ -31,7 +31,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>🟢 <strong>Live Account Active</strong> — Live day 3 complete (2026-04-22). 2 stop-losses executed (KB Financial &amp; Kakao, –₩61,800 total). MA60 filter correctly blocked 3 downtrend stocks (NAVER, Kia, Hyundai Motor) — first live validation of 4/21 API replacement confirmed. Budget safety margin partial validation (13:00 success / 14:00 failed). KT entered as new position. Closing balance ₩4,906,290. (As of 2026-04-22)</p>
+      <p>🟢 <strong>Live Account Active</strong> — 5 bugs fixed, 6 strategy changes (2026-04-24). Wrong cash field corrected (switched to ord_psbl_cash_amt), 18 duplicate KT sell reservations removed. Regime detection redesigned to 5-condition scoring + 2-day confirmation. Cash reserve ratios tied to total assets (bull 20% / neutral 35% / bear 60%). Closing balance ₩4,890,000. (As of 2026-04-24)</p>
     </section>
 
     <section class="section">
@@ -52,9 +52,11 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
         <thead><tr><th>Parameter</th><th>Setting</th></tr></thead>
         <tbody>
           <tr><td>Buy signal</td><td>RSI(Wilder) 40–65</td></tr>
-          <tr><td>Trend filter</td><td>MA20 deviation ≤ 7%</td></tr>
+          <tr><td>Trend filter</td><td>MA20 deviation — large-cap ≤ 14% / standard ≤ 7% (with sell buffer)</td></tr>
           <tr><td>Position size</td><td>20% per stock / max ₩1,000,000 · max 5 stocks</td></tr>
           <tr><td>Max capital</td><td>₩5,000,000 (50% of cash balance)</td></tr>
+          <tr><td>Cash reserve</td><td>Bull 20% / Neutral 35% / Bear 60% (tied to total assets)</td></tr>
+          <tr><td>Regime detection</td><td>5-condition scoring · 2 consecutive days same signal → regime change</td></tr>
           <tr><td>Buy scans</td><td>3×/day (10:00 / 13:00 / 14:00)</td></tr>
           <tr><td>Take profit</td><td>+6% fixed or trailing stop</td></tr>
           <tr><td>Trailing stop</td><td>Activated at +4% / sell at –2% from peak</td></tr>
@@ -68,6 +70,7 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <section class="section">
       <h2>Update History</h2>
       <ul>
+        <li><strong>2026-04-24 · v1.4</strong> — 5 bugs fixed, 6 strategy changes. Wrong cash field (prvs_rcdl_excc_amt → ord_psbl_cash_amt) corrected — orders restored. 18 duplicate KT PENDING_SELL reservations removed + deduplication logic added. MA20 deviation threshold split by stock type (large-cap 14% / standard 7%), buy-sell buffer zone added. Regime detection switched from single KOSPI close to 5-condition scoring with 2-day confirmation; cash reserve ratios (bull 20% / neutral 35% / bear 60%) tied to total assets. Realized P&amp;L –₩93,000 (Kia · KT stop-losses). 4 orders executed. Closing balance ₩4,890,000.</li>
         <li><strong>2026-04-22</strong> — Live day 3. 2 stop-losses executed (KB Financial &amp; Kakao, –₩61,800 total). MA60 filter correctly blocked 3 downtrend stocks (NAVER, Kia, Hyundai Motor) — first live validation of 4/21 API replacement (65 data points, MA20+MA60 normal). Budget safety margin (safe_budget×0.95) partial validation: success at 13:00, failed again at 14:00. KT entered as new position. Closing balance ₩4,906,290.</li>
         <li><strong>2026-04-21</strong> — MA60 API replacement complete. Switched from inquire-daily-price (fixed 30 candles) to inquire-daily-itemchartprice (65 candles). Validated in live trading on 4/22 — downtrend filter working correctly.</li>
         <li><strong>2026-04-20</strong> — Live account day 1. 2 bugs fixed (stale paper-trading token in cache / MA60=None fallback to MA20). First 5 buys executed (Kakao, Kia, KB Financial, Shinhan, NAVER), ₩4,690,300 deployed, ₩305,970 cash remaining. End-of-day unrealized P&amp;L: –₩54,030 (–1.08%), all positions held. Telegram daily summary and data export confirmed.</li>
@@ -85,10 +88,8 @@ const relatedInsights = (await getCollection('en/insight', ({ data }) =>
     <section class="section">
       <h2>Roadmap</h2>
       <ul>
-        <li>Budget safety margin improvement — raise margin or track intraday spend explicitly (after market close 2026-04-23)</li>
-        <li>Monitor Shinhan Group stop-loss proximity</li>
-        <li>Record first-week profit/loss patterns on live account</li>
-        <li>Collect scan performance data for the 20-stock universe</li>
+        <li>Monday pre-market 08:50 — BULL signal recorded? (first live validation of 5-condition regime scoring)</li>
+        <li>Monday 10:00 scan — Samsung Electronics passes updated deviation threshold and buy executes?</li>
         <li>Compile per-ticker win rate statistics (in 2 weeks)</li>
         <li>Review adding a volume spike condition</li>
         <li>Establish monthly ticker rebalancing criteria</li>
