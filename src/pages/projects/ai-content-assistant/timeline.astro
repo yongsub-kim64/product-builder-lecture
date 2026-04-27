@@ -1,0 +1,261 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="AI 콘텐츠 비서 — 전체 이력" description="AI 콘텐츠 비서 프로젝트 전체 이력. 아이디어에서 프로토타입, MVP 실서비스까지의 단계별 기록.">
+  <div class="timeline-page">
+
+    <nav class="top-nav">
+      <a href="/projects/ai-content-assistant/">← 프로젝트 허브로 돌아가기</a>
+    </nav>
+
+    <p class="page-intro">2026년 4월에 시작된 AI 콘텐츠 비서 프로젝트의 전체 이력입니다. 월별로 정리했습니다.</p>
+
+    <!-- ── 2026-04 ───────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">2026-04</span>
+        <h2>프로토타입에서 실서비스까지</h2>
+      </div>
+      <p class="phase-summary">아이디어가 처음 화면이 된 날부터 실제 서버에 올라간 날까지. Claude Design으로 프로토타입을 만들고, 하루 만에 Next.js 실서비스로 전환했다.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+            <span class="entry-version">v1</span>
+          </div>
+          <p class="entry-title">최초 프로토타입 완성 — Claude Design, 모바일 웹 기반</p>
+          <p class="entry-sig">모두의창업 신청서에 적어뒀던 아이디어를 하루 만에 인터랙티브 프로토타입으로 옮겼다. 사진+메모 입력 → 콘텐츠 자동 생성 기본 흐름 구현. 화면이 생기자마자 MVP 범위가 보였다.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+            <span class="entry-version">v2</span>
+          </div>
+          <p class="entry-title">화면 구조 개선 — 입력~결과 흐름 재설계, UI 서비스 수준으로 고도화</p>
+          <p class="entry-sig">v1 피드백 반영. 입력~결과 흐름을 재설계하고 8개 화면을 실제 서비스처럼 동작하는 수준으로 고도화. MVP 구현 범위 확정.</p>
+          <a href="/log/2026-04-22-ai-content-assistant-prototype/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-24</span>
+            <span class="entry-version">MVP</span>
+          </div>
+          <p class="entry-title">Next.js MVP 실서비스 배포 완료</p>
+          <p class="entry-sig">VS Code + Claude Code 설치부터 시작해 하루 만에 실서비스까지. Next.js + TypeScript + Tailwind CSS, OpenAI GPT-4o API (Cloudflare Worker), GitHub Actions 자동 배포. git push → 23초 반영. 현재 인프라 비용 ₩0.</p>
+          <a href="/log/2026-04-24-ai-content-mvp-live/" class="entry-link">Log 보기 →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── 다음 단계 ────────────────────────────── -->
+    <div class="phase next-phase">
+      <div class="phase-header">
+        <span class="phase-label next-label">다음 단계</span>
+        <h2>사용자 검증</h2>
+      </div>
+      <p class="phase-summary">만드는 것과 쓰이는 것은 다르다. 다음 단계는 실제 소상공인 5명에게 링크를 전달하고, 그들이 화면을 보고 무엇을 해야 할지 바로 이해하는지 확인하는 것이다.</p>
+
+      <ul class="entries next-entries">
+        <li class="entry next-entry">
+          <p class="entry-title">실제 소상공인 5명 사용자 검증</p>
+          <p class="entry-sig">aicontent.chulbuji.com 링크 전달 → 사용 피드백 수집. 첫 번째 질문: "이 화면에서 뭘 하면 되는지 바로 이해됐는가?"</p>
+        </li>
+        <li class="entry next-entry">
+          <p class="entry-title">피드백 기반 UX 개선</p>
+          <p class="entry-sig">업종별·목적별 생성 품질 실사용 기준으로 재검토. UI 문구 소상공인 눈높이로 단순화.</p>
+        </li>
+        <li class="entry next-entry">
+          <p class="entry-title">확장 방향 검토</p>
+          <p class="entry-sig">검증 결과에 따라 요금 모델, 추가 업종·목적 지원 범위, 인프라 확장 여부 결정.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="/projects/ai-content-assistant/">← 프로젝트 허브로 돌아가기</a>
+    </div>
+
+  </div>
+</PageLayout>
+
+<style>
+  .timeline-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .top-nav, .bottom-nav {
+    margin-bottom: 2rem;
+  }
+
+  .bottom-nav {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .top-nav a, .bottom-nav a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a:hover, .bottom-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .page-intro {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  .phase {
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid #e8e8e8;
+  }
+
+  .phase:last-of-type {
+    border-bottom: none;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+  }
+
+  .phase-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #555;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .next-label {
+    background: #b0bec5;
+  }
+
+  .phase-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+  }
+
+  .phase-summary {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ddd;
+  }
+
+  .entries {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .entry {
+    padding: 1.1rem 0 1.1rem 1rem;
+    border-left: 2px solid #e0e0e0;
+    margin-left: 0.5rem;
+    position: relative;
+  }
+
+  .entry::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #999;
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: 1.5rem;
+  }
+
+  .next-entries .next-entry {
+    border-left: 2px dashed #ccc;
+  }
+
+  .next-entries .next-entry::before {
+    background: #ccc;
+    border: 2px solid #fff;
+    width: 10px;
+    height: 10px;
+    left: -6px;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .entry-date {
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .entry-version {
+    font-size: 0.75rem;
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  .entry-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.4rem;
+    line-height: 1.4;
+  }
+
+  .entry-sig {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.65;
+    margin: 0 0 0.5rem;
+  }
+
+  .entry-link {
+    font-size: 0.82rem;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .entry-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-phase .entry-title {
+    color: #888;
+  }
+
+  .next-phase .entry-sig {
+    color: #aaa;
+  }
+</style>

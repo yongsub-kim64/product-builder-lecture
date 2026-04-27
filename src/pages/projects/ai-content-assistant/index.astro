@@ -1,233 +1,238 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
-
-const relatedLogs = (await getCollection('ko/log', ({ data }) =>
-  data.published !== false && data.project_tag === 'AI콘텐츠비서'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
-  data.published !== false && data.project_tag === 'AI콘텐츠비서'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<PageLayout title="AI 콘텐츠 비서" description="사진과 짧은 메모만 있으면 블로그 글·SNS 문구·숏폼 대본·해시태그까지 자동으로 만들어주는 소상공인 전용 AI 콘텐츠 도구 실험.">
-  <div class="project-detail">
-    <a href="/projects" class="back-link">← 프로젝트 목록</a>
+<PageLayout title="AI 콘텐츠 비서" description="소상공인을 위한 AI 콘텐츠 제작 도구 MVP 개발 기록. 사진 한 장과 짧은 메모로 블로그 글·SNS 문구·숏폼 대본·해시태그를 자동 생성한다. 실제 소상공인이 쓸 수 있는 수준까지 직접 만들어보는 실험.">
+  <div class="project-hub">
+
+    <nav class="top-nav">
+      <a href="/projects">← 프로젝트 목록</a>
+    </nav>
 
     <div class="project-header">
-      <span class="project-status status-experimental">⚠️ 프로토타입 실험 중</span>
-      <h1>AI 콘텐츠 비서 — 소상공인의 홍보 문제를 프로토타입으로 풀어보는 중</h1>
-      <p class="project-meta">현재 버전: <strong>v2</strong> · 최근 업데이트: <strong>2026-04-22</strong></p>
+      <span class="status-badge status-validating">⚠️ MVP 배포 완료 · 사용자 검증 준비 중</span>
+      <p class="definition">소상공인을 위한 AI 콘텐츠 제작 도구 MVP 개발 기록</p>
+      <p class="meta">MVP · 2026-04-24 업데이트 · <a href="/projects/ai-content-assistant/timeline/">전체 이력 →</a></p>
     </div>
 
     <section class="section">
-      <h2>개요</h2>
-      <p>동네 가게는 홍보할 시간이 없다. 맛있는 음식을 만들고, 손님을 응대하고, 재고를 챙기다 보면 SNS 게시글 하나 올릴 여유가 남지 않는다. 그렇다고 콘텐츠를 외주로 맡기기엔 비용이 부담이다.</p>
-      <p>이 프로젝트는 그 간격을 좁히는 도구를 만들어보려는 시도다.<br>
-      사진 한 장과 짧은 메모를 입력하면, 블로그 글·SNS 문구·숏폼 영상 대본·해시태그가 자동으로 나온다. 글쓰기 능력이나 SNS 감각 없이도 쓸 수 있는 수준이 목표다.</p>
-      <p>목적은 완성된 서비스가 아니다.<br>
-      "실제 소상공인이 쓸 수 있는 도구인지, 작동하는 수준까지 직접 만들어보는 경험"이 이 프로젝트의 목적이다.</p>
+      <h2>이 페이지를 읽으면 알 수 있는 것</h2>
+      <ul class="gains-list">
+        <li>SNS 글 한 줄 없는 동네 가게 주인이 AI 도구로 콘텐츠를 만들 수 있는지 검증하는 과정</li>
+        <li>아이디어에서 화면, 화면에서 실서비스까지 하루 만에 어떻게 가능했는지</li>
+        <li>MVP 범위를 어디서 자르고, 무엇부터 검증하기로 결정했는지</li>
+        <li>Claude Design → Claude Code Handoff 방식이 실제 개발에서 어떻게 작동했는지</li>
+      </ul>
     </section>
 
     <section class="section">
-      <h2>현재 좌표</h2>
-      <p>⚠️ <strong>프로토타입 v2 완료</strong> — Claude Design으로 모바일 웹 기반 프로토타입 제작. v1에서 v2로 화면 구조 개선, 실제 서비스처럼 작동하는 수준 도달. MVP 구현 범위 정의 완료. 실제 소상공인 대상 실사용 검증 준비 중. (2026-04-22 기준)</p>
+      <h2>현재 상태</h2>
+      <p><strong>MVP 실서비스 배포 완료</strong> (2026-04-24). <a href="https://aicontent.chulbuji.com" target="_blank" rel="noopener">aicontent.chulbuji.com</a>에서 지금 접속 가능하다. git push 후 23초면 Cloudflare에 반영된다.</p>
+      <p>실제 소상공인 5명에게 링크를 전달하고 사용 피드백을 수집하는 단계가 다음이다. 도구가 작동하는 것과 사람이 실제로 쓰는 것은 다르다.</p>
     </section>
 
     <section class="section">
-      <h2>핵심 기능</h2>
-      <table class="update-table">
-        <thead><tr><th>기능</th><th>내용</th></tr></thead>
+      <h2>누구를 위한 도구인가</h2>
+      <p>동네 가게 사장님. 음식을 만들고, 손님을 응대하고, 재고를 챙기다 보면 SNS 게시글 하나 올릴 여유가 없다. 콘텐츠 외주는 비용이 부담이다. 글 잘 쓰는 친구도 없다.</p>
+      <p>이 도구의 가정은 하나다. <strong>사진 한 장과 짧은 메모면 충분하다.</strong> 글쓰기 능력이나 SNS 감각 없이도 쓸 수 있어야 한다.</p>
+    </section>
+
+    <section class="section">
+      <h2>해결하려는 문제</h2>
+      <p>소상공인의 홍보 콘텐츠 제작 비용 — 돈이 아니라 시간과 능력의 비용.</p>
+      <p>신메뉴를 올리고 싶은데 문구를 어떻게 써야 할지 모른다. 사진은 있는데 해시태그가 뭔지 모른다. 인스타그램과 블로그에 각각 다른 글을 써야 하는데 두 개를 따로 쓸 시간이 없다. 이 세 가지가 이 도구가 없애려는 장벽이다.</p>
+    </section>
+
+    <section class="section">
+      <h2>현재 MVP 범위 및 작동 방식</h2>
+      <p>8개 화면. 사진 업로드 + 짧은 메모를 입력하면 OpenAI GPT-4o API가 업종과 목적에 맞는 프롬프트로 콘텐츠를 생성한다.</p>
+      <table class="feature-table">
+        <thead><tr><th>입력</th><th>출력</th></tr></thead>
         <tbody>
-          <tr><td>입력</td><td>사진 업로드 + 짧은 메모</td></tr>
-          <tr><td>출력 — 블로그</td><td>본문 형식의 글 자동 생성</td></tr>
-          <tr><td>출력 — SNS</td><td>인스타그램·페이스북용 짧은 문구</td></tr>
-          <tr><td>출력 — 숏폼 대본</td><td>릴스·쇼츠용 영상 대본</td></tr>
-          <tr><td>출력 — 해시태그</td><td>업종·지역 맞춤 태그 자동 추천</td></tr>
-          <tr><td>플랫폼</td><td>모바일 웹 (별도 앱 설치 불필요)</td></tr>
+          <tr><td>사진 + 짧은 메모</td><td>블로그 글 (본문 형식)</td></tr>
+          <tr><td>업종 선택 (카페·미용실·공방·소매점)</td><td>SNS 문구 (인스타그램·페이스북)</td></tr>
+          <tr><td>목적 선택 (신상품·오픈·이벤트·재방문)</td><td>숏폼 대본 (릴스·쇼츠)</td></tr>
+          <tr><td></td><td>해시태그 (업종·지역 맞춤)</td></tr>
         </tbody>
       </table>
+      <p>인프라: Cloudflare Pages(프론트) + Worker(API 프록시), GitHub Actions 자동 배포, 현재 운영 비용 ₩0.</p>
     </section>
 
     <section class="section">
-      <h2>시작 배경</h2>
-      <p>모두의창업 신청서를 정리하는 과정이 시작이었다. 아이디어를 글로 옮기다 보니, 직접 만들어보는 게 빠르겠다는 판단이 섰다. Claude Design을 활용해 모바일 웹 기반 프로토타입을 제작했고, v2에서 화면 구조를 개선해 실제 서비스처럼 작동하는 수준까지 가져왔다.</p>
-    </section>
-
-    <section class="section">
-      <h2>개발 이력</h2>
-      <ul>
-        <li><strong>2026-04-22 · v2</strong> — 화면 구조 개선. 입력~결과 흐름 재설계, 실제 서비스 수준으로 UI 고도화. MVP 구현 범위 정의 완료.</li>
-        <li><strong>2026-04-22 · v1</strong> — 최초 프로토타입 완성. Claude Design 활용, 모바일 웹 기반. 사진+메모 입력 → 콘텐츠 자동 생성 기본 흐름 구현.</li>
+      <h2>지금까지 만든 것</h2>
+      <ul class="achievements">
+        <li><strong>프로토타입 v1 → v2</strong> (2026-04-22) — Claude Design으로 모바일 웹 기반 프로토타입. v1 피드백으로 입력~결과 흐름 재설계</li>
+        <li><strong>MVP 실서비스 배포</strong> (2026-04-24) — Next.js + TypeScript + Tailwind CSS, Cloudflare Pages/Worker 파이프라인, 8개 화면</li>
+        <li><strong>배포 자동화</strong> — GitHub Actions: Pages와 Worker 동시 배포, git push → 23초 반영</li>
+        <li><strong>현재 인프라 비용</strong> ₩0</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>다음 예정</h2>
-      <ul>
-        <li>실제 소상공인 1명에게 프로토타입을 보여주고 "이 화면에서 뭘 하면 되는지 바로 이해됐는가" 확인</li>
-        <li>실사용 테스트 → 피드백 반영</li>
-        <li>실제 서비스 검증 흐름 진행</li>
+      <h2>최근 업데이트</h2>
+      <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-04-24</span>
+          <span class="update-desc">Next.js MVP 실서비스 배포 완료. OpenAI GPT-4o API 연결, GitHub Actions 자동 배포 파이프라인 구축</span>
+        </li>
+        <li>
+          <span class="update-date">2026-04-22 · v2</span>
+          <span class="update-desc">Claude Design 프로토타입 v2. 입력~결과 흐름 재설계, UI 서비스 수준으로 고도화, MVP 구현 범위 확정</span>
+        </li>
+      </ul>
+      <p class="timeline-cta"><a href="/projects/ai-content-assistant/timeline/">전체 이력 보기 →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>대표 Log — 프로젝트를 이해하는 기록</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/log/2026-04-22-ai-content-assistant-prototype/">소상공인 AI 콘텐츠 비서 — 아이디어에서 화면, 화면에서 구현 범위로</a>
+          <span class="featured-note">모두의창업 신청서에 적어뒀던 아이디어가 하루 만에 인터랙티브 프로토타입이 된 과정. 화면이 생긴 뒤에야 MVP 범위가 보였다.</span>
+        </li>
+        <li>
+          <a href="/log/2026-04-24-ai-content-mvp-live/">소상공인 AI 콘텐츠 비서 MVP — 개발환경부터 실서비스까지 하루 완료</a>
+          <span class="featured-note">VS Code + Claude Code 설치부터 Cloudflare 배포까지 하루 안에. git push 후 23초면 올라간다.</span>
+        </li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>관련 기록 (Log)</h2>
-      {relatedLogs.length > 0 ? (
-        <ul class="related-list">
-          {relatedLogs.map(post => (
-            <li>
-              <a href={`/log/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">관련 기록이 아직 없습니다. Log 파일에 <code>project_tag: "AI콘텐츠비서"</code>를 추가하면 자동으로 연결됩니다.</p>
-      )}
+      <h2>대표 Insight — 핵심 관찰</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/insight/insight-016/">아이디어는 글보다 화면에서 더 빨리 검증된다</a>
+          <span class="featured-note">기획서를 쓰는 것보다 화면을 만드는 것이 더 빠르고 정확한 검증이다.</span>
+        </li>
+        <li>
+          <a href="/insight/insight-019/">코딩 못해도 하루 만에 실서비스 — Claude Design + Claude Code로 가능했던 이유</a>
+          <span class="featured-note">디자인에서 개발로 넘어가는 간극을 AI가 없앴다. 이것이 "AI가 코드를 써준다"와 다른 이유.</span>
+        </li>
+      </ul>
     </section>
 
     <section class="section">
-      <h2>관련 인사이트 (Insight)</h2>
-      {relatedInsights.length > 0 ? (
-        <ul class="related-list">
-          {relatedInsights.map(post => (
-            <li>
-              <a href={`/insight/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">관련 인사이트가 아직 없습니다. Insight 파일에 <code>project_tag: "AI콘텐츠비서"</code>를 추가하면 자동으로 연결됩니다.</p>
-      )}
+      <h2>다음 검증 과제</h2>
+      <ul class="gains-list">
+        <li>실제 소상공인 5명에게 <code>aicontent.chulbuji.com</code> 링크 전달 → 사용 피드백 수집</li>
+        <li>"이 화면에서 뭘 하면 되는지 바로 이해됐는가" 첫 번째 사용성 확인</li>
+        <li>업종별·목적별 생성 품질 실사용 기준으로 재검토</li>
+        <li>UI 문구 단순화 — 소상공인 눈높이로 재작성</li>
+      </ul>
     </section>
+
   </div>
 </PageLayout>
 
 <style>
-  .project-detail {
+  .project-hub {
     max-width: 800px;
     margin: 0 auto;
   }
 
-  .back-link {
-    display: inline-block;
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 600;
+  .top-nav {
     margin-bottom: 2rem;
   }
 
-  .back-link:hover {
+  .top-nav a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a:hover {
     text-decoration: underline;
   }
 
   .project-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
-  .project-header h1 {
-    margin-top: 0.75rem;
-    font-size: 2rem;
-  }
-
-  .project-status {
+  .status-badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 600;
+    margin-bottom: 0.75rem;
   }
 
-  .status-experimental {
+  .status-validating {
     background-color: #fce4ec;
     color: #c62828;
   }
 
-  .project-meta {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
+  .definition {
+    font-size: 1.05rem;
+    color: #555;
+    font-style: italic;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .meta {
+    font-size: 0.875rem;
+    color: #888;
+  }
+
+  .meta a {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  .meta a:hover {
+    text-decoration: underline;
   }
 
   .section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.75rem;
   }
 
   .section h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
     border-bottom: 1px solid #eee;
     padding-bottom: 0.5rem;
+    color: #222;
   }
 
   .section p {
     color: #444;
-    line-height: 1.7;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
   }
 
-  .placeholder {
-    color: #999;
+  .section a {
+    color: #1976d2;
+    text-decoration: none;
   }
 
-  .section ul {
+  .section a:hover {
+    text-decoration: underline;
+  }
+
+  .gains-list,
+  .achievements {
     padding-left: 1.25rem;
     color: #444;
     line-height: 1.9;
   }
 
-  .section ul a {
-    color: #1976d2;
-    text-decoration: none;
+  .gains-list li,
+  .achievements li {
+    margin-bottom: 0.4rem;
   }
 
-  .section ul a:hover {
-    text-decoration: underline;
-  }
-
-  .related-list {
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .related-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .related-list a {
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  .related-list a:hover {
-    text-decoration: underline;
-  }
-
-  .post-date {
-    font-size: 0.85rem;
-    color: #888;
-    white-space: nowrap;
-  }
-
-  .update-table {
+  .feature-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     font-size: 0.9rem;
     color: #444;
   }
 
-  .update-table th {
+  .feature-table th {
     background-color: #f5f5f5;
     text-align: left;
     padding: 0.5rem 0.75rem;
@@ -235,13 +240,109 @@ const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
     font-weight: 600;
   }
 
-  .update-table td {
+  .feature-table td {
     padding: 0.5rem 0.75rem;
     border: 1px solid #ddd;
     line-height: 1.6;
   }
 
-  .update-table tr:nth-child(even) td {
+  .feature-table tr:nth-child(even) td {
     background-color: #fafafa;
+  }
+
+  .recent-updates {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .recent-updates li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .recent-updates li:last-child {
+    border-bottom: none;
+  }
+
+  .update-date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
+    min-width: 140px;
+    font-weight: 600;
+  }
+
+  .update-desc {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .timeline-cta {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .timeline-cta a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .timeline-cta a:hover {
+    text-decoration: underline;
+  }
+
+  .featured-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .featured-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .featured-list li:last-child {
+    border-bottom: none;
+  }
+
+  .featured-list a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .featured-list a:hover {
+    text-decoration: underline;
+  }
+
+  .featured-note {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  code {
+    background: #f5f5f5;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: monospace;
   }
 </style>

@@ -1,247 +1,165 @@
 ---
 import PageLayout from '../../../../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
-
-const relatedLogs = (await getCollection('en/log', ({ data }) =>
-  data.published !== false && data.project_tag === 'AIContentAssistant'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const relatedInsights = (await getCollection('en/insight', ({ data }) =>
-  data.published !== false && data.project_tag === 'AIContentAssistant'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<PageLayout title="AI Content Assistant" description="An experiment building an AI content tool for small businesses — upload a photo and a short note, and get a blog post, SNS copy, short-form script, and hashtags automatically.">
-  <div class="project-detail">
-    <a href="/en/projects" class="back-link">← Projects</a>
+<PageLayout title="AI Content Assistant" description="A development record of an AI content tool MVP for small business owners. Upload a photo and a short note — the tool generates a blog post, SNS copy, short-form script, and hashtags automatically. An experiment to find out whether real small business owners can actually use it.">
+  <div class="project-hub">
+
+    <nav class="top-nav">
+      <a href="/en/projects">← Projects</a>
+    </nav>
 
     <div class="project-header">
-      <span class="project-status status-experimental">⚠️ Prototype — Experimental</span>
-      <h1>AI Content Assistant — Working Through a Small Business Marketing Problem with Prototypes</h1>
-      <p class="project-meta">Current version: <strong>v2</strong> · Last updated: <strong>2026-04-22</strong></p>
+      <span class="status-badge status-validating">⚠️ MVP Live · User Validation Pending</span>
+      <p class="definition">Development record of an AI content tool MVP for small business owners</p>
+      <p class="meta">MVP · Updated 2026-04-24 · <a href="/en/projects/ai-content-assistant/timeline/">Full timeline →</a></p>
     </div>
 
     <section class="section">
-      <h2>Overview</h2>
-      <p>Local shops don't have time for marketing. Between cooking, serving customers, and managing inventory, there's no room left to post on social media. And outsourcing content creation is too expensive.</p>
-      <p>This project is an attempt to close that gap.<br>
-      Upload one photo and a short note — and the tool generates a blog post, SNS copy, a short-form video script, and hashtags automatically. The target: usable without any writing skill or social media intuition.</p>
-      <p>The goal isn't a finished product.<br>
-      The goal is the experience of building something that actually works — and finding out whether real small business owners can use it.</p>
+      <h2>What you'll find here</h2>
+      <ul class="gains-list">
+        <li>Whether a local shop owner with no social media skills can make content with an AI tool — the validation process</li>
+        <li>How an idea became a live service in one day: from wireframe to Cloudflare deployment</li>
+        <li>Where MVP scope was cut, and what was decided to validate first</li>
+        <li>How the Claude Design → Claude Code Handoff workflow performed in a real build</li>
+      </ul>
     </section>
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>⚠️ <strong>Prototype v2 complete</strong> — Mobile web prototype built with Claude Design. Improved screen structure from v1 to v2, reaching a level that operates like a real service. MVP scope defined. Preparing for real-user validation with an actual small business owner. (As of 2026-04-22)</p>
+      <p><strong>MVP live service deployed</strong> (2026-04-24). Accessible now at <a href="https://aicontent.chulbuji.com" target="_blank" rel="noopener">aicontent.chulbuji.com</a>. Changes go live 23 seconds after git push.</p>
+      <p>Next: send the link to 5 real small business owners and collect usage feedback. A tool that works is not the same as a tool that gets used.</p>
     </section>
 
     <section class="section">
-      <h2>Core Features</h2>
-      <table class="update-table">
-        <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+      <h2>Who This Tool Is For</h2>
+      <p>Local shop owners. Between cooking, serving customers, and managing inventory, there's no time left to post on social media. Outsourcing content is too expensive. There's no one to ask for help writing copy.</p>
+      <p>The tool's single assumption: <strong>one photo and a short note is enough.</strong> It should be usable without any writing ability or social media intuition.</p>
+    </section>
+
+    <section class="section">
+      <h2>The Problem Being Solved</h2>
+      <p>The content creation cost for small business marketing — not money, but time and skill.</p>
+      <p>They want to post about a new menu item but don't know how to write the caption. They have a photo but don't know what hashtags to use. They need different copy for Instagram and their blog but don't have time to write both. These three barriers are what this tool is built to remove.</p>
+    </section>
+
+    <section class="section">
+      <h2>Current MVP Scope and How It Works</h2>
+      <p>8 screens. Upload a photo and a short memo — the OpenAI GPT-4o API generates content using structured prompts tailored to the business type and content goal.</p>
+      <table class="feature-table">
+        <thead><tr><th>Input</th><th>Output</th></tr></thead>
         <tbody>
-          <tr><td>Input</td><td>Photo upload + short memo</td></tr>
-          <tr><td>Output — Blog</td><td>Auto-generated long-form blog post</td></tr>
-          <tr><td>Output — SNS</td><td>Short copy for Instagram / Facebook</td></tr>
-          <tr><td>Output — Short-form script</td><td>Video script for Reels / Shorts</td></tr>
-          <tr><td>Output — Hashtags</td><td>Auto-suggested tags by category and location</td></tr>
-          <tr><td>Platform</td><td>Mobile web (no app installation required)</td></tr>
+          <tr><td>Photo + short memo</td><td>Blog post (long-form)</td></tr>
+          <tr><td>Business type (café · hair salon · craft studio · retail)</td><td>SNS copy (Instagram · Facebook)</td></tr>
+          <tr><td>Content goal (new product · grand opening · event · return visit)</td><td>Short-form script (Reels · Shorts)</td></tr>
+          <tr><td></td><td>Hashtags (by category and location)</td></tr>
         </tbody>
       </table>
+      <p>Infrastructure: Cloudflare Pages (frontend) + Worker (API proxy), GitHub Actions auto-deploy, current operating cost ₩0.</p>
     </section>
 
     <section class="section">
-      <h2>Background</h2>
-      <p>It started while drafting a business plan application. Writing the idea down made it clear that building it directly would be faster than describing it. I used Claude Design to create a mobile web prototype, then improved the screen structure from v1 to v2 until it felt like a real service.</p>
-    </section>
-
-    <section class="section">
-      <h2>Update History</h2>
-      <ul>
-        <li><strong>2026-04-22 · v2</strong> — Screen structure overhaul. Redesigned the input-to-output flow, UI brought to service-level polish. MVP implementation scope defined.</li>
-        <li><strong>2026-04-22 · v1</strong> — First prototype complete. Built with Claude Design, mobile web-based. Core flow implemented: photo + memo input → automatic content generation.</li>
+      <h2>What's Been Built</h2>
+      <ul class="achievements">
+        <li><strong>Prototype v1 → v2</strong> (2026-04-22) — Mobile web prototype built with Claude Design. Input-to-output flow redesigned based on v1 feedback</li>
+        <li><strong>MVP live service deployed</strong> (2026-04-24) — Next.js + TypeScript + Tailwind CSS, Cloudflare Pages/Worker pipeline, 8 screens</li>
+        <li><strong>Deployment automation</strong> — GitHub Actions deploys Pages and Worker simultaneously; git push → live in 23 seconds</li>
+        <li><strong>Current infrastructure cost:</strong> ₩0</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Show the prototype to one real small business owner — confirm whether they immediately understand what to do on screen</li>
-        <li>Real-user test → incorporate feedback</li>
-        <li>Progress through the validation cycle toward a real service</li>
+      <h2>Recent Updates</h2>
+      <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-04-24</span>
+          <span class="update-desc">Next.js MVP deployed to Cloudflare. OpenAI GPT-4o API connected via Worker, GitHub Actions auto-deploy pipeline built</span>
+        </li>
+        <li>
+          <span class="update-date">2026-04-22 · v2</span>
+          <span class="update-desc">Claude Design prototype v2. Input-to-output flow redesigned, UI brought to service-level polish, MVP scope finalized</span>
+        </li>
+      </ul>
+      <p class="timeline-cta"><a href="/en/projects/ai-content-assistant/timeline/">View full timeline →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>Featured Logs</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/en/log/2026-04-22-ai-content-assistant-prototype/">AI Content Assistant — From Idea to Screen to Implementation Scope</a>
+          <span class="featured-note">An idea written in a business plan application became an interactive mobile prototype in one day. The MVP scope only became visible once there was a screen to look at.</span>
+        </li>
+        <li>
+          <a href="/en/log/2026-04-24-ai-content-mvp-live/">AI Content Assistant MVP — From Dev Setup to Live Service in One Day</a>
+          <span class="featured-note">From VS Code install to Cloudflare deployment in one day. 23 seconds from git push to production.</span>
+        </li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Related Logs</h2>
-      {relatedLogs.length > 0 ? (
-        <ul class="related-list">
-          {relatedLogs.map(post => (
-            <li>
-              <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">No related logs yet. Add <code>project_tag: "AIContentAssistant"</code> to any log file to link it here automatically.</p>
-      )}
+      <h2>Featured Insights</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/en/insight/insight-016/">Ideas Are Validated Faster with Screens Than with Words</a>
+          <span class="featured-note">Building a screen is faster and more accurate than writing a spec. The screen reveals what the spec missed.</span>
+        </li>
+        <li>
+          <a href="/en/insight/insight-019/">No Coding Skills, Live in One Day — Why Claude Design + Claude Code Made It Possible</a>
+          <span class="featured-note">AI closed the gap between design and development. That's different from "AI writes the code for you."</span>
+        </li>
+      </ul>
     </section>
 
     <section class="section">
-      <h2>Related Insights</h2>
-      {relatedInsights.length > 0 ? (
-        <ul class="related-list">
-          {relatedInsights.map(post => (
-            <li>
-              <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">No related insights yet. Add <code>project_tag: "AIContentAssistant"</code> to any insight file to link it here automatically.</p>
-      )}
+      <h2>Next Validation Steps</h2>
+      <ul class="gains-list">
+        <li>Send <code>aicontent.chulbuji.com</code> link to 5 real small business owners → collect usage feedback</li>
+        <li>First usability check: "Did you immediately understand what to do on this screen?"</li>
+        <li>Review generated content quality by business type and goal against real-user standards</li>
+        <li>Simplify UI copy — rewrite from the small business owner's perspective</li>
+      </ul>
     </section>
+
   </div>
 </PageLayout>
 
 <style>
-  .project-detail {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .back-link {
-    display: inline-block;
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
-
-  .back-link:hover {
-    text-decoration: underline;
-  }
-
-  .project-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .project-header h1 {
-    margin-top: 0.75rem;
-    font-size: 2rem;
-  }
-
-  .project-status {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .status-experimental {
-    background-color: #fce4ec;
-    color: #c62828;
-  }
-
-  .project-meta {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  .section {
-    margin-bottom: 2.5rem;
-  }
-
-  .section h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-  }
-
-  .section p {
-    color: #444;
-    line-height: 1.7;
-  }
-
-  .placeholder {
-    color: #999;
-  }
-
-  .section ul {
-    padding-left: 1.25rem;
-    color: #444;
-    line-height: 1.9;
-  }
-
-  .section ul a {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  .section ul a:hover {
-    text-decoration: underline;
-  }
-
-  .related-list {
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .related-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .related-list a {
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  .related-list a:hover {
-    text-decoration: underline;
-  }
-
-  .post-date {
-    font-size: 0.85rem;
-    color: #888;
-    white-space: nowrap;
-  }
-
-  .update-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: #444;
-  }
-
-  .update-table th {
-    background-color: #f5f5f5;
-    text-align: left;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    font-weight: 600;
-  }
-
-  .update-table td {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    line-height: 1.6;
-  }
-
-  .update-table tr:nth-child(even) td {
-    background-color: #fafafa;
-  }
+  .project-hub { max-width: 800px; margin: 0 auto; }
+  .top-nav { margin-bottom: 2rem; }
+  .top-nav a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .top-nav a:hover { text-decoration: underline; }
+  .project-header { margin-bottom: 2rem; }
+  .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .status-validating { background-color: #fce4ec; color: #c62828; }
+  .definition { font-size: 1.05rem; color: #555; font-style: italic; margin: 0.25rem 0 0.5rem; }
+  .meta { font-size: 0.875rem; color: #888; }
+  .meta a { color: #1976d2; text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .section { margin-bottom: 2.75rem; }
+  .section h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.85rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; color: #222; }
+  .section p { color: #444; line-height: 1.75; margin-bottom: 0.75rem; }
+  .section a { color: #1976d2; text-decoration: none; }
+  .section a:hover { text-decoration: underline; }
+  .gains-list, .achievements { padding-left: 1.25rem; color: #444; line-height: 1.9; }
+  .gains-list li, .achievements li { margin-bottom: 0.4rem; }
+  .feature-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; color: #444; }
+  .feature-table th { background-color: #f5f5f5; text-align: left; padding: 0.5rem 0.75rem; border: 1px solid #ddd; font-weight: 600; }
+  .feature-table td { padding: 0.5rem 0.75rem; border: 1px solid #ddd; line-height: 1.6; }
+  .feature-table tr:nth-child(even) td { background-color: #fafafa; }
+  .recent-updates { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+  .recent-updates li { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; padding-bottom: 0.85rem; border-bottom: 1px solid #f0f0f0; }
+  .recent-updates li:last-child { border-bottom: none; }
+  .update-date { font-size: 0.85rem; color: #888; white-space: nowrap; min-width: 140px; font-weight: 600; }
+  .update-desc { color: #444; font-size: 0.9rem; line-height: 1.6; }
+  .timeline-cta { margin-top: 1rem; font-size: 0.9rem; }
+  .timeline-cta a { color: #1976d2; text-decoration: none; font-weight: 600; }
+  .timeline-cta a:hover { text-decoration: underline; }
+  .featured-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .featured-list li { padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; display: flex; flex-direction: column; gap: 0.3rem; }
+  .featured-list li:last-child { border-bottom: none; }
+  .featured-list a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; line-height: 1.4; }
+  .featured-list a:hover { text-decoration: underline; }
+  .featured-note { font-size: 0.85rem; color: #777; line-height: 1.5; }
+  code { background: #f5f5f5; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.9em; font-family: monospace; }
 </style>

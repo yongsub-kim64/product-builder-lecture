@@ -1,286 +1,170 @@
 ---
 import PageLayout from '../../../../layouts/PageLayout.astro';
-import { getCollection } from 'astro:content';
-
-const relatedLogs = (await getCollection('en/log', ({ data }) =>
-  data.published !== false && data.project_tag === 'AutoTrading'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const relatedInsights = (await getCollection('en/insight', ({ data }) =>
-  data.published !== false && data.project_tag === 'AutoTrading'
-)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<PageLayout title="AI Auto-Trading Experiment" description="An experiment building and running an automated trading system with AI and ₩5M. No code written by hand — just rules, an AI assistant, and real capital on the line.">
-  <div class="project-detail">
-    <a href="/en/projects" class="back-link">← Projects</a>
+<PageLayout title="AI Auto-Trading Experiment" description="A live-account experiment running an AI-assisted automated trading system with ₩5M. The operator handles judgment; AI handles execution. A record of building, validating, and running a system where AI operates real capital.">
+  <div class="project-hub">
+
+    <nav class="top-nav">
+      <a href="/en/projects">← Projects</a>
+    </nav>
 
     <div class="project-header">
-      <span class="project-status status-active">🟢 Live</span>
-      <h1>AI Auto-Trading Experiment</h1>
-      <p class="project-meta">Current version: <strong>v1.5</strong> · Last updated: <strong>2026-04-27</strong></p>
+      <span class="status-badge status-dryryn">🟡 BUY_DRY_RUN Validation</span>
+      <p class="definition">₩5M live-account experiment running an AI-assisted automated trading system</p>
+      <p class="meta">v1.5 · Updated 2026-04-27 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Investment Disclaimer</strong><br>
+      This project is not investment advice and makes no claims about returns. It is a documented experiment in designing, validating, and operating an automated trading system in collaboration with AI. All investment decisions and their consequences are the sole responsibility of each individual.
     </div>
 
     <section class="section">
-      <h2>Overview</h2>
-      <p>An experiment building and running an automated trading system with AI and ₩5M.<br>
-      A non-coder handles judgment; AI handles execution. That collaboration structure is the core.</p>
-      <p>The goal isn't profit.<br>
-      The goal is the experience of building a system where AI operates real capital — by hand.</p>
+      <h2>What you'll find here</h2>
+      <ul class="gains-list">
+        <li>The complete process of building a rule-based trading system with AI — from zero code to live account</li>
+        <li>How real orders get made, and where the system broke down</li>
+        <li>The reasoning behind every strategy decision — why that choice, not another</li>
+        <li>How to debug a system that's running on real money</li>
+      </ul>
     </section>
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>🟡 <strong>BUY_DRY_RUN Validation</strong> — RS (Relative Strength) filter introduced (2026-04-27). Stocks with excess return below -3% vs. KOSPI200 ETF are disqualified; forced slot-filling removed. Buy decisions run in simulation mode; sell logic stays live. Switching to live account after 2–3 trading days of validation.</p>
+      <p>An RS (Relative Strength) filter was added. Any stock with excess return below -3% vs. the KOSPI200 ETF (20-day) is disqualified as a buy candidate. Remaining candidates are sorted by excess return and purchased strongest-first. Empty slots stay in cash when no strong candidates qualify.</p>
+      <p>Currently running BUY_DRY_RUN=True — buy logic in simulation, sell logic stays live. Switching to full live after 2–3 trading days of validation. Current live account closing balance: ₩4,890,000.</p>
     </section>
 
     <section class="section">
-      <h2>Collaboration Structure</h2>
-      <table class="update-table">
-        <thead><tr><th>Role</th><th>Owner</th></tr></thead>
-        <tbody>
-          <tr><td>Strategy direction + judgment</td><td>메타철부지 (GPT)</td></tr>
-          <tr><td>Code analysis + execution</td><td>Claude Code</td></tr>
-          <tr><td>Direction setting + final call</td><td>Operator (철부지)</td></tr>
-        </tbody>
-      </table>
+      <h2>The Problem Being Solved</h2>
+      <p>Can a non-coder build and operate a real automated trading system by collaborating with AI?</p>
+      <p>The operator handles <strong>judgment</strong>. AI handles <strong>execution</strong>. The question is whether this division of roles holds up when real capital is on the line. ₩5M is the answer in progress.</p>
+      <p>The goal is not profit. The goal is the experience of building a system where AI operates real capital — by hand, from scratch.</p>
     </section>
 
     <section class="section">
-      <h2>Current Strategy</h2>
-      <table class="update-table">
-        <thead><tr><th>Parameter</th><th>Setting</th></tr></thead>
-        <tbody>
-          <tr><td>Buy signal</td><td>RSI(Wilder) 40–65</td></tr>
-          <tr><td>Trend filter</td><td>MA20 deviation — large-cap ≤ 14% / standard ≤ 7% (with sell buffer)</td></tr>
-          <tr><td>Position size</td><td>20% per stock / max ₩1,000,000 · max 5 stocks</td></tr>
-          <tr><td>Max capital</td><td>₩5,000,000 (50% of cash balance)</td></tr>
-          <tr><td>Cash reserve</td><td>Bull 20% / Neutral 35% / Bear 60% (tied to total assets)</td></tr>
-          <tr><td>Regime detection</td><td>5-condition scoring · 2 consecutive days same signal → regime change</td></tr>
-          <tr><td>RS filter</td><td>Excess return vs. KOSPI200 ETF (20-day) below -3% → disqualified · Remaining sorted by excess return</td></tr>
-          <tr><td>Slot filling</td><td>Buy only as many strong candidates as qualify · Hold remaining slots in cash</td></tr>
-          <tr><td>Buy scans</td><td>3×/day (10:00 / 13:00 / 14:00)</td></tr>
-          <tr><td>Take profit</td><td>+6% fixed or trailing stop</td></tr>
-          <tr><td>Trailing stop</td><td>Activated at +4% / sell at –2% from peak</td></tr>
-          <tr><td>Stop loss</td><td>–3%</td></tr>
-          <tr><td>Stock universe</td><td>20 tickers (sector-diversified)</td></tr>
-          <tr><td>Same-day re-entry</td><td>Blocked</td></tr>
-        </tbody>
-      </table>
+      <h2>Structure and How It Works</h2>
+      <p>Three roles. The operator (철부지) sets strategy direction and makes final calls. GPT (메타철부지) handles strategy design and research. Claude Code handles code analysis and modification. KIS API (Korea Investment Securities) executes orders on the live account.</p>
+      <p>Buy decisions run through a rule engine. RSI, MA20 deviation, market regime (5-condition scoring), RS filter — candidates that pass all four conditions are sorted by strength and scanned 3 times per day (10:00 / 13:00 / 14:00). Sells are handled automatically: +6% take-profit or trailing stop (+4% activation / -2% from peak), -3% stop-loss.</p>
     </section>
 
     <section class="section">
-      <h2>Update History</h2>
-      <ul>
-        <li><strong>2026-04-27 · v1.5</strong> — RS filter added; stock selection philosophy overhauled. KOSPI200 ETF 20-day excess return below -3% disqualifies candidates; qualified stocks sorted by excess return and purchased strongest-first. Forced slot-filling removed (hold cash when candidates are scarce). Sector overlap limit moved to config. BUY_DRY_RUN flag added — buy logic in simulation, sell logic stays live. Files modified: config.py / rule_engine.py / main.py. Functions added: get_market_rs() / calc_rs_score() / _run_buy_cycle() / _save_dry_run_tracking(). (BUY_DRY_RUN validation in progress)</li>
-        <li><strong>2026-04-24 · v1.4</strong> — 5 bugs fixed, 6 strategy changes. Wrong cash field (prvs_rcdl_excc_amt → ord_psbl_cash_amt) corrected — orders restored. 18 duplicate KT PENDING_SELL reservations removed + deduplication logic added. MA20 deviation threshold split by stock type (large-cap 14% / standard 7%), buy-sell buffer zone added. Regime detection switched from single KOSPI close to 5-condition scoring with 2-day confirmation; cash reserve ratios (bull 20% / neutral 35% / bear 60%) tied to total assets. Realized P&amp;L –₩93,000 (Kia · KT stop-losses). 4 orders executed. Closing balance ₩4,890,000.</li>
-        <li><strong>2026-04-22</strong> — Live day 3. 2 stop-losses executed (KB Financial &amp; Kakao, –₩61,800 total). MA60 filter correctly blocked 3 downtrend stocks (NAVER, Kia, Hyundai Motor) — first live validation of 4/21 API replacement (65 data points, MA20+MA60 normal). Budget safety margin (safe_budget×0.95) partial validation: success at 13:00, failed again at 14:00. KT entered as new position. Closing balance ₩4,906,290.</li>
-        <li><strong>2026-04-21</strong> — MA60 API replacement complete. Switched from inquire-daily-price (fixed 30 candles) to inquire-daily-itemchartprice (65 candles). Validated in live trading on 4/22 — downtrend filter working correctly.</li>
-        <li><strong>2026-04-20</strong> — Live account day 1. 2 bugs fixed (stale paper-trading token in cache / MA60=None fallback to MA20). First 5 buys executed (Kakao, Kia, KB Financial, Shinhan, NAVER), ₩4,690,300 deployed, ₩305,970 cash remaining. End-of-day unrealized P&amp;L: –₩54,030 (–1.08%), all positions held. Telegram daily summary and data export confirmed.</li>
-        <li><strong>2026-04-17 · v1.3</strong> — 1-week paper trade complete, live account switch confirmed. 4 bugs fixed (buy amount as loss / loss limit hard-coded / cash balance stuck / account number format). Kakao trailing stop triggered (+3.01%, +₩30,060). Weekly realized P&amp;L: +₩45,060 (+0.58%). Live account API connection verified.</li>
-        <li><strong>2026-04-16</strong> — STEP 11·12 complete. Buy scans reduced 4→3/day. Stock universe expanded 5→20. Deviation cap loosened 5%→7%. Max holdings raised 3→5 stocks.</li>
-        <li><strong>2026-04-15</strong> — STEP 10 complete. Auto-recovery for stale lock files (psutil PID validation). Trailing stop fired in live trading. Samsung Electronics +3.57% auto-sold. Realized P&amp;L: +₩15,000.</li>
-        <li><strong>2026-04-14</strong> — Switched to live trading. Trailing stop refinement, balance fallback logic, post-market Telegram summary. First real order executed (Kakao 20 shares @ ₩48,350)</li>
-        <li><strong>2026-04-10</strong> — Production-grade stabilization. Balance field fix / API retry / duplicate buy &amp; process prevention / hold_days fix / IS_PAPER safeguard</li>
-        <li><strong>2026-04-09</strong> — Python module cache issue identified and buy cycle restored. Scheduler restart SOP created</li>
-        <li><strong>2026-04-08 · v1.1</strong> — Dual market regime filter / volume filter / sell condition branching / same-day re-entry block / log structure overhaul</li>
-        <li><strong>2026-04-07 · v1.0</strong> — KIS API integration, rule engine, Telegram alerts, scheduler MVP complete</li>
+      <h2>Key Achievements</h2>
+      <ul class="achievements">
+        <li><strong>MVP to live account in 20 days</strong> (2026-04-07 → 2026-04-20)</li>
+        <li><strong>1-week paper trade profit:</strong> +₩45,060 (+0.58%) — the basis for the live switch decision</li>
+        <li><strong>First live order:</strong> 2026-04-14 Kakao 20 shares @ ₩48,350</li>
+        <li><strong>Current live account balance:</strong> ₩4,890,000 (day 8 of live trading)</li>
+        <li><strong>Strategy shift:</strong> "fill all slots" → "hold only strong candidates, keep cash otherwise" (RS filter)</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Check BUY_DRY_RUN logs over 2–3 trading days — verify RS-filtered candidates outperform full candidate pool and KOSPI200 ETF on average</li>
-        <li>If validation passes, switch BUY_DRY_RUN=False and apply to live account</li>
-        <li>Compile per-ticker win rate statistics</li>
-        <li>Review adding a volume spike condition</li>
-        <li>Establish monthly ticker rebalancing criteria</li>
+      <h2>Recent Updates</h2>
+      <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-04-27 · v1.5</span>
+          <span class="update-desc">RS filter added, forced slot-filling removed, BUY_DRY_RUN flag introduced — validation in progress</span>
+        </li>
+        <li>
+          <span class="update-date">2026-04-24 · v1.4</span>
+          <span class="update-desc">5 bugs fixed (wrong cash field, 18 duplicate KT sell reservations), regime detection switched to 5-condition scoring</span>
+        </li>
+        <li>
+          <span class="update-date">2026-04-23</span>
+          <span class="update-desc">3 live-account bugs fixed same day</span>
+        </li>
+      </ul>
+      <p class="timeline-cta"><a href="/en/projects/stock-auto-trade/timeline/">View full update history →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>Featured Logs — 5 entries to understand this project</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/en/log/stock-auto-trade-mvp-complete/">Auto-Trading MVP Complete — Rule Engine, Regime Filter, Telegram Alerts</a>
+          <span class="featured-note">The day the system first ran. KIS API integration, rule engine, scheduler — the full structure built.</span>
+        </li>
+        <li>
+          <a href="/en/log/2026-04-14-auto-trading-live-switch/">KIS Auto-Trading — First Real Order Executed, Live Switch Complete</a>
+          <span class="featured-note">The day DRY_RUN was turned off and real money moved for the first time.</span>
+        </li>
+        <li>
+          <a href="/en/log/2026-04-17-auto-trading-mock-complete/">1-Week Paper Trade Complete — Decision to Switch to Live Account</a>
+          <span class="featured-note">What was validated in the paper trade and what that meant for the live switch decision.</span>
+        </li>
+        <li>
+          <a href="/en/log/2026-04-20-auto-trading-live-day1/">Live Account Day 1 — 2 Bugs Fixed, 5 Positions Opened</a>
+          <span class="featured-note">Day 1 live troubleshooting. Bugs that didn't appear in paper trading showed up in live.</span>
+        </li>
+        <li>
+          <a href="/en/log/2026-04-27-auto-trading-rs-filter/">KOSPI Hit a Record High — But My Portfolio Was Down</a>
+          <span class="featured-note">Found the MAX_HOLD=5 slot-filling problem and switched to RS-based stock selection philosophy.</span>
+        </li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Related Logs</h2>
-      {relatedLogs.length > 0 ? (
-        <ul class="related-list">
-          {relatedLogs.map(post => (
-            <li>
-              <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">No related logs yet.</p>
-      )}
+      <h2>Featured Insights — 5 key observations</h2>
+      <ul class="featured-list">
+        <li>
+          <a href="/en/insight/insight-009/">What I Didn't Know When I Started Building an AI Trading System</a>
+          <span class="featured-note">The things that only became visible after starting. The real problems that emerged from building.</span>
+        </li>
+        <li>
+          <a href="/en/insight/insight-011/">I Didn't Tell AI to Fix the Code — I Changed the Structure</a>
+          <span class="featured-note">The essence of AI collaboration isn't fixing code — it's restructuring problems.</span>
+        </li>
+        <li>
+          <a href="/en/insight/insight-013/">The System Sold on Its Own — Trailing Stop in Live Trading</a>
+          <span class="featured-note">The moment the rules worked. A decision was made without me making it.</span>
+        </li>
+        <li>
+          <a href="/en/insight/insight-015/">The Days the System Said No</a>
+          <span class="featured-note">Doing nothing is a strategy. A record of the days when the right move was not to buy.</span>
+        </li>
+        <li>
+          <a href="/en/insight/insight-020/">Filling Slots with Weak Stocks Is Not Diversification — It's Distributing Losses</a>
+          <span class="featured-note">MAX_HOLD=5 was a ceiling, not a target. Proved on the day KOSPI hit an all-time high.</span>
+        </li>
+      </ul>
     </section>
 
-    <section class="section">
-      <h2>Related Insights</h2>
-      {relatedInsights.length > 0 ? (
-        <ul class="related-list">
-          {relatedInsights.map(post => (
-            <li>
-              <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
-              <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder">No related insights yet. Add <code>project_tag: "AutoTrading"</code> to any insight file to link it here automatically.</p>
-      )}
-    </section>
   </div>
 </PageLayout>
 
 <style>
-  .project-detail {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .back-link {
-    display: inline-block;
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
-
-  .back-link:hover {
-    text-decoration: underline;
-  }
-
-  .project-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .project-header h1 {
-    margin-top: 0.75rem;
-    font-size: 2rem;
-  }
-
-  .project-status {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .status-experimental {
-    background-color: #fce4ec;
-    color: #c62828;
-  }
-
-  .status-active {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-  }
-
-  .project-meta {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  .section {
-    margin-bottom: 2.5rem;
-  }
-
-  .section h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-  }
-
-  .section p {
-    color: #444;
-    line-height: 1.7;
-  }
-
-  .placeholder {
-    color: #999;
-  }
-
-  .section ul {
-    padding-left: 1.25rem;
-    color: #444;
-    line-height: 1.9;
-  }
-
-  .section ul a {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  .section ul a:hover {
-    text-decoration: underline;
-  }
-
-  .related-list {
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .related-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .related-list a {
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  .related-list a:hover {
-    text-decoration: underline;
-  }
-
-  .post-date {
-    font-size: 0.85rem;
-    color: #888;
-    white-space: nowrap;
-  }
-
-  .section h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 1.5rem 0 0.5rem;
-    color: #333;
-  }
-
-  .update-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: #444;
-  }
-
-  .update-table th {
-    background-color: #f5f5f5;
-    text-align: left;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    font-weight: 600;
-  }
-
-  .update-table td {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    line-height: 1.6;
-  }
-
-  .update-table tr:nth-child(even) td {
-    background-color: #fafafa;
-  }
+  .project-hub { max-width: 800px; margin: 0 auto; }
+  .top-nav { margin-bottom: 2rem; }
+  .top-nav a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .top-nav a:hover { text-decoration: underline; }
+  .project-header { margin-bottom: 1.75rem; }
+  .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .status-dryryn { background-color: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+  .definition { font-size: 1.05rem; color: #555; font-style: italic; margin: 0.25rem 0 0.5rem; }
+  .meta { font-size: 0.875rem; color: #888; }
+  .meta a { color: #1976d2; text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .disclaimer { background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: #555; line-height: 1.65; margin-bottom: 2.5rem; }
+  .disclaimer strong { color: #e65100; display: block; margin-bottom: 0.35rem; }
+  .section { margin-bottom: 2.75rem; }
+  .section h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.85rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; color: #222; }
+  .section p { color: #444; line-height: 1.75; margin-bottom: 0.75rem; }
+  .gains-list, .achievements { padding-left: 1.25rem; color: #444; line-height: 1.9; }
+  .gains-list li, .achievements li { margin-bottom: 0.4rem; }
+  .recent-updates { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+  .recent-updates li { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; padding-bottom: 0.85rem; border-bottom: 1px solid #f0f0f0; }
+  .recent-updates li:last-child { border-bottom: none; }
+  .update-date { font-size: 0.85rem; color: #888; white-space: nowrap; min-width: 140px; font-weight: 600; }
+  .update-desc { color: #444; font-size: 0.9rem; line-height: 1.6; }
+  .timeline-cta { margin-top: 1rem; font-size: 0.9rem; }
+  .timeline-cta a { color: #1976d2; text-decoration: none; font-weight: 600; }
+  .timeline-cta a:hover { text-decoration: underline; }
+  .featured-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .featured-list li { padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; display: flex; flex-direction: column; gap: 0.3rem; }
+  .featured-list li:last-child { border-bottom: none; }
+  .featured-list a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; line-height: 1.4; }
+  .featured-list a:hover { text-decoration: underline; }
+  .featured-note { font-size: 0.85rem; color: #777; line-height: 1.5; }
 </style>

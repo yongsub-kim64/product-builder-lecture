@@ -1,0 +1,111 @@
+---
+import PageLayout from '../../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="AI Content Assistant — Full Timeline" description="Complete development history of the AI Content Assistant project. From idea to prototype to live MVP service.">
+  <div class="timeline-page">
+
+    <nav class="top-nav">
+      <a href="/en/projects/ai-content-assistant/">← Back to Project Hub</a>
+    </nav>
+
+    <p class="page-intro">Full timeline of the AI Content Assistant project, started April 2026. Organized by month.</p>
+
+    <!-- ── April 2026 ──────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">April 2026</span>
+        <h2>From Prototype to Live Service</h2>
+      </div>
+      <p class="phase-summary">From the day an idea first became a screen to the day it went live on a real server. Built a prototype with Claude Design, then shipped a Next.js live service in one day.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+            <span class="entry-version">v1</span>
+          </div>
+          <p class="entry-title">First Prototype — Claude Design, Mobile Web</p>
+          <p class="entry-sig">An idea from a business plan application became an interactive prototype in one day. Core flow implemented: photo + memo input → automatic content generation. The MVP scope only became visible once the screen existed.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+            <span class="entry-version">v2</span>
+          </div>
+          <p class="entry-title">Screen Redesign — Input-to-Output Flow Rebuilt, UI Brought to Service Level</p>
+          <p class="entry-sig">v1 feedback incorporated. 8-screen flow redesigned to operate like a real service. MVP implementation scope finalized.</p>
+          <a href="/en/log/2026-04-22-ai-content-assistant-prototype/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-24</span>
+            <span class="entry-version">MVP</span>
+          </div>
+          <p class="entry-title">Next.js MVP Deployed to Live Service</p>
+          <p class="entry-sig">From VS Code install to Cloudflare deployment in one day. Next.js + TypeScript + Tailwind CSS, OpenAI GPT-4o via Cloudflare Worker, GitHub Actions pipeline. 23 seconds from git push to live. Current infrastructure cost: ₩0.</p>
+          <a href="/en/log/2026-04-24-ai-content-mvp-live/" class="entry-link">View Log →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── Next Steps ──────────────────────────── -->
+    <div class="phase next-phase">
+      <div class="phase-header">
+        <span class="phase-label next-label">Next</span>
+        <h2>User Validation</h2>
+      </div>
+      <p class="phase-summary">Building it and having it used are different things. The next phase is sending the link to 5 real small business owners and checking whether they immediately understand what to do on screen.</p>
+
+      <ul class="entries next-entries">
+        <li class="entry next-entry">
+          <p class="entry-title">User validation with 5 real small business owners</p>
+          <p class="entry-sig">Send aicontent.chulbuji.com link → collect usage feedback. First question: "Did you immediately understand what to do on this screen?"</p>
+        </li>
+        <li class="entry next-entry">
+          <p class="entry-title">Feedback-based UX improvements</p>
+          <p class="entry-sig">Review generated content quality against real-user standards by business type and goal. Simplify UI copy from the small business owner's perspective.</p>
+        </li>
+        <li class="entry next-entry">
+          <p class="entry-title">Expansion direction review</p>
+          <p class="entry-sig">Based on validation results: pricing model, additional business types and goals, infrastructure scaling decisions.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="/en/projects/ai-content-assistant/">← Back to Project Hub</a>
+    </div>
+
+  </div>
+</PageLayout>
+
+<style>
+  .timeline-page { max-width: 800px; margin: 0 auto; }
+  .top-nav, .bottom-nav { margin-bottom: 2rem; }
+  .bottom-nav { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; }
+  .top-nav a, .bottom-nav a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .top-nav a:hover, .bottom-nav a:hover { text-decoration: underline; }
+  .page-intro { color: #666; font-size: 0.95rem; margin-bottom: 3rem; line-height: 1.7; }
+  .phase { margin-bottom: 3.5rem; padding-bottom: 3rem; border-bottom: 2px solid #e8e8e8; }
+  .phase:last-of-type { border-bottom: none; }
+  .phase-header { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+  .phase-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: #555; padding: 0.2rem 0.6rem; border-radius: 3px; }
+  .next-label { background: #b0bec5; }
+  .phase-header h2 { font-size: 1.25rem; font-weight: 700; color: #222; margin: 0; }
+  .phase-summary { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid #ddd; }
+  .entries { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .entry { padding: 1.1rem 0 1.1rem 1rem; border-left: 2px solid #e0e0e0; margin-left: 0.5rem; position: relative; }
+  .entry::before { content: ''; width: 8px; height: 8px; background: #999; border-radius: 50%; position: absolute; left: -5px; top: 1.5rem; }
+  .next-entries .next-entry { border-left: 2px dashed #ccc; }
+  .next-entries .next-entry::before { background: #ccc; border: 2px solid #fff; width: 10px; height: 10px; left: -6px; }
+  .entry-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+  .entry-date { font-size: 0.82rem; color: #888; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .entry-version { font-size: 0.75rem; background: #e3f2fd; color: #1565c0; padding: 0.1rem 0.45rem; border-radius: 3px; font-weight: 700; }
+  .entry-title { font-size: 0.95rem; font-weight: 600; color: #333; margin: 0 0 0.4rem; line-height: 1.4; }
+  .entry-sig { font-size: 0.875rem; color: #666; line-height: 1.65; margin: 0 0 0.5rem; }
+  .entry-link { font-size: 0.82rem; color: #1976d2; text-decoration: none; font-weight: 600; }
+  .entry-link:hover { text-decoration: underline; }
+  .next-phase .entry-title { color: #888; }
+  .next-phase .entry-sig { color: #aaa; }
+</style>

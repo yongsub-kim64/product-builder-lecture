@@ -1,0 +1,221 @@
+---
+import PageLayout from '../../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="AI Auto-Trading Experiment — Full Timeline" description="Complete update history for the AI Auto-Trading Experiment. From MVP design through paper trading, live account launch, and strategy optimization.">
+  <div class="timeline-page">
+
+    <nav class="top-nav">
+      <a href="/en/projects/stock-auto-trade/">← Back to Project Hub</a>
+    </nav>
+
+    <p class="page-intro">Full timeline of the AI Auto-Trading Experiment, starting 2026-04-07. Organized in four phases.</p>
+
+    <!-- ── PHASE 1 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 1</span>
+        <h2>MVP Design and Build</h2>
+        <span class="phase-period">2026-04-07 – 2026-04-10</span>
+      </div>
+      <p class="phase-summary">Built the full system structure: KIS API integration, rule engine, Telegram alerts, and scheduler. Closed this phase waiting for the first automated execution.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-07</span>
+            <span class="entry-version">v1.0</span>
+          </div>
+          <p class="entry-title">KIS API, Rule Engine, Telegram, Scheduler — MVP Complete</p>
+          <p class="entry-sig">The system first became capable of placing real orders. Loss limit safeguard, Telegram alerts, and 3×/day scheduler included.</p>
+          <a href="/en/log/stock-auto-trade-mvp-complete/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-08</span>
+            <span class="entry-version">v1.1</span>
+          </div>
+          <p class="entry-title">Dual Market Regime Filter / Volume Filter / Same-Day Re-Entry Block / Log Overhaul</p>
+          <p class="entry-sig">Configuration complete to ensure the system doesn't buy when it shouldn't. The core is a structure that does nothing when conditions aren't met.</p>
+          <a href="/en/log/2026-04-08-auto-trading-v1.1/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-09</span>
+          </div>
+          <p class="entry-title">Python Module Cache Issue Identified — Buy Cycle Restored</p>
+          <p class="entry-sig">Buy cycle dropped on scheduler restart — found and fixed. First SOP written.</p>
+          <a href="/en/log/2026-04-09-auto-trading-module-cache/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-10</span>
+          </div>
+          <p class="entry-title">Cash Balance Field Fix / API Retry / Duplicate Buy Prevention / IS_PAPER Safeguard</p>
+          <p class="entry-sig">Production-grade stabilization. Cash balance API field error found and replaced. Final stability work before live switch.</p>
+          <a href="/en/log/2026-04-10-auto-trading-11-fixes/" class="entry-link">View Log →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 2 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 2</span>
+        <h2>Paper Trading Validation</h2>
+        <span class="phase-period">2026-04-11 – 2026-04-17</span>
+      </div>
+      <p class="phase-summary">One week of paper trading to validate strategy and debug. Trailing stop fired for the first time, universe expanded, scan cadence optimized. Ended with the decision to switch to a live account.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-13</span>
+          </div>
+          <p class="entry-title">Paper Trade Week 1 — Regime Filter and 5-Slot Management First Validated</p>
+          <p class="entry-sig">First week with all 5 slots filled. Experienced the regime filter blocking buys on a down day.</p>
+          <a href="/en/log/2026-04-13-auto-trading-first-live-week/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-15</span>
+          </div>
+          <p class="entry-title">Trailing Stop Fires for the First Time — Samsung Electronics +3.57% Auto-Sold</p>
+          <p class="entry-sig">The moment the rules worked. The system made a sell decision without me. Realized P&amp;L: +₩15,000.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-16</span>
+          </div>
+          <p class="entry-title">Buy Scans 4→3/day / Universe 5→20 Tickers / Deviation 5%→7% / Max Holdings 3→5</p>
+          <p class="entry-sig">Final parameters for live trading confirmed. Widened the universe, relaxed conditions to be realistic.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-17</span>
+            <span class="entry-version">v1.3</span>
+          </div>
+          <p class="entry-title">Paper Trade Complete — 4 Bugs Fixed, Decision to Go Live</p>
+          <p class="entry-sig">Weekly profit: +₩45,060 (+0.58%). Trailing stop validated. 4 bugs fixed. Live account switch set for Monday at 08:50.</p>
+          <a href="/en/log/2026-04-17-auto-trading-mock-complete/" class="entry-link">View Log →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 3 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 3</span>
+        <h2>Live Account Launch</h2>
+        <span class="phase-period">2026-04-14 – 2026-04-22</span>
+      </div>
+      <p class="phase-summary">Real money moved for the first time. First order, first stop-losses, and bugs that didn't surface in paper trading appeared live.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-14</span>
+          </div>
+          <p class="entry-title">First Real Order — Kakao 20 Shares @ ₩48,350</p>
+          <p class="entry-sig">DRY_RUN turned off. Trailing stop refinement, balance fallback, post-market Telegram summary added. Real money moved for the first time.</p>
+          <a href="/en/log/2026-04-14-auto-trading-live-switch/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-20</span>
+          </div>
+          <p class="entry-title">Live Day 1 — 2 Bugs Fixed, 5 Positions Opened</p>
+          <p class="entry-sig">Stale token cache and MA60=None bugs fixed before first buy at 10:33. Kakao, Kia, KB Financial, Shinhan, NAVER. ₩4,690,300 deployed. End-of-day: –₩54,030 (–1.08%).</p>
+          <a href="/en/log/2026-04-20-auto-trading-live-day1/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-21</span>
+          </div>
+          <p class="entry-title">MA60 API Replaced — inquire-daily-price → inquire-daily-itemchartprice (65 candles)</p>
+          <p class="entry-sig">Root cause of MA60 data shortage resolved. Fixed 30 candles → 65 candles. Validated in live trading the next day.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+          </div>
+          <p class="entry-title">Live Day 3 — 2 Stop-Losses, MA60 Filter Validated</p>
+          <p class="entry-sig">KB Financial and Kakao stopped out: –₩61,800 total. MA60 filter correctly blocked 3 downtrend stocks — API replacement from 4/21 confirmed working. Closing balance ₩4,906,290.</p>
+          <a href="/en/log/2026-04-22-auto-trading-live-day3/" class="entry-link">View Log →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 4 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 4</span>
+        <h2>Strategy Optimization</h2>
+        <span class="phase-period">2026-04-23 – present</span>
+      </div>
+      <p class="phase-summary">Strategy redesigned based on live trading data. The biggest shift: from "a system that fills slots" to "a system that selectively holds only strong candidates."</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-23</span>
+          </div>
+          <p class="entry-title">3 Live-Account Bugs Fixed Same Day</p>
+          <p class="entry-sig">3 bugs found during live operation — identified, fixed, and deployed the same day. Operational stability improved.</p>
+          <a href="/en/log/2026-04-23-auto-trading-bug-3fix/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-24</span>
+            <span class="entry-version">v1.4</span>
+          </div>
+          <p class="entry-title">5 Bugs Fixed · 6 Strategy Improvements</p>
+          <p class="entry-sig">Wrong cash field (ord_psbl_cash_amt) corrected — orders restored. 18 duplicate KT sell reservations removed. Regime detection switched to 5-condition scoring + 2-day confirmation + total-asset-linked cash ratios. Closing balance ₩4,890,000.</p>
+          <a href="/en/log/2026-04-24-auto-trading-bug-5fix/" class="entry-link">View Log →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-27</span>
+            <span class="entry-version">v1.5</span>
+            <span class="entry-status">BUY_DRY_RUN</span>
+          </div>
+          <p class="entry-title">RS Filter Added — Stock Selection Philosophy Overhauled</p>
+          <p class="entry-sig">KOSPI hit an all-time high; 4 of 5 positions were down. Root cause: slot-filling structure. KOSPI200 excess return below -3% disqualifies candidates; forced slot-filling removed. Files: config.py / rule_engine.py / main.py.</p>
+          <a href="/en/log/2026-04-27-auto-trading-rs-filter/" class="entry-link">View Log →</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="/en/projects/stock-auto-trade/">← Back to Project Hub</a>
+    </div>
+
+  </div>
+</PageLayout>
+
+<style>
+  .timeline-page { max-width: 800px; margin: 0 auto; }
+  .top-nav, .bottom-nav { margin-bottom: 2rem; }
+  .bottom-nav { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee; }
+  .top-nav a, .bottom-nav a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .top-nav a:hover, .bottom-nav a:hover { text-decoration: underline; }
+  .page-intro { color: #666; font-size: 0.95rem; margin-bottom: 3rem; line-height: 1.7; }
+  .phase { margin-bottom: 3.5rem; padding-bottom: 3rem; border-bottom: 2px solid #e8e8e8; }
+  .phase:last-of-type { border-bottom: none; }
+  .phase-header { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+  .phase-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: #555; padding: 0.2rem 0.6rem; border-radius: 3px; }
+  .phase-header h2 { font-size: 1.25rem; font-weight: 700; color: #222; margin: 0; }
+  .phase-period { font-size: 0.85rem; color: #999; }
+  .phase-summary { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid #ddd; }
+  .entries { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .entry { padding: 1.1rem 0 1.1rem 1rem; border-left: 2px solid #e0e0e0; margin-left: 0.5rem; position: relative; }
+  .entry::before { content: ''; width: 8px; height: 8px; background: #999; border-radius: 50%; position: absolute; left: -5px; top: 1.5rem; }
+  .entry-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+  .entry-date { font-size: 0.82rem; color: #888; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .entry-version { font-size: 0.75rem; background: #e3f2fd; color: #1565c0; padding: 0.1rem 0.45rem; border-radius: 3px; font-weight: 700; }
+  .entry-status { font-size: 0.75rem; background: #fff8e1; color: #f57f17; padding: 0.1rem 0.45rem; border-radius: 3px; font-weight: 600; }
+  .entry-title { font-size: 0.95rem; font-weight: 600; color: #333; margin: 0 0 0.4rem; line-height: 1.4; }
+  .entry-sig { font-size: 0.875rem; color: #666; line-height: 1.65; margin: 0 0 0.5rem; }
+  .entry-link { font-size: 0.82rem; color: #1976d2; text-decoration: none; font-weight: 600; }
+  .entry-link:hover { text-decoration: underline; }
+</style>

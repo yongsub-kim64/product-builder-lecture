@@ -1,0 +1,364 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="AI 자동매매 실험 — 전체 이력" description="AI 자동매매 실험 전체 업데이트 이력. MVP 설계부터 실계좌 운영, 전략 최적화까지 단계별 기록.">
+  <div class="timeline-page">
+
+    <nav class="top-nav">
+      <a href="/projects/stock-auto-trade/">← 프로젝트 허브로 돌아가기</a>
+    </nav>
+
+    <p class="page-intro">2026년 4월 7일부터 시작된 AI 자동매매 실험의 전체 이력입니다. 4개 단계로 구분했습니다.</p>
+
+    <!-- ── PHASE 1 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 1</span>
+        <h2>MVP 설계·구축</h2>
+        <span class="phase-period">2026-04-07 ~ 2026-04-10</span>
+      </div>
+      <p class="phase-summary">KIS API 연동부터 규칙 엔진, 텔레그램 알림, 스케줄러까지 전체 구조를 완성했다. 첫 자동 실행을 기다리는 상태에서 마감했다.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-07</span>
+            <span class="entry-version">v1.0</span>
+          </div>
+          <p class="entry-title">KIS API 연동·규칙 엔진·텔레그램·스케줄러 MVP 완성</p>
+          <p class="entry-sig">이 날이 기점이다. 실제 주문이 나갈 수 있는 최소 구조가 갖춰졌다. 손실 한도 안전장치, 텔레그램 알림, 1일 3회 스케줄러까지 포함.</p>
+          <a href="/log/stock-auto-trade-mvp-complete/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-08</span>
+            <span class="entry-version">v1.1</span>
+          </div>
+          <p class="entry-title">시장 레짐 2중 필터 / 거래대금 필터 / 당일 재매수 금지 / 로그 체계 정리</p>
+          <p class="entry-sig">매수하지 않아야 할 날에 매수하지 않도록 하는 세팅 완료. 조건이 없을 때 아무것도 안 하는 구조가 핵심이다.</p>
+          <a href="/log/2026-04-08-auto-trading-v1.1/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-09</span>
+          </div>
+          <p class="entry-title">Python 모듈 캐시 이슈 확인·매수 사이클 복구</p>
+          <p class="entry-sig">스케줄러 재시작 시 매수 사이클이 누락되는 버그 발견·수정. SOP 최초 작성.</p>
+          <a href="/log/2026-04-09-auto-trading-module-cache/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-10</span>
+          </div>
+          <p class="entry-title">예수금 필드 교체 / API 재시도 / 중복 매수·기동 방지 / IS_PAPER 안전장치</p>
+          <p class="entry-sig">실전급 구조 정비. 예수금 API 필드 오류를 발견하고 교체. 실계좌 전환 전 안정화 작업.</p>
+          <a href="/log/2026-04-10-auto-trading-11-fixes/" class="entry-link">Log 보기 →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 2 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 2</span>
+        <h2>모의투자 검증</h2>
+        <span class="phase-period">2026-04-11 ~ 2026-04-17</span>
+      </div>
+      <p class="phase-summary">1주일 모의투자로 전략과 버그를 검증했다. 트레일링 스탑 첫 발동, 종목 유니버스 확대, 매수 스캔 최적화까지 완료하고 실계좌 전환을 결정했다.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-13</span>
+          </div>
+          <p class="entry-title">모의투자 1회차 결산 — 레짐 필터·5슬롯 관리 첫 검증</p>
+          <p class="entry-sig">처음으로 5개 슬롯이 채워진 주. 레짐 필터가 실제로 매수를 막는 날을 경험했다.</p>
+          <a href="/log/2026-04-13-auto-trading-first-live-week/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-15</span>
+          </div>
+          <p class="entry-title">트레일링 스탑 첫 실전 발동 — 삼성전자 +3.57% 자동 매도</p>
+          <p class="entry-sig">규칙이 작동하는 순간. 내가 판단하지 않고 시스템이 매도를 결정했다. 실현손익 +₩15,000.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-16</span>
+          </div>
+          <p class="entry-title">매수 스캔 4→3회 최적화 / 종목 유니버스 5→20개 / 이격도 5%→7% / 최대 보유 3→5종목</p>
+          <p class="entry-sig">실전 운영 가능한 파라미터 확정. 유니버스를 넓히고 조건을 현실화했다.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-17</span>
+            <span class="entry-version">v1.3</span>
+          </div>
+          <p class="entry-title">1주일 모의 마감 — 버그 4건 수정, 실계좌 전환 결정</p>
+          <p class="entry-sig">주간 수익 +₩45,060 (+0.58%). 트레일링 스탑 검증 완료. 버그 4건 수정 후 월요일 실계좌 전환 결정.</p>
+          <a href="/log/2026-04-17-auto-trading-mock-complete/" class="entry-link">Log 보기 →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 3 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 3</span>
+        <h2>실계좌 전환·초기 운영</h2>
+        <span class="phase-period">2026-04-14 ~ 2026-04-22</span>
+      </div>
+      <p class="phase-summary">처음으로 실제 돈이 움직였다. 첫 주문, 첫 손절, 모의에서 안 나온 버그들이 실전에서 등장했다.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-14</span>
+          </div>
+          <p class="entry-title">첫 실주문 체결 — 카카오 20주 @ ₩48,350</p>
+          <p class="entry-sig">DRY_RUN을 끄고 실전으로 전환한 날. 트레일링 스탑 고도화, 예수금 폴백, 장후 텔레그램 명세 추가. 처음으로 실제 돈이 움직였다.</p>
+          <a href="/log/2026-04-14-auto-trading-live-switch/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-20</span>
+          </div>
+          <p class="entry-title">실계좌 첫 운영일 — 버그 2건, 5종목 첫 체결</p>
+          <p class="entry-sig">토큰 캐시 오염·MA60=None 버그 해결 후 10:33 첫 매수. 카카오·기아·KB금융·신한지주·NAVER, 투자금 ₩4,690,300. 장마감 -₩54,030 (-1.08%).</p>
+          <a href="/log/2026-04-20-auto-trading-live-day1/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-21</span>
+          </div>
+          <p class="entry-title">MA60 API 교체 완료 — inquire-daily-price → inquire-daily-itemchartprice (65건)</p>
+          <p class="entry-sig">MA60 데이터 부족 버그의 근본 원인 해결. 고정 30건 → 65건으로 교체. 다음 날 실전 검증.</p>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-22</span>
+          </div>
+          <p class="entry-title">실계좌 3일차 — 손절 2건, MA60 필터 검증</p>
+          <p class="entry-sig">KB금융·카카오 손절 합계 -₩61,800. MA60 필터가 하락추세 3종목 정상 차단 — 전날 API 교체 실전 검증 완료. 마감 잔고 ₩4,906,290.</p>
+          <a href="/log/2026-04-22-auto-trading-live-day3/" class="entry-link">Log 보기 →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── PHASE 4 ─────────────────────────────────── -->
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-label">Phase 4</span>
+        <h2>전략 최적화</h2>
+        <span class="phase-period">2026-04-23 ~ 현재</span>
+      </div>
+      <p class="phase-summary">실전 운영 데이터를 기반으로 전략을 재설계했다. 가장 큰 전환은 "슬롯을 채우는 시스템"에서 "강한 종목만 선택적으로 보유하는 시스템"으로의 철학 변경이다.</p>
+
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-23</span>
+          </div>
+          <p class="entry-title">실계좌 버그 3건 당일 수정</p>
+          <p class="entry-sig">실거래 중 발생한 버그 3건을 같은 날 발견·수정·배포. 운영 안정성 향상.</p>
+          <a href="/log/2026-04-23-auto-trading-bug-3fix/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-24</span>
+            <span class="entry-version">v1.4</span>
+          </div>
+          <p class="entry-title">버그 5건 수정 · 전략 6건 개선</p>
+          <p class="entry-sig">예수금 필드 오참조(ord_psbl_cash_amt 교체)로 주문 정상화. KT 중복 매도 예약 18건 제거. 레짐 판단 5조건 점수제 전환 + 2일 연속 확인 안정화 + 총자산 연동 현금 비율. 마감 잔고 ₩4,890,000.</p>
+          <a href="/log/2026-04-24-auto-trading-bug-5fix/" class="entry-link">Log 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-27</span>
+            <span class="entry-version">v1.5</span>
+            <span class="entry-status">BUY_DRY_RUN 검증 중</span>
+          </div>
+          <p class="entry-title">RS 필터 도입 — 종목 선정 철학 전환</p>
+          <p class="entry-sig">코스피 최고치 날 5종목 중 4종목 마이너스. 원인: MAX_HOLD=5를 채우는 구조. KOSPI200 대비 초과수익률 -3% 미만 종목 탈락, 강제 슬롯 채움 제거. 수정 파일: config.py / rule_engine.py / main.py.</p>
+          <a href="/log/2026-04-27-auto-trading-rs-filter/" class="entry-link">Log 보기 →</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="/projects/stock-auto-trade/">← 프로젝트 허브로 돌아가기</a>
+    </div>
+
+  </div>
+</PageLayout>
+
+<style>
+  .timeline-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .top-nav, .bottom-nav {
+    margin-bottom: 2rem;
+  }
+
+  .bottom-nav {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .top-nav a, .bottom-nav a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a:hover, .bottom-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .page-intro {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  .phase {
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid #e8e8e8;
+  }
+
+  .phase:last-of-type {
+    border-bottom: none;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+  }
+
+  .phase-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #555;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .phase-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+  }
+
+  .phase-period {
+    font-size: 0.85rem;
+    color: #999;
+  }
+
+  .phase-summary {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ddd;
+  }
+
+  .entries {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .entry {
+    padding: 1.1rem 0 1.1rem 1rem;
+    border-left: 2px solid #e0e0e0;
+    margin-left: 0.5rem;
+    position: relative;
+  }
+
+  .entry::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #999;
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: 1.5rem;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .entry-date {
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .entry-version {
+    font-size: 0.75rem;
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  .entry-status {
+    font-size: 0.75rem;
+    background: #fff8e1;
+    color: #f57f17;
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  .entry-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.4rem;
+    line-height: 1.4;
+  }
+
+  .entry-sig {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.65;
+    margin: 0 0 0.5rem;
+  }
+
+  .entry-link {
+    font-size: 0.82rem;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .entry-link:hover {
+    text-decoration: underline;
+  }
+</style>
