@@ -13,10 +13,12 @@ description: "chulbuji.com에 피드백, 오류 제보, 협업 제안, 프로젝
 
 ## 이메일로 보내기
 
-**이메일 주소:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
+**이메일 주소:** [hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20문의)
+
+메일 앱이 열리지 않으면 주소를 복사해 직접 보내 주세요.
 
 - [Gmail로 보내기](https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=chulbuji.com%EC%97%90%EC%84%9C%20%EB%B3%B4%EB%82%B4%EB%8A%94%20%EB%A9%94%EC%8B%9C%EC%A7%80)
-- [메일 앱으로 보내기](mailto:hello@chulbuji.com?subject=chulbuji.com에서 보내는 메시지)
+- [메일 앱으로 보내기](mailto:hello@chulbuji.com?subject=chulbuji.com%20문의)
 
 ---
 

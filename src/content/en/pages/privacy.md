@@ -67,7 +67,7 @@ Email addresses and message content submitted through inquiries are deleted once
 
 This site contains links to external services, including:
 
-- Email links (hello@chulbuji.com)
+- Email links ([hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의))
 - Google Form (inquiry form)
 - GitHub and other external services
 
@@ -79,7 +79,7 @@ When you follow a link to an external service, that service's own privacy policy
 
 You may request access to, correction of, or deletion of information you have submitted through an inquiry. Send your request to the email address below and I will review and process it.
 
-**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
+**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의)
 
 ---
 
@@ -92,4 +92,4 @@ This policy may be updated as the site evolves. Changes will be announced throug
 ## 7. Contact
 
 **Operator:** chulbuji  
-**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
+**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의)

@@ -13,10 +13,12 @@ I read every message personally. I only review the minimum information needed to
 
 ## Send an Email
 
-**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
+**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20문의)
+
+If your mail app doesn't open, copy the address and send it directly.
 
 - [Send via Gmail](https://mail.google.com/mail/?view=cm&fs=1&to=hello@chulbuji.com&su=Message%20from%20chulbuji.com)
-- [Send via Mail App](mailto:hello@chulbuji.com?subject=Message from chulbuji.com)
+- [Send via Mail App](mailto:hello@chulbuji.com?subject=chulbuji.com%20문의)
 
 ---
 

@@ -71,4 +71,4 @@ If paid services, membership features, advertising, or other capabilities are in
 For questions about these Terms or content copyright issues, please reach out:
 
 **Operator:** chulbuji  
-**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com)
+**Email:** [hello@chulbuji.com](mailto:hello@chulbuji.com?subject=chulbuji.com%20문의)
