@@ -183,6 +183,15 @@ import PageLayout from '../../../layouts/PageLayout.astro';
           <p class="entry-sig">코스피 최고치 날 5종목 중 4종목 마이너스. 원인: MAX_HOLD=5를 채우는 구조. KOSPI200 대비 초과수익률 -3% 미만 종목 탈락, 강제 슬롯 채움 제거. 수정 파일: config.py / rule_engine.py / main.py.</p>
           <a href="/log/2026-04-27-auto-trading-rs-filter/" class="entry-link">Log 보기 →</a>
         </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-04-28</span>
+          </div>
+          <p class="entry-title">트레일링 스탑 구간별 구조 개선 — 단일 트리거에서 3단계 구간으로</p>
+          <p class="entry-sig">활성화 기준 +4%→+3% 완화, 고정 익절 제거. 구간 A(+3~6%): 고점 -2.0% / 구간 B(+6~10%): 고점 -1.5% / 구간 C(+10%+): 고점 -1.5% 3단계로 전환. 로그에 진입가·최고가·매도가·수익률·적용 구간·매도 사유 추가. 수정 파일: rule_engine.py (line 485~533). 테스트 8/8 통과. LG화학 구간 A 실전 첫 발동 +2.88% 수익 확인.</p>
+          <a href="/log/2026-04-28-auto-trading-trailing-stop/" class="entry-link">Log 보기 →</a>
+          <a href="/insight/insight-021/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
+        </li>
       </ul>
     </div>
 
