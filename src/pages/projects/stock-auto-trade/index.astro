@@ -10,9 +10,9 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     </nav>
 
     <div class="project-header">
-      <span class="status-badge status-dryryn">🟡 BUY_DRY_RUN 검증 중</span>
+      <span class="status-badge status-live">🟢 실매수 운영 중</span>
       <p class="definition">500만 원 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">v1.5 · 2026-04-27 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="meta">v1.6 · 2026-04-29 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,8 +32,8 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>RS(상대강도) 필터를 추가했다. KOSPI200 ETF 대비 초과수익률 -3% 미만 종목은 매수 후보에서 탈락시키고, 통과 종목은 강도 순으로 정렬해 강한 것부터 담는다. 슬롯이 비어도 강한 후보가 없으면 현금을 유지한다.</p>
-      <p>지금은 BUY_DRY_RUN=True — 매수만 시뮬레이션, 매도는 실거래 유지. 2~3거래일 검증 후 실계좌에 적용할 예정이다. 현재 실계좌 마감 평가잔고 ₩4,890,000.</p>
+      <p>RS(상대강도) 필터와 트레일링 스탑 3단계 구간 개편이 완료됐다. KOSPI200 ETF 대비 초과수익률 -3% 미만 종목은 매수 후보에서 탈락하고, 통과 종목은 강도 순으로 정렬해 강한 것부터 담는다. 슬롯이 비어도 강한 후보가 없으면 현금을 유지한다.</p>
+      <p>BUY_DRY_RUN=False — 매수·매도 모두 실거래 중. 개편 후 첫 실매수일(2026-04-29) 트레일링 스탑 자동 매도 2건(+₩31,004), 신규 매수 3건 체결. 현재 실계좌 마감 평가잔고 ₩4,942,207.</p>
     </section>
 
     <section class="section">
@@ -55,7 +55,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
         <li><strong>MVP 완성 → 실계좌 전환까지 20일</strong> (2026-04-07 ~ 2026-04-20)</li>
         <li><strong>모의투자 1주일 수익</strong> +₩45,060 (+0.58%) — 실계좌 전환 결정 근거</li>
         <li><strong>실계좌 첫 주문 체결</strong> 2026-04-14 카카오 20주 @ ₩48,350</li>
-        <li><strong>현재 실계좌 평가잔고</strong> ₩4,890,000 (운영 8일차 기준)</li>
+        <li><strong>현재 실계좌 평가잔고</strong> ₩4,942,207 (운영 10일차 기준)</li>
         <li><strong>전략 전환</strong> "슬롯 채우기" → "강한 종목만 선택적으로 보유" (RS 필터 도입)</li>
       </ul>
     </section>
@@ -63,6 +63,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-04-29 · STEP 14</span>
+          <span class="update-desc">개편 후 첫 실매수 전 구간 정상 작동 확인 — 트레일링 자동 매도 2건(+₩31,004), 신규 매수 3건 체결, 버그 2건 수정</span>
+        </li>
         <li>
           <span class="update-date">2026-04-27 · v1.5</span>
           <span class="update-desc">RS 필터 추가, 강제 슬롯 채움 제거, BUY_DRY_RUN 플래그 신설 — 검증 진행 중</span>
