@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://chulbuji.com',
   integrations: [
     sitemap({
+      filter: (page) => !page.includes('/playground/'),
       i18n: {
         defaultLocale: 'ko',
         locales: {

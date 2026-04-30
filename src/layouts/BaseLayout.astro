@@ -26,7 +26,7 @@ const ogTitle = titleOverride ?? title;
   <link rel="canonical" href={canonicalURL} />
   
   <title>{metaTitle}</title>
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
   {description && <meta name="description" content={description} />}
 
   <!-- Open Graph -->
