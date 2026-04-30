@@ -12,7 +12,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 실매수 운영 중</span>
       <p class="definition">500만 원 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">v1.6 · 2026-04-29 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="meta">v1.6 · 2026-04-30 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,8 +32,28 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>RS(상대강도) 필터와 트레일링 스탑 3단계 구간 개편이 완료됐다. KOSPI200 ETF 대비 초과수익률 -3% 미만 종목은 매수 후보에서 탈락하고, 통과 종목은 강도 순으로 정렬해 강한 것부터 담는다. 슬롯이 비어도 강한 후보가 없으면 현금을 유지한다.</p>
-      <p>BUY_DRY_RUN=False — 매수·매도 모두 실거래 중. 개편 후 첫 실매수일(2026-04-29) 트레일링 스탑 자동 매도 2건(+₩31,004), 신규 매수 3건 체결. 현재 실계좌 마감 평가잔고 ₩4,942,207.</p>
+      <p>2026년 4월 말 기준, 실계좌 운영 초기 단계에서 STEP 14 트레일링 스탑 개선까지 적용 완료했다. BUY_DRY_RUN 검증을 마치고 4/29부터 실매수 전환. RS 필터, 현금보유 목표, 트레일링 스탑이 실제 거래에서 동시에 작동하는 것을 처음으로 확인했다.</p>
+      <p><strong>최근 확인된 것</strong></p>
+      <ul class="gains-list">
+        <li>트레일링 스탑 3건 연속 플러스 마감 (손절 0건)</li>
+        <li>포지션 매도 → 예산 회복 → 신규 매수의 회전 구조 실전 작동</li>
+        <li>RS 필터가 시장 강도에 따라 매수 대상을 동적으로 조정하는 것 확인</li>
+      </ul>
+      <p><strong>현재 확인 중인 문제</strong></p>
+      <ul class="gains-list">
+        <li>웹 익스포트 'result' 키 오류 재발 (수정 후에도 재현)</li>
+        <li>고가 종목(SK하이닉스 등) 예산 초과로 반복 차단 — 유니버스 구성 검토 중</li>
+        <li>신한지주 MA20 이격 파라미터 조정 여부 미결</li>
+      </ul>
+      <p><strong>다음 작업</strong></p>
+      <ul class="gains-list">
+        <li>웹 익스포트 오류 재현 조건을 로그에서 특정하고, 수정 후 5/2 첫 스캔 전까지 재검증 완료</li>
+        <li>휴장일 감지 로직 추가</li>
+        <li>SK텔레콤 12주 포지션 관리 (트레일링 활성화 전까지 손절선 모니터링)</li>
+        <li>고가 종목 처리 방식 결정</li>
+        <li>수수료·세금 반영 로직 준비 (2주 운영 후 예정)</li>
+      </ul>
+      <p class="timeline-cta"><a href="/log/2026-04-30-auto-trading-week1-recap/">1주차 주간결산 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-023/">Insight →</a></p>
     </section>
 
     <section class="section">
@@ -64,6 +84,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
         <li>
+          <span class="update-date">2026-04-29~30 · 1주차</span>
+          <span class="update-desc">실계좌 1주차 결산 — 트레일링 스탑 3건 연속 플러스(손절 0건), 포지션 회전 구조 실전 작동 확인. 주간 실현손익 +40,658원.</span>
+        </li>
+        <li>
           <span class="update-date">2026-04-29 · STEP 14</span>
           <span class="update-desc">개편 후 첫 실매수 전 구간 정상 작동 확인 — 트레일링 자동 매도 2건(+₩31,004), 신규 매수 3건 체결, 버그 2건 수정</span>
         </li>
@@ -74,10 +98,6 @@ import PageLayout from '../../../layouts/PageLayout.astro';
         <li>
           <span class="update-date">2026-04-24 · v1.4</span>
           <span class="update-desc">버그 5건 수정 (예수금 필드 오참조·KT 중복 매도 예약), 레짐 판단 5조건 점수제 전환</span>
-        </li>
-        <li>
-          <span class="update-date">2026-04-23</span>
-          <span class="update-desc">실계좌 운영 중 발생한 버그 3건 당일 수정</span>
         </li>
       </ul>
       <p class="timeline-cta"><a href="/projects/stock-auto-trade/timeline/">전체 업데이트 이력 보기 →</a></p>
