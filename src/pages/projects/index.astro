@@ -4,8 +4,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
 const projects = [
   {
     updatedAt: new Date('2026-04-30'),
-    status: 'experimental',
-    statusLabel: '실험 중',
+    status: 'in-progress',
+    statusLabel: '개발 진행 중',
     title: 'AI 콘텐츠 비서',
     description: '사진과 짧은 메모만 있으면 블로그 글·SNS 문구·숏폼 대본·해시태그까지 자동으로 만들어주는 소상공인 전용 AI 콘텐츠 도구 실험. 글쓰기 능력이나 SNS 감각 없이도 쓸 수 있는 수준을 목표로 한다.',
     href: '/projects/ai-content-assistant',
@@ -215,6 +215,11 @@ const labs = [
   .status-experimental {
     background-color: #fce4ec;
     color: #c62828;
+  }
+
+  .status-in-progress {
+    background-color: #e3f2fd;
+    color: #1565c0;
   }
 
   .project-card h3 {
