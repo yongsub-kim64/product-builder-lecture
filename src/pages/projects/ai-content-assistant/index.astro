@@ -10,7 +10,8 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     </nav>
 
     <div class="project-header">
-      <span class="status-badge status-validating">⚠️ MVP 배포 완료 · 사용자 검증 준비 중</span>
+      <span class="status-badge status-validating">✅ MVP 완성 / 운영 보류</span>
+      <p class="status-note">InsightReport는 AI Product Builder로 전환하며 처음으로 완성한 작동형 AI Personal Insight Report MVP입니다. 입력, AI 분석, 결과 제공, 결제 흐름까지 구현했지만 현재는 정식 사용자 모집 단계가 아니라 프로젝트 기록 및 검증용으로 보존하고 있습니다.</p>
       <p class="definition">소상공인을 위한 AI 콘텐츠 제작 도구 MVP 개발 기록</p>
       <p class="meta">MVP · 2026-04-24 업데이트 · <a href="/projects/ai-content-assistant/timeline/">전체 이력 →</a></p>
     </div>
@@ -27,7 +28,8 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p><strong>MVP 실서비스 배포 완료</strong> (2026-04-24). <a href="https://aicontent.chulbuji.com" target="_blank" rel="noopener">aicontent.chulbuji.com</a>에서 지금 접속 가능하다. git push 후 23초면 Cloudflare에 반영된다.</p>
+      <p><strong>MVP 실서비스 배포 완료</strong> (2026-04-24). <a href="https://aicontent.chulbuji.com" target="_blank" rel="noopener noreferrer">InsightReport MVP 보기</a>. git push 후 23초면 Cloudflare에 반영된다.</p>
+      <p>현재는 정식 유료 서비스 운영 단계가 아니라, 첫 AI 제품 MVP로 보존 중입니다.</p>
       <p>실제 소상공인 5명에게 링크를 전달하고 사용 피드백을 수집하는 단계가 다음이다. 도구가 작동하는 것과 사람이 실제로 쓰는 것은 다르다.</p>
     </section>
 
@@ -182,6 +184,13 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
   .meta a:hover {
     text-decoration: underline;
+  }
+
+  .status-note {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0.5rem 0 0.75rem;
   }
 
   .section {
