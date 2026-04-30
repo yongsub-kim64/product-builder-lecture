@@ -10,9 +10,9 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     </nav>
 
     <div class="project-header">
-      <span class="status-badge status-dryryn">🟡 BUY_DRY_RUN Validation</span>
+      <span class="status-badge status-live">🟢 Live Trading Active</span>
       <p class="definition">₩5M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">v1.5 · Updated 2026-04-27 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="meta">v1.6 · Updated 2026-04-30 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,8 +32,28 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>An RS (Relative Strength) filter was added. Any stock with excess return below -3% vs. the KOSPI200 ETF (20-day) is disqualified as a buy candidate. Remaining candidates are sorted by excess return and purchased strongest-first. Empty slots stay in cash when no strong candidates qualify.</p>
-      <p>Currently running BUY_DRY_RUN=True — buy logic in simulation, sell logic stays live. Switching to full live after 2–3 trading days of validation. Current live account closing balance: ₩4,890,000.</p>
+      <p>As of late April 2026, the system has progressed through STEP 14 — the trailing stop tiered-zone overhaul — and is fully live. BUY_DRY_RUN validation completed; real buys and sells both running as of 4/29. RS filter, 20% cash reserve target, and tiered trailing stop all confirmed operating in live conditions simultaneously.</p>
+      <p><strong>Confirmed this week</strong></p>
+      <ul class="gains-list">
+        <li>Trailing stop: 3 consecutive positive exits, zero stop-losses</li>
+        <li>Position rotation in practice: sell via trailing stop → cash recovers → next RS-qualified stock enters</li>
+        <li>RS filter dynamically adjusts buy candidates as market strength shifts</li>
+      </ul>
+      <p><strong>Open issues</strong></p>
+      <ul class="gains-list">
+        <li>Web export 'result' key error reoccurring after a previous fix</li>
+        <li>High-priced stocks (SK Hynix ~₩1.3M/share) repeatedly exceed per-trade budget — universe review pending</li>
+        <li>Shinhan Financial MA20 deviation threshold: adjust or hold? Decision pending</li>
+      </ul>
+      <p><strong>Next actions</strong></p>
+      <ul class="gains-list">
+        <li>Identify web export error root cause from logs; revalidate before 5/2 first scan</li>
+        <li>Add public holiday detection logic</li>
+        <li>Monitor SK Telecom 12-share position stop-loss level (₩92,521)</li>
+        <li>Decide handling approach for high-priced stocks</li>
+        <li>Prepare commission and tax accounting logic (scheduled after 2 weeks of live data)</li>
+      </ul>
+      <p class="timeline-cta"><a href="/en/log/2026-04-30-auto-trading-week1-recap/">Week 1 Recap Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-023/">Insight →</a></p>
     </section>
 
     <section class="section">
@@ -64,16 +84,20 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
         <li>
+          <span class="update-date">2026-04-29~30 · Week 1</span>
+          <span class="update-desc">Week 1 live recap — trailing stop 3 consecutive wins (zero stop-losses), position rotation confirmed in live trading. Weekly realized P&L: +₩40,658.</span>
+        </li>
+        <li>
+          <span class="update-date">2026-04-29 · STEP 14</span>
+          <span class="update-desc">First live buys after RS filter overhaul — 2 trailing stop auto-sells (+₩31,004), 3 new buys executed, 2 bugs fixed</span>
+        </li>
+        <li>
           <span class="update-date">2026-04-27 · v1.5</span>
           <span class="update-desc">RS filter added, forced slot-filling removed, BUY_DRY_RUN flag introduced — validation in progress</span>
         </li>
         <li>
           <span class="update-date">2026-04-24 · v1.4</span>
           <span class="update-desc">5 bugs fixed (wrong cash field, 18 duplicate KT sell reservations), regime detection switched to 5-condition scoring</span>
-        </li>
-        <li>
-          <span class="update-date">2026-04-23</span>
-          <span class="update-desc">3 live-account bugs fixed same day</span>
         </li>
       </ul>
       <p class="timeline-cta"><a href="/en/projects/stock-auto-trade/timeline/">View full update history →</a></p>
@@ -142,6 +166,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
   .project-header { margin-bottom: 1.75rem; }
   .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
   .status-dryryn { background-color: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+  .status-live { background-color: #e8f5e9; color: #2e7d32; }
   .definition { font-size: 1.05rem; color: #555; font-style: italic; margin: 0.25rem 0 0.5rem; }
   .meta { font-size: 0.875rem; color: #888; }
   .meta a { color: #1976d2; text-decoration: none; }
