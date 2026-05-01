@@ -54,9 +54,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 전략 구조와 리스크 관리 검증</div>
           <h3>자동매매 프로그램</h3>
           <p>실제 계좌 운영을 통해 자동매매 구조가 안정적으로 작동하는지 점검합니다. 수익을 보장하거나 성과를 과장하기보다, 매매 조건, 리스크 관리, 기록 방식, 개선 루프가 일관되게 작동하는지를 확인합니다.</p>
-          <div class="card-links">
-            <a href="/log">관련 기록 보기</a>
-            <a href="/projects/stock-auto-trade">관련 프로젝트 보기</a>
+          <div class="card-actions">
+            <a href="/projects/stock-auto-trade" class="card-btn">프로젝트 보기 →</a>
+            <a href="/log" class="card-link-sec">관련 기록 보기</a>
           </div>
         </div>
 
@@ -64,8 +64,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 콘텐츠 발행, 색인, 승인 기반 구축</div>
           <h3>AI 블로그 / 애드센스</h3>
           <p>AI와 함께 작성한 콘텐츠가 검색과 방문자 경험에 적합한지 점검합니다. 단순히 글 수를 늘리는 것이 아니라, 주제 집중도, 색인 상태, 내부링크, 정책 페이지 정합성을 함께 개선합니다.</p>
-          <div class="card-links">
-            <a href="/insight">관련 인사이트 보기</a>
+          <div class="card-actions">
+            <span class="card-status-tag tag-building">단계적 구축</span>
+            <a href="/insight" class="card-link-sec">관련 인사이트 보기</a>
           </div>
         </div>
 
@@ -73,8 +74,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 앱 개발 이전의 고객 반응 검증</div>
           <h3>AI 콘텐츠 서비스</h3>
           <p>소상공인이 사진과 짧은 설명만으로 홍보 콘텐츠 초안을 만들 수 있는 서비스를 실험합니다. 완성된 앱을 먼저 만드는 대신, 콘텐츠 판매형 서비스와 프로토타입을 통해 실제 수요와 사용 흐름을 확인합니다.</p>
-          <div class="card-links">
-            <a href="/projects/ai-content-assistant">AI 콘텐츠 비서 프로젝트 보기</a>
+          <div class="card-actions">
+            <a href="/projects/ai-content-assistant" class="card-btn">프로젝트 보기 →</a>
           </div>
         </div>
 
@@ -82,8 +83,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 익명 채널 운영과 콘텐츠 반응 확인</div>
           <h3>AI 음악 채널 실험</h3>
           <p>AI 음악 콘텐츠를 익명 채널 원칙으로 운영하며, 공개 가능한 범위 안에서 제작 흐름과 반응을 점검합니다. 실제 채널명이나 계정명은 공개하지 않고, 실험의 방향과 배운 점만 기록합니다.</p>
-          <div class="card-links">
-            <a href="/log">관련 기록 보기</a>
+          <div class="card-actions">
+            <span class="card-status-tag tag-private">비공개 운영</span>
           </div>
         </div>
 
@@ -91,8 +92,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 반복 제작 작업의 자동화 가능성 확인</div>
           <h3>AI 영상 편집 자동화</h3>
           <p>쇼츠, 릴스, 블로그 보조 콘텐츠 제작 과정에서 반복되는 편집 작업을 줄일 수 있는지 실험합니다. 목표는 완전 자동화가 아니라, 사람이 판단해야 할 부분과 AI가 처리할 수 있는 부분을 분리하는 것입니다.</p>
-          <div class="card-links">
-            <a href="/insight">관련 인사이트 보기</a>
+          <div class="card-actions">
+            <span class="card-status-tag tag-building">단계적 구축</span>
           </div>
         </div>
 
@@ -100,12 +101,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <div class="card-focus">이번 달 초점: 소규모 쇼핑 콘텐츠 테스트</div>
           <h3>철부지 쇼핑노트</h3>
           <p>생활형 쇼핑 정보를 짧고 쉽게 정리하는 콘텐츠 실험입니다. 초기에는 채널 성장보다 주제 선정, 제작 속도, 시청자 반응, 반복 가능한 포맷을 확인하는 데 집중합니다.</p>
-          <div class="card-links">
-            <a href="/log">관련 기록 보기</a>
+          <div class="card-actions">
+            <span class="card-status-tag tag-pending">준비 중</span>
           </div>
         </div>
 
       </div>
+      <p class="board-phase-notice">이번 달 실험 중인 항목은 순차적으로 공개됩니다.</p>
     </section>
 
     <!-- 공개 범위 -->
@@ -304,22 +306,55 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     flex: 1;
   }
 
-  .card-links {
+  .card-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.4rem;
     margin-top: 0.25rem;
   }
 
-  .card-links a {
+  .card-btn {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background: #1976d2;
+    color: white;
+    border-radius: 4px;
     font-size: 0.825rem;
-    color: #1976d2;
-    text-decoration: none;
     font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.15s;
   }
 
-  .card-links a:hover {
-    text-decoration: underline;
+  .card-btn:hover { background: #1565c0; text-decoration: none; }
+
+  .card-link-sec {
+    font-size: 0.8rem;
+    color: #999;
+    text-decoration: none;
+  }
+
+  .card-link-sec:hover { color: #555; text-decoration: underline; }
+
+  .card-status-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .tag-pending { background: #f5f5f5; color: #757575; }
+  .tag-building { background: #e3f2fd; color: #1565c0; }
+  .tag-private { background: #fff3e0; color: #e65100; }
+
+  .board-phase-notice {
+    font-size: 0.825rem;
+    color: #999;
+    text-align: center;
+    margin-top: 1.25rem;
+    font-style: italic;
   }
 
   /* 공개 범위 섹션 */
