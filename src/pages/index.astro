@@ -23,6 +23,18 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
     </div>
   </section>
 
+  <section class="current-board">
+    <div class="current-board-inner">
+      <div class="board-label-row">
+        <span class="board-label">현재 운영 Board</span>
+        <span class="board-month-tag">2026년 5월</span>
+      </div>
+      <p class="board-summary">2026년 5월에는 새로운 아이디어를 늘리기보다, 이미 시작한 프로젝트를 실제로 운영하며 작동 구조를 검증합니다.</p>
+      <p class="board-keywords">자동매매 · AI 블로그 · AI 콘텐츠 서비스 · AI 음악 실험 · 영상 편집 자동화 · 쇼핑 콘텐츠 테스트</p>
+      <a href="/board/2026-05" class="board-cta">2026년 5월 운영 Board 보기 →</a>
+    </div>
+  </section>
+
   <section class="latest-posts">
     <h2>최근 기록</h2>
     <div class="posts-grid">
@@ -157,6 +169,79 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
   .btn-secondary:hover {
     background: white;
     color: #667eea;
+  }
+
+  .current-board {
+    background: #f8f4ff;
+    border-top: 1px solid #ede7f6;
+    border-bottom: 1px solid #ede7f6;
+  }
+
+  .current-board-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+    text-align: center;
+  }
+
+  .board-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .board-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #5e35b1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .board-month-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #ede7f6;
+    color: #5e35b1;
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  .board-summary {
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+    color: #3d1a78;
+    line-height: 1.65;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    word-break: keep-all;
+  }
+
+  .board-keywords {
+    font-size: 0.875rem;
+    color: #7c5cbf;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .board-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background: #7c4dff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.975rem;
+    transition: background 0.2s, transform 0.2s;
+    min-height: 48px;
+  }
+
+  .board-cta:hover {
+    background: #5e35b1;
+    transform: translateY(-1px);
   }
 
   .latest-posts {

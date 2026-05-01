@@ -10,6 +10,7 @@ export type Lang = keyof typeof languages;
 export const ui = {
   ko: {
     'nav.home': '홈',
+    'nav.board': '운영 Board',
     'nav.playground': 'Playground',
     'nav.insight': '인사이트',
     'nav.log': '기록',
@@ -31,6 +32,7 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
+    'nav.board': 'Board',
     'nav.playground': 'Playground',
     'nav.insight': 'Insight',
     'nav.log': 'Log',
