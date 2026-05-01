@@ -12,7 +12,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 Live Trading Active</span>
       <p class="definition">₩5M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">v1.6 · Updated 2026-04-30 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="meta">v2.0 in design · Updated 2026-05-01 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,28 +32,30 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>As of late April 2026, the system has progressed through STEP 14 — the trailing stop tiered-zone overhaul — and is fully live. BUY_DRY_RUN validation completed; real buys and sells both running as of 4/29. RS filter, 20% cash reserve target, and tiered trailing stop all confirmed operating in live conditions simultaneously.</p>
-      <p><strong>Confirmed this week</strong></p>
+      <p>As of May 2026, Week 1 live trading (4/29–30) is complete and v2.0 upgrade direction has been defined. Seven improvement areas — including ratio-based capital allocation, high-priced stock exceptions, and market-strength-based entry count — have been reviewed with an expert AI. Next step is code implementation and DRY RUN validation.</p>
+      <p><strong>v2.0 design complete</strong></p>
       <ul class="gains-list">
-        <li>Trailing stop: 3 consecutive positive exits, zero stop-losses</li>
-        <li>Position rotation in practice: sell via trailing stop → cash recovers → next RS-qualified stock enters</li>
-        <li>RS filter dynamically adjusts buy candidates as market strength shifts</li>
+        <li>Ratio-based capital allocation structure designed (same structure for ₩5M and ₩10M)</li>
+        <li>High-priced stock exception criteria finalized (account concentration cap applied)</li>
+        <li>Market-strength-based new entry count adjustment structure introduced</li>
+        <li>DRY RUN vs LIVE mode separation in Telegram alerts</li>
+        <li>API error retry and fallback structure strengthened</li>
       </ul>
       <p><strong>Open issues</strong></p>
       <ul class="gains-list">
         <li>Web export 'result' key error reoccurring after a previous fix</li>
-        <li>High-priced stocks (SK Hynix ~₩1.3M/share) repeatedly exceed per-trade budget — universe review pending</li>
+        <li>Zero orders after BUY signal — available-cash API returning invalid values (v2.0 fix target)</li>
         <li>Shinhan Financial MA20 deviation threshold: adjust or hold? Decision pending</li>
       </ul>
       <p><strong>Next actions</strong></p>
       <ul class="gains-list">
-        <li>Identify web export error root cause from logs; revalidate before 5/2 first scan</li>
+        <li>Implement v2.0 code changes (ratio-based allocation, high-priced stock exceptions, API fallback)</li>
+        <li>DRY RUN validation for at least one trading day, then apply to live account</li>
+        <li>Fully resolve web export bug</li>
         <li>Add public holiday detection logic</li>
-        <li>Monitor SK Telecom 12-share position stop-loss level (₩92,521)</li>
-        <li>Decide handling approach for high-priced stocks</li>
         <li>Prepare commission and tax accounting logic (scheduled after 2 weeks of live data)</li>
       </ul>
-      <p class="timeline-cta"><a href="/en/log/2026-04-30-auto-trading-week1-recap/">Week 1 Recap Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-023/">Insight →</a></p>
+      <p class="timeline-cta"><a href="/en/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-024/">Insight →</a></p>
     </section>
 
     <section class="section">
@@ -83,6 +85,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-01 · v2.0</span>
+          <span class="update-desc">v2.0 upgrade direction defined — ratio-based capital allocation, high-priced stock exceptions, market-strength entry count, 7 items total. Vibe coding collaboration: expert AI + Claude Code. Code implementation and DRY RUN validation next.</span>
+        </li>
         <li>
           <span class="update-date">2026-04-29~30 · Week 1</span>
           <span class="update-desc">Week 1 live recap — trailing stop 3 consecutive wins (zero stop-losses), position rotation confirmed in live trading. Weekly realized P&L: +₩40,658.</span>
@@ -130,8 +136,12 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     </section>
 
     <section class="section">
-      <h2>Featured Insights — 5 key observations</h2>
+      <h2>Featured Insights — key observations</h2>
       <ul class="featured-list">
+        <li>
+          <a href="/en/insight/insight-024/">Instead of Writing Code, I'm Designing an Auto-Trading System with AI</a>
+          <span class="featured-note">In vibe coding, the human's role is asking the right questions, not typing the code. Confirmed through the v2.0 upgrade process.</span>
+        </li>
         <li>
           <a href="/en/insight/insight-009/">What I Didn't Know When I Started Building an AI Trading System</a>
           <span class="featured-note">The things that only became visible after starting. The real problems that emerged from building.</span>

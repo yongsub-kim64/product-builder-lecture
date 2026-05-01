@@ -12,7 +12,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 실매수 운영 중</span>
       <p class="definition">500만 원 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">v1.6 · 2026-04-30 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="meta">v2.0 설계 중 · 2026-05-01 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,28 +32,30 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>2026년 4월 말 기준, 실계좌 운영 초기 단계에서 STEP 14 트레일링 스탑 개선까지 적용 완료했다. BUY_DRY_RUN 검증을 마치고 4/29부터 실매수 전환. RS 필터, 현금보유 목표, 트레일링 스탑이 실제 거래에서 동시에 작동하는 것을 처음으로 확인했다.</p>
-      <p><strong>최근 확인된 것</strong></p>
+      <p>2026년 5월 기준, 실계좌 1주차 운영(4/29~30)을 마쳤고 v2.0 업그레이드 방향을 정리하고 있다. 비율 기반 자금 배분, 고가주 예외 매수, 시장 강도 기반 진입 수 조절 등 7개 항목을 전문가 AI와 검토 완료했다. 코드 반영 후 DRY RUN 검증이 다음 단계다.</p>
+      <p><strong>v2.0 정리 완료 항목</strong></p>
       <ul class="gains-list">
-        <li>트레일링 스탑 3건 연속 플러스 마감 (손절 0건)</li>
-        <li>포지션 매도 → 예산 회복 → 신규 매수의 회전 구조 실전 작동</li>
-        <li>RS 필터가 시장 강도에 따라 매수 대상을 동적으로 조정하는 것 확인</li>
+        <li>비율 기반 자금 배분 구조 설계 완료 (500만·1000만 동일 구조 유지)</li>
+        <li>고가주 예외 매수 기준 확정 (계좌 집중도 상한 적용)</li>
+        <li>시장 강도 기반 신규 진입 수 조절 구조 도입</li>
+        <li>DRY RUN / LIVE 모드 텔레그램 알림 명확 구분</li>
+        <li>API 오류 재시도·fallback 구조 강화</li>
       </ul>
       <p><strong>현재 확인 중인 문제</strong></p>
       <ul class="gains-list">
         <li>웹 익스포트 'result' 키 오류 재발 (수정 후에도 재현)</li>
-        <li>고가 종목(SK하이닉스 등) 예산 초과로 반복 차단 — 유니버스 구성 검토 중</li>
+        <li>BUY 신호 후 주문 0건 — 주문가능현금 비정상 처리 (v2.0 개선 대상)</li>
         <li>신한지주 MA20 이격 파라미터 조정 여부 미결</li>
       </ul>
       <p><strong>다음 작업</strong></p>
       <ul class="gains-list">
-        <li>웹 익스포트 오류 재현 조건을 로그에서 특정하고, 수정 후 5/2 첫 스캔 전까지 재검증 완료</li>
+        <li>v2.0 코드 반영 (비율 기반 자금 배분·고가주 예외·API fallback 강화)</li>
+        <li>DRY RUN 1일 이상 검증 후 실계좌 적용</li>
+        <li>웹 익스포트 오류 완전 해결</li>
         <li>휴장일 감지 로직 추가</li>
-        <li>SK텔레콤 12주 포지션 관리 (트레일링 활성화 전까지 손절선 모니터링)</li>
-        <li>고가 종목 처리 방식 결정</li>
         <li>수수료·세금 반영 로직 준비 (2주 운영 후 예정)</li>
       </ul>
-      <p class="timeline-cta"><a href="/log/2026-04-30-auto-trading-week1-recap/">1주차 주간결산 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-023/">Insight →</a></p>
+      <p class="timeline-cta"><a href="/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 업그레이드 방향 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-024/">Insight →</a></p>
     </section>
 
     <section class="section">
@@ -83,6 +85,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-01 · v2.0</span>
+          <span class="update-desc">v2.0 업그레이드 방향 정리 완료 — 비율 기반 자금 배분, 고가주 예외 매수, 시장 강도 기반 진입 수 조절 등 7개 항목. 전문가 AI와 바이브코딩 협업 구조로 진행. 코드 반영 후 DRY RUN 검증 예정.</span>
+        </li>
         <li>
           <span class="update-date">2026-04-29~30 · 1주차</span>
           <span class="update-desc">실계좌 1주차 결산 — 트레일링 스탑 3건 연속 플러스(손절 0건), 포지션 회전 구조 실전 작동 확인. 주간 실현손익 +40,658원.</span>
@@ -130,8 +136,12 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     </section>
 
     <section class="section">
-      <h2>대표 Insight — 5개 핵심 관찰</h2>
+      <h2>대표 Insight — 핵심 관찰</h2>
       <ul class="featured-list">
+        <li>
+          <a href="/insight/insight-024/">나는 코드를 짜는 대신, AI들과 자동매매 시스템을 설계하고 있다</a>
+          <span class="featured-note">바이브코딩에서 사람의 역할은 코드가 아니라 질문이다. v2.0 업그레이드 과정에서 확인한 것.</span>
+        </li>
         <li>
           <a href="/insight/insight-009/">AI 자동매매를 만들면서 몰랐던 것</a>
           <span class="featured-note">시작 전에는 보이지 않던 것들. 시스템을 만들면서 처음 직면한 진짜 문제들.</span>
