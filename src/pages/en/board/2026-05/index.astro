@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="May 2026 Operating Board"
+  description="A monthly execution board summarizing the AI experiments and project operating direction that chulbuji.com is focused on in May 2026."
+  ogImage="/images/board/board-2026-05-en.png"
+>
+  <div class="board-page">
+
+    <nav class="top-nav">
+      <a href="/en/board">← Operating Board</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="board-hero">
+      <span class="board-month-badge">May 2026</span>
+      <h1>May 2026 Operating Board</h1>
+      <p class="board-hero-desc">A monthly execution board summarizing the AI experiments and project operating direction that chulbuji.com is focused on right now.</p>
+      <p class="board-focus-statement">May is about validation over expansion — running the projects already in motion to confirm the operating structure works, rather than adding new ideas.</p>
+    </section>
+
+    <!-- Featured Image -->
+    <section class="board-image-section">
+      <div class="board-image-wrapper">
+        <img
+          src="/images/board/board-2026-05-en.png"
+          alt="May 2026 Operating Board dashboard image for chulbuji.com"
+          class="board-dashboard-img"
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+        />
+        <div class="board-image-fallback">
+          May 2026 Operating Board image coming soon
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Direction -->
+    <section class="board-section">
+      <h2>Core Direction</h2>
+      <p>This month's focus is <strong>validation over expansion</strong>.</p>
+      <p>Rather than adding more projects, the work is to confirm that the existing execution axes are actually functioning in live operation.</p>
+      <p>The standard for May is not overstating results, but leaving behind a repeatable structure and an improvable record.</p>
+    </section>
+
+    <!-- Operating Axes -->
+    <section class="board-section">
+      <h2>Operating Axes</h2>
+      <div class="ops-grid">
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Strategy validation and risk management</div>
+          <h3>Auto-Trading Program</h3>
+          <p>Monitoring whether the auto-trading structure operates stably through live account activity. The goal is not guaranteeing returns — it is verifying that trade conditions, risk management, logging, and the improvement loop all run consistently.</p>
+          <div class="card-links">
+            <a href="/en/log">View related logs</a>
+            <a href="/en/projects/stock-auto-trade">View project</a>
+          </div>
+        </div>
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Content publishing, indexing, and approval foundation</div>
+          <h3>AI Blog / AdSense</h3>
+          <p>Checking whether AI-assisted content is appropriate for search and visitor experience. The work is not simply increasing post count — it also covers topic focus, indexing status, internal linking, and policy page consistency.</p>
+          <div class="card-links">
+            <a href="/en/insight">View related insights</a>
+          </div>
+        </div>
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Customer response validation before app development</div>
+          <h3>AI Content Service</h3>
+          <p>Experimenting with a service that lets small business owners generate promotional content drafts from a single photo and a short description. Instead of building a finished app first, validating real demand and usage flow through a content-based service and prototype.</p>
+          <div class="card-links">
+            <a href="/en/projects/ai-content-assistant">View AI Content Assistant project</a>
+          </div>
+        </div>
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Anonymous channel operation and content response</div>
+          <h3>AI Music Channel Experiment</h3>
+          <p>Operating AI music content under an anonymous channel policy. Reviewing the production workflow and response within what can be publicly shared. Channel names and account handles are not disclosed — only the direction and lessons learned are recorded.</p>
+          <div class="card-links">
+            <a href="/en/log">View related logs</a>
+          </div>
+        </div>
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Automation potential for repetitive production tasks</div>
+          <h3>AI Video Editing Automation</h3>
+          <p>Experimenting with ways to reduce repetitive editing work in Shorts, Reels, and blog support content production. The goal is not full automation — it is separating the parts that require human judgment from the parts AI can handle.</p>
+          <div class="card-links">
+            <a href="/en/insight">View related insights</a>
+          </div>
+        </div>
+
+        <div class="ops-card">
+          <div class="card-focus">May focus: Small-scale shopping content test</div>
+          <h3>Chulbuji Shopping Notes</h3>
+          <p>A content experiment presenting everyday shopping information in a short, accessible format. In this early stage, the focus is on topic selection, production speed, viewer response, and finding a repeatable format — not channel growth.</p>
+          <div class="card-links">
+            <a href="/en/log">View related logs</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Disclosure -->
+    <section class="board-section disclosure-section">
+      <h2>Disclosure Scope</h2>
+      <p>This Board covers only what can be made public about the operating direction.</p>
+      <p>The following are not disclosed: actual account balances, specific investment performance figures, internal development structure, non-public service URLs, and the names or handles of anonymously operated channels.</p>
+      <p>Auto-trading content is not intended to guarantee investment returns. It is a record of strategy structure and risk management processes.</p>
+    </section>
+
+    <!-- Footer Links -->
+    <section class="board-section">
+      <h2>Explore the full operating record</h2>
+      <div class="nav-cards">
+        <a href="/en/log" class="nav-card">
+          <span class="nav-card-title">Log</span>
+          <span class="nav-card-desc">Daily and weekly execution logs</span>
+          <span class="nav-card-arrow">→</span>
+        </a>
+        <a href="/en/insight" class="nav-card">
+          <span class="nav-card-title">Insight</span>
+          <span class="nav-card-desc">Lessons drawn from operating experience</span>
+          <span class="nav-card-arrow">→</span>
+        </a>
+        <a href="/en/projects" class="nav-card">
+          <span class="nav-card-title">Projects</span>
+          <span class="nav-card-desc">Individual project detail hubs</span>
+          <span class="nav-card-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .board-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .top-nav { margin-bottom: 2rem; }
+  .top-nav a { color: #1976d2; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .top-nav a:hover { text-decoration: underline; }
+
+  .board-hero { margin-bottom: 2.5rem; }
+
+  .board-month-badge {
+    display: inline-block;
+    background: #ede7f6;
+    color: #5e35b1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .board-hero h1 {
+    font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.25rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .board-hero-desc { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 1rem; }
+
+  .board-focus-statement {
+    background: linear-gradient(135deg, #f3f0ff 0%, #ede7f6 100%);
+    border-left: 4px solid #7c4dff;
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.975rem;
+    color: #3d1a78;
+    line-height: 1.65;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .board-image-section { margin-bottom: 2.5rem; }
+
+  .board-dashboard-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    display: block;
+  }
+
+  .board-image-fallback {
+    display: none;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #f3f0ff 0%, #ede7f6 100%);
+    border: 1px dashed #b39ddb;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: #7e57c2;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .board-section { margin-bottom: 3rem; }
+
+  .board-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .board-section p { color: #444; line-height: 1.75; margin-bottom: 0.75rem; font-size: 0.975rem; }
+
+  .ops-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .ops-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .ops-card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+
+  .card-focus {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: #1565c0;
+    background: #e3f2fd;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    line-height: 1.4;
+  }
+
+  .ops-card h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0; }
+  .ops-card p { font-size: 0.875rem; color: #555; line-height: 1.65; margin: 0; flex: 1; }
+
+  .card-links { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.25rem; }
+  .card-links a { font-size: 0.825rem; color: #1976d2; text-decoration: none; font-weight: 600; }
+  .card-links a:hover { text-decoration: underline; }
+
+  .disclosure-section {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .disclosure-section h2 { border-bottom-color: #e0e0e0; }
+
+  .nav-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .nav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    background: white;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .nav-card:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); border-color: #667eea; }
+  .nav-card-title { font-size: 1rem; font-weight: 700; color: #1a1a1a; }
+  .nav-card-desc { font-size: 0.825rem; color: #777; line-height: 1.4; }
+  .nav-card-arrow { font-size: 0.85rem; color: #667eea; font-weight: 600; margin-top: 0.25rem; }
+
+  @media (max-width: 768px) {
+    .ops-grid { grid-template-columns: 1fr; }
+    .nav-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .board-page { padding: 1.5rem 1rem 3rem; }
+  }
+</style>

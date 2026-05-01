@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Operating Board"
+  description="Monthly operating direction for chulbuji.com — a public-facing board summarizing AI experiments and active project execution axes."
+>
+  <div class="board-hub">
+
+    <div class="board-header">
+      <h1>Operating Board</h1>
+      <p class="board-desc">A public monthly board summarizing the operating direction of chulbuji.com.</p>
+    </div>
+
+    <div class="board-intro">
+      <p>This is where the current focus areas are laid out — AI experiments, project operations, content monetization preparation, and automation work — organized by month.</p>
+      <p>This is not an internal management sheet. It is a curated, brand-level operating record designed to help visitors understand what chulbuji.com is actually running right now.</p>
+    </div>
+
+    <section class="board-list-section">
+      <h2>Monthly Board</h2>
+      <ul class="board-month-list">
+        <li>
+          <a href="/en/board/2026-05" class="board-month-card">
+            <div class="board-month-meta">
+              <span class="board-month-label">May 2026</span>
+              <span class="board-month-status">Latest</span>
+            </div>
+            <div class="board-month-title">May 2026 Operating Board</div>
+            <p class="board-month-summary">Auto-Trading · AI Blog · AI Content Service · AI Music Experiment · Video Editing Automation · Shopping Content Test</p>
+            <span class="board-month-arrow">View details →</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .board-hub {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .board-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+  }
+
+  .board-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .board-desc {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .board-intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .board-intro p {
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+    font-size: 0.975rem;
+  }
+
+  .board-list-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .board-month-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .board-month-card {
+    display: block;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    background: white;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .board-month-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #667eea;
+  }
+
+  .board-month-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .board-month-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .board-month-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .board-month-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .board-month-summary {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+
+  .board-month-arrow {
+    font-size: 0.875rem;
+    color: #667eea;
+    font-weight: 600;
+  }
+</style>

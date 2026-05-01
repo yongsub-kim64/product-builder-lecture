@@ -5,6 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 <BaseLayout
   title="2026년 5월 운영 Board"
   description="chulbuji.com에서 2026년 5월 집중하고 있는 AI 실험과 프로젝트 운영 방향을 정리한 월간 실행 보드입니다."
+  ogImage="/images/board/board-2026-05-ko.png"
 >
   <div class="board-page">
 
@@ -22,12 +23,18 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
     <!-- 대표 이미지 -->
     <section class="board-image-section">
-      <img
-        src="/images/board-2026-05.png"
-        alt="2026년 5월 chulbuji.com 운영 Board 대시보드 이미지"
-        class="board-dashboard-img"
-        loading="lazy"
-      />
+      <div class="board-image-wrapper">
+        <img
+          src="/images/board/board-2026-05-ko.png"
+          alt="2026년 5월 chulbuji.com 운영 Board 대시보드 이미지"
+          class="board-dashboard-img"
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+        />
+        <div class="board-image-fallback">
+          2026년 5월 운영 Board 대표 이미지 준비 중
+        </div>
+      </div>
     </section>
 
     <!-- 핵심 방향 -->
@@ -206,9 +213,27 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
   .board-dashboard-img {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     display: block;
+  }
+
+  .board-image-fallback {
+    display: none;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #f3f0ff 0%, #ede7f6 100%);
+    border: 1px dashed #b39ddb;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: #7e57c2;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
   }
 
   /* 공통 섹션 */
