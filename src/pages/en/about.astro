@@ -1,11 +1,295 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import { getEntry } from 'astro:content';
-
-const entry = await getEntry('en/pages', 'about');
-const { Content } = await entry.render();
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<PageLayout title={entry.data.title} description={entry.data.description}>
-  <Content />
-</PageLayout>
+<BaseLayout
+  title="About: Chulbuji + Meta-Chulbuji"
+  description="A 34-year semiconductor engineer transforming into an AI Product Builder — the story of Chulbuji and Meta-Chulbuji"
+>
+  <div class="about-container">
+
+    <h1 class="about-title">About: Chulbuji + Meta-Chulbuji</h1>
+    <p class="about-lead">A human operating with AI — Chulbuji's AI Product Builder transformation record</p>
+
+    <!-- 01 Identity -->
+    <section class="about-section">
+      <span class="section-label">01 — Identity</span>
+      <h2 class="section-title">Chulbuji + Meta-Chulbuji: Dual Brain</h2>
+
+      <p>chulbuji.com is the transformation record of a 34-year semiconductor process engineer — 'Chulbuji' — becoming an AI Product Builder. This is where AX (AI Transformation) gets executed and accumulated, not just declared.</p>
+
+      <p>Instead of freezing before the tidal wave of technological change, I chose to embrace AI as a second brain. There is <strong>'Chulbuji'</strong> — the human mind that holds intent and direction. And there is <strong>'Meta-Chulbuji'</strong> — the AI mind that gives those thoughts structure and executes on them. This site chronicles the Dual-Brain collaboration between the two: unfiltered, in real time.</p>
+
+      <blockquote class="philosophy-quote">
+        Learning wider, exploring deeper, and building things today that yesterday's version of me couldn't have imagined. This is a space that trusts the process over the product, and the experiment over the polished outcome.
+      </blockquote>
+    </section>
+
+    <!-- 02 Perspective -->
+    <section class="about-section">
+      <span class="section-label">02 — Perspective</span>
+      <h2 class="section-title">AI doesn't hand you answers — it sharpens your questions</h2>
+
+      <p>I don't think of AI as a faster search engine or an answer machine. To me, AI is a <strong>partner</strong> that stretches my thinking and gives shape to half-formed ideas — which is exactly why I call it meta-chulbuji.</p>
+
+      <div class="perspective-cards">
+        <div class="perspective-card">
+          <h3 class="card-title">The evolution of inquiry</h3>
+          <p>Conversations with AI change the questions I ask. 'How do I do this?' deepens into 'Why does this work this way?', and then into 'What new possibilities open up if I redesign this entirely?'</p>
+        </div>
+        <div class="perspective-card">
+          <h3 class="card-title">The velocity of execution</h3>
+          <p>Ideas that used to live only in my head now become rapid prototypes through AI collaboration. They don't need to be perfect. Some things only reveal themselves once you've built them.</p>
+        </div>
+        <div class="perspective-card">
+          <h3 class="card-title">Experience as a lasting asset</h3>
+          <p>Tools change. Technologies pass. But the insights I gain through the process stay with me. The real content of this site isn't how to use a tool — it's how using that tool changed <em>the person holding it</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 What You'll Find Here -->
+    <section class="about-section">
+      <span class="section-label">03 — What You'll Find Here</span>
+      <h2 class="section-title">The Update Log</h2>
+
+      <p>Three kinds of records accumulate here over time.</p>
+
+      <div class="content-cards">
+        <div class="content-card">
+          <h3 class="content-card-name">Log</h3>
+          <p class="content-card-sub">Raw Records</p>
+          <p>Morning conversations with AI, the messy process of shaping ideas and putting them into motion. Unpolished snapshots of a mind at work.</p>
+        </div>
+        <div class="content-card">
+          <h3 class="content-card-name">Projects</h3>
+          <p class="content-card-sub">Things We Built</p>
+          <p>Tools, services, and experiments brought to life through Dual-Brain collaboration. Small and imperfect, perhaps — but real, and made.</p>
+        </div>
+        <div class="content-card">
+          <h3 class="content-card-name">Insights</h3>
+          <p class="content-card-sub">Discoveries About Myself</p>
+          <p>Shifts in thinking and fragments of self-understanding that emerged through AI interaction — things I never would have found thinking alone.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Goal -->
+    <section class="about-section about-goal">
+      <span class="section-label">04 — Goal</span>
+      <h2 class="section-title">Transformation is not a declaration — it's accumulation.</h2>
+
+      <p>My goal is not to stack up polished achievements. It is to execute AX through dual-brain and multi-expert AI orchestration, and to build that record openly. To remain a human who never stops <strong>self-updating</strong> in the uncharted territory of AI civilization.</p>
+
+      <p>If you've found your way here while wrestling with similar questions, I hope these records offer a small spark. We can each grow at our own pace, in our own way.</p>
+
+      <nav class="about-nav" aria-label="Page navigation">
+        <a href="/en/log/" class="about-nav-btn">Browse the Log</a>
+        <a href="/en/projects/" class="about-nav-btn">View Projects</a>
+        <a href="/en/board/" class="about-nav-btn">View the Board</a>
+      </nav>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .about-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  /* Page title */
+  .about-title {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .about-lead {
+    font-size: var(--font-size-lg);
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  /* Section structure */
+  .about-section {
+    padding-top: 2.75rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 0.875rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 1.375rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .about-section p {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    margin-bottom: 1.125rem;
+    color: var(--text-color);
+    max-width: 100%;
+  }
+
+  .about-section p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* Philosophy quote */
+  .philosophy-quote {
+    border-left: 3px solid var(--primary-color);
+    background: #f7f8ff;
+    padding: 1.125rem 1.375rem;
+    margin: 1.75rem 0 0;
+    border-radius: 0 6px 6px 0;
+    font-style: normal;
+    color: #444;
+    line-height: 1.85;
+    font-size: var(--font-size-base);
+  }
+
+  /* Perspective cards */
+  .perspective-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin-top: 1.375rem;
+  }
+
+  .perspective-card {
+    background: var(--background-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem 1.375rem;
+  }
+
+  .card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .perspective-card p {
+    font-size: var(--font-size-base);
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 0 !important;
+  }
+
+  /* Content cards (Log / Projects / Insights) */
+  .content-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin-top: 1.375rem;
+  }
+
+  .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem 1.375rem;
+  }
+
+  .content-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .content-card-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 0.625rem !important;
+  }
+
+  .content-card p:last-child {
+    font-size: var(--font-size-base);
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 0 !important;
+  }
+
+  /* Goal section */
+  .about-goal {
+    padding-top: 3rem;
+  }
+
+  /* Navigation buttons */
+  .about-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 2.25rem;
+  }
+
+  .about-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    background: white;
+    min-height: 44px;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+  }
+
+  .about-nav-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: #f7f8ff;
+  }
+
+  /* Desktop: 3-column cards */
+  @media (min-width: 640px) {
+    .perspective-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Small mobile */
+  @media (max-width: 480px) {
+    .about-container {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .about-nav {
+      flex-direction: column;
+    }
+
+    .about-nav-btn {
+      justify-content: center;
+    }
+  }
+</style>
