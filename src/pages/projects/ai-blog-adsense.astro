@@ -3,11 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const relatedLogs = (await getCollection('ko/log', ({ data }) =>
-  data.published !== false && data.project_tag === 'AI블로그AdSense'
+  data.published !== false && data.project_tag === 'AIBlogAdSense'
 )).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
-  data.published !== false && data.project_tag === 'AI블로그AdSense'
+  data.published !== false && data.project_tag === 'AIBlogAdSense'
 )).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
