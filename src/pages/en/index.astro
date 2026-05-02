@@ -23,6 +23,19 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
     </div>
   </section>
 
+  <section class="current-board">
+    <div class="current-board-inner">
+      <div class="board-label-row">
+        <span class="board-label">Operating Board</span>
+        <span class="board-month-tag">May 2026</span>
+      </div>
+      <p class="board-summary">In May 2026, the focus is on running projects already in motion and verifying what's working — not adding new ideas.</p>
+      <p class="board-keywords">Auto-Trading · AI Blog · AI Content Service · AI Music · Video Automation · Shopping Content</p>
+      <a href="/en/board/2026-05" class="board-cta">View May 2026 Operating Board →</a>
+      <a href="/en/sop/ai-collaboration-operating-sop/" class="sop-aux-link">View operating standard: AI Collaboration Operating SOP v0 →</a>
+    </div>
+  </section>
+
   <section class="latest-posts">
     <h2>Latest Posts</h2>
     <div class="posts-grid">
@@ -155,6 +168,94 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
   .btn-secondary:hover {
     background: white;
     color: #667eea;
+  }
+
+  .current-board {
+    background: #f8f4ff;
+    border-top: 1px solid #ede7f6;
+    border-bottom: 1px solid #ede7f6;
+  }
+
+  .current-board-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+    text-align: center;
+  }
+
+  .board-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .board-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #5e35b1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .board-month-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #ede7f6;
+    color: #5e35b1;
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  .board-summary {
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+    color: #3d1a78;
+    line-height: 1.65;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .board-keywords {
+    font-size: 0.875rem;
+    color: #7c5cbf;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .board-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background: #7c4dff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.975rem;
+    transition: background 0.2s, transform 0.2s;
+    min-height: 48px;
+  }
+
+  .board-cta:hover {
+    background: #5e35b1;
+    transform: translateY(-1px);
+  }
+
+  .sop-aux-link {
+    display: inline-block;
+    margin-top: 0.875rem;
+    font-size: 0.8125rem;
+    color: #7c5cbf;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+
+  .sop-aux-link:hover {
+    text-decoration: underline;
+    opacity: 1;
   }
 
   .latest-posts {

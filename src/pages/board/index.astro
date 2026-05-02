@@ -35,6 +35,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </ul>
     </section>
 
+    <div class="sop-ref">
+      <span class="sop-ref-label">운영 기준 문서</span>
+      <a href="/sop/ai-collaboration-operating-sop/" class="sop-ref-link">AI 협업 운영 SOP v0 →</a>
+    </div>
+
   </div>
 </BaseLayout>
 
@@ -148,5 +153,34 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     font-size: 0.875rem;
     color: #667eea;
     font-weight: 600;
+  }
+
+  .sop-ref {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sop-ref-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .sop-ref-link {
+    font-size: 0.875rem;
+    color: #7c5cbf;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sop-ref-link:hover {
+    text-decoration: underline;
   }
 </style>
