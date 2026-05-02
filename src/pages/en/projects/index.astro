@@ -22,12 +22,12 @@ const projects = [
   },
   {
     updatedAt: new Date('2026-04-06'),
-    status: 'active',
-    statusLabel: 'In Progress',
+    status: 'on-hold',
+    statusLabel: 'On Hold · Early Planning Record',
     title: 'Chulbuji RunBuddy',
-    description: 'AI voice coaching running app for Android + Wear OS dual devices. Monitors real-time pace and heart rate, delivering instant voice coaching when targets are missed. 500m interval coaching. Outdoor testing in progress.',
+    description: 'A service idea for people who struggle to run consistently on their own — AI helping them set running goals and structure their execution. Currently on hold as other projects take priority. The initial planning and problem framing are preserved as a record.',
     href: '/en/projects/runbuddy',
-    linkLabel: 'Learn more →',
+    linkLabel: 'View planning record →',
   },
   {
     updatedAt: new Date('2026-03-20'),
@@ -45,7 +45,11 @@ const projects = [
       { href: 'https://insight.chulbuji.com', label: 'Visit site' },
     ],
   },
-].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
+].sort((a, b) => {
+  if (a.status === 'on-hold' && b.status !== 'on-hold') return 1;
+  if (b.status === 'on-hold' && a.status !== 'on-hold') return -1;
+  return b.updatedAt.valueOf() - a.updatedAt.valueOf();
+});
 
 const labs = [
   {
@@ -210,6 +214,11 @@ const labs = [
   .status-experimental {
     background-color: #fce4ec;
     color: #c62828;
+  }
+
+  .status-on-hold {
+    background: #f5f5f5;
+    color: #757575;
   }
 
   .project-card h3 {

@@ -22,12 +22,12 @@ const projects = [
   },
   {
     updatedAt: new Date('2026-04-06'),
-    status: 'active',
-    statusLabel: '진행 중',
+    status: 'on-hold',
+    statusLabel: '보류 중 · 초기 기획 기록',
     title: 'Chulbuji RunBuddy',
-    description: 'AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스로 실시간 페이스·심박수를 모니터링하고, 목표 이탈 시 즉시 음성 코칭을 제공한다. 500m 구간 코칭, 야외 실측 테스트 진행 중.',
+    description: '혼자 달리기 어려운 사람을 위해 AI가 러닝 목표와 실행 흐름을 함께 정리해 주는 서비스 아이디어입니다. 현재는 우선순위 조정으로 추가 개발 Action을 보류하고 있으며, 초기 기획과 문제의식을 기록 자산으로 남겨두고 있습니다.',
     href: '/projects/runbuddy',
-    linkLabel: '자세히 보기 →',
+    linkLabel: '기획 기록 보기 →',
   },
   {
     updatedAt: new Date('2026-03-20'),
@@ -45,7 +45,11 @@ const projects = [
       { href: 'https://insight.chulbuji.com', label: 'InsightReport MVP 보기' },
     ],
   },
-].sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());
+].sort((a, b) => {
+  if (a.status === 'on-hold' && b.status !== 'on-hold') return 1;
+  if (b.status === 'on-hold' && a.status !== 'on-hold') return -1;
+  return b.updatedAt.valueOf() - a.updatedAt.valueOf();
+});
 
 const labs = [
   {
@@ -220,6 +224,11 @@ const labs = [
   .status-in-progress {
     background-color: #e3f2fd;
     color: #1565c0;
+  }
+
+  .status-on-hold {
+    background: #f5f5f5;
+    color: #757575;
   }
 
   .project-card h3 {
