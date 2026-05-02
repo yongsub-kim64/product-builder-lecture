@@ -1,11 +1,407 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import { getEntry } from 'astro:content';
-
-const entry = await getEntry('ko/pages', 'privacy');
-const { Content } = await entry.render();
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<PageLayout title={entry.data.title} description={entry.data.description}>
-  <Content />
-</PageLayout>
+<BaseLayout
+  title="개인정보처리방침"
+  description="chulbuji.com 개인정보처리방침 - 공개 기록 및 프로젝트 소개 사이트의 실제 운영 범위에 맞게 작성되었습니다."
+>
+  <div class="privacy-container">
+
+    <h1 class="privacy-title">개인정보처리방침</h1>
+
+    <div class="privacy-meta">
+      <span>시행일자: 2026년 4월 23일</span>
+      <span class="meta-sep">·</span>
+      <span>최종 수정: 2026년 4월 23일</span>
+    </div>
+
+    <!-- 소개 -->
+    <section class="privacy-intro">
+      <p>chulbuji.com은 한 사람이 운영하는 공개 웹사이트입니다. AI와 함께 제품을 만들고 운영하며 배운 것을 기록하는 공간으로, 콘텐츠 아카이브, 인사이트 기록, 프로젝트 소개가 주요 구조입니다.</p>
+
+      <div class="info-box">
+        현재 이 사이트는 회원가입이나 결제 기능을 운영하지 않습니다. 문의 응대와 기본 운영 확인에 필요한 범위에서만 정보를 다룹니다.
+      </div>
+
+      <p>향후 광고, 분석 도구, 회원 기능, 유료 서비스 등이 실제로 도입될 경우 관련 내용을 방침에 반영해 안내합니다.</p>
+    </section>
+
+    <!-- 목차 -->
+    <nav class="privacy-toc" aria-label="목차">
+      <p class="toc-label">목차</p>
+      <ol class="toc-list">
+        <li><a href="#section-1">1. 수집하는 정보</a></li>
+        <li><a href="#section-2">2. 정보를 사용하는 목적</a></li>
+        <li><a href="#section-3">3. 보관 기간</a></li>
+        <li><a href="#section-4">4. 외부 서비스 및 링크</a></li>
+        <li><a href="#section-5">5. 이용자의 요청 방법</a></li>
+        <li><a href="#section-6">6. 방침 변경</a></li>
+        <li><a href="#section-7">7. 문의처</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. 수집하는 정보 -->
+    <section id="section-1" class="privacy-section">
+      <h2>1. 수집하는 정보</h2>
+
+      <div class="info-sub-box">
+        <h3>방문 시 자동으로 수집되는 기술 정보</h3>
+        <p>사이트에 접속하면 웹 서버 운영 과정에서 다음 정보가 자동으로 기록될 수 있습니다.</p>
+        <ul>
+          <li>IP 주소</li>
+          <li>접속 일시</li>
+          <li>브라우저 및 기기 정보</li>
+          <li>방문 페이지 정보</li>
+          <li>오류 및 보안 로그</li>
+        </ul>
+        <p class="sub-note">이 정보는 사이트 운영, 오류 대응, 보안 관리를 위해 처리되며, 방문자를 개인적으로 식별하기 위해 사용하지 않습니다.</p>
+      </div>
+
+      <div class="info-sub-box">
+        <h3>문의 시 직접 제공하는 정보</h3>
+        <p>이메일 또는 Google Form을 통해 문의할 경우, 문의 응대에 필요한 정보를 확인합니다.</p>
+        <ul>
+          <li>이메일 주소</li>
+          <li>메시지 내용</li>
+          <li>그 외 사용자가 자발적으로 제공한 정보</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. 정보를 사용하는 목적 -->
+    <section id="section-2" class="privacy-section">
+      <h2>2. 정보를 사용하는 목적</h2>
+      <p>수집된 정보는 다음 목적에만 사용합니다.</p>
+      <ul>
+        <li>사이트 운영 및 오류 대응</li>
+        <li>보안 및 기본 운영 관리</li>
+        <li>문의 확인 및 응답</li>
+      </ul>
+      <p class="trust-note">개인정보를 제3자에게 판매하거나, 마케팅 및 광고 목적으로 사용하지 않습니다.</p>
+    </section>
+
+    <!-- 3. 보관 기간 -->
+    <section id="section-3" class="privacy-section">
+      <h2>3. 보관 기간</h2>
+      <p>방문 기록은 운영 및 보안 확인에 필요한 기간 동안 보관 후 삭제합니다.</p>
+      <p>문의를 통해 제공한 이메일 주소와 메시지 내용은 응대가 완료되고 보관 필요성이 없어지면 삭제합니다. 삭제 요청이 있는 경우 지체 없이 처리합니다.</p>
+    </section>
+
+    <!-- 4. 외부 서비스 및 링크 -->
+    <section id="section-4" class="privacy-section">
+      <h2>4. 외부 서비스 및 링크</h2>
+      <p>이 사이트는 다음과 같은 외부 서비스 링크를 포함하고 있습니다.</p>
+      <ul>
+        <li>이메일 링크 (<a href="mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의">hello@chulbuji.com</a>)</li>
+        <li>Google Form (문의 폼)</li>
+        <li>GitHub 등 외부 서비스 링크</li>
+      </ul>
+      <div class="note-box">
+        외부 서비스로 연결되면 해당 서비스의 개인정보처리방침이 적용되며, 이 사이트의 방침 범위를 벗어납니다.
+      </div>
+    </section>
+
+    <!-- 5. 이용자의 요청 방법 -->
+    <section id="section-5" class="privacy-section">
+      <h2>5. 이용자의 요청 방법</h2>
+      <p>문의 시 제공한 정보의 열람, 정정, 삭제를 요청할 수 있습니다. 아래 이메일로 보내주시면 확인 후 처리합니다.</p>
+      <p><strong>이메일:</strong> <a href="mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의">hello@chulbuji.com</a></p>
+      <p>사이트 운영과 무관한 개인정보 관련 신고·상담이 필요한 경우 아래 기관을 이용하실 수 있습니다.</p>
+      <ul>
+        <li>개인정보침해신고센터: privacy.kisa.or.kr / 118</li>
+        <li>개인정보분쟁조정위원회: kopico.go.kr / 1833-6972</li>
+      </ul>
+    </section>
+
+    <!-- 6. 방침 변경 -->
+    <section id="section-6" class="privacy-section">
+      <h2>6. 방침 변경</h2>
+      <p>이 방침은 운영 상황 변화에 따라 업데이트될 수 있습니다. 변경 시 사이트 내 공지를 통해 안내합니다.</p>
+    </section>
+
+    <!-- 7. 문의처 -->
+    <section id="section-7" class="privacy-section">
+      <h2>7. 문의처</h2>
+      <div class="contact-box">
+        <div class="contact-row">
+          <span class="contact-label">운영자</span>
+          <span>chulbuji</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">이메일</span>
+          <a href="mailto:hello@chulbuji.com?subject=chulbuji.com%20개인정보처리방침%20문의">hello@chulbuji.com</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .privacy-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  /* Title */
+  .privacy-title {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  /* Meta dates */
+  .privacy-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .meta-sep {
+    color: var(--border-color);
+  }
+
+  /* Intro */
+  .privacy-intro {
+    margin-bottom: 2rem;
+  }
+
+  .privacy-intro > p {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    max-width: 100%;
+  }
+
+  /* Info box — 회원가입/결제 미운영 안내 */
+  .info-box {
+    background: #eef5fd;
+    border: 1px solid #c5d9f0;
+    border-radius: 6px;
+    padding: 0.875rem 1.125rem;
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: #2a4a6d;
+    margin: 0.875rem 0;
+  }
+
+  /* TOC */
+  .privacy-toc {
+    background: var(--background-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.125rem 1.375rem;
+    margin-bottom: 0;
+  }
+
+  .toc-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem !important;
+    max-width: 100%;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    counter-reset: none;
+  }
+
+  .toc-list li {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .toc-list a {
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.1rem 0;
+    transition: color 0.15s;
+  }
+
+  .toc-list a:hover {
+    color: var(--primary-color);
+  }
+
+  /* Sections */
+  .privacy-section {
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2.5rem;
+  }
+
+  .privacy-section h2 {
+    font-size: clamp(1.0625rem, 1rem + 0.3125vw, 1.1875rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .privacy-section > p {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    max-width: 100%;
+  }
+
+  .privacy-section > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .privacy-section > ul {
+    padding-left: 1.375rem;
+    margin: 0.375rem 0 0.875rem;
+  }
+
+  .privacy-section > ul li {
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    margin-bottom: 0.3125rem;
+    color: var(--text-color);
+  }
+
+  .privacy-section > ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Info sub-boxes — Section 1 */
+  .info-sub-box {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.125rem 1.25rem;
+    margin-bottom: 0.875rem;
+    background: white;
+  }
+
+  .info-sub-box:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-sub-box h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem;
+    line-height: 1.4;
+  }
+
+  .info-sub-box > p {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    margin-bottom: 0.625rem;
+    color: var(--text-color);
+    max-width: 100%;
+  }
+
+  .info-sub-box ul {
+    padding-left: 1.25rem;
+    margin: 0.375rem 0 0;
+    list-style: disc;
+  }
+
+  .info-sub-box li {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+  }
+
+  .info-sub-box li:last-child {
+    margin-bottom: 0;
+  }
+
+  .sub-note {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    margin-bottom: 0 !important;
+    line-height: 1.75;
+  }
+
+  /* Trust note — Section 2 */
+  .trust-note {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 0.875rem;
+    margin-top: 0.5rem;
+    line-height: 1.75;
+    max-width: 100%;
+  }
+
+  /* Note box — Section 4 */
+  .note-box {
+    background: #fafafa;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.875rem 1.125rem;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-top: 0.875rem;
+  }
+
+  /* Contact box — Section 7 */
+  .contact-box {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.125rem 1.375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+  }
+
+  .contact-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 3.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .privacy-container {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .privacy-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+
+    .meta-sep {
+      display: none;
+    }
+  }
+</style>
