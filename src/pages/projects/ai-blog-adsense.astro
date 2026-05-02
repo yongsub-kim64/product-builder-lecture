@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('ko/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'AI블로그AdSense'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'AI블로그AdSense'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout
+  title="AI 블로그 / AdSense 실험"
+  description="AI 글쓰기, Blogger 운영, 콘텐츠 구조화, AdSense 승인 준비 과정을 실제로 실험하고 기록하는 수익화 검증 프로젝트입니다."
+>
+  <div class="project-detail">
+
+    <a href="/projects" class="back-link">← 프로젝트 목록</a>
+
+    <div class="project-header">
+      <span class="project-status status-experimental">수익화 실험 진행 중</span>
+      <h1>AI 블로그 / AdSense 실험</h1>
+      <p class="project-lead">AI 글쓰기, Blogger 운영, 콘텐츠 구조화, AdSense 승인 준비 과정을 실제로 실험하고 기록하는 수익화 검증 프로젝트입니다.</p>
+    </div>
+
+    <section class="section">
+      <h2>프로젝트 개요</h2>
+      <p>외부 블로그(ai60lab.blogspot.com)를 실제 실험 공간으로 운영하면서, AI 글쓰기 도구와 협업해 콘텐츠를 발행하고 AdSense 승인 준비 과정을 직접 검증합니다.</p>
+      <p>이 프로젝트는 블로그 콘텐츠를 chulbuji.com 안으로 복제하는 프로젝트가 아닙니다. 외부 블로그는 실제 글을 발행하고 수익화 실험을 진행하는 공간이며, chulbuji.com은 실험 목적·운영 판단·구조 개선 과정·기록과 인사이트를 자산화하는 중심 사이트입니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>현재 상태</h2>
+      <p>AI 글쓰기, 대표 이미지 제작, SEO 점검, Search Console 확인, AdSense 준비 과정을 실제 블로그 운영으로 검증하는 실험을 진행 중입니다.</p>
+      <p>현재 집중 항목은 콘텐츠 발행, 색인, 승인 기반 구축입니다. AdSense 승인 또는 수익 발생은 아직 확인되지 않았습니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>실험 목적</h2>
+      <ul>
+        <li>AI와의 협업으로 블로그 콘텐츠를 일관되게 생산할 수 있는지 검증</li>
+        <li>실제 글 발행과 Search Console 색인 과정에서 반복 가능한 운영 흐름 만들기</li>
+        <li>AdSense 승인 요건을 충족하는 콘텐츠 구조와 블로그 운영 방식 확인</li>
+        <li>AI 글쓰기 도구의 실제 효율과 품질을 현장에서 측정</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>운영 구조</h2>
+      <ul>
+        <li><strong>외부 블로그 (Blogger)</strong> — 실제 글 발행, AdSense 실험 공간</li>
+        <li><strong>AI 도구</strong> — 글쓰기, 대표 이미지 제작, SEO 검토 보조</li>
+        <li><strong>Search Console</strong> — 색인 상태 및 검색 노출 확인</li>
+        <li><strong>chulbuji.com</strong> — 실험 목적, 운영 판단, 기록과 인사이트 자산화</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>외부 블로그와 chulbuji.com의 관계</h2>
+      <p>이 프로젝트는 외부 블로그 콘텐츠를 chulbuji.com 안으로 복제하거나 이전하는 프로젝트가 아닙니다.</p>
+      <p>외부 블로그는 실제 글 발행과 AdSense 실험이 이루어지는 운영 공간입니다. chulbuji.com은 그 실험이 왜 시작됐는지, 어떤 판단으로 운영 구조를 바꿨는지, 무엇을 배웠는지를 기록하는 곳입니다. 블로그 콘텐츠 자체가 아닌, 실험의 과정과 인사이트가 chulbuji.com에 쌓이는 자산입니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>주요 연결 링크</h2>
+      <div class="link-group">
+        <a href="https://ai60lab.blogspot.com/" class="link-btn link-btn-primary" target="_blank" rel="noopener noreferrer">블로그 실험 보기 ↗</a>
+        <a href="/board/" class="link-btn link-btn-secondary">운영 Board 보기 →</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>다음 점검 항목</h2>
+      <ul>
+        <li>발행 글 수 대비 색인 비율</li>
+        <li>Search Console 검색 노출 추이</li>
+        <li>AdSense 승인 요건 충족 여부</li>
+        <li>반복 가능한 글 발행 흐름 확립 여부</li>
+        <li>AI 글쓰기 품질 대비 색인·노출 성과 상관관계</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>관련 기록</h2>
+      {relatedLogs.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Log</h3>
+          <ul class="related-list">
+            {relatedLogs.map(post => (
+              <li>
+                <a href={`/log/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedInsights.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Insight</h3>
+          <ul class="related-list">
+            {relatedInsights.map(post => (
+              <li>
+                <a href={`/insight/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedLogs.length === 0 && relatedInsights.length === 0 && (
+        <p class="no-records">아직 이 프로젝트와 연결된 Log / Insight 기록이 없습니다.</p>
+      )}
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+  }
+
+  .status-experimental {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .project-header h1 {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-lead {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .section {
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section h2 {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .section > p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+    max-width: 100%;
+  }
+
+  .section > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section ul {
+    padding-left: 1.375rem;
+    margin: 0.5rem 0 0;
+    list-style: disc;
+  }
+
+  .section ul li {
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    color: var(--text-color);
+  }
+
+  .section ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Link buttons */
+  .link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: opacity 0.15s, background-color 0.15s;
+  }
+
+  .link-btn-primary {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .link-btn-primary:hover {
+    opacity: 0.88;
+    color: white;
+  }
+
+  .link-btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: white;
+  }
+
+  .link-btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f7f8ff;
+  }
+
+  /* Related records */
+  .related-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .related-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .related-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .related-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .no-records {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .project-detail {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .link-group {
+      flex-direction: column;
+    }
+
+    .link-btn {
+      justify-content: center;
+    }
+  }
+</style>
