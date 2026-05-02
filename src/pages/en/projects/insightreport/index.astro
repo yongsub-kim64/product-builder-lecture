@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('en/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'InsightReport'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('en/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'InsightReport'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout
+  title="InsightReport"
+  description="InsightReport is a working MVP that turns personal concerns or complex thoughts into an AI-generated report covering current state, context, and next actions. Currently paused and preserved as a project record."
+>
+  <div class="project-detail">
+
+    <a href="/en/projects" class="back-link">← Projects</a>
+
+    <div class="project-header">
+      <span class="project-status status-paused">MVP Complete · Operation Paused</span>
+      <h1>InsightReport</h1>
+      <p class="project-lead">InsightReport is a working MVP that turns personal concerns or complex thoughts into an AI-generated report covering current state, context, and next actions. It is currently paused and preserved as a project record from the MVP and hackathon phase.</p>
+    </div>
+
+    <section class="section">
+      <h2>Project Overview</h2>
+      <p>InsightReport was submitted to a hackathon under the name "Meta-Chulbuji." It started from the idea that when someone can't clearly make sense of their own situation, AI can step in to structure it — not as a chat response, but as a formatted report.</p>
+      <p>The core structure: user input → AI analysis → a structured output covering current state, situational context, and suggested next actions.</p>
+    </section>
+
+    <section class="section">
+      <h2>The Problem It Addressed</h2>
+      <p>When thoughts are tangled or concerns feel unresolved, most people try writing or talking it out. But structuring vague thoughts on your own is harder than it sounds:</p>
+      <ul>
+        <li>Going in emotional circles without identifying the actual problem</li>
+        <li>Knowing something is wrong but not knowing where to start</li>
+        <li>Personal concerns too sensitive to share with others</li>
+      </ul>
+      <p>InsightReport was designed to receive someone's unstructured input, interpret the state and context, and return a clear set of next steps.</p>
+    </section>
+
+    <section class="section">
+      <h2>Service Flow</h2>
+      <ul>
+        <li>User enters a concern or complex thought in free form</li>
+        <li>AI analyzes the input and structures it into State, Context, and Next Action</li>
+        <li>Output is delivered as a formatted report</li>
+        <li>Results can be saved or iteratively refined with follow-up input</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>MVP Status</h2>
+      <p>A working MVP was completed for the hackathon submission. The full flow — from receiving input to generating a structured AI report — is implemented and the service remains accessible.</p>
+      <p>No additional feature development or active operation is currently underway. The project is preserved in its hackathon MVP state, with any future continuation to be decided separately.</p>
+    </section>
+
+    <section class="section">
+      <h2>MVP Demo</h2>
+      <div class="demo-block">
+        <div class="demo-thumbnail-link-wrap">
+          <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener noreferrer" class="demo-thumbnail-link">
+            <img
+              src="https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg"
+              alt="InsightReport MVP demo video thumbnail"
+              class="demo-thumbnail"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="link-group">
+          <a href="https://youtu.be/OZTfI3xmRFk" class="link-btn link-btn-primary" target="_blank" rel="noopener noreferrer">Watch Demo ↗</a>
+          <a href="https://insight.chulbuji.com" class="link-btn link-btn-secondary" target="_blank" rel="noopener noreferrer">InsightReport MVP ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Hackathon Record</h2>
+      <p>InsightReport was submitted to a hackathon as "Meta-Chulbuji." The process covered idea refinement, MVP implementation, presentation preparation, and the judging phase — all completed under a tight deadline.</p>
+      <p>The hackathon served as a forcing function: turning a direction into a working result. That experience — the process and lessons — is what's being preserved here.</p>
+      <div class="link-group" style="margin-top: 0.75rem;">
+        <a href="/en/log/hackathon-imperfect-start" class="link-btn link-btn-secondary">View hackathon record →</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Current Status</h2>
+      <p>InsightReport is currently on hold. The service is accessible but no new features are being developed and no active user acquisition is underway.</p>
+      <p>Current focus is on higher-priority projects: the AI auto-trading experiment, AI Content Assistant, and the AI blog / AdSense experiment. InsightReport is preserved as a completed MVP record.</p>
+    </section>
+
+    <section class="section">
+      <h2>Related Records</h2>
+      {relatedLogs.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Log</h3>
+          <ul class="related-list">
+            {relatedLogs.map(post => (
+              <li>
+                <a href={`/en/log/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedInsights.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Insight</h3>
+          <ul class="related-list">
+            {relatedInsights.map(post => (
+              <li>
+                <a href={`/en/insight/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedLogs.length === 0 && relatedInsights.length === 0 && (
+        <div>
+          <p class="no-records">No records are currently linked to this project.</p>
+          <div class="link-group" style="margin-top: 0.75rem;">
+            <a href="/en/log/hackathon-imperfect-start" class="link-btn link-btn-secondary">View hackathon record →</a>
+          </div>
+        </div>
+      )}
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+  }
+
+  .status-paused {
+    background: #f3e5f5;
+    color: #6a1b9a;
+  }
+
+  .project-header h1 {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-lead {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .section {
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section h2 {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .section > p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+    max-width: 100%;
+  }
+
+  .section > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section ul {
+    padding-left: 1.375rem;
+    margin: 0.5rem 0 0.875rem;
+    list-style: disc;
+  }
+
+  .section ul li {
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    color: var(--text-color);
+  }
+
+  .section ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Demo block */
+  .demo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .demo-thumbnail-link-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .demo-thumbnail-link {
+    display: block;
+  }
+
+  .demo-thumbnail-link:hover .demo-thumbnail {
+    opacity: 0.88;
+    transform: scale(1.02);
+  }
+
+  .demo-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s, transform 0.3s ease;
+  }
+
+  /* Link buttons */
+  .link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: opacity 0.15s, background-color 0.15s;
+  }
+
+  .link-btn-primary {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .link-btn-primary:hover {
+    opacity: 0.88;
+    color: white;
+  }
+
+  .link-btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: white;
+  }
+
+  .link-btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f7f8ff;
+  }
+
+  /* Related records */
+  .related-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .related-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .related-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .related-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .no-records {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .project-detail {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .link-group {
+      flex-direction: column;
+    }
+
+    .link-btn {
+      justify-content: center;
+    }
+  }
+</style>

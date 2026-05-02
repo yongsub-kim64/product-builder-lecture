@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const relatedLogs = (await getCollection('ko/log', ({ data }) =>
+  data.published !== false && data.project_tag === 'InsightReport'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const relatedInsights = (await getCollection('ko/insight', ({ data }) =>
+  data.published !== false && data.project_tag === 'InsightReport'
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout
+  title="InsightReport"
+  description="개인의 고민이나 복잡한 생각을 입력하면 AI가 상태, 상황, 다음 행동을 보고서 형태로 정리해 주는 작동형 MVP 프로젝트입니다. 현재는 운영을 보류하고 해커톤 출품 이력을 기록 자산으로 보존합니다."
+>
+  <div class="project-detail">
+
+    <a href="/projects" class="back-link">← 프로젝트 목록</a>
+
+    <div class="project-header">
+      <span class="project-status status-paused">MVP 완성 · 운영 보류</span>
+      <h1>InsightReport</h1>
+      <p class="project-lead">개인의 고민이나 복잡한 생각을 입력하면 AI가 상태, 상황, 다음 행동을 보고서 형태로 정리해 주는 작동형 MVP 프로젝트입니다. 현재는 운영을 보류하고, 해커톤 출품과 MVP 구현 경험을 기록 자산으로 보존합니다.</p>
+    </div>
+
+    <section class="section">
+      <h2>프로젝트 개요</h2>
+      <p>InsightReport는 '메타철부지'라는 이름으로 해커톤에 출품한 작동형 MVP 프로젝트입니다. 스스로 자신의 상황을 명확히 정리하기 어려울 때, AI가 보고서 형식으로 구조화해 주는 아이디어에서 출발했습니다.</p>
+      <p>단순 챗봇 응답이 아니라, 입력한 내용을 바탕으로 현재 상태 진단 → 상황 분석 → 다음 행동 제안까지 정형화된 보고서 형태로 출력하는 것이 핵심 구조입니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>문제의식</h2>
+      <p>머릿속이 복잡하거나 고민이 정리되지 않을 때, 대부분의 사람은 글로 써보거나 주변에 이야기합니다. 하지만 막연한 생각을 스스로 구조화하는 것은 생각보다 어렵습니다.</p>
+      <ul>
+        <li>무엇이 문제인지 정확히 파악하지 못한 채 감정적으로 맴도는 경우</li>
+        <li>문제는 알지만 어디서부터 시작해야 할지 모르는 경우</li>
+        <li>주변에 이야기하기 민감한 개인적인 고민</li>
+      </ul>
+      <p>InsightReport는 이런 상황에서 AI가 사용자의 이야기를 듣고, 상태와 맥락을 구조화해 명확한 다음 행동을 제안해 주는 역할을 합니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>서비스 흐름</h2>
+      <ul>
+        <li>사용자가 고민이나 복잡한 생각을 자유롭게 입력</li>
+        <li>AI가 내용을 분석해 현재 상태(State), 상황(Context), 다음 행동(Next Action)으로 구조화</li>
+        <li>보고서 형식으로 정리된 결과를 출력</li>
+        <li>결과는 저장하거나 다시 입력을 통해 반복 정제 가능</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>MVP 구현 상태</h2>
+      <p>해커톤 출품 기준으로 작동하는 MVP가 완성된 상태입니다. 실제 입력을 받아 AI 분석 보고서를 생성하는 전체 흐름이 구현되어 있으며, 현재도 접속 가능한 형태로 유지되고 있습니다.</p>
+      <p>다만 현재는 추가 기능 개발이나 서비스 운영을 진행하지 않습니다. 해커톤 출품 당시의 MVP 상태로 보존하고, 향후 재개 여부는 별도로 판단합니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>MVP 시연 자료</h2>
+      <div class="demo-block">
+        <div class="demo-thumbnail-link-wrap">
+          <a href="https://youtu.be/OZTfI3xmRFk" target="_blank" rel="noopener noreferrer" class="demo-thumbnail-link">
+            <img
+              src="https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg"
+              alt="InsightReport MVP 시연 영상 썸네일"
+              class="demo-thumbnail"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="link-group">
+          <a href="https://youtu.be/OZTfI3xmRFk" class="link-btn link-btn-primary" target="_blank" rel="noopener noreferrer">Demo 영상 보기 ↗</a>
+          <a href="https://insight.chulbuji.com" class="link-btn link-btn-secondary" target="_blank" rel="noopener noreferrer">InsightReport MVP ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>해커톤 출품 기록</h2>
+      <p>InsightReport는 해커톤에 '메타철부지'라는 이름으로 출품되었습니다. 이 과정에서 아이디어 구체화부터 MVP 구현, 발표 자료 준비, 실제 심사까지 전 과정을 경험했습니다.</p>
+      <p>해커톤은 단기간에 아이디어를 실제 작동하는 결과물로 만들어내는 훈련이었습니다. 완성도보다 방향성을 검증하는 기회로서, 그 경험 자체를 기록 자산으로 남깁니다.</p>
+      <div class="link-group" style="margin-top: 0.75rem;">
+        <a href="/log/hackathon-imperfect-start" class="link-btn link-btn-secondary">해커톤 기록 보기 →</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>현재 운영 상태</h2>
+      <p>현재 InsightReport는 운영을 보류한 상태입니다. 서비스 자체는 접속 가능하지만, 신규 기능 개발이나 사용자 확보를 위한 운영은 진행하지 않습니다.</p>
+      <p>현재 집중하고 있는 AI 자동매매 실험, AI 콘텐츠 비서, AI 블로그 / AdSense 실험 등 우선순위가 높은 프로젝트에 집중하면서, InsightReport는 MVP 완성 이력으로 보존합니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>관련 기록</h2>
+      {relatedLogs.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Log</h3>
+          <ul class="related-list">
+            {relatedLogs.map(post => (
+              <li>
+                <a href={`/log/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedInsights.length > 0 ? (
+        <div class="related-group">
+          <h3 class="related-label">Insight</h3>
+          <ul class="related-list">
+            {relatedInsights.map(post => (
+              <li>
+                <a href={`/insight/${post.slug}`}>{post.data.title}</a>
+                <span class="post-date">{post.data.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {relatedLogs.length === 0 && relatedInsights.length === 0 && (
+        <div>
+          <p class="no-records">이 프로젝트와 연결된 Log / Insight 기록이 없습니다.</p>
+          <div class="link-group" style="margin-top: 0.75rem;">
+            <a href="/log/hackathon-imperfect-start" class="link-btn link-btn-secondary">해커톤 기록 보기 →</a>
+          </div>
+        </div>
+      )}
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+  }
+
+  .status-paused {
+    background: #f3e5f5;
+    color: #6a1b9a;
+  }
+
+  .project-header h1 {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-lead {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .section {
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section h2 {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .section > p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+    max-width: 100%;
+  }
+
+  .section > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section ul {
+    padding-left: 1.375rem;
+    margin: 0.5rem 0 0.875rem;
+    list-style: disc;
+  }
+
+  .section ul li {
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    color: var(--text-color);
+  }
+
+  .section ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Demo block */
+  .demo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .demo-thumbnail-link-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .demo-thumbnail-link {
+    display: block;
+  }
+
+  .demo-thumbnail-link:hover .demo-thumbnail {
+    opacity: 0.88;
+    transform: scale(1.02);
+  }
+
+  .demo-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s, transform 0.3s ease;
+  }
+
+  /* Link buttons */
+  .link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: opacity 0.15s, background-color 0.15s;
+  }
+
+  .link-btn-primary {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .link-btn-primary:hover {
+    opacity: 0.88;
+    color: white;
+  }
+
+  .link-btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: white;
+  }
+
+  .link-btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f7f8ff;
+  }
+
+  /* Related records */
+  .related-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .related-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .related-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .related-list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0;
+  }
+
+  .related-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .related-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  .post-date {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .no-records {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .project-detail {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .link-group {
+      flex-direction: column;
+    }
+
+    .link-btn {
+      justify-content: center;
+    }
+  }
+</style>
