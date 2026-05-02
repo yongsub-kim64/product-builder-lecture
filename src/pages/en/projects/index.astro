@@ -1,55 +1,63 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 
-const projects = [
+const activeProjects = [
   {
-    updatedAt: new Date('2026-04-22'),
-    status: 'experimental',
-    statusLabel: 'Experimental',
-    title: 'AI Content Assistant',
-    description: 'An experiment building an AI content tool for small businesses. Upload a photo and a short note — and get a blog post, SNS copy, a short-form video script, and hashtags automatically. No writing skill or social media intuition required.',
-    href: '/en/projects/ai-content-assistant',
-    linkLabel: 'Learn more →',
-  },
-  {
-    updatedAt: new Date('2026-04-14'),
-    status: 'experimental',
-    statusLabel: 'Experimental',
+    order: 1,
+    status: 'live',
+    statusLabel: 'Live Operation Validation',
     title: 'AI Auto-Trading Experiment',
-    description: 'An experiment building and running an automated trading system with AI and ₩5M. No code written by hand — just rules, an AI assistant, and real capital on the line.',
+    description: 'A project validating an automated trading strategy and operational structure using a real brokerage account.',
     href: '/en/projects/stock-auto-trade',
     linkLabel: 'Learn more →',
   },
   {
-    updatedAt: new Date('2026-04-06'),
+    order: 2,
+    status: 'in-progress',
+    statusLabel: 'Prototype Complete · Feature Development in Progress',
+    title: 'AI Content Assistant',
+    description: 'A service prototype where small business owners enter a product photo and a short description — and AI generates a draft promotional content package.',
+    href: '/en/projects/ai-content-assistant',
+    linkLabel: 'Learn more →',
+  },
+  {
+    order: 3,
+    status: 'experimental',
+    statusLabel: 'Monetization Experiment in Progress',
+    title: 'AI Blog / AdSense Experiment',
+    description: 'A content monetization project experimenting with and recording AI-assisted writing, blog operation, and the AdSense approval process.',
+    href: '/en/board/',
+    linkLabel: 'View on Board →',
+  },
+];
+
+const archiveProjects = [
+  {
+    order: 1,
+    status: 'paused',
+    statusLabel: 'MVP Complete · Operations On Hold',
+    title: 'InsightReport (Meta-Chulbuji)',
+    description: 'A working MVP project that takes personal dilemmas or complex thoughts as input and returns an AI-generated structured report with situation analysis and next steps. Currently on hold — preserved as a record asset.',
+    href: '/en/log/hackathon-imperfect-start',
+    linkLabel: 'View record →',
+    thumbnail: 'https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg',
+    thumbnailHref: 'https://youtu.be/OZTfI3xmRFk',
+    thumbnailAlt: 'InsightReport MVP demo',
+    extraLinks: [
+      { href: 'https://youtu.be/OZTfI3xmRFk', label: 'MVP demo video' },
+      { href: 'https://insight.chulbuji.com', label: 'InsightReport site' },
+    ],
+  },
+  {
+    order: 2,
     status: 'on-hold',
-    statusLabel: 'On Hold · Early Planning Record',
+    statusLabel: 'Early Planning Record · No Active Development',
     title: 'Chulbuji RunBuddy',
-    description: 'A service idea for people who struggle to run consistently on their own — AI helping them set running goals and structure their execution. Currently on hold as other projects take priority. The initial planning and problem framing are preserved as a record.',
+    description: 'A service idea for people who struggle to run consistently on their own — AI helping them set running goals and structure their execution. No active development. Preserved as an early planning record.',
     href: '/en/projects/runbuddy',
     linkLabel: 'View planning record →',
   },
-  {
-    updatedAt: new Date('2026-03-20'),
-    status: 'completed',
-    statusLabel: 'Completed',
-    title: 'Meta Chulbuji: Whispering Insight',
-    description: 'AI-powered voice analysis insight report. JoCoding Hackathon entry.',
-    href: '/en/log/hackathon-imperfect-start',
-    linkLabel: 'Learn more →',
-    thumbnail: 'https://img.youtube.com/vi/OZTfI3xmRFk/maxresdefault.jpg',
-    thumbnailHref: 'https://youtu.be/OZTfI3xmRFk',
-    thumbnailAlt: 'Meta Chulbuji: Whispering Insight',
-    extraLinks: [
-      { href: 'https://youtu.be/OZTfI3xmRFk', label: 'Hackathon Demo video' },
-      { href: 'https://insight.chulbuji.com', label: 'Visit site' },
-    ],
-  },
-].sort((a, b) => {
-  if (a.status === 'on-hold' && b.status !== 'on-hold') return 1;
-  if (b.status === 'on-hold' && a.status !== 'on-hold') return -1;
-  return b.updatedAt.valueOf() - a.updatedAt.valueOf();
-});
+];
 
 const labs = [
   {
@@ -81,31 +89,50 @@ const labs = [
 
 <PageLayout title="Projects" description="Core projects where related Logs and Insights accumulate">
   <div class="projects-page">
-    <p class="subtitle">
-      Core projects where related Log / Insight records accumulate over time.
-    </p>
+    <p class="subtitle">Core projects where related Log / Insight records accumulate over time.</p>
 
-    <section class="projects-grid">
-      {projects.map((p) => (
-        <div class="project-card">
-          {p.thumbnail && (
-            <a href={p.thumbnailHref} target="_blank" rel="noopener" class="project-thumbnail-link">
-              <img src={p.thumbnail} alt={p.thumbnailAlt} class="project-thumbnail" />
-            </a>
-          )}
-          <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
-          <h3>{p.title}</h3>
-          <p>
-            {p.description}
-            {p.extraLinks && p.extraLinks.map((l, i) => (
-              <span> <a href={l.href} target="_blank" rel="noopener">{l.label}</a>{i < p.extraLinks.length - 1 ? ',' : ''}</span>
-            ))}
-          </p>
-          <a href={p.href} class="project-link">{p.linkLabel}</a>
-        </div>
-      ))}
+    <!-- Section 1: Active Focus Projects -->
+    <section class="project-section">
+      <h2 class="section-heading">Active Focus Projects</h2>
+      <div class="projects-grid">
+        {activeProjects.map((p) => (
+          <div class="project-card card-active">
+            <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <a href={p.href} class="project-link">{p.linkLabel}</a>
+          </div>
+        ))}
+      </div>
     </section>
 
+    <!-- Section 2: On-Hold or Archive Projects -->
+    <section class="project-section section-archive">
+      <h2 class="section-heading section-heading-muted">On-Hold or Archive Projects</h2>
+      <p class="section-desc">Active operation is paused, but early planning records and working MVPs are preserved as assets.</p>
+      <div class="projects-grid">
+        {archiveProjects.map((p) => (
+          <div class="project-card card-archive">
+            {p.thumbnail && (
+              <a href={p.thumbnailHref} target="_blank" rel="noopener" class="project-thumbnail-link">
+                <img src={p.thumbnail} alt={p.thumbnailAlt} class="project-thumbnail" />
+              </a>
+            )}
+            <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+            <h3>{p.title}</h3>
+            <p>
+              {p.description}
+              {p.extraLinks && p.extraLinks.map((l, i) => (
+                <span> <a href={l.href} target="_blank" rel="noopener">{l.label}</a>{i < p.extraLinks!.length - 1 ? ',' : ''}</span>
+              ))}
+            </p>
+            <a href={p.href} class="project-link">{p.linkLabel}</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Labs -->
     <section class="labs-section">
       <h2 class="labs-heading">Labs</h2>
       <p class="labs-desc">Small things built and used. Lighter than projects, heavier than ideas.</p>
@@ -131,18 +158,50 @@ const labs = [
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #666;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Section layout */
+  .project-section {
     margin-bottom: 3rem;
   }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
+  .section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 2px solid #333;
+    letter-spacing: -0.01em;
   }
 
+  .section-heading-muted {
+    color: #888;
+    border-bottom-color: #ddd;
+  }
+
+  .section-archive {
+    padding-top: 0.5rem;
+  }
+
+  .section-desc {
+    font-size: 0.875rem;
+    color: #999;
+    margin-bottom: 1.25rem;
+    margin-top: -0.75rem;
+  }
+
+  /* Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Cards */
   .project-card {
     padding: 0;
     border: 1px solid #eee;
@@ -150,26 +209,36 @@ const labs = [
     background: white;
     transition: box-shadow 0.2s;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
-  .project-card:hover {
+  .card-active:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-archive {
+    background: #fafafa;
+    border-color: #e8e8e8;
+  }
+
+  .card-archive:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   }
 
   .project-thumbnail-link {
     display: block;
-    position: relative;
     overflow: hidden;
   }
 
   .project-thumbnail-link:hover .project-thumbnail {
-    transform: scale(1.05);
+    transform: scale(1.04);
     opacity: 0.9;
   }
 
   .project-thumbnail {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -179,41 +248,53 @@ const labs = [
   .project-card h3,
   .project-card p,
   .project-card .project-link {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 
   .project-card .project-status {
-    margin-top: 1.5rem;
+    margin-top: 1.375rem;
   }
 
   .project-card .project-link {
     display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.375rem;
+    margin-top: auto;
   }
 
+  .project-card p {
+    flex: 1;
+  }
+
+  /* Status badges */
   .project-status {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
+    padding: 0.2rem 0.625rem;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.875rem;
+    white-space: nowrap;
   }
 
-  .status-active {
+  .status-live {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .status-in-progress {
     background: #e3f2fd;
-    color: #1976d2;
-  }
-
-  .status-completed {
-    background: #f3e5f5;
-    color: #7b1fa2;
+    color: #1565c0;
   }
 
   .status-experimental {
-    background-color: #fce4ec;
-    color: #c62828;
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .status-paused {
+    background: #f3e5f5;
+    color: #6a1b9a;
   }
 
   .status-on-hold {
@@ -221,19 +302,33 @@ const labs = [
     color: #757575;
   }
 
+  /* Card text */
   .project-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+  }
+
+  .card-archive h3 {
+    color: #555;
   }
 
   .project-card p {
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    font-size: 0.9375rem;
+    color: #555;
+    margin-bottom: 1.125rem;
+    line-height: 1.65;
+  }
+
+  .card-archive p {
+    color: #777;
   }
 
   .project-link {
-    color: #1976d2;
+    font-size: 0.875rem;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
   }
@@ -242,39 +337,48 @@ const labs = [
     text-decoration: underline;
   }
 
+  .card-archive .project-link {
+    color: #888;
+  }
+
+  .card-archive .project-link:hover {
+    color: var(--primary-color);
+  }
+
   /* Labs */
   .labs-section {
     border-top: 1px solid #eee;
-    padding-top: 2.5rem;
+    padding-top: 2rem;
+    margin-top: 1rem;
   }
 
   .labs-heading {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: #555;
-    margin-bottom: 0.5rem;
+    color: #777;
+    margin-bottom: 0.375rem;
     letter-spacing: 0.01em;
   }
 
   .labs-desc {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: #aaa;
+    margin-bottom: 1.25rem;
   }
 
   .labs-list {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
   .labs-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem 0;
+    padding: 0.625rem 0;
     border-bottom: 1px solid #f0f0f0;
   }
 
@@ -283,8 +387,8 @@ const labs = [
   }
 
   .labs-emoji {
-    font-size: 1.25rem;
-    width: 2rem;
+    font-size: 1.125rem;
+    width: 1.75rem;
     text-align: center;
     flex-shrink: 0;
   }
@@ -298,21 +402,21 @@ const labs = [
   }
 
   .labs-title {
-    color: #333;
+    color: #555;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     white-space: nowrap;
   }
 
   .labs-title:hover {
-    color: #667eea;
+    color: var(--primary-color);
     text-decoration: underline;
   }
 
   .labs-desc-item {
-    font-size: 0.85rem;
-    color: #888;
+    font-size: 0.8125rem;
+    color: #aaa;
     line-height: 1.4;
   }
 
@@ -324,6 +428,10 @@ const labs = [
     .labs-info {
       flex-direction: column;
       gap: 0.2rem;
+    }
+
+    .project-status {
+      white-space: normal;
     }
   }
 </style>
