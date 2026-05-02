@@ -13,7 +13,7 @@ const basePath = getBasePath(lang);
     
     <nav class="main-nav">
       <a href={basePath + '/'}>{t('nav.home')}</a>
-      {lang === 'ko' && <a href="/board">{t('nav.board')}</a>}
+      <a href={basePath + '/board'}>{t('nav.board')}</a>
       <a href={basePath + '/log'}>{t('nav.log')}</a>
       <a href={basePath + '/insight'}>{t('nav.insight')}</a>
       <a href={basePath + '/projects'}>{t('nav.projects')}</a>

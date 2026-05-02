@@ -32,7 +32,7 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
-    'nav.board': 'Board',
+    'nav.board': 'Operating Board',
     'nav.playground': 'Playground',
     'nav.insight': 'Insight',
     'nav.log': 'Log',
