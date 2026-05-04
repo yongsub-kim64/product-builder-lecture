@@ -2,7 +2,7 @@
 import PageLayout from '../../../../layouts/PageLayout.astro';
 ---
 
-<PageLayout title="AI Auto-Trading Experiment" description="A live-account experiment running an AI-assisted automated trading system with ₩5M. The operator handles judgment; AI handles execution. A record of building, validating, and running a system where AI operates real capital.">
+<PageLayout title="AI Auto-Trading Experiment" description="A live-account experiment running an AI-assisted automated trading system at roughly the ₩10M seed level. The operator handles judgment; AI handles execution. A record of building, validating, and running a system where AI operates real capital.">
   <div class="project-hub">
 
     <nav class="top-nav">
@@ -11,8 +11,8 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <div class="project-header">
       <span class="status-badge status-live">🟢 Live Trading Active</span>
-      <p class="definition">₩5M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">v2.0 in design · Updated 2026-05-01 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="definition">Roughly ₩10M live-account experiment running an AI-assisted automated trading system</p>
+      <p class="meta">First trading day after weekend upgrade reviewed · Updated 2026-05-04 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,36 +32,41 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>As of May 2026, Week 1 live trading (4/29–30) is complete and v2.0 upgrade direction has been defined. Seven improvement areas — including ratio-based capital allocation, high-priced stock exceptions, and market-strength-based entry count — have been reviewed with an expert AI. Next step is code implementation and DRY RUN validation.</p>
-      <p><strong>v2.0 design complete</strong></p>
+      <p>As of May 2026, the Korean stock auto-trading program is in live-account operation. The latest work improved issues found over the weekend and adjusted the structure for a seed expansion toward roughly ₩10M.</p>
+      <p>This update is not the first operations record for the program. It reflects the first trading day after applying the updated auto-trading logic from the weekend upgrade.</p>
+      <p><strong>Core of this update</strong></p>
       <ul class="gains-list">
-        <li>Ratio-based capital allocation structure designed (same structure for ₩5M and ₩10M)</li>
-        <li>High-priced stock exception criteria finalized (account concentration cap applied)</li>
-        <li>Market-strength-based new entry count adjustment structure introduced</li>
-        <li>DRY RUN vs LIVE mode separation in Telegram alerts</li>
-        <li>API error retry and fallback structure strengthened</li>
+        <li>Automatically recalculate per-position budget based on total assets</li>
+        <li>Limit maximum weight per position</li>
+        <li>Evaluate high-priced stocks by total-asset ratio</li>
+        <li>Keep RS / MA20 deviation / stop-loss / holding-period conditions unchanged</li>
+        <li>Do not create exceptions for specific stocks</li>
       </ul>
-      <p><strong>Open issues</strong></p>
+      <p>After adding ₩5M, total assets expanded toward roughly ₩10M. This makes high-priced blue-chip stocks structurally evaluable inside the portfolio from a price standpoint. But the buy conditions were not relaxed. Stocks that fail the conditions remain blocked.</p>
+      <p><strong>First trading day after the update</strong></p>
       <ul class="gains-list">
-        <li>Web export 'result' key error reoccurring after a previous fix</li>
-        <li>Zero orders after BUY signal — available-cash API returning invalid values (v2.0 fix target)</li>
-        <li>Shinhan Financial MA20 deviation threshold: adjust or hold? Decision pending</li>
+        <li>LG Electronics trailing sell executed normally</li>
+        <li>Realized P&L: +₩12,000</li>
+        <li>New buys: 0 — no stocks passed the RS criteria</li>
+        <li>Shinhan Financial waiting for holding-period sell</li>
+        <li>SK Hynix became structurally more feasible after the high-priced stock improvement, but buy was blocked by the MA20 deviation condition</li>
       </ul>
+      <p>Zero new buys was not an error. It was the cash-holding principle working as intended when there were no strong candidates. Under the ₩5M structure, high-priced stocks were structurally difficult to buy. Under the ₩10M structure, they can be bought, but only when the conditions are met.</p>
       <p><strong>Next actions</strong></p>
       <ul class="gains-list">
-        <li>Implement v2.0 code changes (ratio-based allocation, high-priced stock exceptions, API fallback)</li>
-        <li>DRY RUN validation for at least one trading day, then apply to live account</li>
-        <li>Fully resolve web export bug</li>
-        <li>Add public holiday detection logic</li>
-        <li>Prepare commission and tax accounting logic (scheduled after 2 weeks of live data)</li>
+        <li>Confirm the Shinhan Financial holding-period sell result</li>
+        <li>Validate the early-sell branch for positions exceeding the holding period</li>
+        <li>Review classification improvements for BUY / RS pass / final buy in scan_log.json</li>
+        <li>Reconsider the RS exemption policy for additional buys</li>
+        <li>Write the first-week operations report under the ₩10M seed structure</li>
       </ul>
-      <p class="timeline-cta"><a href="/en/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-024/">Insight →</a></p>
+      <p class="timeline-cta"><a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">First Trading Day After Weekend Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-024/">Insight →</a></p>
     </section>
 
     <section class="section">
       <h2>The Problem Being Solved</h2>
       <p>Can a non-coder build and operate a real automated trading system by collaborating with AI?</p>
-      <p>The operator handles <strong>judgment</strong>. AI handles <strong>execution</strong>. The question is whether this division of roles holds up when real capital is on the line. ₩5M is the answer in progress.</p>
+      <p>The operator handles <strong>judgment</strong>. AI handles <strong>execution</strong>. The question is whether this division of roles holds up when real capital is on the line. The current ₩10M-level structure is the answer in progress.</p>
       <p>The goal is not profit. The goal is the experience of building a system where AI operates real capital — by hand, from scratch.</p>
     </section>
 
@@ -77,7 +82,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
         <li><strong>MVP to live account in 20 days</strong> (2026-04-07 → 2026-04-20)</li>
         <li><strong>1-week paper trade profit:</strong> +₩45,060 (+0.58%) — the basis for the live switch decision</li>
         <li><strong>First live order:</strong> 2026-04-14 Kakao 20 shares @ ₩48,350</li>
-        <li><strong>Current live account balance:</strong> ₩4,890,000 (day 8 of live trading)</li>
+        <li><strong>Current operating structure:</strong> total-asset-ratio-based allocation at roughly the ₩10M seed level</li>
         <li><strong>Strategy shift:</strong> "fill all slots" → "hold only strong candidates, keep cash otherwise" (RS filter)</li>
       </ul>
     </section>
@@ -85,6 +90,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-04 · v2.0</span>
+          <span class="update-desc">First trading day after the weekend upgrade — applied total-asset-ratio-based allocation for the ₩10M seed expansion. LG Electronics trailing sell +₩12,000, new buys 0. RS and MA20 conditions were not relaxed, and stocks that failed the conditions remained blocked.</span>
+        </li>
         <li>
           <span class="update-date">2026-05-01 · v2.0</span>
           <span class="update-desc">v2.0 upgrade direction defined — ratio-based capital allocation, high-priced stock exceptions, market-strength entry count, 7 items total. Vibe coding collaboration: expert AI + Claude Code. Code implementation and DRY RUN validation next.</span>

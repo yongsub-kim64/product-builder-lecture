@@ -2,7 +2,7 @@
 import PageLayout from '../../../layouts/PageLayout.astro';
 ---
 
-<PageLayout title="AI 자동매매 실험" description="500만 원 실계좌 기반 AI 협업 자동매매 운영 실험. 코딩을 모르는 운영자가 판단을 맡고, AI가 실행을 담당하는 협업 구조가 실제 자본을 움직이는 시스템에서도 유효한지 기록한다.">
+<PageLayout title="AI 자동매매 실험" description="1,000만 원 수준 실계좌 기반 AI 협업 자동매매 운영 실험. 코딩을 모르는 운영자가 판단을 맡고, AI가 실행을 담당하는 협업 구조가 실제 자본을 움직이는 시스템에서도 유효한지 기록한다.">
   <div class="project-hub">
 
     <nav class="top-nav">
@@ -11,8 +11,8 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <div class="project-header">
       <span class="status-badge status-live">🟢 실매수 운영 중</span>
-      <p class="definition">500만 원 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">v2.0 설계 중 · 2026-05-01 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="definition">1,000만 원 수준 실계좌 기반 AI 협업 자동매매 운영 실험</p>
+      <p class="meta">주말 개선 작업 이후 첫 거래일 점검 완료 · 2026-05-04 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,30 +32,35 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>2026년 5월 기준, 실계좌 1주차 운영(4/29~30)을 마쳤고 v2.0 업그레이드 방향을 정리하고 있다. 비율 기반 자금 배분, 고가주 예외 매수, 시장 강도 기반 진입 수 조절 등 7개 항목을 전문가 AI와 검토 완료했다. 코드 반영 후 DRY RUN 검증이 다음 단계다.</p>
-      <p><strong>v2.0 정리 완료 항목</strong></p>
+      <p>2026년 5월 기준, 국내주식 자동매매 프로그램은 실계좌 LIVE 운영 단계에 진입해 있다. 지난 주말에 확인된 문제점을 개선하고 1,000만 원 시드 확장에 대응하기 위한 구조 보완 작업을 진행했다.</p>
+      <p>이번 업데이트는 자동매매 프로그램의 첫 운영 기록이 아니라, 주말 개선 작업 이후 업데이트된 자동매매 로직을 적용한 첫 거래일 운영 결과를 반영한 것이다.</p>
+      <p><strong>이번 업데이트의 핵심</strong></p>
       <ul class="gains-list">
-        <li>비율 기반 자금 배분 구조 설계 완료 (500만·1000만 동일 구조 유지)</li>
-        <li>고가주 예외 매수 기준 확정 (계좌 집중도 상한 적용)</li>
-        <li>시장 강도 기반 신규 진입 수 조절 구조 도입</li>
-        <li>DRY RUN / LIVE 모드 텔레그램 알림 명확 구분</li>
-        <li>API 오류 재시도·fallback 구조 강화</li>
+        <li>총자산 기준 종목당 예산 자동 재계산</li>
+        <li>1종목 최대 비중 제한</li>
+        <li>고가주도 총자산 비율 기준으로 판단</li>
+        <li>RS / MA20 이격 / 손절 / 보유기간 조건 유지</li>
+        <li>특정 종목 예외 처리 금지</li>
       </ul>
-      <p><strong>현재 확인 중인 문제</strong></p>
+      <p>500만 원 추가 투입 이후 총자산이 약 1,000만 원 수준으로 확장되면서, 고가 우량주도 가격 조건상 포트폴리오 안에서 정상적으로 평가할 수 있는 구조가 되었다. 단, 매수 조건은 완화하지 않았다. 조건이 맞지 않는 종목은 계속 차단된다.</p>
+      <p><strong>업데이트 이후 첫 거래일 결과</strong></p>
       <ul class="gains-list">
-        <li>웹 익스포트 'result' 키 오류 재발 (수정 후에도 재현)</li>
-        <li>BUY 신호 후 주문 0건 — 주문가능현금 비정상 처리 (v2.0 개선 대상)</li>
-        <li>신한지주 MA20 이격 파라미터 조정 여부 미결</li>
+        <li>LG전자 트레일링 매도 정상 실행</li>
+        <li>실현손익 +12,000원</li>
+        <li>신규 매수 0건 — RS 기준 통과 종목 없음</li>
+        <li>신한지주 보유기간 초과 매도 대기</li>
+        <li>SK하이닉스는 고가주 구조 개선 대상이었으나 MA20 이격 조건으로 매수 차단</li>
       </ul>
+      <p>신규 매수 0건은 오류가 아니라, 강한 후보가 없으면 현금을 유지하는 원칙이 작동한 결과다. 기존 500만 원 구조에서는 고가주를 “못 사는” 문제가 있었지만, 1,000만 원 구조에서는 “살 수 있지만 조건이 맞지 않으면 안 사는” 구조로 바뀌었다.</p>
       <p><strong>다음 작업</strong></p>
       <ul class="gains-list">
-        <li>v2.0 코드 반영 (비율 기반 자금 배분·고가주 예외·API fallback 강화)</li>
-        <li>DRY RUN 1일 이상 검증 후 실계좌 적용</li>
-        <li>웹 익스포트 오류 완전 해결</li>
-        <li>휴장일 감지 로직 추가</li>
-        <li>수수료·세금 반영 로직 준비 (2주 운영 후 예정)</li>
+        <li>신한지주 보유기간 초과 매도 결과 확인</li>
+        <li>보유기간 초과 조기 매도 분기 실전 검증</li>
+        <li>scan_log.json의 BUY / RS통과 / 최종매수 분류 개선 검토</li>
+        <li>추가매수 로직의 RS 면제 정책 재검토</li>
+        <li>1,000만 원 시드 기준 첫 주 운영 리포트 작성</li>
       </ul>
-      <p class="timeline-cta"><a href="/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 업그레이드 방향 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-024/">Insight →</a></p>
+      <p class="timeline-cta"><a href="/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">주말 개선 작업 이후 첫 거래일 Log →</a>&nbsp;&nbsp;<a href="/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 업그레이드 방향 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-024/">Insight →</a></p>
     </section>
 
     <section class="section">
@@ -77,7 +82,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
         <li><strong>MVP 완성 → 실계좌 전환까지 20일</strong> (2026-04-07 ~ 2026-04-20)</li>
         <li><strong>모의투자 1주일 수익</strong> +₩45,060 (+0.58%) — 실계좌 전환 결정 근거</li>
         <li><strong>실계좌 첫 주문 체결</strong> 2026-04-14 카카오 20주 @ ₩48,350</li>
-        <li><strong>현재 실계좌 평가잔고</strong> ₩4,942,207 (운영 10일차 기준)</li>
+        <li><strong>현재 운영 구조</strong> 1,000만 원 수준 시드 기준 총자산 비율 기반 자금 배분</li>
         <li><strong>전략 전환</strong> "슬롯 채우기" → "강한 종목만 선택적으로 보유" (RS 필터 도입)</li>
       </ul>
     </section>
@@ -85,6 +90,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-04 · v2.0</span>
+          <span class="update-desc">주말 개선 작업 이후 첫 거래일 점검 — 1,000만 원 시드 확장에 맞춰 총자산 비율 기반 자금 배분을 적용. LG전자 트레일링 매도 +12,000원, 신규 매수 0건. RS와 MA20 조건은 완화하지 않았고, 조건 미충족 종목은 계속 차단.</span>
+        </li>
         <li>
           <span class="update-date">2026-05-01 · v2.0</span>
           <span class="update-desc">v2.0 업그레이드 방향 정리 완료 — 비율 기반 자금 배분, 고가주 예외 매수, 시장 강도 기반 진입 수 조절 등 7개 항목. 전문가 AI와 바이브코딩 협업 구조로 진행. 코드 반영 후 DRY RUN 검증 예정.</span>
