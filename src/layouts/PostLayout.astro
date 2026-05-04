@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { getLangFromUrl } from '../utils/i18n';
 
 interface Props {
   title: string;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const { title, description, date, tags } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const dateLocale = lang === 'en' ? 'en-US' : 'ko-KR';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -18,7 +21,7 @@ const { title, description, date, tags } = Astro.props;
         <h1>{title}</h1>
         {date && (
           <time datetime={date.toISOString()}>
-            {date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {date.toLocaleDateString(dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         )}
         {tags && tags.length > 0 && (

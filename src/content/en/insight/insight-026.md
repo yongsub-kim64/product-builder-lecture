@@ -57,3 +57,7 @@ This is not a way to promote any particular AI service. It is the current operat
 Use Claude sparingly, but do not exclude it.
 
 Put the highest-value judgment resource at the most important judgment points.
+
+---
+
+→ Related article: [AI Resource Optimization Strategy v2.0 — A Practical Guide to Cutting Claude Token Costs](/en/insight/insight-027/)

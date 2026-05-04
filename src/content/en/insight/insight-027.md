@@ -1,7 +1,7 @@
 ﻿---
 title: "AI Resource Optimization Strategy v2.0 — A Practical Guide to Cutting Claude Token Costs"
 date: 2026-05-04
-excerpt: "Draft with GPT and Gemini first, reserve Claude for advanced review and precise execution. A field-tested SOP that cuts token costs in half through role-based AI allocation."
+excerpt: "Draft with GPT and Gemini first, reserve Claude for advanced review and precise execution. A practical SOP for reducing Claude usage through role-based AI allocation."
 tags: ["Claude", "AIOperations", "TokenReduction", "SOP", "VibeCoding", "Insight"]
 published: true
 project_tag: "AIOperationStrategy"
@@ -17,7 +17,7 @@ That's what AI Resource Optimization SOP v2.0 is designed to fix.
 
 **Draft and organize with GPT or Gemini first. Reserve Claude for advanced review and precise execution only.**
 
-Claude is powerful, but token costs are high. Assigning everything to Claude drains your budget fast. If you use lower-cost AIs to produce drafts, then hand those off to Claude only for review and refinement, you maintain quality while cutting costs by more than half.
+Claude is powerful, but token costs are high. Assigning everything to Claude drains your budget fast. If you use lower-cost AIs to produce drafts, then hand those off to Claude only for review and refinement, you can reduce Claude usage while maintaining quality.
 
 One rule: don't ask Claude to generate from scratch.
 
@@ -25,14 +25,29 @@ One rule: don't ask Claude to generate from scratch.
 
 ## Role Assignment by AI
 
-| AI | Role | When to Use |
-|---|---|---|
-| **ChatGPT / Meta Chulbuji** | Idea brainstorming, content drafts | When you need a fast start |
-| **Gemini** | Search-integrated research, long document summaries | When you need external information |
-| **Claude** | Structural review, logic validation, complex analysis | When quality judgment matters |
-| **Claude Code** | Code writing, debugging, refactoring | During development execution |
-| **Codex** | Repetitive code generation, boilerplate | For templated coding tasks |
-| **Claude Design** | UI planning, screen design, Handoff | Bridging design and development |
+- **ChatGPT / Meta Chulbuji**
+  - Role: Idea brainstorming, content drafts
+  - Use when: You need a fast start
+
+- **Gemini**
+  - Role: Search-integrated research, long document summaries
+  - Use when: You need external information
+
+- **Claude**
+  - Role: Structural review, logic validation, complex analysis
+  - Use when: Quality judgment matters
+
+- **Claude Code**
+  - Role: Code writing, debugging, refactoring
+  - Use when: Development execution is needed
+
+- **Codex**
+  - Role: Repetitive code generation, boilerplate
+  - Use when: The coding task is templated
+
+- **Claude Design**
+  - Role: UI planning, screen design, Handoff
+  - Use when: Design and development need to connect
 
 Each AI has different strengths. Gemini for research, GPT for drafts, Claude for judgment, Claude Code for execution. Once this flow becomes habit, you naturally reduce how often you reach for Claude.
 
@@ -134,7 +149,7 @@ This is how long it takes to make the SOP stick.
 
 ---
 
-Expected result after 30 days: 40–60% reduction in direct Claude usage, with quality maintained or improved.
+Expected result after 30 days: meaningfully lower direct Claude usage, with quality maintained or improved.
 
 An SOP is never finished. It breaks when you use it. Fixing what broke is what makes it a new version.
 
@@ -145,3 +160,7 @@ An SOP is never finished. It breaks when you use it. Fixing what broke is what m
 **What changed:** Habit of starting everything with Claude → Shifted to tier-based assignment starting at L0.
 
 **What's next:** v2.1 update with actual token usage data after 30 days.
+
+---
+
+→ Related article: [Using Claude Sparingly, Not Excluding It](/en/insight/insight-026/)
