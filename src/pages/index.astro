@@ -4,7 +4,14 @@ import LogCard from '../components/LogCard.astro';
 import { getCollection } from 'astro:content';
 
 const logPosts = await getCollection('ko/log', ({ data }) => data.published !== false && data.showInLog !== false);
-const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const featuredLogSlug = '2026-05-04-auto-trading-weekend-upgrade-first-trading-day';
+const sortedPosts = logPosts.sort((a, b) => {
+  const dateDiff = b.data.date.getTime() - a.data.date.getTime();
+  if (dateDiff !== 0) return dateDiff;
+  if (a.slug === featuredLogSlug) return -1;
+  if (b.slug === featuredLogSlug) return 1;
+  return b.slug.localeCompare(a.slug);
+}).slice(0, 3);
 ---
 
 <BaseLayout
@@ -56,20 +63,20 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
 
   <section class="featured-projects">
     <div class="featured-projects-inner">
-      <h2>진행 중인 프로젝트</h2>
+      <h2>주요 프로젝트</h2>
       <ul class="project-list">
         <li>
           <span class="status-badge experimental">실험 중</span>
           <div class="project-info">
             <a href="/projects/stock-auto-trade">AI 자동매매 실험</a>
-            <p>AI와 함께 500만원으로 자동매매 시스템을 직접 만들고 운용하는 실험.</p>
+            <p>AI와 함께 1,000만 원 수준 실계좌 운영 구조를 검증하는 자동매매 실험.</p>
           </div>
         </li>
         <li>
-          <span class="status-badge active">진행 중</span>
+          <span class="status-badge active">보류 중</span>
           <div class="project-info">
             <a href="/projects/runbuddy">Chulbuji RunBuddy</a>
-            <p>AI 음성 코칭 기반 러닝 앱. Android + Wear OS 듀얼 디바이스.</p>
+            <p>AI 러닝 동반자 서비스에 대한 초기 기획 기록으로 보관 중인 프로젝트.</p>
           </div>
         </li>
       </ul>

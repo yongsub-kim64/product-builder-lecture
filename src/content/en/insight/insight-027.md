@@ -25,29 +25,14 @@ One rule: don't ask Claude to generate from scratch.
 
 ## Role Assignment by AI
 
-- **ChatGPT / Meta Chulbuji**
-  - Role: Idea brainstorming, content drafts
-  - Use when: You need a fast start
-
-- **Gemini**
-  - Role: Search-integrated research, long document summaries
-  - Use when: You need external information
-
-- **Claude**
-  - Role: Structural review, logic validation, complex analysis
-  - Use when: Quality judgment matters
-
-- **Claude Code**
-  - Role: Code writing, debugging, refactoring
-  - Use when: Development execution is needed
-
-- **Codex**
-  - Role: Repetitive code generation, boilerplate
-  - Use when: The coding task is templated
-
-- **Claude Design**
-  - Role: UI planning, screen design, Handoff
-  - Use when: Design and development need to connect
+| AI | Role | Use when |
+| --- | --- | --- |
+| ChatGPT / Meta Chulbuji | Idea brainstorming, content drafts | You need a fast start |
+| Gemini | Search-integrated research, long document summaries | You need external information |
+| Claude | Structural review, logic validation, complex analysis | Quality judgment matters |
+| Claude Code | Code writing, debugging, refactoring | Development execution is needed |
+| Codex | Repetitive code generation, boilerplate | The coding task is templated |
+| Claude Design | UI planning, screen design, Handoff | Design and development need to connect |
 
 Each AI has different strengths. Gemini for research, GPT for drafts, Claude for judgment, Claude Code for execution. Once this flow becomes habit, you naturally reduce how often you reach for Claude.
 
@@ -155,7 +140,7 @@ An SOP is never finished. It breaks when you use it. Fixing what broke is what m
 
 ---
 
-**What I learned:** The fastest way to cut AI costs isn't a better prompt. It's having criteria for which AI gets which job.
+**What I learned:** The fastest way to manage AI costs isn't a better prompt. It's having criteria for which AI gets which job.
 
 **What changed:** Habit of starting everything with Claude → Shifted to tier-based assignment starting at L0.
 

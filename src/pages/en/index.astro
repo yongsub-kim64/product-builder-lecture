@@ -4,7 +4,14 @@ import LogCard from '../../components/LogCard.astro';
 import { getCollection } from 'astro:content';
 
 const logPosts = await getCollection('en/log', ({ data }) => data.published !== false && data.showInLog !== false);
-const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const featuredLogSlug = '2026-05-04-auto-trading-weekend-upgrade-first-trading-day';
+const sortedPosts = logPosts.sort((a, b) => {
+  const dateDiff = b.data.date.getTime() - a.data.date.getTime();
+  if (dateDiff !== 0) return dateDiff;
+  if (a.slug === featuredLogSlug) return -1;
+  if (b.slug === featuredLogSlug) return 1;
+  return b.slug.localeCompare(a.slug);
+}).slice(0, 3);
 ---
 
 <BaseLayout
@@ -56,20 +63,20 @@ const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
 
   <section class="featured-projects">
     <div class="featured-projects-inner">
-      <h2>Active Projects</h2>
+      <h2>Key Projects</h2>
       <ul class="project-list">
         <li>
           <span class="status-badge experimental">Experimental</span>
           <div class="project-info">
             <a href="/en/projects/stock-auto-trade">AI Auto-Trading Experiment</a>
-            <p>Building and running an automated trading system with AI and ₩5M.</p>
+            <p>Validating an AI-built auto-trading system under a roughly ₩10M live-account operating structure.</p>
           </div>
         </li>
         <li>
-          <span class="status-badge active">In Progress</span>
+          <span class="status-badge active">On Hold</span>
           <div class="project-info">
             <a href="/en/projects/runbuddy">Chulbuji RunBuddy</a>
-            <p>AI voice coaching running app. Android + Wear OS dual device.</p>
+            <p>An early planning record for an AI running companion service, currently kept on hold.</p>
           </div>
         </li>
       </ul>
