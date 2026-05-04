@@ -20,7 +20,7 @@ Three concepts were reviewed in the initial round.
 
 Concept 1 features a triangular structure with three connected nodes. Its simple form and clear silhouette make it highly recognizable even at small sizes — making it well-suited as a favicon for browser tabs, bookmarks, and mobile screens. It can also symbolize the connection between human, AI, and output — or between the operator, Meta Chulbuji, and specialist AIs — giving it strong potential as a secondary symbol.
 
-![Concept 1: Simple connected symbol selected as favicon and secondary symbol](/images/log/chulbuji-logo-concept-01-favicon-symbol.png)
+<img src="/images/log/chulbuji-logo-concept-01-favicon-symbol.png" alt="Concept 1: Simple connected symbol selected as favicon and secondary symbol" style="width: 25%; display: block; margin: 1rem 0;" />
 
 ---
 
@@ -28,7 +28,7 @@ Concept 1 features a triangular structure with three connected nodes. Its simple
 
 Concept 2 is a typographic logomark combining the "db" initials with an arrow motif. While it has potential to connect with the Dual Brain concept, its visual language differs from the nodes, connections, flow, and exploration conveyed by Concepts 1 and 3. Using it alongside the other concepts within the same brand would risk visual inconsistency. Concept 2 is therefore excluded from chulbuji.com's main brand system at this stage. It may be reconsidered in the future as an icon for a Dual Brain content series or a separate sub-project.
 
-![Concept 2: Typographic concept excluded due to visual inconsistency with the brand system](/images/log/chulbuji-logo-concept-02-excluded.png)
+<img src="/images/log/chulbuji-logo-concept-02-excluded.png" alt="Concept 2: Typographic concept excluded due to visual inconsistency with the brand system" style="width: 25%; display: block; margin: 1rem 0;" />
 
 ---
 
@@ -36,7 +36,7 @@ Concept 2 is a typographic logomark combining the "db" initials with an arrow mo
 
 Concept 3 combines three nodes with orbital curves. The impression of movement — like an atom or orbit — best captures the idea of a learning entity, an exploring chulbuji, and the expanding thinking that emerges from human-AI collaboration. However, its visual complexity makes it better suited as the main logo and primary brand symbol rather than as a favicon used at small sizes.
 
-![Concept 3: Orbital brand symbol selected as the main logo for chulbuji.com](/images/log/chulbuji-logo-concept-03-main-logo.png)
+<img src="/images/log/chulbuji-logo-concept-03-main-logo.png" alt="Concept 3: Orbital brand symbol selected as the main logo for chulbuji.com" style="width: 25%; display: block; margin: 1rem 0;" />
 
 ---
 
