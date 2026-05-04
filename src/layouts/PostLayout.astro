@@ -124,4 +124,24 @@ const dateLocale = lang === 'en' ? 'en-US' : 'ko-KR';
     background: none;
     padding: 0;
   }
+
+  .post-body :global(.concept-img) {
+    float: left;
+    width: 25%;
+    margin: 0 1.5rem 0.5rem 0;
+  }
+
+  .post-body :global(h2),
+  .post-body :global(hr) {
+    clear: both;
+  }
+
+  @media (max-width: 640px) {
+    .post-body :global(.concept-img) {
+      float: none;
+      width: 65%;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+  }
 </style>
