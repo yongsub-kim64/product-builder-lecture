@@ -136,3 +136,7 @@ An auto-trading program does not improve just because more money is added.
 Even when capital increases, the system needs to judge by the same principles and refuse to buy when conditions are not met.
 
 This upgrade moved the system one step in that direction.
+
+---
+
+→ Related insight: [From a System That Cannot Buy to a System That Chooses Not to Buy](/en/insight/insight-028/)
