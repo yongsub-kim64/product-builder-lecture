@@ -1,18 +1,24 @@
 ---
 import { languages, getLangFromUrl, getLocalizedUrl } from '../utils/i18n';
 
+interface Props {
+  showAlternateLang: boolean;
+}
+
+const { showAlternateLang } = Astro.props;
 const currentLang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 ---
 
 <div class="language-switcher">
   {Object.entries(languages).map(([lang, label]) => {
-    const url = getLocalizedUrl(currentPath, lang as any);
     const isActive = lang === currentLang;
-    
+    if (!isActive && !showAlternateLang) return null;
+    const url = getLocalizedUrl(currentPath, lang as any);
+
     return (
-      <a 
-        href={url} 
+      <a
+        href={url}
         class:list={['lang-link', { active: isActive }]}
         aria-current={isActive ? 'page' : undefined}
       >

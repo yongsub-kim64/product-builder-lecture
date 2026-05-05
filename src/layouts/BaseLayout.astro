@@ -91,7 +91,7 @@ const xdefaultHref = (!isEnPage || showKoAlternate) ? koHref : enHref;
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
 <body>
-  <Header />
+  <Header showAlternateLang={isEnPage ? showKoAlternate : showEnAlternate} />
   <main>
     <slot />
   </main>
