@@ -17,6 +17,44 @@ const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const metaTitle = titleOverride ?? `${title} | chulbuji`;
 const ogTitle = titleOverride ?? title;
+
+// --- hreflang ---
+const pathname = Astro.url.pathname;
+const is404 = pathname === '/404' || pathname === '/en/404';
+const isEnPage = pathname.startsWith('/en/') || pathname === '/en';
+const koPath = isEnPage ? (pathname.slice(3) || '/') : pathname;
+const koHref = `https://chulbuji.com${koPath}`;
+const enHref = `https://chulbuji.com/en${koPath}`;
+
+const enPageFiles = import.meta.glob('/src/pages/en/**/*.astro');
+const koPageFiles = import.meta.glob(['/src/pages/**/*.astro', '!/src/pages/en/**/*.astro']);
+const enContentFiles = import.meta.glob('/src/content/en/**/*.md');
+const koContentFiles = import.meta.glob('/src/content/ko/**/*.md');
+
+function hasCounterpart(
+  pageFiles: Record<string, unknown>,
+  contentFiles: Record<string, unknown>,
+  pagePrefix: string,
+  contentPrefix: string
+): boolean {
+  const clean = koPath.replace(/\/$/, '') || '/';
+  const pageCandidates = clean === '/'
+    ? [`${pagePrefix}/index.astro`]
+    : [`${pagePrefix}${clean}/index.astro`, `${pagePrefix}${clean}.astro`];
+  if (pageCandidates.some(f => f in pageFiles)) return true;
+  const segs = clean.split('/').filter(Boolean);
+  if (segs.length >= 2) {
+    const key = `${contentPrefix}/${segs[0]}/${segs.slice(1).join('/')}.md`;
+    if (key in contentFiles) return true;
+  }
+  return false;
+}
+
+const showEnAlternate = !is404 && !isEnPage &&
+  hasCounterpart(enPageFiles, enContentFiles, '/src/pages/en', '/src/content/en');
+const showKoAlternate = !is404 && isEnPage &&
+  hasCounterpart(koPageFiles, koContentFiles, '/src/pages', '/src/content/ko');
+const xdefaultHref = (!isEnPage || showKoAlternate) ? koHref : enHref;
 ---
 
 <!DOCTYPE html>
@@ -44,9 +82,11 @@ const ogTitle = titleOverride ?? title;
   <meta name="twitter:title" content={ogTitle} />
   {description && <meta name="twitter:description" content={description} />}
   
-  <!-- Alternate languages -->
-  <link rel="alternate" hreflang="ko" href={`https://chulbuji.com${Astro.url.pathname.replace(/^\/en/, '')}`} />
-  <link rel="alternate" hreflang="en" href={`https://chulbuji.com/en${Astro.url.pathname.replace(/^\/en/, '')}`} />
+  <!-- Alternate languages (only rendered when counterpart file exists) -->
+  {!is404 && <link rel="alternate" hreflang={isEnPage ? 'en' : 'ko'} href={isEnPage ? enHref : koHref} />}
+  {showEnAlternate && <link rel="alternate" hreflang="en" href={enHref} />}
+  {showKoAlternate && <link rel="alternate" hreflang="ko" href={koHref} />}
+  {!is404 && <link rel="alternate" hreflang="x-default" href={xdefaultHref} />}
   
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
