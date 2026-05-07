@@ -12,7 +12,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 Live Trading Active · Experiment Record</span>
       <p class="definition">Roughly ₩10M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">First trading day after weekend upgrade reviewed · Updated 2026-05-04 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="meta">Strategy engine first refinement complete · Updated 2026-05-08 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,35 +32,36 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>As of May 2026, the Korean stock auto-trading program is in live-account operation. The latest work improved issues found over the weekend and adjusted the structure for a seed expansion toward roughly ₩10M.</p>
-      <p>This update is not the first operations record for the program. It reflects the first trading day after applying the updated auto-trading logic from the weekend upgrade.</p>
+      <p>As of May 2026, the Korean stock auto-trading program has completed its first strategy engine refinement based on live-account operating data.</p>
+      <p>This update is not an aggressive attempt to raise short-term returns. It is a stabilization step that organizes capital structure, stop-loss rules, target profit, cash buffer, and log structure for live-account operation.</p>
       <p><strong>Core of this update</strong></p>
       <ul class="gains-list">
-        <li>Automatically recalculate per-position budget based on total assets</li>
-        <li>Limit maximum weight per position</li>
-        <li>Evaluate high-priced stocks by total-asset ratio</li>
-        <li>Keep RS / MA20 deviation / stop-loss / holding-period conditions unchanged</li>
-        <li>Do not create exceptions for specific stocks</li>
+        <li>Set the operating baseline to ₩10M and the per-position budget to ₩2M</li>
+        <li>Limit maximum holdings to 4 positions and keep 20% in cash</li>
+        <li>Add a -2.5% stop-loss and +5.0% target profit baseline</li>
+        <li>Strengthen the MA20 deviation limit to 5% and shorten holding period to 5 trading days</li>
+        <li>Add sector overlap limits, RSI momentum, and earlier profit-risk analysis logging</li>
       </ul>
-      <p>After adding ₩5M, total assets expanded toward roughly ₩10M. This makes high-priced blue-chip stocks structurally evaluable inside the portfolio from a price standpoint. But the buy conditions were not relaxed. Stocks that fail the conditions remain blocked.</p>
-      <p><strong>First trading day after the update</strong></p>
+      <p>The current strategy engine uses roughly 80% of total capital for positions and keeps the remaining 20% in cash. This is a minimum cushion for sharp drawdowns, additional buy opportunities, and system-level issues.</p>
+      <p><strong>May 8, 2026 DRY RUN result</strong></p>
       <ul class="gains-list">
-        <li>LG Electronics trailing sell executed normally</li>
-        <li>Realized P&L: +₩12,000</li>
-        <li>New buys: 0 — no stocks passed the RS criteria</li>
-        <li>Shinhan Financial waiting for holding-period sell</li>
-        <li>SK Hynix became structurally more feasible after the high-priced stock improvement, but buy was blocked by the MA20 deviation condition</li>
+        <li>BUY signals: 0</li>
+        <li>MA20 deviation above 5%: 9</li>
+        <li>Below MA20: 8</li>
+        <li>RSI range failure: 1</li>
+        <li>RS failure: 1</li>
       </ul>
-      <p>Zero new buys was not an error. It was the cash-holding principle working as intended when there were no strong candidates. Under the ₩5M structure, high-priced stocks were structurally difficult to buy. Under the ₩10M structure, they can be bought, but only when the conditions are met.</p>
+      <p>Zero buys were interpreted as normal defensive behavior, not an error. The market had risen sharply in a short period, and many stocks were too far above MA20. The strategy engine blocked chase-buying in that condition.</p>
       <p><strong>Next actions</strong></p>
       <ul class="gains-list">
-        <li>Confirm the Shinhan Financial holding-period sell result</li>
-        <li>Validate the early-sell branch for positions exceeding the holding period</li>
-        <li>Review classification improvements for BUY / RS pass / final buy in scan_log.json</li>
-        <li>Reconsider the RS exemption policy for additional buys</li>
-        <li>Write the first-week operations report under the ₩10M seed structure</li>
+        <li>ATR-based dynamic stop-loss calculation by stock</li>
+        <li>Risk-reward filter activation</li>
+        <li>Log tag format unification</li>
+        <li>Unused constants and dead code cleanup</li>
+        <li>High-priced stock trailing rule alignment</li>
+        <li>Fee and tax reflection</li>
       </ul>
-      <p class="timeline-cta"><a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">First Trading Day After Weekend Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-01-auto-trading-v2-upgrade-plan/">v2.0 Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-024/">Insight →</a></p>
+      <p class="timeline-cta"><a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Strategy Engine Refinement Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-031/">Related Insight →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">Previous Operations Log →</a></p>
     </section>
 
     <section class="section">
@@ -73,7 +74,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Structure and How It Works</h2>
       <p>Three roles. The operator (철부지) sets strategy direction and makes final calls. GPT (메타철부지) handles strategy design and research. Claude Code handles code analysis and modification. KIS API (Korea Investment Securities) executes orders on the live account.</p>
-      <p>Buy decisions run through a rule engine. RSI, MA20 deviation, market regime (5-condition scoring), RS filter — candidates that pass all four conditions are sorted by strength and scanned 3 times per day (10:00 / 13:00 / 14:00). Sells are handled automatically: +6% take-profit or trailing stop (+4% activation / -2% from peak), -3% stop-loss.</p>
+      <p>Buy decisions run through a rule engine. RSI momentum, MA20 deviation, market regime (5-condition scoring), RS filter, and sector overlap limits are checked before candidates are sorted by strength and scanned 3 times per day (10:00 / 13:00 / 14:00). The current stop-loss baseline is -2.5%, the target profit baseline is +5.0%, and trailing stop activation is based on +4%.</p>
     </section>
 
     <section class="section">
@@ -83,6 +84,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
         <li><strong>1-week paper trade result:</strong> +₩45,060 (+0.58%) — used as the basis for evaluating the live switch</li>
         <li><strong>First live order:</strong> 2026-04-14 Kakao 20 shares @ ₩48,350</li>
         <li><strong>Current operating structure:</strong> total-asset-ratio-based allocation at roughly the ₩10M seed level</li>
+        <li><strong>Strategy engine first refinement:</strong> -2.5% stop-loss, +5.0% target profit, 20% cash buffer, sector overlap limit, profit-risk analysis log placement</li>
         <li><strong>Strategy shift:</strong> "fill all slots" → "hold only strong candidates, keep cash otherwise" (RS filter)</li>
       </ul>
     </section>
@@ -90,6 +92,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-08 · Strategy Engine Refinement</span>
+          <span class="update-desc">Refined the strategy engine based on live-account operating data: capital structure, stop-loss, target profit, cash buffer, sector overlap limits, and RSI momentum. Moved profit-risk analysis logs to the beginning of candidate review. The DRY RUN produced zero buys, interpreted as normal defensive behavior under the MA20 deviation filter.</span>
+        </li>
         <li>
           <span class="update-date">2026-05-04 · v2.0</span>
           <span class="update-desc">First trading day after the weekend upgrade — applied total-asset-ratio-based allocation for the ₩10M seed expansion. LG Electronics trailing sell +₩12,000, new buys 0. RS and MA20 conditions were not relaxed, and stocks that failed the conditions remained blocked.</span>
@@ -122,12 +128,12 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
       <h2>Featured Logs — 5 entries to understand this project</h2>
       <ul class="featured-list">
         <li>
-          <a href="/en/log/stock-auto-trade-mvp-complete/">Auto-Trading MVP Complete — Rule Engine, Regime Filter, Telegram Alerts</a>
-          <span class="featured-note">The day the system first ran. KIS API integration, rule engine, scheduler — the full structure built.</span>
+          <a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Stock Auto-Trading Program — Strategy Engine First Refinement</a>
+          <span class="featured-note">The latest operations record organizing capital structure, stop-loss, target profit, and log placement based on live-account data.</span>
         </li>
         <li>
-          <a href="/en/log/2026-04-14-auto-trading-live-switch/">KIS Auto-Trading — First Real Order Executed, Live Switch Complete</a>
-          <span class="featured-note">The day DRY_RUN was turned off and real money moved for the first time.</span>
+          <a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">Korean Stock Auto-Trading Program — First Trading Day After the Weekend Upgrade</a>
+          <span class="featured-note">The record confirming the shift toward a structure that can buy, but chooses not to when conditions are not met.</span>
         </li>
         <li>
           <a href="/en/log/2026-04-17-auto-trading-mock-complete/">1-Week Paper Trade Complete — Decision to Switch to Live Account</a>
@@ -135,7 +141,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
         </li>
         <li>
           <a href="/en/log/2026-04-20-auto-trading-live-day1/">Live Account Day 1 — 2 Bugs Fixed, 5 Positions Opened</a>
-          <span class="featured-note">Day 1 live troubleshooting. Bugs that didn't appear in paper trading showed up in live.</span>
+          <span class="featured-note">Live-account troubleshooting. Bugs that didn't appear in paper trading showed up in live.</span>
         </li>
         <li>
           <a href="/en/log/2026-04-27-auto-trading-rs-filter/">KOSPI Hit a Record High — But My Portfolio Was Down</a>
@@ -147,6 +153,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Featured Insights — key observations</h2>
       <ul class="featured-list">
+        <li>
+          <a href="/en/insight/insight-031/">In Auto-Trading, Rejection Reasons Matter More Than Buy Signals</a>
+          <span class="featured-note">An operating insight for interpreting zero buys as traceable defensive behavior rather than failure.</span>
+        </li>
         <li>
           <a href="/en/insight/insight-024/">Instead of Writing Code, I'm Designing an Auto-Trading System with AI</a>
           <span class="featured-note">In vibe coding, the human's role is asking the right questions, not typing the code. Confirmed through the v2.0 upgrade process.</span>
