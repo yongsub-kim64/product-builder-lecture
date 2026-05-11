@@ -12,7 +12,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 실매수 운영 중 · 운영 실험 기록</span>
       <p class="definition">1,000만 원 수준 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">전략 엔진 1차 개선 완료 · 2026-05-08 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="meta">레짐 감지 기반 전략 엔진 업그레이드 · 2026-05-11 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,36 +32,29 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>2026년 5월 기준, 국내주식 자동매매 프로그램은 실계좌 LIVE 운영 데이터를 바탕으로 전략 엔진 1차 개선을 완료했다.</p>
-      <p>이번 업데이트는 수익률을 단기적으로 높이기 위한 공격적 개선이 아니라, 실계좌 운용에 맞게 자본 구조, 손절 기준, 목표 수익, 현금 유보, 로그 구조를 정리한 안정화 작업이다.</p>
-      <p><strong>이번 업데이트의 핵심</strong></p>
+      <p>2026년 5월 기준, 자동매매 프로젝트는 주문 실행 안정화 단계를 넘어 시장 레짐 기반 전략 엔진 검증 단계로 진입했다.</p>
+      <p>2026-05-11 업그레이드에서 KOSPI 5일 수익률 기반 레짐 감지 시스템을 도입했다. BULL / NEUTRAL / BEAR 장세에 따라 MA20 이격 허용 기준을 다르게 적용하는 구조로 전환하여, 급등장에서 주도주를 차단하던 고정 필터의 한계를 개선했다.</p>
+      <p><strong>이번 업그레이드의 핵심</strong></p>
       <ul class="gains-list">
-        <li>총 운용 기준 1,000만 원, 종목당 투자금 200만 원 구조 정리</li>
-        <li>최대 보유 종목 4종목, 현금 20% 유보 구조 적용</li>
-        <li>손절 기준 -2.5%, 목표 수익 +5.0% 기준 추가</li>
-        <li>MA20 이격 기준 5%로 강화, 보유기간 5거래일로 단축</li>
-        <li>섹터 중복 제한, RSI 모멘텀 조건, 손익분석 로그 위치 수정</li>
+        <li>KOSPI 5일 수익률 기반 BULL / NEUTRAL / BEAR 레짐 감지</li>
+        <li>레짐별 MA20 이격 허용 기준: BULL 8% / NEUTRAL 5% / BEAR 3%</li>
+        <li>종목 유니버스 20종목 → 40종목 확대</li>
+        <li>11:00 BULL 전용 매수 사이클 추가</li>
+        <li>눌림목 필터 추가 (MA20 이격 OR 눌림목 구조)</li>
+        <li>RSI 상한 65 → 70 완화 (RSI 75 이상 추격매수 차단 유지)</li>
+        <li>분할익절 도입: +6% 도달 시 50% 익절, 잔여 트레일링 유지</li>
+        <li>구간별 트레일링 완화: +4~8% -2.5% / +8~15% -2.0% / +15% 이상 -1.5%</li>
+        <li>일일 매수 한도 2건 → 3건 조정</li>
+        <li>체결가 기반 pnl 보정, 동시 매도 통합 알림 추가</li>
       </ul>
-      <p>현재 전략 엔진은 전체 자금의 약 80%만 포지션에 사용하고, 나머지 20%는 현금으로 남기는 구조다. 이는 급락장, 추가 매수 기회, 시스템 오류 상황에 대응하기 위한 최소한의 완충 장치다.</p>
-      <p><strong>2026-05-08 DRY RUN 결과</strong></p>
+      <p><strong>다음 검증 과제 (1~2주 실전 로그 수집)</strong></p>
       <ul class="gains-list">
-        <li>BUY 신호 0건</li>
-        <li>MA20 이격 5% 초과 9건</li>
-        <li>MA20 하회 8건</li>
-        <li>RSI 범위 이탈 1건</li>
-        <li>RS 탈락 1건</li>
+        <li>레짐별 매수 빈도: BULL 장세에서 실제 매수 증가 여부</li>
+        <li>눌림목 진입 성과: 눌림목 조건 vs MA20 이격 조건 손익비 비교</li>
+        <li>분할익절 효과: 전량 트레일링 대비 최종 수익 비교</li>
+        <li>전체 손익비 개선 여부</li>
       </ul>
-      <p>매수 0건은 오류가 아니라 정상적인 방어 작동으로 해석한다. 최근 시장이 단기간에 상승하면서 여러 종목이 MA20 대비 과도하게 이격되었고, 전략 엔진은 이 구간에서 추격 매수를 차단했다.</p>
-      <p><strong>다음 작업</strong></p>
-      <ul class="gains-list">
-        <li>ATR 기반 종목별 동적 손절가 계산</li>
-        <li>손익비 필터 활성화</li>
-        <li>로그 태그 형식 통일</li>
-        <li>미사용 상수와 dead code 정리</li>
-        <li>고가주 트레일링 기준 통일</li>
-        <li>수수료·세금 반영</li>
-      </ul>
-      <p class="timeline-cta"><a href="/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">전략 엔진 1차 개선 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-031/">관련 Insight →</a>&nbsp;&nbsp;<a href="/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">이전 운영 Log →</a></p>
+      <p class="timeline-cta"><a href="/log/2026-05-11-auto-trading-regime-upgrade/">레짐 업그레이드 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-032/">관련 Insight →</a>&nbsp;&nbsp;<a href="/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">이전 전략 엔진 개선 Log →</a></p>
     </section>
 
     <section class="section">
@@ -92,6 +85,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-11 · 레짐 감지 업그레이드</span>
+          <span class="update-desc">KOSPI 5일 수익률 기반 레짐 감지 도입. BULL 8% / NEUTRAL 5% / BEAR 3% MA20 이격 기준 전환. 유니버스 20→40종목, BULL 전용 11:00 사이클, 눌림목 필터, RSI 상한 65→70, 분할익절(+6% 50% 익절), 구간별 트레일링, 일일 한도 3건으로 확대.</span>
+        </li>
         <li>
           <span class="update-date">2026-05-08 · 전략 엔진 1차 개선</span>
           <span class="update-desc">실계좌 운영 데이터를 바탕으로 자본 구조, 손절 기준, 목표 수익, 현금 유보, 섹터 중복 제한, RSI 모멘텀 조건을 정리. 손익분석 로그를 후보 검토 초기에 출력하도록 옮겼고, DRY RUN 매수 0건은 MA20 이격 기준에 따른 정상 방어 작동으로 판단.</span>

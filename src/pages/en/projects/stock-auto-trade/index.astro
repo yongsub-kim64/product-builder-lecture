@@ -12,7 +12,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 Live Trading Active · Experiment Record</span>
       <p class="definition">Roughly ₩10M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">Strategy engine first refinement complete · Updated 2026-05-08 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="meta">Regime detection strategy engine upgrade · Updated 2026-05-11 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,36 +32,29 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>As of May 2026, the Korean stock auto-trading program has completed its first strategy engine refinement based on live-account operating data.</p>
-      <p>This update is not an aggressive attempt to raise short-term returns. It is a stabilization step that organizes capital structure, stop-loss rules, target profit, cash buffer, and log structure for live-account operation.</p>
-      <p><strong>Core of this update</strong></p>
+      <p>As of May 2026, the auto-trading project has moved past the order-execution stabilization stage and entered the regime-based strategy engine validation stage.</p>
+      <p>The May 11, 2026 upgrade introduced a KOSPI 5-day return regime detection system. The strategy engine now switches MA20 deviation thresholds based on BULL / NEUTRAL / BEAR market regime, resolving the structural problem where a fixed 5% ceiling was blocking leading stocks during surges.</p>
+      <p><strong>Core of this upgrade</strong></p>
       <ul class="gains-list">
-        <li>Set the operating baseline to ₩10M and the per-position budget to ₩2M</li>
-        <li>Limit maximum holdings to 4 positions and keep 20% in cash</li>
-        <li>Add a -2.5% stop-loss and +5.0% target profit baseline</li>
-        <li>Strengthen the MA20 deviation limit to 5% and shorten holding period to 5 trading days</li>
-        <li>Add sector overlap limits, RSI momentum, and earlier profit-risk analysis logging</li>
+        <li>KOSPI 5-day return based BULL / NEUTRAL / BEAR regime detection</li>
+        <li>Dynamic MA20 deviation ceiling: BULL 8% / NEUTRAL 5% / BEAR 3%</li>
+        <li>Universe expanded from 20 to 40 candidates</li>
+        <li>11:00 BULL-only buy cycle added</li>
+        <li>Pullback filter added (OR structure with MA20 deviation)</li>
+        <li>RSI ceiling raised from 65 to 70 (RSI 75 chase-block kept)</li>
+        <li>Partial profit-taking: 50% exit at +6%, remainder on trailing stop</li>
+        <li>Tiered trailing: +4–8% at -2.5% / +8–15% at -2.0% / +15%+ at -1.5%</li>
+        <li>Daily buy limit raised from 2 to 3</li>
+        <li>Settlement-price pnl tracking and consolidated sell alerts</li>
       </ul>
-      <p>The current strategy engine uses roughly 80% of total capital for positions and keeps the remaining 20% in cash. This is a minimum cushion for sharp drawdowns, additional buy opportunities, and system-level issues.</p>
-      <p><strong>May 8, 2026 DRY RUN result</strong></p>
+      <p><strong>Next validation (1–2 weeks of live logs)</strong></p>
       <ul class="gains-list">
-        <li>BUY signals: 0</li>
-        <li>MA20 deviation above 5%: 9</li>
-        <li>Below MA20: 8</li>
-        <li>RSI range failure: 1</li>
-        <li>RS failure: 1</li>
+        <li>Buy frequency by regime: does BULL regime actually produce more buys?</li>
+        <li>Pullback entry performance: risk-reward comparison vs MA20 deviation entries</li>
+        <li>Partial profit-taking effect: final return vs full-position trailing</li>
+        <li>Overall risk-reward improvement</li>
       </ul>
-      <p>Zero buys were interpreted as normal defensive behavior, not an error. The market had risen sharply in a short period, and many stocks were too far above MA20. The strategy engine blocked chase-buying in that condition.</p>
-      <p><strong>Next actions</strong></p>
-      <ul class="gains-list">
-        <li>ATR-based dynamic stop-loss calculation by stock</li>
-        <li>Risk-reward filter activation</li>
-        <li>Log tag format unification</li>
-        <li>Unused constants and dead code cleanup</li>
-        <li>High-priced stock trailing rule alignment</li>
-        <li>Fee and tax reflection</li>
-      </ul>
-      <p class="timeline-cta"><a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Strategy Engine Refinement Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-031/">Related Insight →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/">Previous Operations Log →</a></p>
+      <p class="timeline-cta"><a href="/en/log/2026-05-11-auto-trading-regime-upgrade/">Regime Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-032/">Related Insight →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Previous Engine Refinement Log →</a></p>
     </section>
 
     <section class="section">
@@ -92,6 +85,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-11 · Regime Detection Upgrade</span>
+          <span class="update-desc">KOSPI 5-day return regime detection introduced. MA20 deviation ceiling switches by regime: BULL 8% / NEUTRAL 5% / BEAR 3%. Universe expanded 20→40, BULL-only 11:00 cycle, pullback filter, RSI ceiling 65→70, partial profit-taking (+6% 50% exit), tiered trailing, daily buy limit raised to 3.</span>
+        </li>
         <li>
           <span class="update-date">2026-05-08 · Strategy Engine Refinement</span>
           <span class="update-desc">Refined the strategy engine based on live-account operating data: capital structure, stop-loss, target profit, cash buffer, sector overlap limits, and RSI momentum. Moved profit-risk analysis logs to the beginning of candidate review. The DRY RUN produced zero buys, interpreted as normal defensive behavior under the MA20 deviation filter.</span>

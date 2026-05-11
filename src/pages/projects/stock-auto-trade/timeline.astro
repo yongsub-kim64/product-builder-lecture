@@ -222,6 +222,26 @@ import PageLayout from '../../../layouts/PageLayout.astro';
           <a href="/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/" class="entry-link">Log 보기 →</a>
           <a href="/insight/insight-028/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
         </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-08</span>
+            <span class="entry-version">전략 엔진 1차 개선</span>
+          </div>
+          <p class="entry-title">전략 엔진 1차 개선 — 자본 구조·손절·목표 수익·섹터 중복·RSI 모멘텀 정리</p>
+          <p class="entry-sig">실계좌 운영 데이터 기반으로 자본 구조(1,000만 원·종목당 200만 원), 손절 -2.5%, 목표 수익 +5.0%, 현금 20% 유보, 섹터 중복 제한, RSI 모멘텀 조건 정리. 손익분석 로그를 종목 검토 초기로 이동. DRY RUN 매수 0건은 MA20 이격 기준에 따른 정상 방어 작동.</p>
+          <a href="/log/2026-05-08-auto-trading-strategy-engine-first-refinement/" class="entry-link">Log 보기 →</a>
+          <a href="/insight/insight-031/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-11</span>
+            <span class="entry-version">레짐 감지 업그레이드</span>
+          </div>
+          <p class="entry-title">KOSPI 레짐 감지 기반 동적 매수 필터 도입 — BULL / NEUTRAL / BEAR 장세별 MA20 이격 기준 전환</p>
+          <p class="entry-sig">급등장 매수 0건 반복 원인(MA20 이격 상한 5% 고정)을 분석하고 KOSPI 5일 수익률 기반 레짐 감지로 전환. BULL 8% / NEUTRAL 5% / BEAR 3% 구조 적용. 유니버스 20→40종목 확대, 11:00 BULL 전용 매수 사이클, 눌림목 필터(OR 구조), RSI 상한 65→70(75 이상 차단 유지), 분할익절(+6% 50% 익절), 구간별 트레일링 완화, 일일 매수 한도 2→3건, 체결가 기반 pnl 보정, 동시 매도 통합 알림 추가.</p>
+          <a href="/log/2026-05-11-auto-trading-regime-upgrade/" class="entry-link">Log 보기 →</a>
+          <a href="/insight/insight-032/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
+        </li>
       </ul>
     </div>
 

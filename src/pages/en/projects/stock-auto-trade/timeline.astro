@@ -203,6 +203,26 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
           <a href="/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/" class="entry-link">View Log →</a>
           <a href="/en/insight/insight-028/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
         </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-08</span>
+            <span class="entry-version">Engine Refinement</span>
+          </div>
+          <p class="entry-title">Strategy Engine First Refinement — Capital Structure, Stop-Loss, Target Profit, Sector Limits, RSI Momentum</p>
+          <p class="entry-sig">Based on live-account operating data: ₩10M baseline / ₩2M per position, stop-loss -2.5%, target profit +5.0%, 20% cash buffer, sector overlap limit, RSI momentum. Profit-risk log moved to the beginning of candidate review. Zero DRY RUN buys interpreted as normal defensive behavior under MA20 deviation filter.</p>
+          <a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/" class="entry-link">View Log →</a>
+          <a href="/en/insight/insight-031/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-11</span>
+            <span class="entry-version">Regime Upgrade</span>
+          </div>
+          <p class="entry-title">KOSPI Regime Detection Added — Dynamic MA20 Deviation Threshold by BULL / NEUTRAL / BEAR</p>
+          <p class="entry-sig">Root cause of repeated zero-buy days (fixed 5% MA20 ceiling) analyzed and resolved with KOSPI 5-day return regime detection: BULL 8% / NEUTRAL 5% / BEAR 3%. Universe expanded 20→40, 11:00 BULL-only buy cycle added, pullback filter (OR structure), RSI ceiling 65→70 (75 chase-block kept), partial profit-taking (+6% = 50% exit), tiered trailing relaxation, daily buy limit 2→3, settlement-price pnl tracking, consolidated sell alerts.</p>
+          <a href="/en/log/2026-05-11-auto-trading-regime-upgrade/" class="entry-link">View Log →</a>
+          <a href="/en/insight/insight-032/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
+        </li>
       </ul>
     </div>
 
