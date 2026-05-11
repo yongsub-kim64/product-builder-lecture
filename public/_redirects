@@ -1,0 +1,50 @@
+# Cloudflare Pages Redirects
+# Legacy .html URLs → Clean URL 301 redirects
+# Generated: 2026-05-11
+
+# ── Root-level pages ──────────────────────────────────────────
+/index.html                          /                                   301
+/about.html                          /about                              301
+/contact.html                        /contact                            301
+/insight.html                        /insight                            301
+/log.html                            /log                                301
+/privacy.html                        /privacy                            301
+/projects.html                       /projects                           301
+/terms.html                          /terms                              301
+/tools.html                          /tools                              301
+
+# ── Root-level legacy article pages → /log/ ──────────────────
+/history-of-lotto.html               /log/history-of-lotto               301
+/lotto-article-1.html                /log/lotto-analysis-1               301
+/lotto-article-2.html                /log/lotto-analysis-2               301
+/strategy-guide.html                 /log/strategy-guide                 301
+/rebrand-article.html                /log/001-rebrand-launch             301
+/rebrand-article-en.html             /en/log/001-rebrand-launch          301
+/report-math.html                    /log/report-math                    301
+/report-tax.html                     /log/report-tax                     301
+/article-3.html                      /log/article-03                     301
+/article-4.html                      /log/article-04                     301
+/article-5.html                      /log/article-05                     301
+/article-6.html                      /log/article-06                     301
+
+# ── KO log sub-pages (nested .html) ──────────────────────────
+/log/001-rebrand-launch.html         /log/001-rebrand-launch             301
+/log/week1-beginner-journey.html     /log/week1-beginner-journey         301
+/tools/lotto/index.html              /tools/lotto                        301
+
+# ── EN pages ─────────────────────────────────────────────────
+/en/index.html                       /en                                 301
+/en/about.html                       /en/about                           301
+/en/contact/index.html               /en/contact                         301
+/en/insight.html                     /en/insight                         301
+/en/log.html                         /en/log                             301
+/en/projects.html                    /en/projects                        301
+/en/privacy/index.html               /en/privacy                         301
+/en/terms/index.html                 /en/terms                           301
+/en/tools.html                       /en/tools                           301
+/en/tools/index.html                 /en/tools                           301
+/en/tools/lotto/index.html           /en/tools/lotto                     301
+
+# ── EN log sub-pages (nested .html) ──────────────────────────
+/en/log/001-rebrand-launch.html      /en/log/001-rebrand-launch          301
+/en/log/week1-beginner-journey.html  /en/log/week1-beginner-journey      301
