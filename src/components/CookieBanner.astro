@@ -1,0 +1,112 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'ko' } = Astro.props;
+
+const isEn = lang === 'en';
+const privacyHref = isEn ? '/en/privacy' : '/privacy';
+const text = isEn
+  ? 'This site uses cookies for service improvement and advertising (Google AdSense). By continuing to use this site, you agree to our use of cookies.'
+  : '이 사이트는 서비스 개선 및 광고(Google AdSense) 목적으로 쿠키를 사용합니다. 계속 이용하시면 쿠키 사용에 동의하는 것으로 간주합니다.';
+const privacyLabel = isEn ? 'Privacy Policy' : '개인정보처리방침';
+const btnLabel = isEn ? 'Accept' : '동의함';
+---
+
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      {text}
+      <a href={privacyHref} class="cookie-privacy-link">{privacyLabel}</a>
+    </p>
+    <button id="cookie-accept-btn" class="cookie-btn">{btnLabel}</button>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner') as HTMLElement | null;
+  const btn = document.getElementById('cookie-accept-btn');
+
+  if (banner && !localStorage.getItem('cookie_consent')) {
+    banner.style.display = 'flex';
+  }
+
+  btn?.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', '1');
+    if (banner) banner.style.display = 'none';
+  });
+</script>
+
+<style>
+  .cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    z-index: 1000;
+    padding: 1rem clamp(1rem, 0.8rem + 1vw, 2rem);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .cookie-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cookie-text {
+    flex: 1;
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    min-width: 200px;
+  }
+
+  .cookie-privacy-link {
+    color: var(--primary-color, #667eea);
+    text-decoration: underline;
+    margin-left: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .cookie-privacy-link:hover {
+    opacity: 0.8;
+  }
+
+  .cookie-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    background: var(--primary-color, #667eea);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 40px;
+    transition: opacity 0.2s;
+  }
+
+  .cookie-btn:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 480px) {
+    .cookie-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.875rem;
+    }
+
+    .cookie-btn {
+      width: 100%;
+    }
+  }
+</style>
