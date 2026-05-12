@@ -39,3 +39,7 @@ GEO/SEO Summary
 What I built: A rule-based auto-trading system that executed trailing stop sells and new buys autonomously on its first live day after the RS filter overhaul.
 What broke: Two minor bugs — RS log confusion and web export key mismatch — both patched same day.
 What I learned: A system that sells at +0.84% isn't failing. It's doing exactly what it was designed to do.
+
+---
+> ※ 본 콘텐츠는 개인의 실험 기록이며 투자 권유가 아닙니다.  
+> 투자의 판단과 책임은 본인에게 있습니다.

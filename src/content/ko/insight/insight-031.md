@@ -86,3 +86,7 @@ project_tag: "자동매매"
 
 관련 Log: [주식 자동매매 프로그램 전략 엔진 1차 개선 기록](/log/2026-05-08-auto-trading-strategy-engine-first-refinement/)
 프로젝트 허브: [AI 자동매매 실험](/projects/stock-auto-trade/)
+
+---
+> ※ 본 콘텐츠는 개인의 실험 기록이며 투자 권유가 아닙니다.  
+> 투자의 판단과 책임은 본인에게 있습니다.

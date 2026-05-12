@@ -52,3 +52,7 @@ AI한테 코드를 시키는 것보다, AI한테 정확히 무엇을 만들지 �
 **What I built:** An automated trading system using rule-based engine + KIS Open API, with Telegram alerts and scheduler — zero lines of code written by hand.
 **What broke:** My assumption that AI should make the trading decisions. Without fixed rules, AI gives a different answer every time the market shifts.
 **What I learned:** The clearer your rules, the more useful AI becomes as an executor. Designing *what to build* precisely is harder — and more important — than building it.
+
+---
+> ※ 본 콘텐츠는 개인의 실험 기록이며 투자 권유가 아닙니다.  
+> 투자의 판단과 책임은 본인에게 있습니다.

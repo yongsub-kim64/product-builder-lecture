@@ -67,3 +67,7 @@ GEO/SEO Summary
 Core insight: A trailing stop and a fixed take-profit target work against each other — one should be removed.
 What was missing: A tiered trigger structure that adjusts protection strength based on accumulated profit.
 What changes now: Three profit zones (A/B/C) replace the single trigger, with a 1-month review scheduled.
+
+---
+> ※ 본 콘텐츠는 개인의 실험 기록이며 투자 권유가 아닙니다.  
+> 투자의 판단과 책임은 본인에게 있습니다.
