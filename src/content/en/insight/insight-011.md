@@ -44,3 +44,7 @@ With Meta-Chulbuji: assess direction and current state. What condition is the sy
 With roles divided, where I need to be became clear.
 
 Today I run the first paper trading live verification. The structure has changed — now it's time to confirm it with results.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

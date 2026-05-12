@@ -64,3 +64,7 @@ A position bought just above MA20 would immediately trigger a trend-break sell s
 
 - Pre-market cycle 08:50: BULL signal recorded?
 - 10:00 scan: Samsung Electronics passes new deviation threshold?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

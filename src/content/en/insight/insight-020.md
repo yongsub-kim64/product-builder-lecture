@@ -40,3 +40,7 @@ Now I'm waiting to see whether the RS filter actually screens out weak stocks �
 ---
 
 Whether you trade manually or algorithmically — have you ever filled a slot with a weak stock just to hit a position count?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

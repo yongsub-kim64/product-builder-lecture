@@ -140,3 +140,7 @@ This upgrade moved the system one step in that direction.
 ---
 
 → Related insight: [From a System That Cannot Buy to a System That Chooses Not to Buy](/en/insight/insight-028/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

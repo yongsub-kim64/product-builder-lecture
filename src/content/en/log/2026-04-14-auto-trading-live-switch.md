@@ -48,3 +48,7 @@ Samsung Electronics trailing activation threshold: ₩211,380. Today's high was 
 ## What's Next
 
 Confirm the scheduler fires at 08:40 tomorrow. Monitor whether Samsung Electronics reaches ₩211,380. The first real check of whether trailing stop produces different outcomes than the fixed +6% take-profit.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

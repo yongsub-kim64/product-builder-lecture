@@ -61,3 +61,7 @@ Trying to read the code first is where things stall. Read the logs first. Find w
 **What broke:** The system read the wrong cash field and stacked 18 sell orders for one stock.
 
 **What I learned:** I don't read code. I read logs, describe what's off, and let AI trace the cause.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

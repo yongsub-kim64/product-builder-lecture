@@ -48,3 +48,7 @@ If the person who built the system can't trust the system, the system doesn't ex
 **What to watch next:** How I react when the stop-loss fires in live trading for the first time.
 
 **Reader question:** Has there been a moment when you found it hard to trust your automated system's judgment?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

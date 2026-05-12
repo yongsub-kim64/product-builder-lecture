@@ -166,3 +166,7 @@ With this patch, the basic structure of the strategy engine became clearer. The 
 ---
 
 Related Insight: [In Auto-Trading, Rejection Reasons Matter More Than Buy Signals](/en/insight/insight-031/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

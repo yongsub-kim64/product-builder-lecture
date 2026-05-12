@@ -35,3 +35,7 @@ Not applied to the live account yet. Running BUY_DRY_RUN=True for 2–3 trading 
 
 - Files modified: config.py / rule_engine.py / main.py
 - Functions added: get_market_rs() / calc_rs_score() / _run_buy_cycle() / _save_dry_run_tracking()
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

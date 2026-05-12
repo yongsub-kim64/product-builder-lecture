@@ -130,3 +130,7 @@ Live logs will be collected over the next 1–2 weeks to validate the following.
 ---
 
 Related Insight: [What Auto-Trading Misses in a Bull Market Is Not Individual Stocks — It's Market Context](/en/insight/insight-032/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

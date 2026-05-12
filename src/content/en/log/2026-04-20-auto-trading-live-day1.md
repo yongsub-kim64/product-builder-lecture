@@ -68,3 +68,7 @@ Infrastructure changes (configured the day before):
 
 - Windows Task Scheduler auto-start (2026-04-21 08:45)
 - MA60 data return count (count=130 test)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

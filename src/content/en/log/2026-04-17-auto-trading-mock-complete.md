@@ -61,3 +61,7 @@ Stop loss (–3%) live trigger — to be confirmed during live account operation
 ## What's Next
 
 Live account trading starts 2026-04-21 (Mon) at 08:50.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

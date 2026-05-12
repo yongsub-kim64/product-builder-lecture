@@ -87,3 +87,7 @@ A maturing auto-trading system is not one that has more rules. It is one where t
 
 Related Log: [Auto-Trading System Upgraded to Read Market Regime](/en/log/2026-05-11-auto-trading-regime-upgrade/)
 Project Hub: [AI Auto-Trading Experiment](/en/projects/stock-auto-trade/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

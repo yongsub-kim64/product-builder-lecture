@@ -36,3 +36,7 @@ Going forward, roles are explicitly divided. Direction-setting and situation ass
 Today, we run the first live verification against paper trading real orders.
 
 Patching 11 items doesn't mean it's done. When the market opens, at least one unexpected thing will surface. Today is about going to look for it.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

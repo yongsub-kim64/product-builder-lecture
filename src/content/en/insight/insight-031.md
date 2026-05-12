@@ -89,3 +89,7 @@ At this stage of the auto-trading program, that matters more.
 
 Related Log: [Stock Auto-Trading Program — Strategy Engine First Refinement](/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/)
 Project Hub: [AI Auto-Trading Experiment](/en/projects/stock-auto-trade/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

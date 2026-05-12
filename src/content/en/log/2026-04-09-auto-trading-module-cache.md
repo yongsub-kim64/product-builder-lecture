@@ -40,3 +40,7 @@ No actual orders were placed since it was a DRY_RUN, but the buy signal logic an
 ## Operations Rule Established
 
 One clear operations rule emerged from today's work: **always restart the scheduler after modifying code.** This has been documented as docs/SOP_scheduler_restart.md and reflected in README, PROJECT_STATUS, ARCHITECTURE, and the devlog.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

@@ -44,3 +44,7 @@ A day the system is working well doesn't look like much. A day like today — wh
 **What to watch next:** Whether Samsung Electronics crosses ₩211,380. Whether trailing stop produces genuinely different results than the fixed +6% exit.
 
 **Reader question:** When operating an automated trading system, how do you evaluate a day where "nothing happened"?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

@@ -36,3 +36,7 @@ Today wasn't about recording trading results — it was about confirming the sys
 Today: regime conditions not met → no new buys. This is the system working exactly as designed.
 
 Today's result: not "a day without trades" — but a day the system was confirmed to correctly refuse trades when it shouldn't trade.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

@@ -46,3 +46,7 @@ Among positions held at close, Kia (+0.25%) is the only one in the green. Shinha
 **Next action:** Review budget safety margin improvement options (raise the margin or track intraday spend explicitly).
 
 **Reader question:** Running an automated system — have you started watching a metric that matters more to you than profit?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

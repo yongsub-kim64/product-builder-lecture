@@ -50,3 +50,7 @@ For anyone who's built an automation system — what was the hardest part of des
 **What I built:** An automated trading system using rule-based engine + KIS Open API, with Telegram alerts and scheduler — zero lines of code written by hand.
 **What broke:** My assumption that AI should make the trading decisions. Without fixed rules, AI gives a different answer every time the market shifts.
 **What I learned:** The clearer your rules, the more useful AI becomes as an executor. Designing *what to build* precisely is harder — and more important — than building it.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

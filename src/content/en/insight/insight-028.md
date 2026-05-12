@@ -146,3 +146,7 @@ This update was one structural improvement in that direction.
 
 → Related operations log: [Korean Stock Auto-Trading Program — First Trading Day After the Weekend Upgrade](/en/log/2026-05-04-auto-trading-weekend-upgrade-first-trading-day/)
 → Project hub: [AI Auto-Trading Experiment](/en/projects/stock-auto-trade/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

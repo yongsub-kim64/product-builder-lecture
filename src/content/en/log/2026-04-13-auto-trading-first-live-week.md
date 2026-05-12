@@ -58,3 +58,7 @@ Also expanded the stock universe from 5 to 20 tickers, and loosened the MA20 dev
 ## What's Next
 
 Collect scan performance data for the new 20-stock universe and confirm the effect of loosening the deviation threshold to 7%.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

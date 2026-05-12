@@ -34,3 +34,7 @@ Date: 2026-04-07
 - Review actual order / block / alert logs
 - Refine Telegram alert copy and exception handling flow
 - Connect first run results to an Insight post
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

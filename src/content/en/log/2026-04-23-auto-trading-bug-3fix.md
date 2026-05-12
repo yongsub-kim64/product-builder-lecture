@@ -41,3 +41,7 @@ Realized the Bug 1 and Bug 2 fixes had been applied to the wrong file. AI re-exa
 - KT sell executes exactly once at 09:05
 - Orderable-amount field reflects correctly
 - Duplicate prevention logic holds
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

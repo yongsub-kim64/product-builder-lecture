@@ -26,3 +26,7 @@ Something else crystallized today. You can't treat a test environment the same a
 In the end, the biggest thing I took away today wasn't a line of code — it was one operations habit: after modifying code, always restart the process and confirm with your own eyes that the change took effect. That sounds obvious, but without it, even the best strategy keeps running on yesterday's state.
 
 The bigger a system gets, the more likely it is that good operations discipline matters more than good strategy. Today was the day I learned that in practice.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

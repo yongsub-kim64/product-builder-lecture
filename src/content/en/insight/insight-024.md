@@ -51,3 +51,7 @@ What matters isn't the ability to write code directly. It's the ability to descr
 
 → Related log: [Auto-Trading v2.0 Upgrade Direction](/en/log/2026-05-01-auto-trading-v2-upgrade-plan/)
 → Project hub: [AI Auto-Trading Experiment](/en/projects/stock-auto-trade/)
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

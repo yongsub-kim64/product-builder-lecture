@@ -58,3 +58,7 @@ Bugs look like code problems. But underneath, they're often API misunderstanding
 **What I learned:** The filter that blocks overbought stocks also blocks large-caps in recovery — field and threshold design matters in live trading.
 
 **Next Monday:** Check how the new regime detection performs in the pre-market cycle.
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

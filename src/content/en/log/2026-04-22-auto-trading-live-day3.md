@@ -58,3 +58,7 @@ Bought KT (030200). Entry confirmed after MA20 > MA60 uptrend check. End-of-day:
 
 - Budget safety margin improvement (raise margin or explicitly track intraday spend)
 - Shinhan Group stop-loss proximity
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.

@@ -40,3 +40,7 @@ The system did its job without my intervention. That's what this week confirmed.
 **What to watch next:** Which stocks the trailing stop exits, at what prices, in the expanded 20-stock universe.
 
 **Reader question:** When running an automated trading system, do you use a fixed take-profit or a trailing exit? What criteria drove that choice?
+
+---
+> ※ This content is a personal experiment log and does not constitute investment advice.  
+> Investment decisions and responsibilities rest solely with the individual.
