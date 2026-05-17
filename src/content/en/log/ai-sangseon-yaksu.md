@@ -4,6 +4,7 @@ date: 2026-02-11
 excerpt: "Building a digital home with AI, journeying through growth with the flow of change. Will you join my rocket jump?"
 tags: ["AI", "Growth", "SangseonYaksu", "DigitalTransformation", "chulbuji.com"]
 published: true
+noindex: true
 ---
 
 ## Building a Digital Home, Now Opening Its Doors

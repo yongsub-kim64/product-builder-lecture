@@ -3,6 +3,7 @@ title: "AI Civilization Survival Guide: Taming the Chief Architect and Declaring
 date: 2026-02-09
 excerpt: "Recording the starting point of 'true collaboration' where AI handles labor and humans focus on thinking."
 tags: ["AI-Native", "Meta-Chulbuji", "Astro", "Workflow"]
+noindex: true
 ---
 
 ## The Incident: Who's in Charge?

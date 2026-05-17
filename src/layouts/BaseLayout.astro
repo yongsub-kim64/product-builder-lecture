@@ -24,8 +24,21 @@ const pathname = Astro.url.pathname;
 const is404 = pathname === '/404' || pathname === '/en/404';
 const isEnPage = pathname.startsWith('/en/') || pathname === '/en';
 const koPath = isEnPage ? (pathname.slice(3) || '/') : pathname;
-const koHref = `https://chulbuji.com${koPath}`;
-const enHref = `https://chulbuji.com/en${koPath}`;
+
+// KO slug → EN slug pairs where filenames differ between languages
+const koToEnSlugMap: Record<string, string> = {
+  '/log/ttalrang-du-gok-hajiman-jibeun-jieotda': '/log/just-two-songs-but-i-built-a-house/',
+};
+// EN slug → KO slug (reverse map, keys without trailing slash)
+const enToKoSlugMap: Record<string, string> = {
+  '/log/just-two-songs-but-i-built-a-house': '/log/ttalrang-du-gok-hajiman-jibeun-jieotda/',
+};
+const cleanKoPath = koPath.replace(/\/$/, '') || '/';
+const mappedEnPath = koToEnSlugMap[cleanKoPath];
+const mappedKoPath = enToKoSlugMap[cleanKoPath];
+
+const koHref = `https://chulbuji.com${isEnPage && mappedKoPath ? mappedKoPath : koPath}`;
+const enHref = `https://chulbuji.com/en${!isEnPage && mappedEnPath ? mappedEnPath : koPath}`;
 
 const enPageFiles = import.meta.glob('/src/pages/en/**/*.astro');
 const koPageFiles = import.meta.glob(['/src/pages/**/*.astro', '!/src/pages/en/**/*.astro']);
@@ -52,9 +65,9 @@ function hasCounterpart(
 }
 
 const showEnAlternate = !is404 && !isEnPage &&
-  hasCounterpart(enPageFiles, enContentFiles, '/src/pages/en', '/src/content/en');
+  (!!mappedEnPath || hasCounterpart(enPageFiles, enContentFiles, '/src/pages/en', '/src/content/en'));
 const showKoAlternate = !is404 && isEnPage &&
-  hasCounterpart(koPageFiles, koContentFiles, '/src/pages', '/src/content/ko');
+  (!!mappedKoPath || hasCounterpart(koPageFiles, koContentFiles, '/src/pages', '/src/content/ko'));
 const xdefaultHref = (!isEnPage || showKoAlternate) ? koHref : enHref;
 ---
 
