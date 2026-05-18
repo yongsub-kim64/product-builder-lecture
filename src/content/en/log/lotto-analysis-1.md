@@ -4,7 +4,7 @@ date: 2026-01-23
 excerpt: "Each lottery draw is an 'independent trial' unaffected by previous results. This post statistically explains why analyzing past 1,000 draws is meaningless for predicting the next winning numbers and why the 'gambler's fallacy' is a trap."
 tags: ["lottery", "probability", "statistics"]
 published: true
-showInLog: true
+showInLog: false
 ---
 
 "Haven't the numbers that haven't appeared in the last 10 draws due to come out soon?" or "I should avoid last week's numbers" — you've probably thought something like this at least once. Let me start with the conclusion: these thoughts are statistically meaningless. This is because each lottery draw is a 'completely new game.'
