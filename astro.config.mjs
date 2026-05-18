@@ -7,7 +7,11 @@ export default defineConfig({
   site: 'https://chulbuji.com',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/playground/') && !page.includes('/tools/'),
+      filter: (page) =>
+        !page.includes('/playground/') &&
+        !page.includes('/tools/') &&
+        !page.includes('/log/ai-sangseon-yaksu/') &&
+        !page.includes('/log/taming-the-architect/'),
       i18n: {
         defaultLocale: 'ko',
         locales: {

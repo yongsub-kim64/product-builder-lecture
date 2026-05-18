@@ -26,7 +26,7 @@ const basePath = getBasePath(lang);
   </time>
   
   <h2>
-    <a href={`${basePath}/${section}/${slug}`}>{title}</a>
+    <a href={`${basePath}/${section}/${slug}/`}>{title}</a>
   </h2>
   
   <p class="excerpt">{excerpt}</p>
@@ -39,7 +39,7 @@ const basePath = getBasePath(lang);
     </div>
   )}
   
-  <a href={`${basePath}/${section}/${slug}`} class="read-more">
+  <a href={`${basePath}/${section}/${slug}/`} class="read-more">
     {t('log.readMore')} →
   </a>
 </article>
