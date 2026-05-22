@@ -12,7 +12,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 실매수 운영 중 · 운영 실험 기록</span>
       <p class="definition">1,000만 원 수준 실계좌 기반 AI 협업 자동매매 운영 실험</p>
-      <p class="meta">레짐 감지 기반 전략 엔진 업그레이드 · 2026-05-11 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
+      <p class="meta">RS 필터 검증 체계 구축 · 2026-05-22 업데이트 · <a href="/projects/stock-auto-trade/timeline/">전체 이력 →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,29 +32,27 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>현재 상태</h2>
-      <p>2026년 5월 기준, 자동매매 프로젝트는 주문 실행 안정화 단계를 넘어 시장 레짐 기반 전략 엔진 검증 단계로 진입했다.</p>
-      <p>2026-05-11 업그레이드에서 KOSPI 5일 수익률 기반 레짐 감지 시스템을 도입했다. BULL / NEUTRAL / BEAR 장세에 따라 MA20 이격 허용 기준을 다르게 적용하는 구조로 전환하여, 급등장에서 주도주를 차단하던 고정 필터의 한계를 개선했다.</p>
-      <p><strong>이번 업그레이드의 핵심</strong></p>
+      <p>2026년 5월 기준, 자동매매 프로그램은 운영 모드에서 정상 운영되고 있다. 장중 매수 스캔, 잔고 조회, 리스크 체크, 장후 요약, 텔레그램 알림, 웹 export까지 완료됐다. 이번 작업의 목표는 매수 로직을 공격적으로 바꾸는 게 아니라, 매수하지 않은 이유를 설명 가능한 구조로 만드는 것이었다.</p>
+      <p><strong>완료한 것 (2026-05-22)</strong></p>
       <ul class="gains-list">
-        <li>KOSPI 5일 수익률 기반 BULL / NEUTRAL / BEAR 레짐 감지</li>
-        <li>레짐별 MA20 이격 허용 기준: BULL 8% / NEUTRAL 5% / BEAR 3%</li>
-        <li>종목 유니버스 20종목 → 40종목 확대</li>
-        <li>11:00 BULL 전용 매수 사이클 추가</li>
-        <li>눌림목 필터 추가 (MA20 이격 OR 눌림목 구조)</li>
-        <li>RSI 상한 65 → 70 완화 (RSI 75 이상 추격매수 차단 유지)</li>
-        <li>분할익절 도입: +6% 도달 시 50% 익절, 잔여 트레일링 유지</li>
-        <li>구간별 트레일링 완화: +4~8% -2.5% / +8~15% -2.0% / +15% 이상 -1.5%</li>
-        <li>일일 매수 한도 2건 → 3건 조정</li>
-        <li>체결가 기반 pnl 보정, 동시 매도 통합 알림 추가</li>
+        <li><strong>레짐 판단 구조 정리</strong> — 11시 사이클도 기존 stable_regime 기준으로 정리. 같은 날 BULL과 BEAR 레짐이 섞이는 문제 해결</li>
+        <li><strong>MARKET_WEAK와 technical_regime 분리</strong> — "기술적 강세장이지만 시장 강도 약세로 신규매수 차단"이 로그에 명확히 드러나도록 분리</li>
+        <li><strong>RS 필터 왜곡 가능성 검토</strong> — ETF RS, 유니버스 단순평균, 시총가중, 후보군 가중 4가지 기준 비교. 유니버스 안에도 대형주 쏠림이 있어 단순 교체 보류</li>
+        <li><strong>RS 탈락 종목 사후 추적 코드 구축</strong> — 탈락 종목의 D+1·D+3·D+5 수익률 추적. 2026년 KRX 휴장일 처리 포함. 코드 완성, 데이터 미수집</li>
       </ul>
-      <p><strong>다음 검증 과제 (1~2주 실전 로그 수집)</strong></p>
+      <p><strong>현재 판단</strong></p>
       <ul class="gains-list">
-        <li>레짐별 매수 빈도: BULL 장세에서 실제 매수 증가 여부</li>
-        <li>눌림목 진입 성과: 눌림목 조건 vs MA20 이격 조건 손익비 비교</li>
-        <li>분할익절 효과: 전량 트레일링 대비 최종 수익 비교</li>
-        <li>전체 손익비 개선 여부</li>
+        <li>운영 안정성: 정상</li>
+        <li>RS 필터 직접 수정: 보류</li>
+        <li>사후 추적 시스템: 코드 구축 완료, 데이터 미수집</li>
       </ul>
-      <p class="timeline-cta"><a href="/log/2026-05-11-auto-trading-regime-upgrade/">레짐 업그레이드 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-032/">관련 Insight →</a>&nbsp;&nbsp;<a href="/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">이전 전략 엔진 개선 Log →</a></p>
+      <p><strong>다음 작업</strong></p>
+      <ul class="gains-list">
+        <li><strong>P2-1.</strong> RS 탈락 종목 D+1·D+3·D+5 성과 추적 — 필터가 기회손실을 만들었는지, 급등 추격을 막았는지 확인</li>
+        <li><strong>P2-2.</strong> 5분 매도 모니터링 최적화 — 보유 0개 상태의 TTL 캐시 적용 검토</li>
+        <li><strong>P2-3.</strong> 로그 라벨 정리 — BUY / SKIP / FILTERED / WATCH로 탈락 사유 분류 정리</li>
+      </ul>
+      <p class="timeline-cta"><a href="/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/">2026-05-22 운영 Log →</a>&nbsp;&nbsp;<a href="/insight/insight-034/">관련 Insight →</a>&nbsp;&nbsp;<a href="/log/2026-05-11-auto-trading-regime-upgrade/">레짐 업그레이드 Log →</a></p>
     </section>
 
     <section class="section">
@@ -85,6 +83,10 @@ import PageLayout from '../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>최근 업데이트</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-22 · RS 필터 검증 체계</span>
+          <span class="update-desc">운영 모드 정상 작동(스캔 4회, 주문 0건). BUY 신호 6건 중 RS 통과 0건. ETF 기준 왜곡 의심 → 유니버스 4가지 기준 비교 결과 기준 교체 보류. 레짐 판단 정리, MARKET_WEAK/technical_regime 분리. RS 탈락 종목 D+1·D+3·D+5 추적 코드 완성. → <a href="/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/">운영 Log</a>&nbsp;&nbsp;<a href="/insight/insight-034/">Insight</a></span>
+        </li>
         <li>
           <span class="update-date">2026-05-11 · 레짐 감지 업그레이드</span>
           <span class="update-desc">KOSPI 5일 수익률 기반 레짐 감지 도입. BULL 8% / NEUTRAL 5% / BEAR 3% MA20 이격 기준 전환. 유니버스 20→40종목, BULL 전용 11:00 사이클, 눌림목 필터, RSI 상한 65→70, 분할익절(+6% 50% 익절), 구간별 트레일링, 일일 한도 3건으로 확대.</span>
