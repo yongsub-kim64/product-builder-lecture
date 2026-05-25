@@ -52,6 +52,18 @@ const archiveProjects = [
   },
 ];
 
+const labProjects = [
+  {
+    order: 1,
+    status: 'lab',
+    statusLabel: 'Codex + Claude Code 실험 진행 중',
+    title: '바이브코딩 실험실',
+    description: 'Codex와 Claude Code를 활용해 아이디어를 실제 웹앱으로 만드는 AI Product Build 실험 기록입니다. 현재 Commit Hero v0.1 MVP 등 소규모 실험 결과물을 누적하고 있습니다.',
+    href: '/projects/vibe-coding-lab',
+    linkLabel: '실험 기록 보기 →',
+  },
+];
+
 ---
 
 <PageLayout title="프로젝트" description="관련 Log와 Insight가 누적되는 핵심 프로젝트들">
@@ -73,7 +85,23 @@ const archiveProjects = [
       </div>
     </section>
 
-    <!-- Section 2: 운영 보류 또는 기록형 프로젝트 -->
+    <!-- Section 2: 바이브코딩 실험실 -->
+    <section class="project-section">
+      <h2 class="section-heading">바이브코딩 실험실</h2>
+      <p class="section-desc">Codex와 Claude Code 기반의 AI Product Build 실험 사례를 누적하는 기록 공간입니다.</p>
+      <div class="projects-grid">
+        {labProjects.map((p) => (
+          <div class="project-card card-active">
+            <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <a href={p.href} class="project-link">{p.linkLabel}</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 3: 운영 보류 또는 기록형 프로젝트 -->
     <section class="project-section section-archive">
       <h2 class="section-heading section-heading-muted">운영 보류 · 기록형 프로젝트</h2>
       <p class="section-desc">실제 운영은 보류 중이나, 초기 기획·작동 MVP 기록을 자산으로 보존합니다.</p>
@@ -251,6 +279,11 @@ const archiveProjects = [
   .status-on-hold {
     background: #f5f5f5;
     color: #757575;
+  }
+
+  .status-lab {
+    background: #e0f7fa;
+    color: #00695c;
   }
 
   /* Card text */

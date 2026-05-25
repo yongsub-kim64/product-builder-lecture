@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Vibe Coding Lab"
+  description="A record of AI Product Build experiments using Codex and Claude Code to turn ideas into working web apps."
+>
+  <div class="project-detail">
+
+    <a href="/en/projects" class="back-link">← Projects</a>
+
+    <div class="project-header">
+      <span class="project-status status-lab">Codex + Claude Code Experiments Active</span>
+      <h1>Vibe Coding Lab</h1>
+      <p class="project-lead">A space for recording AI Product Build experiments using Codex and Claude Code — turning ideas into working web apps. Not a tutorial walkthrough, but a record of taking each experiment from planning through to deployment.</p>
+    </div>
+
+    <section class="section">
+      <h2>What This Lab Is</h2>
+      <p>AI coding agents make it possible to move quickly from an idea to a working result. But generating code is not the same as shipping a product. Defining what to build, designing the sequence of instructions to give the AI, verifying the output, and connecting everything through to deployment — all of that still requires deliberate human design.</p>
+      <p>The Vibe Coding Lab is a space for doing exactly that from start to finish and recording the process. Each experiment is a small-scale MVP — an AI Product Build learning result rather than a production service.</p>
+    </section>
+
+    <section class="section">
+      <h2>Experiment Flow</h2>
+      <p>Each experiment follows this sequence:</p>
+      <ul>
+        <li><strong>Plan</strong> — Define the idea and feature scope.</li>
+        <li><strong>Design</strong> — Document design criteria in DESIGN.md or AGENTS.md format.</li>
+        <li><strong>Do</strong> — Implement using Codex or Claude Code.</li>
+        <li><strong>Check</strong> — Verify with a local build, lint, and functional testing.</li>
+        <li><strong>Deploy</strong> — Push to GitHub and deploy via Cloudflare Pages.</li>
+        <li><strong>Asset</strong> — Record the experiment process and result as a Log or Insight entry on chulbuji.com.</li>
+      </ul>
+      <p>The development environment runs on Codex CLI and Claude Code CLI. The full path runs from local development → GitHub version control → Cloudflare Pages deployment → chulbuji.com record.</p>
+    </section>
+
+    <section class="section">
+      <h2>Codex Experiments</h2>
+      <p>AI Product Build experiments using OpenAI Codex. Each entry is an independent web app taken through the full cycle from planning to Cloudflare Pages deployment alongside Codex.</p>
+
+      <div class="lab-experiments-grid">
+
+        <!-- 001 Commit Hero -->
+        <div class="lab-exp-card">
+          <div class="lab-exp-header">
+            <span class="lab-exp-num">001</span>
+            <span class="lab-exp-tool">Codex</span>
+            <span class="project-status status-mvp-deployed">MVP Deployed · Experiment Record</span>
+          </div>
+          <h3>Commit Hero</h3>
+          <p>A small web app that turns a public GitHub username into an RPG-style developer card based on public GitHub activity data. Built as an AI Product Build experiment using Codex — following a Plan, Design, Do, Check, GitHub, and Cloudflare Pages deployment flow. The development process and technical decisions are documented in the build log.</p>
+          <div class="lab-exp-tech">
+            <span class="lab-exp-tech-tag">Vite</span>
+            <span class="lab-exp-tech-tag">React</span>
+            <span class="lab-exp-tech-tag">TypeScript</span>
+            <span class="lab-exp-tech-tag">GitHub API</span>
+            <span class="lab-exp-tech-tag">Cloudflare Pages</span>
+          </div>
+          <div class="link-group">
+            <a href="https://codex-commits-hero.pages.dev" class="link-btn link-btn-primary" target="_blank" rel="noopener noreferrer">View MVP ↗</a>
+            <a href="/en/log/2026-05-25-codex-vibecoding-plugin-skills-practice" class="link-btn link-btn-secondary">View Build Log →</a>
+            <!-- GitHub button: uncomment after making repo public
+            <a href="https://github.com/yongsub-kim64/codex-commits-hero" class="link-btn link-btn-secondary" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+            -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Claude Code Experiments</h2>
+      <p>Claude Code is used differently from Codex here. Where Codex is strong at quickly building a new app from scratch, Claude Code is strong at understanding the structure of a project already in operation and working precisely within it.</p>
+      <p>Current use includes adding Log and Insight content to chulbuji.com, verifying builds, and maintaining file structure consistency — repeatable operational asset generation. Independent deployable web app experiments built with Claude Code are currently being organized.</p>
+
+      <div class="lab-placeholder">
+        <span class="lab-placeholder-label">Experiment records in preparation</span>
+        <p>Claude Code-based standalone experiment results will be added to this section when ready. Currently accumulating through operational automation and content structuring work.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Related Records</h2>
+      <p>Details about how the Vibe Coding Lab was set up and the Codex practice that produced Commit Hero are documented in the log below.</p>
+      <div class="link-group" style="margin-top: 0.875rem;">
+        <a href="/en/log/2026-05-25-codex-vibecoding-plugin-skills-practice" class="link-btn link-btn-secondary">Codex Vibe Coding Practice Log →</a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--primary-color);
+  }
+
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+  }
+
+  .status-lab {
+    background: #e0f7fa;
+    color: #00695c;
+  }
+
+  .status-mvp-deployed {
+    background: #f1f8e9;
+    color: #33691e;
+  }
+
+  .project-header h1 {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-lead {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  .section {
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section h2 {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .section > p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+  }
+
+  .section > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section ul {
+    padding-left: 1.375rem;
+    margin: 0.5rem 0 0.875rem;
+    list-style: disc;
+  }
+
+  .section ul li {
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    color: var(--text-color);
+  }
+
+  .section ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Lab experiment cards */
+  .lab-experiments-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .lab-exp-card {
+    border: 1px solid #b2dfdb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #fafffe;
+  }
+
+  .lab-exp-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+    flex-wrap: wrap;
+  }
+
+  .lab-exp-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #00695c;
+    background: #e0f7fa;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .lab-exp-tool {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #555;
+    background: #f0f0f0;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .lab-exp-header .project-status {
+    margin-bottom: 0;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .lab-exp-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .lab-exp-card > p {
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.85;
+    margin-bottom: 0.875rem;
+  }
+
+  .lab-exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .lab-exp-tech-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #555;
+    background: #f5f5f5;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+  }
+
+  /* Placeholder for upcoming entries */
+  .lab-placeholder {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    border: 1px dashed #b2dfdb;
+    border-radius: 8px;
+    background: #fafffe;
+  }
+
+  .lab-placeholder-label {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #00897b;
+    margin-bottom: 0.5rem;
+  }
+
+  .lab-placeholder p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* Link buttons */
+  .link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: opacity 0.15s, background-color 0.15s;
+  }
+
+  .link-btn-primary {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .link-btn-primary:hover {
+    opacity: 0.88;
+    color: white;
+  }
+
+  .link-btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: white;
+  }
+
+  .link-btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f7f8ff;
+  }
+
+  @media (max-width: 480px) {
+    .project-detail {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .link-group {
+      flex-direction: column;
+    }
+
+    .link-btn {
+      justify-content: center;
+    }
+
+    .lab-exp-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
