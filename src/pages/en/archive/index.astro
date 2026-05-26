@@ -3,10 +3,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const logs = await getCollection('en/log', ({ data }) =>
-  data.published !== false && data.showInLog !== false
+  data.published !== false && data.showInLog !== false && data.noindex !== true
 );
 const insights = await getCollection('en/insight', ({ data }) =>
-  data.published !== false
+  data.published !== false && data.noindex !== true
 );
 
 type PostType = 'log' | 'insight';

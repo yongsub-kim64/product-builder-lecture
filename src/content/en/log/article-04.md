@@ -5,6 +5,7 @@ excerpt: "Many lottery analysts predict 'exclusion numbers,' but this has weak s
 tags: ["lottery", "probability", "statistics"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 "This week's lottery, these numbers absolutely won't come out!" Common 'exclusion number' information found in lottery-related communities and analysis sites. Does it have scientific basis? To cut to the chase, exclusion number prediction is merely a statistical illusion and doesn't help increase winning probability at all.

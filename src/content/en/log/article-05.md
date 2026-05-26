@@ -5,6 +5,7 @@ excerpt: "Fact-checking the impact of lottery 'patterns' such as consecutive num
 tags: ["lottery", "probability", "pattern-analysis"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 "The combination of 3 odd and 3 even numbers comes out most often," "You should avoid consecutive numbers" — 'pattern analysis' you've probably heard at least once when selecting lottery numbers. Do these patterns actually have a real impact on winning probability?
