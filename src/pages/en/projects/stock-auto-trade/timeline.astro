@@ -153,7 +153,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
         <h2>Strategy Optimization</h2>
         <span class="phase-period">2026-04-23 – present</span>
       </div>
-      <p class="phase-summary">Strategy redesigned based on live trading data. The biggest shift: from "a system that fills slots" to "a system that selectively holds only strong candidates."</p>
+      <p class="phase-summary">Strategy redesigned based on live trading data. The biggest shift was from "a system that fills slots" to "a system that selectively holds only strong candidates." The current stage adds observation structure before trusting backtest-driven strategy changes.</p>
 
       <ul class="entries">
         <li class="entry">
@@ -222,6 +222,26 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
           <p class="entry-sig">Root cause of repeated zero-buy days (fixed 5% MA20 ceiling) analyzed and resolved with KOSPI 5-day return regime detection: BULL 8% / NEUTRAL 5% / BEAR 3%. Universe expanded 20→40, 11:00 BULL-only buy cycle added, pullback filter (OR structure), RSI ceiling 65→70 (75 chase-block kept), partial profit-taking (+6% = 50% exit), tiered trailing relaxation, daily buy limit 2→3, settlement-price pnl tracking, consolidated sell alerts.</p>
           <a href="/en/log/2026-05-11-auto-trading-regime-upgrade/" class="entry-link">View Log →</a>
           <a href="/en/insight/insight-032/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-22</span>
+            <span class="entry-version">RS Validation</span>
+          </div>
+          <p class="entry-title">RS Benchmark Skew Checked and Post-Rejection Tracking Added</p>
+          <p class="entry-sig">Investigated why live operation produced zero orders. Six BUY signals fired, but no stock passed RS. Compared ETF, universe simple average, market-cap weighted, and candidate-weighted benchmarks. Benchmark replacement was held back, and D+1/D+3/D+5 tracking for RS-rejected stocks was added first.</p>
+          <a href="/en/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/" class="entry-link">View Log →</a>
+          <a href="/en/insight/insight-034/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-28</span>
+            <span class="entry-version">2-Week Observation</span>
+          </div>
+          <p class="entry-title">Backtest Bias Checked, Current Rules Kept, shadow_report Prepared</p>
+          <p class="entry-sig">Removed look-ahead bias by switching from same-day close execution to T+1 open execution, and confirmed that applying today's 40-stock universe backward creates bias. Compared old-15, loosen-30, and MA20 deviation ceilings of 8%, 12%, and 15%, but kept the live rules unchanged and moved into two weeks of live logging plus shadow_report observation.</p>
+          <a href="/en/log/2026-05-28-auto-trading-backtest-shadow-report/" class="entry-link">View Log →</a>
+          <a href="/en/insight/insight-035/" class="entry-link" style="margin-left:0.75rem;">View Insight →</a>
         </li>
       </ul>
     </div>
