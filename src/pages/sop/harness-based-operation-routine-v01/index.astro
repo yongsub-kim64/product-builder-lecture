@@ -1,0 +1,439 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="하네스 기반 운영 루틴 v0.1"
+  description="6월부터 위스퍼링 중심 운영을 하네스, 스킬, 워크플로우, Eval 기반 운영 시스템으로 전환하기 위한 공개용 운영 루틴 초안입니다."
+>
+  <div class="sop-container">
+
+    <div class="sop-header">
+      <span class="sop-version-badge">v0.1 · 2026년 6월 운영 기준</span>
+      <h1>하네스 기반 운영 루틴 v0.1</h1>
+      <p class="sop-lead">이 문서는 6월 운영을 대화 중심 정리에서 반복 가능한 AI 운영 시스템으로 옮기기 위한 초안입니다. 내부 프롬프트나 세부 자동화 설정이 아니라, 공개 가능한 수준의 목적, 흐름, 검증 기준만 정리합니다.</p>
+    </div>
+
+    <section class="sop-section">
+      <span class="section-label">01 — 목적</span>
+      <h2>위스퍼링을 운영 시스템으로 회수한다</h2>
+      <p>5월까지는 메타철부지와의 대화로 생각을 정리하고 실행 방향을 잡았습니다. 6월부터는 그 대화를 하네스, 스킬, 워크플로우, Eval로 회수해 반복 가능한 운영 구조로 바꿉니다.</p>
+      <p>목표는 완벽한 시스템을 만드는 것이 아닙니다. 작은 작업부터 목적과 검증 기준을 세우고, 실행 결과를 Log, Insight, SOP, Board로 남기는 습관을 만드는 것입니다.</p>
+    </section>
+
+    <section class="sop-section">
+      <span class="section-label">02 — 핵심 프로젝트</span>
+      <h2>6월 운영 시스템의 실험 대상</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>프로젝트</th>
+              <th>운영 관점</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI 콘텐츠 비서</td>
+              <td>소상공인 홍보 콘텐츠 생성 서비스의 시장 반응과 납품 흐름 검증</td>
+            </tr>
+            <tr>
+              <td>AI 블로그 / AdSense</td>
+              <td>발행 루틴, SEO 점검, 광고 심사 준비 과정을 기준으로 기록</td>
+            </tr>
+            <tr>
+              <td>chulbuji.com 본진</td>
+              <td>Log, Insight, SOP, Board로 운영 경험을 자산화</td>
+            </tr>
+            <tr>
+              <td>마케팅 실험</td>
+              <td>크몽, 블로그, 검색 유입, 상품 설명 개선을 작은 단위로 검증</td>
+            </tr>
+            <tr>
+              <td>자동매매 기록 자산화</td>
+              <td>투자 판단 제안이 아닌 운영 실험과 검증 기록으로 축적</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sop-section">
+      <span class="section-label">03 — 기본 운영 흐름</span>
+      <h2>생각에서 기록 자산까지</h2>
+      <ol class="flow-list">
+        <li>
+          <strong>현재 좌표 정리</strong>
+          <span>대표님의 생각이나 실행 경험을 메타철부지와 정리합니다. 지금 무엇이 문제이고, 어떤 판단이 필요한지 확인합니다.</span>
+        </li>
+        <li>
+          <strong>하네스 작성</strong>
+          <span>목적, 역할, 범위, 검증 기준, 기록 위치를 먼저 적습니다. 기준이 불명확하면 실행을 줄이고 하네스를 보강합니다.</span>
+        </li>
+        <li>
+          <strong>실행 AI 배정</strong>
+          <span>GPT와 메타철부지는 판단과 구조화를 맡고, Claude와 Codex는 개발과 수정, Gemini는 Google 생태계와 마케팅 점검, NotebookLM은 자료 정리와 SOP화를 맡깁니다.</span>
+        </li>
+        <li>
+          <strong>실행</strong>
+          <span>정한 범위 안에서 작업합니다. 범위가 커지면 새 하네스로 분리하거나 보류합니다.</span>
+        </li>
+        <li>
+          <strong>Eval</strong>
+          <span>결과를 느낌으로 판단하지 않고 사전에 정한 기준으로 점검합니다.</span>
+        </li>
+        <li>
+          <strong>기록 반영</strong>
+          <span>의미 있는 과정은 Log, Insight, SOP, Board 중 적절한 위치에 남깁니다.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="sop-section">
+      <span class="section-label">04 — 하네스 5문항</span>
+      <h2>작업 시작 전 확인할 질문</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>질문</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>목적</td>
+              <td>이 일을 왜 하는가?</td>
+            </tr>
+            <tr>
+              <td>역할</td>
+              <td>대표님, 메타철부지, Claude, Codex, Gemini 중 누가 무엇을 맡는가?</td>
+            </tr>
+            <tr>
+              <td>범위</td>
+              <td>어디까지 하고 어디서 멈추는가?</td>
+            </tr>
+            <tr>
+              <td>검증</td>
+              <td>성공, 실패, 보류를 무엇으로 판단하는가?</td>
+            </tr>
+            <tr>
+              <td>기록</td>
+              <td>결과를 Log, Insight, SOP, Board 중 어디에 남기는가?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sop-section">
+      <span class="section-label">05 — 6월 검증 기준</span>
+      <h2>이번 달에 확인할 최소 기준</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>기준</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>하네스 카드</td>
+              <td>5개 이상 작성</td>
+            </tr>
+            <tr>
+              <td>스킬 후보</td>
+              <td>3개 이상 도출</td>
+            </tr>
+            <tr>
+              <td>워크플로우</td>
+              <td>2개 이상 실제 실행</td>
+            </tr>
+            <tr>
+              <td>Eval 기준</td>
+              <td>2개 이상 작성</td>
+            </tr>
+            <tr>
+              <td>Log / Insight</td>
+              <td>운영 시스템 관련 2개 이상 발행</td>
+            </tr>
+            <tr>
+              <td>SOP</td>
+              <td>하네스 기반 운영 루틴 v0.1 작성</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sop-section">
+      <span class="section-label">06 — 운영 규칙</span>
+      <h2>작게 만들고 실제로 쓴다</h2>
+      <ul class="criteria-list">
+        <li>
+          <strong>새 작업을 시작할 때 하네스 5문항을 먼저 적는다</strong>
+          <p>기준 없이 시작한 작업은 반복 가능한 운영 자산으로 남기 어렵습니다.</p>
+        </li>
+        <li>
+          <strong>반복되는 작업은 스킬 후보로 표시한다</strong>
+          <p>한 번 더 할 가능성이 보이면 다음 실행을 줄일 수 있는 형태로 남깁니다.</p>
+        </li>
+        <li>
+          <strong>한 번만 하는 작업은 Log로 끝낸다</strong>
+          <p>모든 작업을 무겁게 문서화하지 않고, 필요한 판단과 결과만 남깁니다.</p>
+        </li>
+        <li>
+          <strong>두 번 이상 반복된 작업은 SOP로 만든다</strong>
+          <p>완성된 매뉴얼이 아니라 다음 반복을 돕는 v0.1 기준부터 작성합니다.</p>
+        </li>
+        <li>
+          <strong>결과 판단은 느낌이 아니라 Eval 기준으로 한다</strong>
+          <p>사전에 정한 기준이 없으면 성공과 실패를 단정하지 않고 보류 판단으로 남깁니다.</p>
+        </li>
+        <li>
+          <strong>매주 1회 Board에 반영한다</strong>
+          <p>프로젝트별 실행을 흩어놓지 않고 월간 운영 방향 안으로 회수합니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="sop-section sop-links-section">
+      <span class="section-label">연결된 기록</span>
+      <h2>관련 페이지</h2>
+      <div class="sop-link-group">
+        <a href="/board/2026-06/" class="sop-link-btn">2026년 6월 운영 Board →</a>
+        <a href="/log/june-ai-operating-system-transition/" class="sop-link-btn">관련 Log →</a>
+        <a href="/sop/ai-collaboration-operating-sop/" class="sop-link-btn">AI 협업 운영 SOP v0 →</a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .sop-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+  }
+
+  .sop-header {
+    margin-bottom: 3rem;
+  }
+
+  .sop-version-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #6a1b9a;
+    background: #f3e5f5;
+    padding: 0.2rem 0.625rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .sop-header h1 {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+
+  .sop-lead {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-muted);
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  .sop-section {
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem;
+    text-transform: uppercase;
+  }
+
+  .sop-section h2 {
+    font-size: clamp(1.0625rem, 1rem + 0.3125vw, 1.1875rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .sop-section p {
+    font-size: var(--font-size-base);
+    line-height: 1.85;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 1.25rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 0.875rem;
+    text-align: left;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  th {
+    background: #fafafa;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  td {
+    color: #444;
+  }
+
+  .flow-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    counter-reset: flow-counter;
+  }
+
+  .flow-list li {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.875rem 0 0.875rem 1rem;
+    border-left: 2px solid var(--border-color);
+    position: relative;
+    counter-increment: flow-counter;
+  }
+
+  .flow-list li::before {
+    content: counter(flow-counter);
+    position: absolute;
+    left: -0.75rem;
+    top: 0.875rem;
+    width: 1.375rem;
+    height: 1.375rem;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    line-height: 1;
+    text-align: center;
+    padding-top: 1px;
+  }
+
+  .flow-list li:last-child::before {
+    border-color: var(--primary-color, #667eea);
+    color: var(--primary-color, #667eea);
+  }
+
+  .flow-list li strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .flow-list li span {
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.65;
+  }
+
+  .criteria-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .criteria-list li {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: white;
+  }
+
+  .criteria-list li strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.375rem;
+  }
+
+  .criteria-list li p {
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .sop-link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .sop-link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    background: white;
+    min-height: 44px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .sop-link-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  @media (max-width: 640px) {
+    .sop-container {
+      padding: 2rem 1rem 4rem;
+    }
+  }
+</style>
