@@ -15,6 +15,15 @@ const sortedPosts = insightPosts.sort((a, b) => b.data.date.getTime() - a.data.d
     </header>
 
     <div class="posts-grid">
+      {/* TODO: guides 컬렉션이 3개 이상이면 동적 렌더링으로 전환 */}
+      <LogCard
+        title="Vibe Coding Guide: How to Build Apps with AI Without Deep Coding Skills"
+        excerpt="You don't need deep coding knowledge to build an MVP with AI. This guide covers planning documents, role separation, and validation criteria using ChatGPT, Claude Code, and Codex."
+        date={new Date('2026-05-31')}
+        slug="vibe-coding-guide"
+        tags={["Guide", "vibe coding", "AI coding", "Claude Code"]}
+        section="guides"
+      />
       {sortedPosts.map((post) => (
         <LogCard
           title={post.data.title}
