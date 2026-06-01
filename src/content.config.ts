@@ -26,6 +26,19 @@ const logCollection = defineCollection({
   }),
 });
 
+const guidesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    tags: z.array(z.string()).optional(),
+    type: z.string().optional(),
+    lang: z.string().optional(),
+    published: z.boolean().default(true),
+  }),
+});
+
 export const collections = {
   'ko/pages': pagesCollection,
   'en/pages': pagesCollection,
@@ -33,4 +46,6 @@ export const collections = {
   'en/log': logCollection,
   'ko/insight': logCollection,
   'en/insight': logCollection,
+  'ko/guides': guidesCollection,
+  'en/guides': guidesCollection,
 };

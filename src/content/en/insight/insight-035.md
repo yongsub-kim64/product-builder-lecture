@@ -1,60 +1,58 @@
 ---
-title: "What Matters in Auto-Trading Is Execution Path, Not Just Logic"
-date: 2026-06-01
-excerpt: "Partial take-profit logic was implemented and the config was enabled. It never ran because the intraday sell loop wasn't passing the actual position size or partial_sold state. In automated trading, 'the logic exists' and 'the logic actually runs' are two completely different things."
-tags: ["auto-trading", "execution-path", "operational-principles", "stock-auto-trade"]
+title: "Why a Good-Looking Backtest Is Not Enough Reason to Change Strategy"
+date: 2026-05-28
+excerpt: "A strong-looking backtest is not enough reason to change an auto-trading strategy. The first question is not whether the number is attractive, but whether the number was produced under assumptions that match live trading."
+tags: ["auto-trading", "backtest", "operations-experiment", "stock-auto-trade"]
 published: true
 project_tag: "자동매매"
 ---
 
 ## Summary
 
-Partial take-profit was configured and the `rule_engine` logic was implemented. But in the intraday 5-minute sell loop, `check_sell_signal` was called without passing `total_qty` (actual position size) or `partial_sold` state. With `total_qty` defaulting to 0, the PARTIAL_SELL branch could never be entered — by structure, not by logic. The problem was a wiring error in the execution path, not a bug in the strategy.
+A strong-looking backtest is not enough reason to change an auto-trading strategy. The first question is not whether the number is attractive, but whether the number was produced under assumptions that match live trading.
 
-## Why I Checked rule_engine First
+When an auto-trading system loses money, the natural urge is to change the conditions.
 
-Trading strategy is concentrated in `rule_engine`. Sell conditions, priority order, quantity calculation — most of the logic lives there. So when something doesn't execute, the natural first move is to inspect rule_engine.
+Maybe the RS rule is too loose. Maybe the MA20 deviation ceiling should be higher. Those are reasonable questions. But this review reminded me that answering them too quickly is dangerous.
 
-But in this case, rule_engine was fine. The problem was in the code calling it. If the scheduler doesn't pass the required values, rule_engine can't make the right decision regardless of how correct its logic is.
+The first backtest looked healthy. Five-year returns and risk-reward figures were not bad. On the surface, the strategy looked fine.
 
-Rule from this experience: **when a feature doesn't execute, check the call path and passed arguments before checking the logic.**
+Then I inspected the code. The backtest was deciding signals with the close price on day T, then also using that same close as the execution price. That was look-ahead bias. Look-ahead bias means a backtest uses information that would not have been available at the actual trading moment, which can make performance look better than it really is.
 
-## It Has to Be Seen as a State Flow
+The live auto-trader scans during the session at 10:00, 13:00, and 14:00, then decides based on the conditions and price available at that moment. If the backtest behaves as if it already knows the closing price of that day, it gives itself information the live system never had.
 
-The sell loop isn't a simple conditional — it's a state flow. Every step has to connect.
+After removing that issue, performance came down and risk increased. That result was more valuable. A realistic baseline is more useful than an inflated return.
 
-```
-Live account balance → fetch total_qty
-order_log.json → read partial_sold
-check_sell_signal(total_qty, partial_sold) called
-PARTIAL_SELL returned → calculate qty → execute sell
-Write partial_sold=True
-Next loop → read partial_sold=True → prevent re-trigger
-Remaining shares → continue trailing stop management
-```
+The second issue was survivor bias. If today's 40-stock universe is applied backward across five years, future survivors and winners are treated as if they were already known. That is information the system would not have had at the time.
 
-If any one of these links breaks, the strategy's intention and the actual execution diverge. Partial take-profit didn't fire because the very first link — fetching `total_qty` from the account and passing it as an argument — wasn't connected.
+At that point, I redefined what the backtest was for.
 
-## Log Security Is Also an Execution Path Problem
+A backtest is not a tool for predicting future returns. It is a tool for comparing condition A and condition B under the same assumptions.
 
-The same day, while reviewing logs, I found that Telegram bot tokens were being exposed in log output. `httpx` logs HTTP request URLs at INFO level, and those URLs contain the token. Account identifiers were also appearing in log output in plain text.
+Using that frame, I compared the RS criteria and MA20 deviation ceilings. old-15 is the stricter RS rule, while loosen-30 is the more relaxed RS rule introduced for recent market conditions. old-15 looked stable in the backtest. But against 30 live trades, old-15 may have blocked more than half of the entries.
 
-This is an execution path problem too. System design isn't just about what gets processed — it's also about where and how the results of processing are recorded. An operation that functions correctly but leaves sensitive output in unexpected places is an incomplete implementation.
+In the recent market, loosen-30 may have been creating actual opportunities. The 12% MA20 deviation ceiling also looked better in some metrics, but it increased exposure to more volatile names and showed periods where losses worsened. So I could not responsibly conclude that one candidate was clearly better.
 
-## Operational Verification Checklist
+The conclusion was simple. I cannot change it yet.
 
-After adding or modifying any auto-trading feature, verify in this order:
+Instead, I built a structure for observation. Each buy signal now records RS, MA20 deviation, and whether candidate rules would have passed. Actual orders remain unchanged, while shadow_report compares candidate rules against live trades side by side. A shadow_report is an observation record that compares what would have happened under candidate rules without changing real execution.
 
-1. Is the config flag enabled?
-2. Is the rule_engine logic implemented?
-3. Is it called from the actual execution loop (scheduler)?
-4. Are required state values passed as arguments?
-5. Is the execution result saved to order_log?
-6. Is the saved state re-read on the next loop?
-7. Are there no sensitive values left in logs?
+I will review again after two weeks of data.
 
-Logic without a connected execution path is the same as no logic. In auto-trading operations, the core of debugging is **execution path and state continuity** — not the condition expression.
+What matters in auto-trading is not fast modification. It is having a structure that tells you whether modification is justified.
+
+Changing a strategy is easy. If you cannot explain why it improved or worsened afterward, it is not an improvement.
+
+Today I did not change the strategy. I built the eyes needed to know when a strategy change is warranted.
+
+## Work Log
+
+| Item | Note |
+|---|---|
+| What I built | Backtest bias removal and shadow_report comparison structure |
+| What broke | The initial backtest had look-ahead bias |
+| What I learned | Before trusting a good backtest result, verify whether the result itself is trustworthy |
 
 ---
 
-Related Log: [Why the Auto-Trader's Partial Take-Profit Never Fired — Scheduler Execution Path Over Logic](/en/log/2026-06-01-auto-trading-partial-sell-scheduler-fix/)
+Related Log: [I Did Not Fix the Auto-Trader Right Away. I Added Instrumentation Before Trusting the Backtest](/en/log/2026-05-28-auto-trading-backtest-shadow-report/)

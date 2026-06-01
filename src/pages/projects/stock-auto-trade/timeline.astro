@@ -37,7 +37,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
           </div>
           <p class="entry-title">시장 레짐 2중 필터 / 거래대금 필터 / 당일 재매수 금지 / 로그 체계 정리</p>
           <p class="entry-sig">매수하지 않아야 할 날에 매수하지 않도록 하는 세팅 완료. 조건이 없을 때 아무것도 안 하는 구조가 핵심이다.</p>
-          <a href="/log/2026-04-08-auto-trading-v1.1/" class="entry-link">Log 보기 →</a>
+          <a href="/log/2026-04-08-auto-trading-v11/" class="entry-link">Log 보기 →</a>
         </li>
         <li class="entry">
           <div class="entry-header">
@@ -153,7 +153,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
         <h2>전략 최적화</h2>
         <span class="phase-period">2026-04-23 ~ 현재</span>
       </div>
-      <p class="phase-summary">실전 운영 데이터를 기반으로 전략을 재설계했다. 가장 큰 전환은 "슬롯을 채우는 시스템"에서 "강한 종목만 선택적으로 보유하는 시스템"으로의 철학 변경이다.</p>
+      <p class="phase-summary">실전 운영 데이터를 기반으로 전략을 재설계했다. 가장 큰 전환은 "슬롯을 채우는 시스템"에서 "강한 종목만 선택적으로 보유하는 시스템"으로의 철학 변경이고, 최근에는 백테스트보다 실거래 관찰 구조를 먼저 보강하는 단계로 이동했다.</p>
 
       <ul class="entries">
         <li class="entry">
@@ -241,6 +241,26 @@ import PageLayout from '../../../layouts/PageLayout.astro';
           <p class="entry-sig">급등장 매수 0건 반복 원인(MA20 이격 상한 5% 고정)을 분석하고 KOSPI 5일 수익률 기반 레짐 감지로 전환. BULL 8% / NEUTRAL 5% / BEAR 3% 구조 적용. 유니버스 20→40종목 확대, 11:00 BULL 전용 매수 사이클, 눌림목 필터(OR 구조), RSI 상한 65→70(75 이상 차단 유지), 분할익절(+6% 50% 익절), 구간별 트레일링 완화, 일일 매수 한도 2→3건, 체결가 기반 pnl 보정, 동시 매도 통합 알림 추가.</p>
           <a href="/log/2026-05-11-auto-trading-regime-upgrade/" class="entry-link">Log 보기 →</a>
           <a href="/insight/insight-032/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-22</span>
+            <span class="entry-version">RS 필터 검증 체계</span>
+          </div>
+          <p class="entry-title">RS 기준 왜곡 가능성 점검과 탈락 종목 사후 추적 구조 구축</p>
+          <p class="entry-sig">운영 모드에서 주문 0건이 발생한 이유를 추적. BUY 신호 6건 중 RS 통과가 없었고, ETF·유니버스 단순평균·시총가중·후보군 가중 기준을 비교했다. 기준 교체는 보류하고 RS 탈락 종목 D+1·D+3·D+5 추적 코드를 먼저 만들었다.</p>
+          <a href="/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/" class="entry-link">Log 보기 →</a>
+          <a href="/insight/insight-034/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
+        </li>
+        <li class="entry">
+          <div class="entry-header">
+            <span class="entry-date">2026-05-28</span>
+            <span class="entry-version">2주 관찰 모드</span>
+          </div>
+          <p class="entry-title">백테스트 편향 확인, 현행 조건 유지, shadow_report 관찰 구조 준비</p>
+          <p class="entry-sig">백테스트의 룩어헤드 편향을 T+1 시가 체결 기준으로 수정하고, 현재 40종목 유니버스를 과거에 그대로 적용할 때 생기는 편향을 확인했다. old-15와 loosen-30, MA20 이격 8%·12%·15%를 비교했지만 즉시 변경하지 않고 실거래 로그와 shadow_report로 2주간 관찰하기로 했다.</p>
+          <a href="/log/2026-05-28-auto-trading-backtest-shadow-report/" class="entry-link">Log 보기 →</a>
+          <a href="/insight/insight-035/" class="entry-link" style="margin-left:0.75rem;">Insight 보기 →</a>
         </li>
       </ul>
     </div>

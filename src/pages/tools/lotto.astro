@@ -13,21 +13,21 @@ const categories = {
     title: '확률과 통계',
     icon: '📊',
     articles: allLottoArticles.filter(a =>
-      ['lotto-analysis-1', 'report-math', 'article-04', 'article-05'].includes(a.slug.split('/').pop() || '')
+      ['lotto-analysis-1', 'article-04', 'article-05'].includes(a.slug.split('/').pop() || '')
     )
   },
   practical: {
     title: '실용 정보',
     icon: '💰',
     articles: allLottoArticles.filter(a =>
-      ['article-03', 'lotto-analysis-2', 'report-tax'].includes(a.slug.split('/').pop() || '')
+      ['article-03', 'lotto-analysis-2'].includes(a.slug.split('/').pop() || '')
     )
   },
   general: {
     title: '일반 정보',
     icon: '🎯',
     articles: allLottoArticles.filter(a =>
-      ['history-of-lotto', 'article-06', 'strategy-guide'].includes(a.slug.split('/').pop() || '')
+      ['history-of-lotto'].includes(a.slug.split('/').pop() || '')
     )
   }
 };

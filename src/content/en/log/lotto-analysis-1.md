@@ -5,6 +5,7 @@ excerpt: "Each lottery draw is an 'independent trial' unaffected by previous res
 tags: ["lottery", "probability", "statistics"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 "Haven't the numbers that haven't appeared in the last 10 draws due to come out soon?" or "I should avoid last week's numbers" — you've probably thought something like this at least once. Let me start with the conclusion: these thoughts are statistically meaningless. This is because each lottery draw is a 'completely new game.'

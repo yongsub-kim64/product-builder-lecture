@@ -89,7 +89,7 @@ project_link: "stock-auto-trade"
 - 잔여수량 트레일링스탑 연속 관리 여부
 - 로그에 토큰·계좌 식별자 미출력 여부
 
-→ [자동매매에서 중요한 것은 로직보다 실행 경로다](/insight/insight-035/)  
+→ [자동매매에서 중요한 것은 로직보다 실행 경로다](/insight/insight-037/)  
 → [자동매매 프로젝트 전체 기록](/projects/stock-auto-trade/)
 
 ---

@@ -5,6 +5,7 @@ excerpt: "The origin of lottery dates back to ancient civilizations. Though it a
 tags: ["lottery", "history"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 Though it appears to be a simple numbers game, lottery has a long tradition accompanying human history. The origin of lottery dates back to ancient civilizations.

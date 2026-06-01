@@ -12,7 +12,7 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <div class="project-header">
       <span class="status-badge status-live">🟢 Live Trading Active · Experiment Record</span>
       <p class="definition">Roughly ₩10M live-account experiment running an AI-assisted automated trading system</p>
-      <p class="meta">Regime detection strategy engine upgrade · Updated 2026-05-11 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
+      <p class="meta">Backtest validation complete · 2-week live observation mode · Updated 2026-05-28 · <a href="/en/projects/stock-auto-trade/timeline/">Full timeline →</a></p>
     </div>
 
     <div class="disclaimer">
@@ -32,29 +32,31 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
 
     <section class="section">
       <h2>Current Status</h2>
-      <p>As of May 2026, the auto-trading project has moved past the order-execution stabilization stage and entered the regime-based strategy engine validation stage.</p>
-      <p>The May 11, 2026 upgrade introduced a KOSPI 5-day return regime detection system. The strategy engine now switches MA20 deviation thresholds based on BULL / NEUTRAL / BEAR market regime, resolving the structural problem where a fixed 5% ceiling was blocking leading stocks during surges.</p>
-      <p><strong>Core of this upgrade</strong></p>
+      <p>As of May 28, 2026, the auto-trading program is running in live operation and has moved into a two-week observation stage. I confirmed look-ahead bias and universe bias in the backtest, then compared candidate RS rules and MA20 deviation ceilings. The conclusion was not to change live parameters immediately, but to keep the current rules and collect decision-quality logs.</p>
+      <p><strong>Completed on 2026-05-28</strong></p>
       <ul class="gains-list">
-        <li>KOSPI 5-day return based BULL / NEUTRAL / BEAR regime detection</li>
-        <li>Dynamic MA20 deviation ceiling: BULL 8% / NEUTRAL 5% / BEAR 3%</li>
-        <li>Universe expanded from 20 to 40 candidates</li>
-        <li>11:00 BULL-only buy cycle added</li>
-        <li>Pullback filter added (OR structure with MA20 deviation)</li>
-        <li>RSI ceiling raised from 65 to 70 (RSI 75 chase-block kept)</li>
-        <li>Partial profit-taking: 50% exit at +6%, remainder on trailing stop</li>
-        <li>Tiered trailing: +4–8% at -2.5% / +8–15% at -2.0% / +15%+ at -1.5%</li>
-        <li>Daily buy limit raised from 2 to 3</li>
-        <li>Settlement-price pnl tracking and consolidated sell alerts</li>
+        <li><strong>Backtest harness built</strong> - separated from live code, with historical data collection, CSV caching, and rule_engine pure-function reuse</li>
+        <li><strong>Look-ahead bias removed</strong> - confirmed that the original backtest used information unavailable at the live trading moment, then changed same-day close execution to T+1 open execution</li>
+        <li><strong>Universe bias identified</strong> - confirmed that applying today's 40-stock universe to past years creates bias, so the backtest is treated as a relative comparison tool, not a return forecast</li>
+        <li><strong>RS rules and MA20 deviation ceilings compared</strong> - compared old-15 (stricter RS rule), loosen-30 (relaxed RS rule), and 8% / 12% / 15% MA20 deviation ceilings without switching immediately</li>
+        <li><strong>Live logs strengthened</strong> - each buy signal now records RS, excess RS, MA20 deviation, signal time, and buy price</li>
+        <li><strong>shadow_report prepared</strong> - an observation record for comparing candidate-rule outcomes against live trades without changing real orders</li>
       </ul>
-      <p><strong>Next validation (1–2 weeks of live logs)</strong></p>
+      <p><strong>Current decision</strong></p>
       <ul class="gains-list">
-        <li>Buy frequency by regime: does BULL regime actually produce more buys?</li>
-        <li>Pullback entry performance: risk-reward comparison vs MA20 deviation entries</li>
-        <li>Partial profit-taking effect: final return vs full-position trailing</li>
-        <li>Overall risk-reward improvement</li>
+        <li>RS rule: keep loosen-30</li>
+        <li>MA20 deviation ceiling: keep 8%</li>
+        <li>Stop-loss, trailing stop, RSI, exclusion rules, and order execution: unchanged</li>
+        <li>old-15 and 12% MA20 deviation ceiling: observe through shadow_report</li>
       </ul>
-      <p class="timeline-cta"><a href="/en/log/2026-05-11-auto-trading-regime-upgrade/">Regime Upgrade Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-032/">Related Insight →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Previous Engine Refinement Log →</a></p>
+      <p><strong>Next actions</strong></p>
+      <ul class="gains-list">
+        <li>Accumulate two weeks of live logs and shadow_report data</li>
+        <li>Track cumulative results using pnl_net after fees and taxes</li>
+        <li>Review whether repeatedly losing tickers need separate filters</li>
+        <li>Later consider consolidating duplicated universe definitions into config.py or universe.py</li>
+      </ul>
+      <p class="timeline-cta"><a href="/en/log/2026-05-28-auto-trading-backtest-shadow-report/">2026-05-28 Operations Log →</a>&nbsp;&nbsp;<a href="/en/insight/insight-035/">Related Insight →</a>&nbsp;&nbsp;<a href="/en/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/">Previous RS Validation Log →</a></p>
     </section>
 
     <section class="section">
@@ -85,6 +87,14 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
     <section class="section">
       <h2>Recent Updates</h2>
       <ul class="recent-updates">
+        <li>
+          <span class="update-date">2026-05-28 · Backtest validation and observation mode</span>
+          <span class="update-desc">Confirmed look-ahead bias and universe bias in the backtest, then changed execution to T+1 open. Compared old-15, loosen-30, and MA20 deviation ceilings of 8%, 12%, and 15%, but kept current live parameters. Strengthened live logs and prepared shadow_report for two weeks of observation. → <a href="/en/log/2026-05-28-auto-trading-backtest-shadow-report/">Operations Log</a>&nbsp;&nbsp;<a href="/en/insight/insight-035/">Insight</a></span>
+        </li>
+        <li>
+          <span class="update-date">2026-05-22 · RS Filter Validation Structure</span>
+          <span class="update-desc">Live mode ran normally with four scans and zero orders. Six BUY signals fired, but none passed RS. Compared ETF, universe simple average, market-cap weighted, and candidate-weighted benchmarks; held off on changing the benchmark. Built D+1/D+3/D+5 tracking for RS-rejected stocks. → <a href="/en/log/2026-05-22-auto-trading-zero-buy-rs-filter-tracking/">Operations Log</a>&nbsp;&nbsp;<a href="/en/insight/insight-034/">Insight</a></span>
+        </li>
         <li>
           <span class="update-date">2026-05-11 · Regime Detection Upgrade</span>
           <span class="update-desc">KOSPI 5-day return regime detection introduced. MA20 deviation ceiling switches by regime: BULL 8% / NEUTRAL 5% / BEAR 3%. Universe expanded 20→40, BULL-only 11:00 cycle, pullback filter, RSI ceiling 65→70, partial profit-taking (+6% 50% exit), tiered trailing, daily buy limit raised to 3.</span>
@@ -125,6 +135,10 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
       <h2>Featured Logs — 5 entries to understand this project</h2>
       <ul class="featured-list">
         <li>
+          <a href="/en/log/2026-05-28-auto-trading-backtest-shadow-report/">I Did Not Fix the Auto-Trader Right Away. I Added Instrumentation Before Trusting the Backtest</a>
+          <span class="featured-note">A record of finding backtest bias and adding live logs plus shadow_report before changing conditions.</span>
+        </li>
+        <li>
           <a href="/en/log/2026-05-08-auto-trading-strategy-engine-first-refinement/">Stock Auto-Trading Program — Strategy Engine First Refinement</a>
           <span class="featured-note">The latest operations record organizing capital structure, stop-loss, target profit, and log placement based on live-account data.</span>
         </li>
@@ -140,16 +154,16 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
           <a href="/en/log/2026-04-20-auto-trading-live-day1/">Live Account Day 1 — 2 Bugs Fixed, 5 Positions Opened</a>
           <span class="featured-note">Live-account troubleshooting. Bugs that didn't appear in paper trading showed up in live.</span>
         </li>
-        <li>
-          <a href="/en/log/2026-04-27-auto-trading-rs-filter/">KOSPI Hit a Record High — But My Portfolio Was Down</a>
-          <span class="featured-note">Found the MAX_HOLD=5 slot-filling problem and switched to RS-based stock selection philosophy.</span>
-        </li>
       </ul>
     </section>
 
     <section class="section">
       <h2>Featured Insights — key observations</h2>
       <ul class="featured-list">
+        <li>
+          <a href="/en/insight/insight-035/">Why a Good-Looking Backtest Is Not Enough Reason to Change Strategy</a>
+          <span class="featured-note">An operating insight on why bias checks and observation structure come before strategy changes.</span>
+        </li>
         <li>
           <a href="/en/insight/insight-031/">In Auto-Trading, Rejection Reasons Matter More Than Buy Signals</a>
           <span class="featured-note">An operating insight for interpreting zero buys as traceable defensive behavior rather than failure.</span>
@@ -173,10 +187,6 @@ import PageLayout from '../../../../layouts/PageLayout.astro';
         <li>
           <a href="/en/insight/insight-015/">The Days the System Said No</a>
           <span class="featured-note">Doing nothing is a strategy. A record of the days when the right move was not to buy.</span>
-        </li>
-        <li>
-          <a href="/en/insight/insight-020/">Filling Slots with Weak Stocks Is Not Diversification — It's Distributing Losses</a>
-          <span class="featured-note">MAX_HOLD=5 was a ceiling, not a target. Proved on the day KOSPI hit an all-time high.</span>
         </li>
       </ul>
     </section>

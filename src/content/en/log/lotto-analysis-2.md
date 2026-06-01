@@ -5,6 +5,7 @@ excerpt: "Complete summary of lottery prize tax calculation based on Income Tax 
 tags: ["lottery", "tax", "prize-money"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 If you win 2 billion KRW, how much will the tax be? The answer is 642.4 million KRW. Lottery prize money is classified as 'other income' and is withheld at source at rates determined by income tax law. Here's how to accurately calculate the net amount.

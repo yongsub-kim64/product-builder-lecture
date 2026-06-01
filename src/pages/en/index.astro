@@ -43,6 +43,20 @@ const sortedPosts = logPosts.sort((a, b) => {
     </div>
   </section>
 
+  <section class="featured-guide">
+    <div class="featured-guide-inner">
+      <h2>Start Here</h2>
+      <div class="guide-card">
+        <span class="status-badge guide">Recommended Guide</span>
+        <div class="guide-card-body">
+          <a href="/en/guides/vibe-coding-guide/" class="guide-card-title">Vibe Coding Guide</a>
+          <p>A practical guide to building an MVP with AI without deep coding knowledge — covering planning documents, role separation, and validation criteria.</p>
+          <a href="/en/guides/vibe-coding-guide/" class="guide-card-link">Read the guide →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="latest-posts">
     <h2>Latest Posts</h2>
     <div class="posts-grid">
@@ -362,6 +376,85 @@ const sortedPosts = logPosts.sort((a, b) => {
   .status-badge.experimental {
     background: #fce4ec;
     color: #c62828;
+  }
+
+  .status-badge.guide {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .featured-guide {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background: #f9f9fd;
+  }
+
+  .featured-guide-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem) clamp(1rem, 0.8rem + 1vw, 2rem);
+  }
+
+  .featured-guide h2 {
+    font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    text-align: center;
+  }
+
+  .guide-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: clamp(1.25rem, 1rem + 1.25vw, 1.75rem);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .guide-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .guide-card-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .guide-card-title {
+    display: block;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .guide-card-title:hover {
+    color: #667eea;
+  }
+
+  .guide-card-body p {
+    color: #555;
+    font-size: clamp(0.9375rem, 0.9rem + 0.1875vw, 1.0625rem);
+    line-height: 1.65;
+    margin: 0 0 1rem;
+  }
+
+  .guide-card-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 0.9rem + 0.1875vw, 1.0625rem);
+  }
+
+  .guide-card-link:hover {
+    text-decoration: underline;
+    color: #764ba2;
   }
 
   .project-info {

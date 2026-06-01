@@ -2,6 +2,17 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+const excludedLogSlugs = [
+  'ai-sangseon-yaksu',
+  'taming-the-architect',
+  'history-of-lotto',
+  'lotto-analysis-1',
+  'lotto-analysis-2',
+  'article-03',
+  'article-04',
+  'article-05',
+];
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://chulbuji.com',
@@ -10,8 +21,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/playground/') &&
         !page.includes('/tools/') &&
-        !page.includes('/log/ai-sangseon-yaksu/') &&
-        !page.includes('/log/taming-the-architect/'),
+        !excludedLogSlugs.some((slug) => page.includes(`/log/${slug}/`)),
       i18n: {
         defaultLocale: 'ko',
         locales: {

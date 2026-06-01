@@ -52,6 +52,18 @@ const archiveProjects = [
   },
 ];
 
+const labProjects = [
+  {
+    order: 1,
+    status: 'lab',
+    statusLabel: 'Codex + Claude Code Experiments Active',
+    title: 'Vibe Coding Lab',
+    description: 'A record of AI Product Build experiments using Codex and Claude Code to turn ideas into working web apps. Currently accumulating small-scale experiment results including Commit Hero v0.1 MVP.',
+    href: '/en/projects/vibe-coding-lab',
+    linkLabel: 'View experiment records →',
+  },
+];
+
 ---
 
 <PageLayout title="Projects" description="Core projects where related Logs and Insights accumulate">
@@ -73,7 +85,23 @@ const archiveProjects = [
       </div>
     </section>
 
-    <!-- Section 2: On-Hold or Archive Projects -->
+    <!-- Section 2: Vibe Coding Lab -->
+    <section class="project-section">
+      <h2 class="section-heading">Vibe Coding Lab</h2>
+      <p class="section-desc">A space for accumulating AI Product Build experiment records using Codex and Claude Code.</p>
+      <div class="projects-grid">
+        {labProjects.map((p) => (
+          <div class="project-card card-active">
+            <span class={`project-status status-${p.status}`}>{p.statusLabel}</span>
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <a href={p.href} class="project-link">{p.linkLabel}</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 3: On-Hold or Archive Projects -->
     <section class="project-section section-archive">
       <h2 class="section-heading section-heading-muted">On-Hold or Archive Projects</h2>
       <p class="section-desc">Active operation is paused, but early planning records and working MVPs are preserved as assets.</p>
@@ -251,6 +279,11 @@ const archiveProjects = [
   .status-on-hold {
     background: #f5f5f5;
     color: #757575;
+  }
+
+  .status-lab {
+    background: #e0f7fa;
+    color: #00695c;
   }
 
   /* Card text */

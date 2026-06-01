@@ -4,7 +4,7 @@ import LogCard from '../../components/LogCard.astro';
 import { getCollection } from 'astro:content';
 
 const logPosts = await getCollection('ko/log', ({ data }) => {
-  return data.published !== false && data.showInLog !== false;
+  return data.published !== false && data.showInLog !== false && data.noindex !== true;
 });
 const sortedPosts = logPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---

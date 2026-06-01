@@ -87,7 +87,7 @@ In automated trading, "the logic exists" and "the logic actually runs" are compl
 - Do remaining shares continue under trailing stop management?
 - Are there no token or account identifiers in the log output?
 
-→ [What Matters in Auto-Trading Is Execution Path, Not Just Logic](/en/insight/insight-035/)  
+→ [What Matters in Auto-Trading Is Execution Path, Not Just Logic](/en/insight/insight-037/)  
 → [Auto-Trading Project — Full Record](/projects/stock-auto-trade/)
 
 ---

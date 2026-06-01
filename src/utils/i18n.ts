@@ -7,6 +7,15 @@ export const defaultLang = 'ko';
 
 export type Lang = keyof typeof languages;
 
+const localizedUrlOverrides: Record<Lang, Record<string, string>> = {
+  ko: {
+    '/en/log/just-two-songs-but-i-built-a-house': '/log/ttalrang-du-gok-hajiman-jibeun-jieotda/',
+  },
+  en: {
+    '/log/ttalrang-du-gok-hajiman-jibeun-jieotda': '/en/log/just-two-songs-but-i-built-a-house/',
+  },
+};
+
 export const ui = {
   ko: {
     'nav.home': '홈',
@@ -68,6 +77,10 @@ export function useTranslations(lang: Lang) {
 
 // 언어 전환 URL 생성
 export function getLocalizedUrl(url: string, targetLang: Lang): string {
+  const normalizedUrl = url.replace(/\/$/, '') || '/';
+  const override = localizedUrlOverrides[targetLang][normalizedUrl];
+  if (override) return override;
+
   const currentLang = url.startsWith('/en/') || url.startsWith('/en') ? 'en' : 'ko';
   
   if (currentLang === targetLang) return url;

@@ -5,6 +5,7 @@ excerpt: "Location of NH Nonghyup Bank Headquarters in Seoul (required for 1st p
 tags: ["lottery", "prize-claim", "practical-info"]
 published: true
 showInLog: false
+noindex: true
 ---
 
 Have you won the lottery first prize — the luck of a lifetime? Congratulations! Now it's time to claim your prize. First prize winnings can only be claimed at the 'NH Nonghyup Bank Headquarters.'
