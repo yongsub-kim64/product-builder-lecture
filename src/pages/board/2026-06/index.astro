@@ -224,13 +224,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
             <h3>자동매매</h3>
             <p>전략 검증과 운영 리포트 자산화를 계속합니다. 콘텐츠 수익화 프로젝트와 분리해 독립 운영합니다.</p>
             <ul class="card-update-list">
-              <li>분할익절 미작동 원인 수정 — scheduler 실행 경로 배선 오류</li>
-              <li>텔레그램 토큰 재발급 및 로그 마스킹 필터 적용</li>
-              <li>기존 로그 소급 마스킹 완료</li>
-              <li>다음 실거래에서 PARTIAL_SELL 관찰 대기</li>
+              <li>분할익절 실거래 경로 검증 — 완료</li>
+              <li>partial_sold=True 저장 및 재분할익절 방지 확인 — 완료</li>
+              <li>잔여수량 트레일링스탑 연속성 확인 — 완료</li>
+              <li>trailing_stop.json 기반 peak_price 복원 확인 — 완료</li>
+              <li>텔레그램 토큰 재발급 후 발송 정상화 — 완료</li>
+              <li>코드 수정 후 프로세스 재시작 필요성 확인 — 완료</li>
+              <li>로그 민감정보 마스킹 지속 관찰 — 대기</li>
             </ul>
             <div class="card-actions">
-              <a href="/log/2026-06-01-auto-trading-partial-sell-scheduler-fix" class="card-btn card-btn-outline">최근 기록 보기 →</a>
+              <a href="/log/2026-06-02-auto-trading-partial-sell-live-verification" class="card-btn card-btn-outline">최근 기록 보기 →</a>
               <a href="/projects/stock-auto-trade" class="card-btn card-btn-outline">프로젝트 보기 →</a>
             </div>
           </div>
