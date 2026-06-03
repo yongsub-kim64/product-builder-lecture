@@ -48,7 +48,7 @@ Today's observation
 The trailing stop fired in a live trade for the first time. It triggered as designed and the log recorded it correctly. That said, this upgrade lowered the activation threshold from +4% to +3% — how that difference plays out in practice needs more time to observe.
 
 The insight from today's event is written up separately.
-→ [When Should a Trailing Stop Activate?](/insight/insight-021/)
+→ [When Should a Trailing Stop Be Activated in an Automated Trading System?](/en/insight/insight-021/)
 
 This record is not investment advice. It's an operations log documenting what happens when building and running an auto-trading system alongside AI.
 
