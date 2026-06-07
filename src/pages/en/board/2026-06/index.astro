@@ -5,7 +5,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 <BaseLayout
   title="June 2026 Operating Board"
   description="The June 2026 chulbuji.com monthly operating board — shifting from whispering-based AI work to a harness, skill, workflow, and eval-based operating system."
-  ogImage="/images/board/board-2026-06-en.png"
+  ogImage="/images/board/june-2026-operations-board-system-v2-en.png"
 >
   <div class="board-page">
 
@@ -26,7 +26,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     <section class="board-image-section">
       <div class="board-image-wrapper">
         <img
-          src="/images/board/board-2026-06-en.png"
+          src="/images/board/june-2026-operations-board-system-v2-en.png"
           alt="June 2026 chulbuji.com Operating Board dashboard image"
           class="board-dashboard-img"
           loading="lazy"
@@ -208,6 +208,26 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
             <div class="card-focus card-focus-review">Maximum 10 videos / under 2 hours/week / stop immediately if conditions violated</div>
             <h3>Shopping Shorts</h3>
             <p>June-only pilot experiment. Validating whether a repeatable production routine for product-information-format shorts is achievable. Stop immediately if the home base schedule is displaced or 2 hours/week is exceeded.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- June Experiment Completed -->
+      <div class="ops-group">
+        <div class="ops-group-header">
+          <span class="ops-group-label label-done">June Experiment — Completed</span>
+          <span class="ops-group-count">1</span>
+        </div>
+        <div class="ops-single">
+          <div class="ops-card card-done">
+            <div class="card-focus card-focus-done">Shorts Generation Experiment / AI Collaboration / Local MVP · Complete</div>
+            <h3>Shorts / Reels Generator — Local MVP Phase 1 Complete</h3>
+            <p>Built a local MVP with Claude Code that generates 9:16 vertical MP4s from photos and short clips, reaching v0.1.4. Confirmed BGM, Ken Burns motion, transitions, intro/outro cards, per-scene captions, workout record input, text style controls, card preview, and custom download filename — then judged Phase 1 complete. Phase 2 will separately review drag editing, AI scene analysis, OCR, deployment, and user-saved sessions.</p>
+            <div class="card-actions">
+              <a href="/en/log/2026-06-07-shorts-reels-generator-local-mvp-phase-1/" class="card-btn card-btn-outline">Operating log →</a>
+              <a href="/en/insight/ai-mvp-operator-judgment-vibe-coding/" class="card-btn card-btn-outline">Insight →</a>
+              <a href="/en/guides/claude-code-local-mvp-sop/" class="card-btn card-btn-outline">Procedure guide →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -483,6 +503,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
   .label-focus { background: #e3f2fd; color: #1565c0; }
   .label-archive { background: #f3e5f5; color: #6a1b9a; }
   .label-review { background: #fff3e0; color: #e65100; }
+  .label-done { background: #e8f5e9; color: #2e7d32; }
 
   .ops-group-count { font-size: 0.75rem; font-weight: 700; color: #bbb; }
 
@@ -516,6 +537,8 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
   }
 
   .card-focus-review { color: #e65100; background: #fff3e0; }
+  .card-focus-done { color: #2e7d32; background: #e8f5e9; }
+  .card-done { border-color: #c8e6c9; }
 
   .ops-card h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 0; }
   .ops-card p { font-size: 0.875rem; color: #555; line-height: 1.65; margin: 0; flex: 1; }

@@ -91,6 +91,8 @@ Vibe coding is not a one-time magic trick. It is a process of running small expe
 
 chulbuji.com holds an accumulating archive of Logs and Insights from building products and structuring operating systems alongside AI. This guide is the first entry point into those records.
 
-{/* TODO internal link: related Log/Insight collection */}
+Related Log: [Shorts / Reels Generator — Local MVP Phase 1 Complete](/en/log/2026-06-07-shorts-reels-generator-local-mvp-phase-1/)  
+Related Insight: [When Building an MVP with AI, What the Operator Must Hold On To Is Judgment, Not Code](/en/insight/ai-mvp-operator-judgment-vibe-coding/)  
+Related Guide: [Basic Procedure for Building a Local Service App MVP with Claude Code](/en/guides/claude-code-local-mvp-sop/)
 
 Related Insight: [What I Learned from Codex Practice — Workflow Design Matters More Than Commands](/en/insight/codex-workflow-design-over-prompting/)

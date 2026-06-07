@@ -91,6 +91,8 @@ AI와 협업해 결과물을 만들 때 가장 중요한 것은 하네스 관점
 
 chulbuji.com에는 AI와 함께 제품을 만들고 운영 시스템을 정리해 온 Log와 Insight가 쌓여 있습니다. 이 글은 그 기록들로 들어가는 첫 번째 입구입니다.
 
-{/* TODO internal link: 관련 Log/Insight 모음 */}
+관련 Log: [쇼츠/릴스 생성기 로컬 MVP 1단계 완료 기록](/log/2026-06-07-shorts-reels-generator-local-mvp-phase-1/)  
+관련 Insight: [AI와 함께 MVP를 만들 때 운영자가 붙잡아야 할 것은 코드가 아니라 판단이다](/insight/ai-mvp-operator-judgment-vibe-coding/)  
+관련 Guide: [Claude Code와 로컬 서비스앱 MVP를 만들 때의 기본 절차](/guides/claude-code-local-mvp-sop/)
 
 관련 인사이트: [Codex 실습에서 배운 것 — AI 개발은 명령보다 작업 흐름 설계가 중요하다](/insight/codex-workflow-design-over-prompting/)

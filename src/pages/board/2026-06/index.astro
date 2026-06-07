@@ -5,7 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 <BaseLayout
   title="2026년 6월 운영 Board"
   description="위스퍼링 중심 운영에서 하네스, 스킬, 워크플로우, Eval 기반 운영 시스템으로 전환하는 2026년 6월 chulbuji.com 월간 운영 Board입니다."
-  ogImage="/images/board/board-2026-06-ko.png"
+  ogImage="/images/board/june-2026-operations-board-system-v2-ko.png"
 >
   <div class="board-page">
 
@@ -26,7 +26,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <section class="board-image-section">
       <div class="board-image-wrapper">
         <img
-          src="/images/board/board-2026-06-ko.png"
+          src="/images/board/june-2026-operations-board-system-v2-ko.png"
           alt="2026년 6월 chulbuji.com 운영 Board 대시보드 이미지"
           class="board-dashboard-img"
           loading="lazy"
@@ -208,6 +208,26 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
             <div class="card-focus card-focus-review">최대 10편 / 주 2시간 이하 / 종료 조건 위반 시 즉시 중단</div>
             <h3>쇼핑쇼츠</h3>
             <p>6월 한정 파일럿 실험. 제품 정보형 쇼츠 제작 루틴의 반복 가능성을 검증합니다. 본진 일정 침범 또는 주 2시간 초과 시 즉시 종료합니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6월 실험 완료 -->
+      <div class="ops-group">
+        <div class="ops-group-header">
+          <span class="ops-group-label label-done">6월 실험 완료</span>
+          <span class="ops-group-count">1</span>
+        </div>
+        <div class="ops-single">
+          <div class="ops-card card-done">
+            <div class="card-focus card-focus-done">쇼츠 생성 실험 / AI 협업 개발 / 로컬 MVP · 완료</div>
+            <h3>쇼츠/릴스 생성기 로컬 MVP 1단계 완료</h3>
+            <p>Claude Code와 협업해 사진이나 짧은 영상을 9:16 세로 MP4로 생성하는 로컬 MVP를 v0.1.4까지 구현했다. BGM, Ken Burns 모션, 전환 효과, 인트로/아웃트로 카드, 장면별 캡션, 운동 기록 입력, 텍스트 스타일 조정, 카드 프리뷰, 다운로드 파일명 기능까지 확인하고 1단계 완료로 판단했다. 2단계에서는 드래그 편집, AI 장면 분석, OCR, 배포, 사용자 저장 기능을 별도 검토한다.</p>
+            <div class="card-actions">
+              <a href="/log/2026-06-07-shorts-reels-generator-local-mvp-phase-1/" class="card-btn card-btn-outline">운영 기록 →</a>
+              <a href="/insight/ai-mvp-operator-judgment-vibe-coding/" class="card-btn card-btn-outline">Insight →</a>
+              <a href="/guides/claude-code-local-mvp-sop/" class="card-btn card-btn-outline">절차 가이드 →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -553,6 +573,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .label-focus { background: #e3f2fd; color: #1565c0; }
   .label-archive { background: #f3e5f5; color: #6a1b9a; }
   .label-review { background: #fff3e0; color: #e65100; }
+  .label-done { background: #e8f5e9; color: #2e7d32; }
 
   .ops-group-count {
     font-size: 0.75rem;
@@ -606,6 +627,15 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .card-focus-review {
     color: #e65100;
     background: #fff3e0;
+  }
+
+  .card-focus-done {
+    color: #2e7d32;
+    background: #e8f5e9;
+  }
+
+  .card-done {
+    border-color: #c8e6c9;
   }
 
   .ops-card h3 {
