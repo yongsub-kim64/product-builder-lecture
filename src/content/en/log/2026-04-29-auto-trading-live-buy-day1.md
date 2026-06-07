@@ -47,7 +47,7 @@ The RS filter and trailing stop upgrade ran together through a full buy cycle fo
 Two slots remain empty. The system held cash when no strong candidates appeared — the structure worked as intended.
 
 The observation from today is written up separately.
-→ [The Trailing Stop Sold at +0.84%. I Decided Not to Call That a Waste.](/insight/insight-022/)
+→ [What a +0.84% Trailing-Stop Exit Taught Me About Rule-Based Automation](/en/insight/insight-022/)
 
 Next: 10:00 scan tomorrow for additional buy attempts. BULL regime (4/5) maintained.
 

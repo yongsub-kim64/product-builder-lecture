@@ -19,6 +19,8 @@ const localizedUrlOverrides: Record<Lang, Record<string, string>> = {
 export const ui = {
   ko: {
     'nav.home': '홈',
+    'nav.start': '처음 읽기',
+    'nav.guides': '가이드',
     'nav.board': '운영 Board',
     'nav.playground': 'Playground',
     'nav.insight': '인사이트',
@@ -29,6 +31,8 @@ export const ui = {
     'nav.contact': '연락하기',
     'footer.about': '소개',
     'footer.contact': '연락하기',
+    'footer.log': '기록',
+    'footer.board': '운영 Board',
     'footer.archive': '아카이브',
     'footer.privacy': '개인정보처리방침',
     'footer.terms': '이용약관',
@@ -41,6 +45,8 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
+    'nav.start': 'Start Here',
+    'nav.guides': 'Guides',
     'nav.board': 'Operating Board',
     'nav.playground': 'Playground',
     'nav.insight': 'Insight',
@@ -51,6 +57,8 @@ export const ui = {
     'nav.contact': 'Contact',
     'footer.about': 'About',
     'footer.contact': 'Contact',
+    'footer.log': 'Log',
+    'footer.board': 'Board',
     'footer.archive': 'Archive',
     'footer.privacy': 'Privacy',
     'footer.terms': 'Terms',

@@ -88,8 +88,54 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <nav class="about-nav" aria-label="Page navigation">
         <a href="/en/log/" class="about-nav-btn">Browse the Log</a>
         <a href="/en/projects/" class="about-nav-btn">View Projects</a>
-        <a href="/en/board/" class="about-nav-btn">View the Board</a>
+        <a href="/en/start/" class="about-nav-btn">Start Here</a>
       </nav>
+    </section>
+
+    <!-- 05 AI Usage Principles -->
+    <section class="about-section">
+      <span class="section-label">05 — AI Usage Principles</span>
+      <h2 class="section-title">AI is a partner — not an autonomous author</h2>
+
+      <p>Every piece of content on this site is planned by the human operator ('Chulbuji'), written in collaboration with AI, and reviewed and edited by the operator before publication. AI does not judge, decide, or publish content autonomously.</p>
+
+      <div class="principle-list">
+        <div class="principle-item">
+          <strong>Review responsibility</strong>
+          <p>The factual accuracy, appropriateness of expression, and correctness of information in all AI-generated content is verified by the operator. AI errors may result in inaccuracies — if you spot one, please reach out via <a href="/en/contact">Contact</a>.</p>
+        </div>
+        <div class="principle-item">
+          <strong>Acknowledging limitations</strong>
+          <p>AI is a powerful tool, but it can be wrong. Rather than following AI suggestions uncritically, the process of questioning, verifying, and sometimes rejecting them is part of what gets recorded here.</p>
+        </div>
+        <div class="principle-item">
+          <strong>Transparent record-keeping</strong>
+          <p>Errors, misjudgments, and revision histories from AI collaboration are not hidden — they're part of the record. Failures and corrections sit alongside successes as core content on this site.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Content & Monetization -->
+    <section class="about-section">
+      <span class="section-label">06 — Content & Monetization</span>
+      <h2 class="section-title">On sensitive topics and monetization</h2>
+
+      <p>This site includes content of an experimental nature — auto-trading records, monetization experiments, and similar topics. The following applies clearly.</p>
+
+      <div class="principle-list">
+        <div class="principle-item">
+          <strong>Auto-trading content</strong>
+          <p>All auto-trading records are personal technical validation experiments. They are not investment advice, profit guarantees, or specific stock recommendations. Past experimental results do not predict future performance. All investment decisions remain the sole responsibility of the reader.</p>
+        </div>
+        <div class="principle-item">
+          <strong>Advertising and monetization</strong>
+          <p>This site may display Google AdSense advertisements. Any ad revenue goes toward covering site operating costs. Ad placement does not influence editorial content or direction. All advertising complies with platform policies.</p>
+        </div>
+        <div class="principle-item">
+          <strong>What readers can and cannot expect</strong>
+          <p><strong>Can expect:</strong> genuine records of experiments and operations, honest trial-and-error, the operator's subjective judgment and reasoning.<br><strong>Cannot expect:</strong> guaranteed investment returns, expert-validated professional advice, specific stock recommendations.</p>
+        </div>
+      </div>
     </section>
 
   </div>
@@ -267,6 +313,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     border-color: var(--primary-color);
     color: var(--primary-color);
     background-color: #f7f8ff;
+  }
+
+  /* Principle list (sections 05–06) */
+  .principle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-top: 1.25rem;
+  }
+
+  .principle-item {
+    border-left: 3px solid var(--border-color);
+    padding: 0.875rem 1.25rem;
+    background: var(--background-alt);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .principle-item strong {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .principle-item p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 0 !important;
   }
 
   /* Desktop: 3-column cards */

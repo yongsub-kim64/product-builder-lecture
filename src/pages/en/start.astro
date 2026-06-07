@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Start Here — chulbuji.com"
+  description="New to chulbuji.com? Here's what this site is about and where to begin."
+>
+  <div class="start-container">
+
+    <h1 class="start-title">Start Here</h1>
+    <p class="start-lead">New to chulbuji.com?<br>Here's what this space is, and where to begin.</p>
+
+    <section class="start-section">
+      <span class="section-label">01 — What this site is</span>
+      <h2 class="section-title">An execution record — not a declaration</h2>
+      <p>chulbuji.com is a personal project hub where a 34-year semiconductor process engineer — 'Chulbuji' — documents the process of becoming an AI Product Builder.</p>
+      <p>Auto-trading, an AI content service, a blog monetization experiment — real projects built and operated alongside AI, recorded not as success stories but as genuine trial-and-error in progress.</p>
+      <p>You'll find more experiments in motion than finished results here. That's the nature of this site.</p>
+    </section>
+
+    <section class="start-section">
+      <span class="section-label">02 — Who this helps</span>
+      <h2 class="section-title">People wrestling with similar questions</h2>
+      <ul class="match-list">
+        <li>You want to build something real with AI, but don't know where to start</li>
+        <li>You're curious how non-developers actually collaborate with AI</li>
+        <li>You want to see specific trial-and-error from someone running projects alone</li>
+        <li>You want real records of automation and monetization experiments — not polished case studies</li>
+      </ul>
+    </section>
+
+    <section class="start-section">
+      <span class="section-label">03 — Content structure</span>
+      <h2 class="section-title">What's here?</h2>
+      <div class="content-map">
+        <div class="content-map-item">
+          <a href="/en/guides" class="content-map-title">Guides</a>
+          <p>Practical methodology documents on AI collaboration. If you're visiting for the first time, start here.</p>
+        </div>
+        <div class="content-map-item">
+          <a href="/en/insight" class="content-map-title">Insights</a>
+          <p>Distilled reflections from experiments and operations. Better suited for those interested in mindset over mechanics.</p>
+        </div>
+        <div class="content-map-item">
+          <a href="/en/projects" class="content-map-title">Projects</a>
+          <p>Current status and records of active projects — auto-trading, AI Content Assistant, AI blog, and more.</p>
+        </div>
+        <div class="content-map-item">
+          <a href="/en/log" class="content-map-title">Log</a>
+          <p>Raw daily records — unpolished snapshots of experiments in progress, not finished thoughts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="start-section">
+      <span class="section-label">04 — Recommended first reads</span>
+      <h2 class="section-title">Begin here</h2>
+      <ul class="reading-list">
+        <li class="reading-item">
+          <a href="/en/guides/vibe-coding-guide/" class="reading-title">Vibe Coding Guide: Building an App with AI Without Deep Coding Knowledge</a>
+          <p class="reading-desc">Planning documents, AI role separation, and validation criteria — a practical guide to building an MVP with AI as a non-developer.</p>
+          <span class="reading-tag">Guide</span>
+        </li>
+        <li class="reading-item">
+          <a href="/en/insight/insight-001/" class="reading-title">Five Weeks of Transformation: How I Became an AI Product Builder</a>
+          <p class="reading-desc">Why this site exists. The first record of a 34-year engineer deciding to make the leap alongside AI.</p>
+          <span class="reading-tag">Insight</span>
+        </li>
+        <li class="reading-item">
+          <a href="/en/about/" class="reading-title">About: Chulbuji + Meta-Chulbuji</a>
+          <p class="reading-desc">An introduction to the person behind this site and the philosophy behind the work.</p>
+          <span class="reading-tag">About</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="start-section start-notice">
+      <span class="section-label">05 — Before you read</span>
+      <h2 class="section-title">A few things to know</h2>
+      <ul class="notice-list">
+        <li>This site includes records of auto-trading experiments. These are personal technical validation records, not investment advice. Past experimental results do not predict future performance.</li>
+        <li>All AI-generated content is reviewed and edited by the human operator before publication. AI does not publish autonomously.</li>
+        <li>Results here are not curated to show only successes. Failures, corrections, and pivots are documented alongside wins.</li>
+        <li>This site may display AdSense advertising. Any ad revenue goes toward site operating costs.</li>
+      </ul>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .start-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .start-title {
+    font-size: clamp(1.625rem, 1.25rem + 1.875vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .start-lead {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  .start-section {
+    padding-top: 2.75rem;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 0.875rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+
+  .start-section p {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+
+  .match-list {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .match-list li {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+  }
+
+  .content-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .content-map-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.125rem 1.25rem;
+    background: var(--background-alt);
+  }
+
+  .content-map-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .content-map-title:hover {
+    color: var(--primary-color);
+  }
+
+  .content-map-item p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .reading-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .reading-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem 1.375rem;
+    background: white;
+    transition: box-shadow 0.2s;
+  }
+
+  .reading-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .reading-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .reading-title:hover {
+    color: var(--primary-color);
+  }
+
+  .reading-desc {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0 0 0.75rem;
+  }
+
+  .reading-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: #f0f0ff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .notice-list {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .notice-list li {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    margin-bottom: 0.875rem;
+    color: #555;
+  }
+
+  .notice-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 540px) {
+    .content-map {
+      grid-template-columns: 1fr;
+    }
+
+    .start-container {
+      padding: 2rem 1rem 3rem;
+    }
+  }
+</style>

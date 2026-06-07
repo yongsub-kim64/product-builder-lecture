@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="가이드 — chulbuji.com"
+  description="AI 협업 방법론과 실전 흐름을 정리한 가이드 모음입니다."
+>
+  <div class="guides-container">
+
+    <header class="page-header">
+      <h1>가이드</h1>
+      <p>AI와 함께 실제로 작동하는 방법을 정리한 실전 방법론 문서입니다.<br>이론보다 실행 흐름에 집중합니다.</p>
+    </header>
+
+    <div class="guides-grid">
+
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-tag guide-tag--primary">방법론</span>
+          <time>2026년 5월 31일</time>
+        </div>
+        <a href="/guides/vibe-coding-guide/" class="guide-title">
+          바이브 코딩 입문서: 코딩을 몰라도 AI와 함께 앱 만드는 방법
+        </a>
+        <p class="guide-excerpt">코딩을 깊게 알지 않아도 AI와 함께 MVP를 만들 수 있습니다. 기획 문서, 역할 분리, 검증 기준을 바탕으로 ChatGPT, Claude Code, Codex를 활용한 실전 바이브 코딩 흐름을 정리했습니다.</p>
+        <div class="guide-tags">
+          <span>바이브 코딩</span>
+          <span>AI 코딩</span>
+          <span>Claude Code</span>
+          <span>MVP</span>
+        </div>
+        <a href="/guides/vibe-coding-guide/" class="guide-link">읽으러 가기 →</a>
+      </article>
+
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-tag guide-tag--insight">운영 인사이트</span>
+          <time>2026년 5월 25일</time>
+        </div>
+        <a href="/insight/vibe-coding-harness-design/" class="guide-title">
+          바이브 코딩의 핵심은 코드가 아니라 하네스였다
+        </a>
+        <p class="guide-excerpt">Commit Hero를 만들기 전에 먼저 판단 구조를 설계했다. Deep Interview로 방향을 잡고, Plan·Design·AGENTS.md를 통해 AI의 작업 범위를 정한 뒤 구현에 들어간 경험에서, 바이브 코딩에서 사람의 역할은 코딩이 아니라 하네스 설계임을 확인했다.</p>
+        <div class="guide-tags">
+          <span>바이브코딩</span>
+          <span>하네스 설계</span>
+          <span>Codex</span>
+          <span>AI 제품 빌드</span>
+        </div>
+        <a href="/insight/vibe-coding-harness-design/" class="guide-link">읽으러 가기 →</a>
+      </article>
+
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-tag guide-tag--insight">운영 인사이트</span>
+          <time>2026년 5월 25일</time>
+        </div>
+        <a href="/insight/codex-workflow-design-over-prompting/" class="guide-title">
+          Codex 실습에서 배운 것 — AI 개발은 명령보다 작업 흐름 설계가 중요하다
+        </a>
+        <p class="guide-excerpt">Codex 바이브코딩 실습을 통해 AI 코딩 에이전트는 목표만 주면 전체 흐름을 혼자 처리한다는 것을 확인했다. AI 개발의 핵심 역량은 프롬프트 작성 능력이 아니라, AI가 일하는 순서와 권한을 설계하는 운영 능력이다.</p>
+        <div class="guide-tags">
+          <span>Codex</span>
+          <span>바이브코딩</span>
+          <span>작업 흐름 설계</span>
+          <span>AI 에이전트</span>
+        </div>
+        <a href="/insight/codex-workflow-design-over-prompting/" class="guide-link">읽으러 가기 →</a>
+      </article>
+
+      <article class="guide-card">
+        <div class="guide-meta">
+          <span class="guide-tag guide-tag--insight">운영 인사이트</span>
+          <time>2026년 5월 28일</time>
+        </div>
+        <a href="/insight/ai-role-separation-diverge-and-converge/" class="guide-title">
+          발산은 새창에서, 수렴은 운영본부에서 한다
+        </a>
+        <p class="guide-excerpt">AI 도구가 늘어날수록 역할 구분이 먼저다. 새창 GPT는 맥락 없이 발산하는 외부 사고창으로, 메타철부지는 그 결과를 기존 운영 체계에 흡수하는 운영본부로 나눴다. 발산을 막는 것이 아니라 회수하는 구조를 만드는 것이 핵심이었다.</p>
+        <div class="guide-tags">
+          <span>AI 역할 분리</span>
+          <span>ChatGPT</span>
+          <span>AI 워크플로우</span>
+          <span>운영 철학</span>
+        </div>
+        <a href="/insight/ai-role-separation-diverge-and-converge/" class="guide-link">읽으러 가기 →</a>
+      </article>
+
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .guides-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-header p {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  .guides-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .guide-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    background: white;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .guide-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .guide-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .guide-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .guide-tag--primary {
+    color: var(--primary-color);
+    background: #f0f0ff;
+  }
+
+  .guide-tag--insight {
+    color: #2e7d32;
+    background: #e8f5e9;
+  }
+
+  time {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .guide-title {
+    display: block;
+    font-size: clamp(1.0625rem, 1rem + 0.3125vw, 1.25rem);
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    line-height: 1.4;
+    margin-bottom: 0.875rem;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    transition: color 0.2s;
+  }
+
+  .guide-title:hover {
+    color: var(--primary-color);
+  }
+
+  .guide-excerpt {
+    font-size: 0.9375rem;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 1.125rem;
+    word-break: keep-all;
+  }
+
+  .guide-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .guide-tags span {
+    font-size: 0.8rem;
+    color: #777;
+    background: #f5f5f5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .guide-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .guide-link:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .guides-container {
+      padding: 2rem 1rem 3rem;
+    }
+
+    .guide-card {
+      padding: 1.25rem 1.25rem;
+    }
+  }
+</style>

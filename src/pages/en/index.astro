@@ -30,19 +30,6 @@ const sortedPosts = logPosts.sort((a, b) => {
     </div>
   </section>
 
-  <section class="current-board">
-    <div class="current-board-inner">
-      <div class="board-label-row">
-        <span class="board-label">Operating Board</span>
-        <span class="board-month-tag">May 2026</span>
-      </div>
-      <p class="board-summary">May's goal is building a repeatable monetization operating structure — running three focused projects while developing the shared capabilities beneath all of them.</p>
-      <p class="board-keywords">Auto-Trading Validation · AI Blog / AdSense · AI Content Assistant</p>
-      <a href="/en/board/2026-05" class="board-cta">View May 2026 Operating Board →</a>
-      <a href="/en/sop/ai-collaboration-operating-sop/" class="sop-aux-link">View operating standard: AI Collaboration Operating SOP v0 →</a>
-    </div>
-  </section>
-
   <section class="featured-guide">
     <div class="featured-guide-inner">
       <h2>Start Here</h2>
@@ -54,24 +41,6 @@ const sortedPosts = logPosts.sort((a, b) => {
           <a href="/en/guides/vibe-coding-guide/" class="guide-card-link">Read the guide →</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="latest-posts">
-    <h2>Latest Posts</h2>
-    <div class="posts-grid">
-      {sortedPosts.map((post) => (
-        <LogCard
-          title={post.data.title}
-          excerpt={post.data.excerpt}
-          date={post.data.date}
-          slug={post.slug}
-          tags={post.data.tags}
-        />
-      ))}
-    </div>
-    <div class="view-all">
-      <a href="/en/log">View All Posts →</a>
     </div>
   </section>
 
@@ -97,6 +66,38 @@ const sortedPosts = logPosts.sort((a, b) => {
       <div class="view-all-projects">
         <a href="/en/projects">View All Projects →</a>
       </div>
+    </div>
+  </section>
+
+  <section class="latest-posts">
+    <h2>Latest Operations Log</h2>
+    <p class="posts-notice">The latest operations log captures validation records from real project work in progress. Posts about auto-trading are technical operational records — documenting automated systems, log reviews, and risk management — not investment advice.</p>
+    <div class="posts-grid">
+      {sortedPosts.map((post) => (
+        <LogCard
+          title={post.data.title}
+          excerpt={post.data.excerpt}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+    <div class="view-all">
+      <a href="/en/log">View All Posts →</a>
+    </div>
+  </section>
+
+  <section class="current-board">
+    <div class="current-board-inner">
+      <div class="board-label-row">
+        <span class="board-label">Operating Roadmap</span>
+        <span class="board-month-tag">June 2026</span>
+      </div>
+      <p class="board-summary">June's goal is building a path that turns AI Content Assistant leads into actual payments. Operating around first-payment validation and maintaining the AI blog publishing routine.</p>
+      <p class="board-keywords">AI Content Assistant First Payment · AI Blog Publishing · Shopping Shorts Pilot</p>
+      <a href="/en/board/2026-06" class="board-cta">View June 2026 Operating Board →</a>
+      <a href="/en/sop/ai-collaboration-operating-sop/" class="sop-aux-link">View operating standard: AI Collaboration Operating SOP v0 →</a>
     </div>
   </section>
 
@@ -287,8 +288,18 @@ const sortedPosts = logPosts.sort((a, b) => {
 
   .latest-posts h2 {
     font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
-    margin-bottom: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+    margin-bottom: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
     text-align: center;
+  }
+
+  .posts-notice {
+    font-size: clamp(0.875rem, 0.85rem + 0.125vw, 0.9375rem);
+    color: var(--text-muted);
+    line-height: 1.65;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    padding: 0 1rem;
   }
 
   .posts-grid {
