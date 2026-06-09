@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# internal non-public documents (SOP drafts, blog drafts)
+docs/internal/
+docs/drafts/
