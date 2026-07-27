@@ -15,14 +15,20 @@ const sortedPosts = logPosts.sort((a, b) => {
 ---
 
 <BaseLayout
-  title="철부지 | AI Product Builder 전환 기록"
-  titleOverride="철부지 | AI Product Builder 전환 기록 - chulbuji.com"
-  description="34년 반도체 엔지니어 철부지의 AI Product Builder 전환 기록. 듀얼 브레인(인간+AI) 오케스트레이션으로 AX를 실행합니다."
+  title="chulbuji — 코딩 몰라도 AI로 만드는 기록"
+  titleOverride="chulbuji — 코딩 몰라도 AI로 만드는 기록"
+  description="개발을 배우지 않은 60대가 AI로 앱·서비스·게임을 직접 만들어가는 기록. 시행착오와 실패까지 그대로 남깁니다."
+  ogImage="/og-image.png"
 >
   <section class="hero">
     <div class="hero-content">
-      <h1>AI와 함께 작동하는 인간, 철부지의 AI Product Builder 전환 기록</h1>
-      <p class="subtitle">듀얼 브레인과 멀티 전문가 AI 오케스트레이션을 통해<br class="br-desktop" /> AX(AI Transformation)를 실행하고 결과를 축적합니다.</p>
+      <h1>코딩 몰라도 만듭니다</h1>
+      <p class="subtitle">개발 한 줄 안 배운 60대가 AI로 앱·서비스·게임에 도전하는 기록.<br class="br-desktop" /> 실패까지 그대로 남깁니다.</p>
+      <div class="hero-subscribe">
+        <p class="subscribe-lead">무료 시작 키트를 이메일로 받아보세요</p>
+        <div class="ml-embedded" data-form="aboY4B"></div>
+        <p class="subscribe-note">이메일 주소만 남기면 바로 받아보실 수 있습니다.</p>
+      </div>
       <div class="cta">
         <a href="/insight" class="btn-primary">대표 결과물 보기</a>
         <a href="/about" class="btn-secondary">About: 철부지 + 메타철부지</a>
@@ -139,6 +145,47 @@ const sortedPosts = logPosts.sort((a, b) => {
     line-height: 1.6;
     font-weight: 400;
     word-break: keep-all;
+  }
+
+  .hero-subscribe {
+    max-width: 480px;
+    margin: 0 auto clamp(1.25rem, 1rem + 1.25vw, 2rem);
+  }
+
+  .subscribe-lead {
+    font-size: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+
+  .subscribe-note {
+    font-size: clamp(0.8125rem, 0.8rem + 0.125vw, 0.875rem);
+    opacity: 0.8;
+    margin: 0.75rem 0 0;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+
+  /* MailerLite injects its own markup at runtime, so these rules must be
+     global — scoped styles never reach script-inserted elements.
+     Its text colour is locked to black with !important, so the form sits on a
+     white card (same white / 8px radius as .btn-primary) instead of directly
+     on the hero gradient. */
+  .hero-subscribe :global(.ml-embedded) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    background: white;
+    border-radius: 8px;
+    padding: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+    text-align: left;
+  }
+
+  .hero-subscribe :global(.ml-embedded *) {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .br-desktop {

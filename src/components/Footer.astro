@@ -24,6 +24,12 @@ const currentYear = new Date().getFullYear();
         <a href={basePath + '/privacy'}>{t('footer.privacy')}</a>
         <a href={basePath + '/terms'}>{t('footer.terms')}</a>
         <a href="https://github.com/yongsub-kim64" target="_blank" rel="noopener noreferrer">{t('footer.github')}</a>
+        <a
+          href="https://preview.mailerlite.io/forms/2525277/193684001051903359/share"
+          class="footer-starter-kit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{t('footer.starterKit')}</a>
       </nav>
     </div>
     
@@ -69,6 +75,10 @@ const currentYear = new Date().getFullYear();
 
   .footer-nav {
     display: flex;
+    /* Wrap to a second row rather than squeezing labels into vertical
+       one-character columns on narrow desktop widths. */
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: clamp(1.25rem, 1rem + 1.25vw, 1.75rem);
   }
 
@@ -78,6 +88,7 @@ const currentYear = new Date().getFullYear();
     font-size: clamp(0.9375rem, 0.9rem + 0.1875vw, 1.0625rem);
     transition: color 0.2s;
     font-weight: 500;
+    white-space: nowrap;
     /* Better touch targets */
     min-height: 44px;
     display: inline-flex;
@@ -87,6 +98,11 @@ const currentYear = new Date().getFullYear();
 
   .footer-nav a:hover {
     color: #667eea;
+  }
+
+  .footer-nav a.footer-starter-kit {
+    color: #667eea;
+    font-weight: 600;
   }
 
   .footer-bottom {
